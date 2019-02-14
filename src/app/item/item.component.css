@@ -1,0 +1,29 @@
+.card-block {
+  text-align: center;
+}
+
+.full-height {
+  height: 100%;
+}
+.read-more-button {
+  float: right!important;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: auto;
+}
+.card:hover {
+  animation: soften 0.2s;
+  opacity: 0.9;
+  cursor: pointer;
+}
+.category {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  background: #e74c3c;;
+  padding: 8px 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+}

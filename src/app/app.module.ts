@@ -8,19 +8,23 @@ import { NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
 import { ArticleComponent } from './article/article.component';
 import { LoginComponent } from './login/login.component';
+import { ArticleCardComponent } from './article-card/article-card.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { ItemComponent } from './item/item.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavbarComponent,
-    FooterComponent,
     AboutComponent,
     ArticleComponent,
-    LoginComponent
+    LoginComponent,
+    ArticleCardComponent,
+    ItemComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,8 @@ import { LoginComponent } from './login/login.component';
     NgbAlertModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
