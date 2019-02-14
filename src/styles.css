@@ -1,5 +1,4 @@
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-
 @font-face {
   font-family: 'Kanit';
   font-style: normal;
@@ -10,8 +9,9 @@
 
  html, body {
   font-family: 'Kanit', sans-serif;
+  background: #eeeeee;
  }
 
  .app-nav {
-   margin-bottom: 5rem;
+   margin-bottom: 4rem;
  }
