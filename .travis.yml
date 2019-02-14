@@ -21,6 +21,7 @@ install:
 script:
   - ng lint
   - ng build --prod --base-href https://niawjunior.github.io/blog/
+  - mv dist/blog/index.html dist/blog/404.html
 
 deploy:
   provider: pages
