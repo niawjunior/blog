@@ -15,3 +15,7 @@
  .app-nav {
    margin-bottom: 4rem;
  }
+
+ .fr-toolbar {
+  border-top: 4px solid #0078ff !important;
+}
