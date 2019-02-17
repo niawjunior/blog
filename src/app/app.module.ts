@@ -14,6 +14,8 @@ import { LoginComponent } from './login/login.component';
 import { ArticleCardComponent } from './article-card/article-card.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ItemComponent } from './item/item.component';
+import { WysiwygEditorComponent } from './wysiwyg-editor/wysiwyg-editor.component';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { ItemComponent } from './item/item.component';
     ArticleComponent,
     LoginComponent,
     ArticleCardComponent,
-    ItemComponent
+    ItemComponent,
+    WysiwygEditorComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,9 @@ import { ItemComponent } from './item/item.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
