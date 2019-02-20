@@ -3,19 +3,3 @@
   margin-top: 1rem;
   margin-left: 1rem;
 }
-.preview-button {
-  float: right;
-  margin-top: 1rem;
-}
-
-.preview-box {
-    margin-top: 5rem;
-    border: 1px solid #c8c8c8;
-    padding: 1rem;
-    border-radius: 3px;
-    background-color: #ffffff;
-    margin-bottom: 2rem;
-    box-shadow: rgba(0,0,0,0);
-    box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 1px 1px rgba(0,0,0,.16);
-    border-top: solid 4px #0075ff;
-}

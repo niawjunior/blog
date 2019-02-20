@@ -1,9 +1,4 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-<div [froalaEditor]="options" [froalaEditor] formControlName="formModel"></div>
+<angular-editor formControlName="htmlContent" [config]="editorConfig"></angular-editor>
 <button type="submit" class="btn btn-outline-success save-button">บันทึก <fa name="save"></fa></button>
-<button (click)="showPreview()" class="btn btn-outline-primary preview-button">ดูตัวอย่างก่อนเผยแพร่ <fa name="eye"></fa></button>
 </form>
-
-<div class="preview-box" *ngIf="isPreview">
-  <div [froalaView]="content"></div>
-</div>
