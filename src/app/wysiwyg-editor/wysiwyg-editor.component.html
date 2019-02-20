@@ -1,4 +1,10 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-<angular-editor formControlName="htmlContent" [config]="editorConfig"></angular-editor>
+
+  <quill-editor
+    #editor
+    [formControl]="form.controls['editor']"
+  >
+  </quill-editor>
+
 <button type="submit" class="btn btn-outline-success save-button">บันทึก <fa name="save"></fa></button>
 </form>
