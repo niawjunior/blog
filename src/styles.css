@@ -19,3 +19,22 @@
  .fr-toolbar {
   border-top: 4px solid #0078ff !important;
 }
+
+
+.quote {
+  color: #8cc540;
+  font-style: italic;
+}
+
+.redText {
+  color: Red;
+  font-size: 12px;
+  font-family: Arial;
+}
+
+h1.titleText {
+  color: #69a8cf;
+  text-align: left;
+  margin-top: 40px;
+  font-weight: normal;
+}

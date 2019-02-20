@@ -15,7 +15,8 @@ import { ArticleCardComponent } from './article-card/article-card.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ItemComponent } from './item/item.component';
 import { WysiwygEditorComponent } from './wysiwyg-editor/wysiwyg-editor.component';
-import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -39,8 +40,8 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     FormsModule,
     ReactiveFormsModule,
     AngularFontAwesomeModule,
-    FroalaEditorModule.forRoot(),
-    FroalaViewModule.forRoot()
+    AngularEditorModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
