@@ -15,8 +15,8 @@ import { ArticleCardComponent } from './article-card/article-card.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ItemComponent } from './item/item.component';
 import { WysiwygEditorComponent } from './wysiwyg-editor/wysiwyg-editor.component';
-import { AngularEditorModule } from '@kolkov/angular-editor';
 import { HttpClientModule} from '@angular/common/http';
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   declarations: [
@@ -40,8 +40,8 @@ import { HttpClientModule} from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     AngularFontAwesomeModule,
-    AngularEditorModule,
-    HttpClientModule
+    HttpClientModule,
+    QuillModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
