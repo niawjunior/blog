@@ -20,21 +20,21 @@
   border-top: 4px solid #0078ff !important;
 }
 
-
-.quote {
-  color: #8cc540;
-  font-style: italic;
+quill-editor {
+  display: block;
 }
 
-.redText {
-  color: Red;
-  font-size: 12px;
-  font-family: Arial;
+
+/* Set default font-family */
+
+pre {
+  background-color: #fcfcfc;
+  padding: 5px;
+  border: 1px solid #b2b2b2;
+  color: #363030;
 }
 
-h1.titleText {
-  color: #69a8cf;
-  text-align: left;
-  margin-top: 40px;
-  font-weight: normal;
+quill-editor {
+  background-color: #ffffff;
+  border: 1px solid #0078ff;
 }

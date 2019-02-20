@@ -1,53 +1,48 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { AngularEditorConfig } from '@kolkov/angular-editor';
+import { QuillEditorComponent } from 'ngx-quill';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-wysiwyg-editor',
   templateUrl: './wysiwyg-editor.component.html',
   styleUrls: ['./wysiwyg-editor.component.css']
 })
+
+
 export class WysiwygEditorComponent implements OnInit {
-  content: any  = '';
   form: FormGroup;
-  constructor(private Form: FormBuilder) {
-    this.form = this.Form.group({
-      htmlContent: ''
+  @ViewChild('editor') editor: QuillEditorComponent;
+  constructor(fb: FormBuilder) {
+    this.form = fb.group({
+      editor: ''
     });
   }
-
-  editorConfig: AngularEditorConfig = {
-    editable: true,
-    spellcheck: true,
-    height: '20rem',
-    minHeight: '5rem',
-    placeholder: 'เริ่มพิมพ์บทความ',
-    translate: 'no',
-    uploadUrl: '',
-    customClasses: [
-      {
-        name: 'quote',
-        class: 'quote',
-      },
-      {
-        name: 'redText',
-        class: 'redText'
-      },
-      {
-        name: 'titleText',
-        class: 'titleText',
-        tag: 'h1',
-      },
-    ]
-  };
 
   ngOnInit() {
+    this.form
+      .controls
+      .editor
+      .valueChanges.pipe(
+        debounceTime(400),
+        distinctUntilChanged()
+      )
+      .subscribe((data) => {
+        console.log(data);
+      });
 
-    this.form.valueChanges.subscribe(form => {
-      this.content = form.htmlContent;
-    });
+    this.editor
+      .onContentChanged
+      .pipe(
+        debounceTime(400),
+        distinctUntilChanged()
+      )
+      .subscribe((data) => {
+        console.log(data);
+      });
   }
+
   onSubmit() {
-    console.log(this.content);
+    console.log(this.form.value.editor);
   }
 }
