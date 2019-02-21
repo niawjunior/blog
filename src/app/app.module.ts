@@ -17,6 +17,12 @@ import { ItemComponent } from './item/item.component';
 import { WysiwygEditorComponent } from './wysiwyg-editor/wysiwyg-editor.component';
 import { HttpClientModule} from '@angular/common/http';
 import { QuillModule } from 'ngx-quill';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
+import { AuthService } from './services/auth.service';
+
 
 @NgModule({
   declarations: [
@@ -42,8 +48,11 @@ import { QuillModule } from 'ngx-quill';
     AngularFontAwesomeModule,
     HttpClientModule,
     QuillModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

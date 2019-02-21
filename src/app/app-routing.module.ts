@@ -5,6 +5,8 @@ import { AboutComponent } from './about/about.component';
 import { ArticleComponent } from './article/article.component';
 import { LoginComponent } from './login/login.component';
 import { WysiwygEditorComponent } from './wysiwyg-editor/wysiwyg-editor.component';
+import { AuthGuard } from './guard/auth.guard';
+import { SecureInnerPagesGuard } from './guard/secure-inner-pages.guard';
 
 const routes: Routes = [
   {
@@ -17,10 +19,10 @@ const routes: Routes = [
     path: 'article', component: ArticleComponent
   },
   {
-    path: 'login', component: LoginComponent
+    path: 'login', component: LoginComponent, canActivate: [SecureInnerPagesGuard]
   },
   {
-    path: 'post', component: WysiwygEditorComponent
+    path: 'post', component: WysiwygEditorComponent, canActivate: [AuthGuard]
   },
   {
     path: '**', redirectTo: ''

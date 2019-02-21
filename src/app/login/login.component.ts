@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import swal from 'sweetalert';
+import { AuthService } from '../services/auth.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,7 +11,7 @@ import swal from 'sweetalert';
 export class LoginComponent implements OnInit {
   form: FormGroup;
   emailError: string;
-  constructor(private Form: FormBuilder) {
+  constructor(private Form: FormBuilder, private Service: AuthService) {
     this.form = this.Form.group({
       email: new FormControl(
         '', [Validators.required, Validators.email]),
@@ -21,11 +23,11 @@ export class LoginComponent implements OnInit {
 
   }
   login() {
-    swal({
-      title: 'ยินดีต้อนรับ',
-      icon: 'success'
+    this.Service.SignIn(this.form.value.email, this.form.value.password).then(() => {
+      swal({
+        title: 'ยินดีต้อนรับ',
+        icon: 'success'
+      });
     });
-    console.log(this.form.value);
   }
-
 }
