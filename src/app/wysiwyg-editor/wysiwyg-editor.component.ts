@@ -15,7 +15,8 @@ export class WysiwygEditorComponent implements OnInit {
   @ViewChild('editor') editor: QuillEditorComponent;
   constructor(fb: FormBuilder) {
     this.form = fb.group({
-      editor: ''
+      editor: '',
+      storyTitle: ''
     });
   }
 
@@ -43,6 +44,6 @@ export class WysiwygEditorComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.value.editor);
+    console.log(this.form.value);
   }
 }

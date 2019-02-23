@@ -1,10 +1,12 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-
-  <quill-editor
+<div class="editor-form">
+  <form [formGroup]="form">
+    <input formControlName="storyTitle"  type="text" class="form-control story-title" placeholder="ชื่อบทความ">
+    <quill-editor
     #editor
     [formControl]="form.controls['editor']"
-  >
-  </quill-editor>
-
-<button type="submit" class="btn btn-outline-success save-button">บันทึก <fa name="save"></fa></button>
+    [style]="{height: '300px'} "
+    >
+   </quill-editor>
 </form>
+</div>
+<button (click)="onSubmit()" class="btn btn-outline-success save-button">บันทึก <fa name="save"></fa></button>
