@@ -23,10 +23,10 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
           <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/post']" routerLinkActive="active current"  >เขียนบทความ</a>
+              <a class="nav-link" [routerLink]="['/post']" routerLinkActive="active current"  >เขียนบทความ <fa name="pencil"></fa></a>
           </li>
           <li *ngIf="!isLogIn" class="nav-item">
-              <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active current">เข้าสู่ระบบ</a>
+              <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active current">เข้าสู่ระบบ <fa name="sign-in"></fa></a>
           </li>
           <li *ngIf="isLogIn" class="nav-item">
               <a  (click)="signOut()" class="nav-link" href="javascript:void(0)">ออกจากระบบ <fa name="sign-out"></fa></a>
