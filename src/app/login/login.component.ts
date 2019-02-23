@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
   emailError: string;
   buttonSubmit: string;
-  isDisabledSubmitButton: Boolean = false;
+  isDisabledSubmitButton = false;
 
   constructor(private Form: FormBuilder, private Service: AuthService) {
     this.form = this.Form.group({
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     this.buttonSubmit = 'เข้าสู่ระบบ';
   }
   login() {
-    this.buttonSubmit = 'รอสักครู่..';
+    this.buttonSubmit = 'รอสักครู่';
     this.isDisabledSubmitButton = true;
     this.Service.SignIn(this.form.value.email, this.form.value.password).then(() => {
       swal({
