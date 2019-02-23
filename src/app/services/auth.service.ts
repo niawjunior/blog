@@ -30,11 +30,11 @@ export class AuthService {
   SignIn(email, password) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((result) => {
-        this.SetUserData(result.user).then(() => {
-          window.location.reload();
+        this.SetUserData(result.user).then((user) => {
+          return user;
         });
       }).catch((error) => {
-        window.alert(error.message);
+        throw error.message;
       });
   }
 
