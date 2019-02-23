@@ -20,10 +20,8 @@ import { QuillModule } from 'ngx-quill';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { environment } from '../environments/environment';
 import { AuthService } from './services/auth.service';
 import { firebaseConfig } from 'src/environments/firebase.config';
-
 
 @NgModule({
   declarations: [
