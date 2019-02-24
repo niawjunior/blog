@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { QuillEditorComponent } from 'ngx-quill';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-wysiwyg-editor',
@@ -12,6 +13,11 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 export class WysiwygEditorComponent implements OnInit {
   form: FormGroup;
+  ogImage: '';
+  content: '';
+  title: '';
+  slugUrl = '';
+
   @ViewChild('editor') editor: QuillEditorComponent;
   constructor(fb: FormBuilder) {
     this.form = fb.group({
@@ -44,6 +50,12 @@ export class WysiwygEditorComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.value);
+    this.content = this.form.value.editor;
+    this.title = this.form.value.storyTitle;
+    this.slugUrl = this.title.split(' ').join('-');
+    if ($(this.form.value.editor).find('img')[0]) {
+      this.ogImage = $(this.form.value.editor).find('img')[0].src;
+    }
+
   }
 }
