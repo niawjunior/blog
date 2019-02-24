@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { QuillEditorComponent } from 'ngx-quill';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import * as $ from 'jquery';
+import { UploadContentService } from '../services/upload-content.service';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-wysiwyg-editor',
@@ -19,7 +21,7 @@ export class WysiwygEditorComponent implements OnInit {
   slugUrl = '';
 
   @ViewChild('editor') editor: QuillEditorComponent;
-  constructor(fb: FormBuilder) {
+  constructor(fb: FormBuilder, public uploadService: UploadContentService ) {
     this.form = fb.group({
       editor: '',
       storyTitle: ''
@@ -57,5 +59,17 @@ export class WysiwygEditorComponent implements OnInit {
       this.ogImage = $(this.form.value.editor).find('img')[0].src;
     }
 
+    this.uploadService.uploadImage(this.ogImage).then(imageUrl => {
+      this.uploadService.uploadContent(this.title, this.content,  this.slugUrl, imageUrl).then(() => {
+        swal({
+          title: 'บันทึกสำเร็จ',
+          icon: 'success'
+        }).then(() => {
+          setTimeout(() => {
+            window.location.href = '';
+          }, 500);
+        });
+      });
+    });
   }
 }
