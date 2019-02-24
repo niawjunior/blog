@@ -20,6 +20,7 @@ import { QuillModule } from 'ngx-quill';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import {AngularFireStorageModule, StorageBucket} from '@angular/fire/storage';
 import { AuthService } from './services/auth.service';
 import { firebaseConfig } from 'src/environments/firebase.config';
 
@@ -50,8 +51,9 @@ import { firebaseConfig } from 'src/environments/firebase.config';
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    AngularFireStorageModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, { provide: StorageBucket, useValue: 'blog-40f93.appspot.com'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
