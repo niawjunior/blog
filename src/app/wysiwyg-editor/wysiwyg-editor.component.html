@@ -1,6 +1,24 @@
 <div class="editor-form">
   <form [formGroup]="form">
     <input formControlName="storyTitle"  type="text" class="form-control story-title" placeholder="ชื่อบทความ">
+    <div class="tag">
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" formControlName="tag" name="tag" value="javascript">
+          <label class="form-check-label" for="javascript">Javascript</label>
+      </div>
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" formControlName="tag" name="tag" value="angular">
+          <label class="form-check-label" for="angular">Angular</label>
+      </div>
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" formControlName="tag" name="tag" value="blockchain">
+          <label class="form-check-label" for="blockchain">BlockChain</label>
+      </div>
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" formControlName="tag" name="tag" value="etc">
+          <label class="form-check-label" for="etc">ทั่วไป</label>
+      </div>
+    </div>
     <quill-editor
     #editor
     [formControl]="form.controls['editor']"
@@ -9,4 +27,4 @@
    </quill-editor>
 </form>
 </div>
-<button (click)="onSubmit()" class="btn btn-outline-success save-button">บันทึก <fa name="save"></fa></button>
+<button (click)="onSubmit()" class="btn btn-outline-success save-button" [disabled]="form.invalid">บันทึก <fa name="save"></fa></button>

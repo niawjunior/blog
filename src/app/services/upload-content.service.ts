@@ -23,9 +23,10 @@ export class UploadContentService {
   async getImageUrl(snapshot) {
     return await snapshot.ref.getDownloadURL();
   }
-  async uploadContent(title, content, slugUrl, imageUrl) {
+  async uploadContent(title, tag, content, slugUrl, imageUrl) {
     const contentData: Content = {
       title,
+      tag,
       content,
       slugUrl,
       imageUrl

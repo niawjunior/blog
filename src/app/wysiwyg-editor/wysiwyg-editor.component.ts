@@ -12,19 +12,20 @@ import swal from 'sweetalert';
   styleUrls: ['./wysiwyg-editor.component.css']
 })
 
-
 export class WysiwygEditorComponent implements OnInit {
   form: FormGroup;
   ogImage: '';
   content: '';
   title: '';
   slugUrl = '';
+  tag = '';
 
   @ViewChild('editor') editor: QuillEditorComponent;
   constructor(fb: FormBuilder, public uploadService: UploadContentService ) {
     this.form = fb.group({
-      editor: '',
-      storyTitle: ''
+      editor: new FormControl('', Validators.required),
+      storyTitle: new FormControl('', Validators.required),
+      tag: new FormControl('', Validators.required)
     });
   }
 
@@ -54,13 +55,14 @@ export class WysiwygEditorComponent implements OnInit {
   onSubmit() {
     this.content = this.form.value.editor;
     this.title = this.form.value.storyTitle;
+    this.tag = this.form.value.tag;
     this.slugUrl = this.title.split(' ').join('-');
     if ($(this.form.value.editor).find('img')[0]) {
       this.ogImage = $(this.form.value.editor).find('img')[0].src;
     }
 
     this.uploadService.uploadImage(this.ogImage).then(imageUrl => {
-      this.uploadService.uploadContent(this.title, this.content,  this.slugUrl, imageUrl).then(() => {
+      this.uploadService.uploadContent(this.title, this.tag, this.content,  this.slugUrl, imageUrl).then(() => {
         swal({
           title: 'บันทึกสำเร็จ',
           icon: 'success'
