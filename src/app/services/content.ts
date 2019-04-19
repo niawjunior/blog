@@ -4,4 +4,5 @@ export interface Content {
   content: string;
   slugUrl: string;
   imageUrl: string;
+  description: string;
 }
