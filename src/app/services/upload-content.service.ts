@@ -23,13 +23,14 @@ export class UploadContentService {
   async getImageUrl(snapshot) {
     return await snapshot.ref.getDownloadURL();
   }
-  async uploadContent(title, tag, content, slugUrl, imageUrl) {
+  async uploadContent(title, tag, content, slugUrl, imageUrl, description) {
     const contentData: Content = {
       title,
       tag,
       content,
       slugUrl,
-      imageUrl
+      imageUrl,
+      description
     };
 
     const contentRef: AngularFirestoreDocument<any> = this.afs.doc(`post/${slugUrl}`);

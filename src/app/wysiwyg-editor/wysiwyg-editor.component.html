@@ -3,20 +3,20 @@
     <input formControlName="storyTitle"  type="text" class="form-control story-title" placeholder="ชื่อบทความ">
     <div class="tag">
       <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" formControlName="tag" name="tag" value="javascript">
-          <label class="form-check-label" for="javascript">Javascript</label>
+          <input id="javascript" class="form-check-input" type="radio" formControlName="tag" name="tag" value="javascript">
+          <label for="javascript" class="form-check-label" >Javascript</label>
       </div>
       <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" formControlName="tag" name="tag" value="angular">
-          <label class="form-check-label" for="angular">Angular</label>
+          <input id="angular" class="form-check-input" type="radio" formControlName="tag" name="tag" value="angular">
+          <label for="angular" class="form-check-label" >Angular</label>
       </div>
       <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" formControlName="tag" name="tag" value="blockchain">
-          <label class="form-check-label" for="blockchain">BlockChain</label>
+          <input id="blockChain" class="form-check-input" type="radio" formControlName="tag" name="tag" value="blockchain">
+          <label for="blockChain" class="form-check-label" >BlockChain</label>
       </div>
       <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" formControlName="tag" name="tag" value="etc">
-          <label class="form-check-label" for="etc">ทั่วไป</label>
+          <input id="general" class="form-check-input" type="radio" formControlName="tag" name="tag" value="etc">
+          <label for="general" class="form-check-label" >ทั่วไป</label>
       </div>
     </div>
     <quill-editor

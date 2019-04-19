@@ -1,9 +1,9 @@
 <div class="card mb-4 box-shadow full-height">
-    <img src="{{ item?.image }}" class="card-img-top">
+    <img src="{{ item.imageUrl }}" class="card-img-top">
     <div class="card-body d-flex flex-column">
       <h4 class="card-title">{{ item.title }}</h4>
-      <p class="card-text">{{ item.description }}</p>
-      <div class="category">angular</div>
+      <p class="card-text">{{ item.description }}..</p>
+      <div class="category">{{ item.tag }}</div>
       <button class="btn btn-outline-primary read-more-button mt-auto" type="button">อ่านบทความนี้ <fa name="book"></fa>
       </button>
     </div>
