@@ -19,6 +19,7 @@ export class WysiwygEditorComponent implements OnInit {
   title: '';
   slugUrl = '';
   tag = '';
+  description = '';
 
   @ViewChild('editor') editor: QuillEditorComponent;
   constructor(fb: FormBuilder, public uploadService: UploadContentService ) {
@@ -60,9 +61,9 @@ export class WysiwygEditorComponent implements OnInit {
     if ($(this.form.value.editor).find('img')[0]) {
       this.ogImage = $(this.form.value.editor).find('img')[0].src;
     }
-
+    this.description = String($('p').text()).substr(0, 50);
     this.uploadService.uploadImage(this.ogImage).then(imageUrl => {
-      this.uploadService.uploadContent(this.title, this.tag, this.content,  this.slugUrl, imageUrl).then(() => {
+      this.uploadService.uploadContent(this.title, this.tag, this.content,  this.slugUrl, imageUrl,  this.description).then(() => {
         swal({
           title: 'บันทึกสำเร็จ',
           icon: 'success'
