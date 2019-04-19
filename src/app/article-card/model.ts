@@ -1,6 +1,8 @@
 export interface Item {
+  content: string;
+  imageUrl: string;
+  slugUrl: string;
+  tag: string;
   title: string;
-  subTitle: string;
   description: string;
-  image: string;
 }
