@@ -4,9 +4,14 @@
       <div class="form-group">
         <label for="email">อีเมล</label>
         <input type="email" name="email" formControlName="email" class="form-control"  placeholder="email">
-        <span *ngIf="form.value.email && (form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched))">
+        <span *ngIf="form.value.email && (form.controls['email'].invalid && form.controls['email'].touched)">
           <ngb-alert class="alert-custom" type="warning" [dismissible]="false">
             รูปแบบอีเมลไม่ถูกต้อง
+          </ngb-alert>
+        </span>
+        <span *ngIf="!form.value.email && form.controls['email'].touched">
+          <ngb-alert class="alert-custom" type="warning" [dismissible]="false">
+            กรุณาระบุอีเมล
           </ngb-alert>
         </span>
       </div>
