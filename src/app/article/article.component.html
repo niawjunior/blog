@@ -1,5 +1,7 @@
-<div class="row">
+<div *ngIf="loading" class="loading">Loading&#8230;</div>
+<div *ngIf="loadingContent" class="row article">
     <div class="col-sm-12 mx-auto">
+        <h1 class="text-center" style="margin-bottom: 20px;">{{ head }}</h1>
         <div [innerHTML]="article"></div>
     </div>
  </div>

@@ -11,6 +11,9 @@ import { GetContentService } from '../services/get-content.service';
 export class ArticleComponent implements OnInit {
   getUrl;
   article = '';
+  head;
+  loadingContent = false;
+  loading = true;
   constructor(private contentService: GetContentService, public activatedRoute: ActivatedRoute, private location: Location) {
   }
   ngOnInit() {
@@ -20,6 +23,9 @@ export class ArticleComponent implements OnInit {
       result.subscribe(e => {
         e.forEach(elem => {
           if (elem) {
+            this.loadingContent = true;
+            this.loading = false;
+            this.head = elem.title;
             this.article = elem.content;
           }
          });
