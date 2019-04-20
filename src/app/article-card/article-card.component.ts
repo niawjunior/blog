@@ -10,16 +10,18 @@ export class ArticleCardComponent implements OnInit {
   arrayOfItems: any = [];
   newArray = [];
   result;
+  loading = true;
   constructor(private contentService: GetContentService) {
 
   }
   ngOnInit() {
       this.contentService.getAllPost().then(result => {
         result.subscribe(e => {
+          this.loading = false;
           e.forEach(elem => {
             this.arrayOfItems.push(elem.payload.doc.data());
-           });
-            for (let i = 0; i < this.arrayOfItems.length; i += 3) {
+          });
+          for (let i = 0; i < this.arrayOfItems.length; i += 3) {
             this.newArray.push({ items: this.arrayOfItems.slice(i, i + 3) });
           }
       });

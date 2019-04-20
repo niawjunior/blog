@@ -20,7 +20,6 @@ export class ArticleComponent implements OnInit {
       result.subscribe(e => {
         e.forEach(elem => {
           if (elem) {
-            console.log(elem);
             this.article = elem.content;
           }
          });

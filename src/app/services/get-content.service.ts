@@ -1,7 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
 import { Content } from './content';
-import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
@@ -9,7 +8,8 @@ import { map } from 'rxjs/operators';
 export class GetContentService {
   private itemsCollection: AngularFirestoreCollection<Content>;
   items;
-
+  loadContent: EventEmitter<boolean> = new EventEmitter();
+  load = false;
   constructor(private afs: AngularFirestore) {
 
   }
@@ -28,5 +28,7 @@ export class GetContentService {
       }))
     );
   }
-
+  setLoad(key) {
+    this.loadContent.emit(key);
+  }
 }

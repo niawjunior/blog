@@ -8,15 +8,21 @@ import { Route, Router } from '@angular/router';
 })
 export class ItemComponent implements OnInit {
   @Input() item: Item;
+  loading = true;
   constructor(private router: Router) {
 
   }
   imgUrl = './assets/default.png';
   ngOnInit() {
-    if (this.item.imageUrl) {
-      this.imgUrl = this.item.imageUrl;
-    } else {
-      this.imgUrl = './assets/default.png';
+    if (this.item) {
+      setTimeout(() => {
+        if (this.item.imageUrl) {
+          this.imgUrl = this.item.imageUrl;
+        } else {
+          this.imgUrl = './assets/default.png';
+        }
+        this.loading = false;
+      }, 1500);
     }
 }
 readArticle(slug) {

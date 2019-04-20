@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as moment from 'moment';
+import { differenceInYears } from 'date-fns';
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
@@ -10,7 +10,6 @@ export class AboutComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.yearOld = moment().diff('1994-06-23', 'years');
-  }
-
+    this.yearOld = differenceInYears(new Date(), new Date(1994, 6, 23));
+}
 }
