@@ -9,10 +9,9 @@ import { Route, Router } from '@angular/router';
 export class ItemComponent implements OnInit {
   @Input() item: Item;
   loading = true;
-  constructor(private router: Router) {
-
-  }
   imgUrl = './assets/default.png';
+  constructor(private router: Router) {
+  }
   ngOnInit() {
     if (this.item) {
       setTimeout(() => {
@@ -22,7 +21,7 @@ export class ItemComponent implements OnInit {
           this.imgUrl = './assets/default.png';
         }
         this.loading = false;
-      }, 1500);
+      }, 500);
     }
 }
 readArticle(slug) {
