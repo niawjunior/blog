@@ -13,7 +13,6 @@ export class ArticleComponent implements OnInit {
   article = '';
   head;
   loadingContent = false;
-  loading = true;
   constructor(private contentService: GetContentService, public activatedRoute: ActivatedRoute, private location: Location) {
   }
   ngOnInit() {
@@ -23,8 +22,9 @@ export class ArticleComponent implements OnInit {
       result.subscribe(e => {
         e.forEach(elem => {
           if (elem) {
-            this.loadingContent = true;
-            this.loading = false;
+            setTimeout(() => {
+              this.loadingContent = true;
+            }, 500);
             this.head = elem.title;
             this.article = elem.content;
           }
