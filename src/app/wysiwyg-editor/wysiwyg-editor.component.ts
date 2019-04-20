@@ -39,7 +39,7 @@ export class WysiwygEditorComponent implements OnInit {
         distinctUntilChanged()
       )
       .subscribe((data) => {
-        console.log(data);
+        // console.log(data);
       });
 
     this.editor
@@ -49,7 +49,7 @@ export class WysiwygEditorComponent implements OnInit {
         distinctUntilChanged()
       )
       .subscribe((data) => {
-        console.log(data);
+        // console.log(data);
       });
   }
 
