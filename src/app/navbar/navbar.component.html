@@ -5,9 +5,6 @@
   </button>
   <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="navbarsDefault">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/article']" routerLinkActive="active current">บทความทั้งหมด</a>
-        </li>
       <li class="nav-item dropdown" ngbDropdown>
         <a class="nav-link dropdown-toggle" id="navClick" href="javascript:void(0)" ngbDropdownToggle>หมวดหมู่บทความ</a>
         <div class="dropdown-menu" aria-labelledby="navClick" ngbDropdownMenu>

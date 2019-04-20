@@ -1,5 +1,5 @@
-<div class="card mb-4 box-shadow full-height">
-    <img src="{{ item.imageUrl }}" class="card-img-top">
+<div (click)="readArticle(item.slugUrl)" class="card mb-4 box-shadow full-height">
+    <img src="{{ imgUrl }}" class="card-img-top">
     <div class="card-body d-flex flex-column">
       <h4 class="card-title">{{ item.title }}</h4>
       <p class="card-text">{{ item.description }}..</p>

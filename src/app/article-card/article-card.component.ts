@@ -9,7 +9,7 @@ import { GetContentService } from '../services/get-content.service';
 export class ArticleCardComponent implements OnInit {
   arrayOfItems: any = [];
   newArray = [];
-
+  result;
   constructor(private contentService: GetContentService) {
 
   }
