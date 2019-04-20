@@ -41,3 +41,9 @@ quill-editor {
 .ng-invalid.ng-touched {
   border-color:#ffeeba;
 }
+
+img {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+}
