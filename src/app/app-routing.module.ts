@@ -16,7 +16,10 @@ const routes: Routes = [
     path: 'about', component: AboutComponent
   },
   {
-    path: 'article', component: ArticleComponent
+    path: 'article', component: ArticleComponent,
+    children: [{
+      path: ':id', component: ArticleComponent
+    }]
   },
   {
     path: 'login', component: LoginComponent, canActivate: [SecureInnerPagesGuard]
