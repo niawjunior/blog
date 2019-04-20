@@ -20,7 +20,7 @@ export class WysiwygEditorComponent implements OnInit {
   slugUrl = '';
   tag = '';
   description = '';
-
+  isDisabled = false;
   @ViewChild('editor') editor: QuillEditorComponent;
   constructor(fb: FormBuilder, public uploadService: UploadContentService ) {
     this.form = fb.group({
@@ -54,6 +54,7 @@ export class WysiwygEditorComponent implements OnInit {
   }
 
   onSubmit() {
+    this.isDisabled = true;
     this.content = this.form.value.editor;
     this.title = this.form.value.storyTitle;
     this.tag = this.form.value.tag;

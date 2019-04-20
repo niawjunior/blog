@@ -15,7 +15,7 @@
           <label for="blockChain" class="form-check-label" >BlockChain</label>
       </div>
       <div class="form-check form-check-inline">
-          <input id="general" class="form-check-input" type="radio" formControlName="tag" name="tag" value="etc">
+          <input id="general" class="form-check-input" type="radio" formControlName="tag" name="tag" value="ทั่วไป">
           <label for="general" class="form-check-label" >ทั่วไป</label>
       </div>
     </div>
@@ -27,4 +27,4 @@
    </quill-editor>
 </form>
 </div>
-<button (click)="onSubmit()" class="btn btn-outline-success save-button" [disabled]="form.invalid">บันทึก <fa name="save"></fa></button>
+<button (click)="onSubmit()" class="btn btn-outline-success save-button" [disabled]="form.invalid || isDisabled">บันทึก <fa name="save"></fa></button>
