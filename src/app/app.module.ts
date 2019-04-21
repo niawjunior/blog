@@ -23,7 +23,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import {AngularFireStorageModule, StorageBucket} from '@angular/fire/storage';
 import { AuthService } from './services/auth.service';
 import { firebaseConfig } from 'src/environments/firebase.config';
-
+import { FacebookModule } from 'ngx-facebook';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,9 +51,12 @@ import { firebaseConfig } from 'src/environments/firebase.config';
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    FacebookModule.forRoot()
   ],
   providers: [Title, AuthService, { provide: StorageBucket, useValue: 'blog-40f93.appspot.com'}],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}
