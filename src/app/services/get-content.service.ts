@@ -28,7 +28,7 @@ export class GetContentService {
       }))
     );
   }
-  setLoad(key) {
-    this.loadContent.emit(key);
+  setLoad(title) {
+    this.loadContent.emit(title);
   }
 }

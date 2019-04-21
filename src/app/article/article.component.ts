@@ -26,6 +26,7 @@ export class ArticleComponent implements OnInit {
               this.loadingContent = true;
             }, 500);
             this.head = elem.title;
+            this.contentService.setLoad(this.head);
             this.article = elem.content;
           }
          });

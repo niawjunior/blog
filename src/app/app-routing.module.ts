@@ -10,10 +10,10 @@ import { SecureInnerPagesGuard } from './guard/secure-inner-pages.guard';
 
 const routes: Routes = [
   {
-    path: '', component: HomeComponent
+    path: '', component: HomeComponent, data: { title: 'Blog' }
   },
   {
-    path: 'about', component: AboutComponent
+    path: 'about', component: AboutComponent, data: { title: 'About' }
   },
   {
     path: 'article', component: ArticleComponent,
@@ -22,7 +22,7 @@ const routes: Routes = [
     }]
   },
   {
-    path: 'login', component: LoginComponent, canActivate: [SecureInnerPagesGuard]
+    path: 'login', component: LoginComponent, canActivate: [SecureInnerPagesGuard], data: { title: 'Login' }
   },
   {
     path: 'post', component: WysiwygEditorComponent, canActivate: [AuthGuard]

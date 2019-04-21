@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
@@ -53,7 +53,7 @@ import { firebaseConfig } from 'src/environments/firebase.config';
     AngularFirestoreModule,
     AngularFireStorageModule
   ],
-  providers: [AuthService, { provide: StorageBucket, useValue: 'blog-40f93.appspot.com'}],
+  providers: [Title, AuthService, { provide: StorageBucket, useValue: 'blog-40f93.appspot.com'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
