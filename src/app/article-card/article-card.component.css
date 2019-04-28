@@ -1,0 +1,13 @@
+.full-height {
+  height: 100%;
+}
+
+.card-size {
+  padding: 0rem 1rem 1rem 1rem;
+}
+.article-card-container {
+  margin-top: 4rem;
+}
+.card-body {
+  box-shadow: 0 5px 30px rgba(0,0,0,0.15);
+}

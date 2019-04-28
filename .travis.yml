@@ -1,0 +1,32 @@
+language: node_js
+node_js:
+  - "9"
+dist: trusty
+sudo: false
+
+branches:
+  only:
+  - master
+
+before_script:
+  - npm install -g @angular/cli
+
+cache:
+  directories:
+    - node_modules
+
+install:
+  - npm install
+
+script:
+  - ng lint
+  - ng build --prod --base-href https://niawjunior.github.io/blog/
+  - mv dist/blog/index.html dist/blog/404.html
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: dist/blog
+  on:
+    branch: master
