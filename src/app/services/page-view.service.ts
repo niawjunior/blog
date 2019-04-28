@@ -8,7 +8,6 @@ import { ContentDetail } from './content';
 })
 export class PageViewService {
   constructor(private afs: AngularFirestore) { }
-
   public setPageView(key): void {
     const documentReference = this.afs.collection<ContentDetail>('postDetail').doc(key);
     firebase.firestore().runTransaction(page => {

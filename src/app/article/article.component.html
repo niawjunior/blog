@@ -1,7 +1,14 @@
 <div *ngIf="loading" class="loading">Loading&#8230;</div>
 <div *ngIf="loadingContent" class="row article">
   <div class="col-sm-12 mb-3">
-    <button (click)="share(shareData)" class="btn btn-outline-primary share-button mt-auto" type="button">แชร์ <fa name="share"></fa></button>
+    <div class="share-button">
+      <share-button [theme]="'material-dark'"
+        [button]="'facebook'"
+        [showText]="true"
+        [url]="shareUrl"
+        [autoSetMeta]="false"
+        ></share-button>
+    </div>
   </div>
     <div class="col-sm-12 mx-auto">
         <h1 class="text-center" style="margin-bottom: 20px;">{{ head }}</h1>

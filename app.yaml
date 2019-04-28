@@ -3,3 +3,8 @@ env_variables:
   API_KEY: key=API_KEY
 manual_scaling:
       instances: 1
+handlers:
+  - url: /robots.txt
+    static_files: robots.txt
+    mime_type: text/pain
+    upload: robots.txt

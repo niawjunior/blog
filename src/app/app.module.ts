@@ -25,7 +25,9 @@ import { AuthService } from './services/auth.service';
 import { environment } from '../environments/environment';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import {TransferHttpCacheModule} from '@nguniversal/common';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { ShareButtonsModule } from '@ngx-share/buttons';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +58,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     AngularFireStorageModule,
     LoadingBarModule,
     BrowserModule.withServerTransition({appId: 'blog'}),
-    TransferHttpCacheModule
+    TransferHttpCacheModule,
+    ShareButtonsModule
   ],
   providers: [Title, AuthService, { provide: StorageBucket, useValue: 'blog-40f93.appspot.com'}],
   bootstrap: [AppComponent]

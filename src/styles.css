@@ -1,4 +1,5 @@
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '../node_modules/@ngx-share/button/themes/material/material-dark-theme.css';
 @font-face {
   font-family: 'Kanit';
   font-display: auto;

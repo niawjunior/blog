@@ -14,25 +14,31 @@ export class ArticleComponent implements OnInit {
   article = '';
   loadingContent = false;
   shareData;
+  head = '';
   loading = false;
+  shareUrl = '';
   constructor(
     private contentService: GetContentService,
     public activatedRoute: ActivatedRoute,
     private location: Location,
-    private pageView: PageViewService
+    private pageView: PageViewService,
     ) {
+
   }
   ngOnInit() {
     const currentUrl = decodeURI(this.location.path()).split('/');
-    this.getUrl = currentUrl[currentUrl.length - 1];
+    this.getUrl = currentUrl[currentUrl.length - 1].split('?')[0];
     const getArticle = this.contentService.getArticle(this.getUrl);
+    this.shareUrl = `https://www.pasupol.com/article/${this.getUrl}`;
     this.pageView.setPageView(this.getUrl);
     if (getArticle) {
       const elem = getArticle;
       this.shareData = elem;
-      this.loadingContent = true;
+      this.head = elem.title;
       this.contentService.setLoad(elem);
       this.contentService.loading(true);
+      this.loading = false;
+      this.loadingContent = true;
       this.article = elem.content;
     } else {
       this.loading = true;
@@ -40,14 +46,15 @@ export class ArticleComponent implements OnInit {
         result.subscribe(e => {
           e.forEach(elem => {
             if (elem) {
-              this.loading = false;
+              this.head = elem.title;
               this.shareData = elem;
-              this.loadingContent = true;
               this.contentService.setLoad(elem);
               this.article = elem.content;
+              this.contentService.loading(true);
+              this.loading = false;
+              this.loadingContent = true;
             }
            });
-           this.contentService.loading(true);
           });
       });
     }
