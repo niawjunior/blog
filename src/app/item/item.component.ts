@@ -3,6 +3,8 @@ import { Item } from '../article-card/model';
 import { Router } from '@angular/router';
 import { GetContentService } from '../services/get-content.service';
 import {format} from 'date-fns';
+import * as th from 'date-fns/locale/th';
+
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
@@ -18,7 +20,7 @@ export class ItemComponent implements OnInit {
   constructor(private router: Router, private contentService: GetContentService) {
   }
   ngOnInit() {
-    this.postDate = format(this.item.timeStamp, 'DD-MMMM-YYYY');
+    this.postDate = format(this.item.timeStamp, 'DD-MMMM-YYYY', {locale: th});
     if (this.item && !this.temp) {
       setTimeout(() => {
         if (this.item.imageUrl) {
