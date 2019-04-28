@@ -1,6 +1,6 @@
-# Angular Blog Engine
+[![Build Status](https://travis-ci.org/niawjunior/blog.svg?branch=master)](https://travis-ci.org/niawjunior/blog)
 
-![Angular Universal](https://angular.io/generated/images/marketing/concept-icons/universal.png)
+# Angular Blog Engine
 
 A minimal Angular starter for Universal JavaScript using the [Angular CLI](https://github.com/angular/angular-cli)
 If you're looking for the Angular Universal repo go to [**angular/universal**](https://github.com/angular/universal)  
@@ -8,9 +8,6 @@ If you're looking for the Angular Universal repo go to [**angular/universal**](h
 ## Getting Started
 
 This demo is built following the [Angular CLI Wiki guide](https://github.com/angular/angular-cli/wiki/stories-universal-rendering)
-
-We're utilizing packages from the [Angular Universal @nguniversal](https://github.com/angular/universal) repo, such as [ng-module-map-ngfactory-loader](https://github.com/angular/universal/modules/module-map-ngfactory-loader) to enable Lazy Loading.
-
 ---
 
 ### Build Time Pre-rendering vs. Server-side Rendering (SSR)
