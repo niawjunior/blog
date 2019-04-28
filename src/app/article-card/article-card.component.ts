@@ -34,6 +34,7 @@ export class ArticleCardComponent implements OnInit {
               this.newArray.push({ items: this.arrayOfItems.slice(i, i + 3) });
             }
             this.contentService.loading(true);
+            this.contentService.setLoadPage(true);
         });
       });
       }

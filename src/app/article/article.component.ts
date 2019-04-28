@@ -15,7 +15,6 @@ export class ArticleComponent implements OnInit {
   loadingContent = false;
   shareData;
   head = '';
-  loading = false;
   shareUrl = '';
   constructor(
     private contentService: GetContentService,
@@ -37,11 +36,9 @@ export class ArticleComponent implements OnInit {
       this.head = elem.title;
       this.contentService.setLoad(elem);
       this.contentService.loading(true);
-      this.loading = false;
       this.loadingContent = true;
       this.article = elem.content;
     } else {
-      this.loading = true;
       this.contentService.getPostDetail(this.getUrl).then(result => {
         result.subscribe(e => {
           e.forEach(elem => {
@@ -51,8 +48,8 @@ export class ArticleComponent implements OnInit {
               this.contentService.setLoad(elem);
               this.article = elem.content;
               this.contentService.loading(true);
-              this.loading = false;
               this.loadingContent = true;
+              this.contentService.setLoadPage(true);
             }
            });
           });

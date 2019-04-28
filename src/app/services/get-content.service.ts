@@ -15,6 +15,7 @@ export class GetContentService {
   private itemsCollectionDetail: AngularFirestoreCollection<ContentDetail>;
 
   loadContent: EventEmitter<boolean> = new EventEmitter();
+  loadPage: EventEmitter<boolean> = new EventEmitter();
   load = false;
   tempArticle: any = [];
 
@@ -73,5 +74,8 @@ export class GetContentService {
   getArticle(slug) {
     this.loadingBar.start();
    return _.find(this.tempArticle, ['slugUrl', slug]);
+  }
+  setLoadPage(key) {
+    this.loadPage.emit(key);
   }
 }
