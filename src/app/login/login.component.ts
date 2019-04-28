@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import swal from 'sweetalert';
 import { AuthService } from '../services/auth.service';
+import { GetContentService } from '../services/get-content.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   buttonSubmit: string;
   isDisabledSubmitButton = false;
 
-  constructor(private Form: FormBuilder, private Service: AuthService) {
+  constructor(private Form: FormBuilder, private Service: AuthService, private contentService: GetContentService) {
     this.form = this.Form.group({
       email: new FormControl(
         '', [Validators.required, Validators.email]),
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.contentService.setLoadPage(true);
     this.buttonSubmit = 'เข้าสู่ระบบ';
   }
   login() {

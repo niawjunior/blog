@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { differenceInYears } from 'date-fns';
+import { GetContentService } from '../services/get-content.service';
 
 
 @Component({
@@ -9,9 +10,10 @@ import { differenceInYears } from 'date-fns';
 })
 export class AboutComponent implements OnInit {
   yearOld;
-  constructor() { }
+  constructor(private contentService: GetContentService) { }
 
   ngOnInit() {
+    this.contentService.setLoadPage(true);
     this.yearOld = differenceInYears(new Date(), new Date(1994, 6, 23));
 }
 }
