@@ -25,6 +25,7 @@ import { AuthService } from './services/auth.service';
 import { environment } from '../environments/environment';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import {TransferHttpCacheModule} from '@nguniversal/common';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,

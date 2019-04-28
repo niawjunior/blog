@@ -8,7 +8,6 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
     "build": "ng build",
     "lint": "ng lint ng-blog",
     "build:client-and-server-bundles": "ng build --prod && ng run ng-blog:server:production",
@@ -17,7 +16,9 @@
     "compile:server": "tsc -p server.tsconfig.json",
     "generate:prerender": "cd dist && node prerender",
     "serve:prerender": "cd dist/browser && http-server",
-    "serve:ssr": "node dist/server"
+    "serve:ssr": "node dist/server",
+    "start": "node dist/server.js",
+    "deploy": "ng build --prod && ng run ng-blog:server:production && gcloud app deploy"
   },
   "pre-commit": [],
   "private": true,

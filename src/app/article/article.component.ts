@@ -12,7 +12,6 @@ import { PageViewService } from '../services/page-view.service';
 export class ArticleComponent implements OnInit {
   getUrl;
   article = '';
-  head;
   loadingContent = false;
   shareData;
   loading = false;
@@ -32,8 +31,7 @@ export class ArticleComponent implements OnInit {
       const elem = getArticle;
       this.shareData = elem;
       this.loadingContent = true;
-      this.head = elem.title;
-      this.contentService.setLoad(this.head);
+      this.contentService.setLoad(elem);
       this.contentService.loading(true);
       this.article = elem.content;
     } else {
@@ -45,8 +43,7 @@ export class ArticleComponent implements OnInit {
               this.loading = false;
               this.shareData = elem;
               this.loadingContent = true;
-              this.head = elem.title;
-              this.contentService.setLoad(this.head);
+              this.contentService.setLoad(elem);
               this.article = elem.content;
             }
            });

@@ -1,0 +1,7 @@
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255,255,255,1);
+}
+.navbar-nav .nav-link.active {
+  color: #ffffff !important;
+  background: rgba(3, 24, 45, 0.2);
+}

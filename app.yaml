@@ -1,31 +1,5 @@
-runtime: python27
-api_version: 1
-threadsafe: yes
-
+runtime: nodejs10
 env_variables:
   API_KEY: key=API_KEY
-
-handlers:
-  # - url: /.well-known/acme-challenge/jB0QaSb6SK0G6kz0nOxlO99sfL5uK2gXrzkFGzRsl_0
-  #   static_files: cert.txt
-  #   mime_type: text/pain
-  #   upload: cert.txt
-  - url: /robots.txt
-    static_files: robots.txt
-    mime_type: text/pain
-    upload: robots.txt
-  - url: /
-    static_files: dist/index.html
-    upload: dist/index.html
-  - url: /
-    static_dir: dist
-
-skip_files:
-  - e2e/
-  - node_modules/
-  - src/
-  - ^(.*/)?\..*$
-  - ^(.*/)?.*\.json$
-  - ^(.*/)?.*\.md$
-  - ^(.*/)?.*\.yaml$
-  - ^LICENSE
+manual_scaling:
+      instances: 1

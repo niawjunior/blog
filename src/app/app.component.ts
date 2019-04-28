@@ -5,6 +5,7 @@ import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
+import { SeoService } from './services/seo.service';
 
 @Component({
   selector: 'app-root',
@@ -16,12 +17,14 @@ export class AppComponent implements OnInit {
     private router: Router,
     private titleService: Title,
     private contentService: GetContentService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private seo: SeoService
     ) {
   }
   ngOnInit() {
     this.contentService.loadContent.subscribe(value => {
-       this.titleService.setTitle(value);
+      this.seo.generateTags(value);
+       this.titleService.setTitle(value.title);
      });
 
     this.router.events
@@ -33,6 +36,8 @@ export class AppComponent implements OnInit {
     })
     .filter((route) => route.outlet === 'primary')
     .mergeMap((route) => route.data)
-    .subscribe((event) => this.titleService.setTitle(event['title']));
+    .subscribe((event) => {
+      this.titleService.setTitle(event['title']);
+    });
 }
 }

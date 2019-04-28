@@ -1,7 +1,8 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
 import { Content, ContentDetail } from './content';
-import { map, take } from 'rxjs/operators';
+import { map } from 'rxjs/operators/map';
+import { take } from 'rxjs/operators/take';
 import * as _ from 'lodash';
 import { LoadingBarService } from '@ngx-loading-bar/core';
 
@@ -46,8 +47,8 @@ export class GetContentService {
       this.loadingBar.start();
     }
   }
-  setLoad(title) {
-    this.loadContent.emit(title);
+  setLoad(data) {
+    this.loadContent.emit(data);
   }
   getTemp() {
     return this.tempData;
