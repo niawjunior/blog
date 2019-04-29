@@ -21,12 +21,12 @@ install:
 script:
   - ng lint
   - ng build --prod --base-href https://niawjunior.github.io/blog/
-  - mv dist/index.html dist/404.html
+  - mv dist/browser/index.html dist/browser/404.html
 
 deploy:
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
-  local_dir: dist
+  local_dir: dist/browser
   on:
     branch: master

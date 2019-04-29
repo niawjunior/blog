@@ -9,7 +9,6 @@
   "scripts": {
     "ng": "ng",
     "build": "ng build",
-    "lint": "ng lint ng-blog",
     "build:client-and-server-bundles": "ng build --prod && ng run ng-blog:server:production",
     "build:prerender": "npm run build:client-and-server-bundles && npm run compile:server && npm run generate:prerender",
     "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
