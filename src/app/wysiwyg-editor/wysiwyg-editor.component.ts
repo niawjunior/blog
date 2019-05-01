@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { QuillEditorComponent } from 'ngx-quill';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { debounceTime } from 'rxjs/operators/debounceTime';
+import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
 import * as $ from 'jquery';
 import { UploadContentService } from '../services/upload-content.service';
 import swal from 'sweetalert';
+import { GetContentService } from '../services/get-content.service';
 
 @Component({
   selector: 'app-wysiwyg-editor',
@@ -22,7 +24,7 @@ export class WysiwygEditorComponent implements OnInit {
   description = '';
   isDisabled = false;
   @ViewChild('editor') editor: QuillEditorComponent;
-  constructor(fb: FormBuilder, public uploadService: UploadContentService ) {
+  constructor(fb: FormBuilder, public uploadService: UploadContentService, private contentService: GetContentService) {
     this.form = fb.group({
       editor: new FormControl('', Validators.required),
       storyTitle: new FormControl('', Validators.required),
@@ -31,6 +33,7 @@ export class WysiwygEditorComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.contentService.setLoadPage(true);
     this.form
       .controls
       .editor

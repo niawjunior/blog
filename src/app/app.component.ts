@@ -13,7 +13,6 @@ import { SeoService } from './services/seo.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  loading = true;
   constructor(
     private router: Router,
     private titleService: Title,
@@ -25,14 +24,8 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.contentService.loadContent.subscribe(value => {
       this.seo.generateTags(value);
-       this.titleService.setTitle(value.title);
      });
 
-     this.contentService.loadPage.subscribe(value => {
-       if (value) {
-         this.loading = false;
-       }
-     });
     this.router.events
     .filter((event) => event instanceof NavigationEnd)
     .map(() => this.activatedRoute)
