@@ -12,6 +12,6 @@
   </div>
     <div class="col-sm-12 mx-auto">
         <h1 class="text-center" style="margin-bottom: 20px;">{{ head }}</h1>
-        <div [innerHTML]="article"></div>
+        <div [innerHTML]="article | safeHtml"></div>
     </div>
  </div>

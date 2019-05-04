@@ -28,6 +28,7 @@ import {TransferHttpCacheModule} from '@nguniversal/common';
 import { ShareButtonsModule } from '@ngx-share/buttons';
 import { RegisterComponent } from './register/register.component';
 import { SettingsComponent } from './settings/settings.component';
+import { SafeHtmlPipe } from './safe-html.pipe';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { SettingsComponent } from './settings/settings.component';
     ItemComponent,
     WysiwygEditorComponent,
     RegisterComponent,
-    SettingsComponent
+    SettingsComponent,
+    SafeHtmlPipe
   ],
   imports: [
     BrowserModule,
