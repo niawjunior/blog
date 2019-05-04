@@ -26,6 +26,8 @@ import { environment } from '../environments/environment';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import {TransferHttpCacheModule} from '@nguniversal/common';
 import { ShareButtonsModule } from '@ngx-share/buttons';
+import { RegisterComponent } from './register/register.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { ShareButtonsModule } from '@ngx-share/buttons';
     LoginComponent,
     ArticleCardComponent,
     ItemComponent,
-    WysiwygEditorComponent
+    WysiwygEditorComponent,
+    RegisterComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

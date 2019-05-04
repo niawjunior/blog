@@ -7,7 +7,7 @@ import * as $ from 'jquery';
 import { UploadContentService } from '../services/upload-content.service';
 import swal from 'sweetalert';
 import { GetContentService } from '../services/get-content.service';
-
+import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-wysiwyg-editor',
   templateUrl: './wysiwyg-editor.component.html',
@@ -23,8 +23,13 @@ export class WysiwygEditorComponent implements OnInit {
   tag = '';
   description = '';
   isDisabled = false;
+  isAdmin = false;
   @ViewChild('editor') editor: QuillEditorComponent;
-  constructor(fb: FormBuilder, public uploadService: UploadContentService, private contentService: GetContentService) {
+  constructor(
+     private auth: AuthService,
+     public fb: FormBuilder,
+     public uploadService: UploadContentService,
+     private contentService: GetContentService) {
     this.form = fb.group({
       editor: new FormControl('', Validators.required),
       storyTitle: new FormControl('', Validators.required),
@@ -33,6 +38,12 @@ export class WysiwygEditorComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.auth.isAuthenticated().subscribe(user => {
+      if (user.emailVerified) {
+        this.isAdmin = true;
+      }
+    });
+
     this.contentService.setLoadPage(true);
     this.form
       .controls

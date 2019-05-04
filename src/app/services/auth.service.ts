@@ -1,8 +1,10 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { User } from './user';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import { GetContentService } from './get-content.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,17 +15,34 @@ export class AuthService {
     public afs: AngularFirestore,
     public afAuth: AngularFireAuth,
     public router: Router,
+    private contentService: GetContentService
     ) {
 
   }
 
   SignIn(email, password) {
+    this.contentService.loading(false);
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((result) => {
+        this.contentService.loading(true);
         this.SetUserData(result.user).then((user) => {
           return user;
         });
       }).catch((error) => {
+        this.contentService.loading(true);
+        throw error.message;
+      });
+  }
+  SignUp(email, password) {
+    this.contentService.loading(false);
+    return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+      .then((result) => {
+        this.contentService.loading(true);
+        this.SetUserData(result.user).then((user) => {
+          return user;
+        });
+      }).catch((error) => {
+        this.contentService.loading(true);
         throw error.message;
       });
   }
@@ -42,10 +61,13 @@ export class AuthService {
     });
   }
   SignOut() {
+    this.contentService.loading(false);
     return this.afAuth.auth.signOut().then(() => {
-      this.router.navigate(['login']).then(() => {
-        window.location.reload();
-      });
+      this.router.navigate(['login']);
+      this.contentService.loading(true);
     });
   }
+  isAuthenticated(): Observable<any> {
+    return this.afAuth.authState;
+}
 }

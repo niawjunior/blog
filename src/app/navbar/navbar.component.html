@@ -19,9 +19,13 @@
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-        <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/post']" routerLinkActive="active current"  >เขียนบทความ <fa name="pencil"></fa></a>
-        </li>
+        <li *ngIf="isLogIn" class="nav-item dropdown" ngbDropdown>
+            <a class="nav-link dropdown-toggle" id="navClick" href="javascript:void(0)" ngbDropdownToggle>{{ userEmail }}</a>
+            <div class="dropdown-menu" aria-labelledby="navClick" ngbDropdownMenu>
+              <a class="dropdown-item" [routerLink]="['/post']" routerLinkActive="active current">เขียนบทความ <fa name="pencil"></fa></a>
+              <a class="dropdown-item" [routerLink]="['/settings']" routerLinkActive="active current">ตั้งค่าโปรไฟล์ <fa name="user"></fa></a>
+            </div>
+          </li>
         <li *ngIf="!isLogIn" class="nav-item">
             <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active current">เข้าสู่ระบบ <fa name="sign-in"></fa></a>
         </li>

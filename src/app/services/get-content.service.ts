@@ -24,6 +24,7 @@ export class GetContentService {
   }
   // get all post for display in homepage
   async getAllPost() {
+    this.loading(false);
     this.loadingBar.start();
     this.itemsCollectionDetail = this.afs.collection<ContentDetail>('postDetail', ref => ref.orderBy('timeStamp', 'desc'));
     return await this.itemsCollectionDetail.valueChanges().pipe(take(1));

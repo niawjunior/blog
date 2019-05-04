@@ -27,4 +27,4 @@
    </quill-editor>
 </form>
 </div>
-<button (click)="onSubmit()" class="btn btn-outline-success save-button" [disabled]="form.invalid || isDisabled">บันทึก <fa name="save"></fa></button>
+<button (click)="onSubmit()" class="btn btn-outline-success save-button" [disabled]="!isAdmin || form.invalid || isDisabled">บันทึก <fa name="save"></fa> (ตอนนี้รองรับเฉพาะ Admin)</button>

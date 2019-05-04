@@ -29,7 +29,6 @@ export class ArticleComponent implements OnInit {
     const currentUrl = decodeURI(this.location.path()).split('/');
     this.getUrl = currentUrl[currentUrl.length - 1].split('?')[0];
     const getArticle = this.contentService.getArticle(this.getUrl);
-    console.log(JSON.stringify(getArticle));
     this.shareUrl = `https://www.pasupol.com/article/${this.getUrl}`;
     this.pageView.setPageView(this.getUrl);
     if (getArticle) {

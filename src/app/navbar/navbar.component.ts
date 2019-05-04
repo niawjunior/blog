@@ -9,14 +9,17 @@ import { AngularFireAuth } from '@angular/fire/auth';
 export class NavbarComponent implements OnInit {
   isNavbarCollapsed = true;
   isLogIn: Boolean = false;
+  userEmail = '';
   constructor(private authService: AuthService, private auth: AngularFireAuth) {
   }
 
   ngOnInit() {
     this.auth.authState.subscribe(user => {
       if (user) {
+        this.userEmail = user.email;
         this.isLogIn = true;
       } else {
+        this.userEmail = '';
         this.isLogIn = false;
       }
     });

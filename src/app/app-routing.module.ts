@@ -7,6 +7,8 @@ import { LoginComponent } from './login/login.component';
 import { WysiwygEditorComponent } from './wysiwyg-editor/wysiwyg-editor.component';
 import { AuthGuard } from './guard/auth.guard';
 import { SecureInnerPagesGuard } from './guard/secure-inner-pages.guard';
+import { RegisterComponent } from './register/register.component';
+import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
   {
@@ -25,7 +27,13 @@ const routes: Routes = [
     path: 'login', component: LoginComponent, canActivate: [SecureInnerPagesGuard], data: { title: 'Login' }
   },
   {
+    path: 'register', component: RegisterComponent, canActivate: [SecureInnerPagesGuard], data: { title: 'Register' }
+  },
+  {
     path: 'post', component: WysiwygEditorComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]
   },
   {
     path: '**', redirectTo: ''

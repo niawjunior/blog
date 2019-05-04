@@ -3,49 +3,51 @@ import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms'
 import swal from 'sweetalert';
 import { AuthService } from '../services/auth.service';
 import { GetContentService } from '../services/get-content.service';
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   form: FormGroup;
   emailError: string;
   buttonSubmit: string;
   isDisabledSubmitButton = false;
 
-  constructor(private router: Router, private Form: FormBuilder, private Service: AuthService, private contentService: GetContentService) {
+  constructor(private Form: FormBuilder, private Service: AuthService, private contentService: GetContentService) {
     this.form = this.Form.group({
       email: new FormControl(
         '', [Validators.required, Validators.email]),
-      password: new FormControl('', Validators.required)
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      passwordConfirm: new FormControl('', [Validators.required, Validators.minLength(6)])
     });
   }
 
   ngOnInit() {
+
     this.contentService.setLoadPage(true);
-    this.buttonSubmit = 'เข้าสู่ระบบ';
+    this.buttonSubmit = 'สมัครสมาชิก';
   }
-  login() {
+  register() {
     this.buttonSubmit = 'รอสักครู่';
     this.isDisabledSubmitButton = true;
-    this.Service.SignIn(this.form.value.email, this.form.value.password).then(() => {
+    this.Service.SignUp(this.form.value.email, this.form.value.passwordConfirm).then(() => {
       swal({
-        title: 'ยินดีต้อนรับ',
+        title: 'สมัครสมาชิกสำเร็จ กรุณาเข้าสู่ระบบ',
         icon: 'success'
       }).then(() => {
         setTimeout(() => {
-          this.router.navigate(['/']);
+          this.Service.SignOut();
         }, 500);
       });
     }).catch(e => {
-      this.buttonSubmit = 'เข้าสู่ระบบ';
+      this.buttonSubmit = 'สมัครสมาชิก';
       this.isDisabledSubmitButton = false;
-      if (e === 'The password is invalid or the user does not have a password.') {
+
+      if (e === 'The email address is already in use by another account.') {
         swal({
-          title: 'รหัสผ่านไม่ถูกต้อง',
+          title: 'อีเมลนี้เป็นสมาชิกอยู่แล้ว',
           icon: 'error'
         });
       } else {
