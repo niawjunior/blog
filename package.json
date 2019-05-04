@@ -17,7 +17,7 @@
     "serve:prerender": "cd dist/browser && http-server",
     "serve:ssr": "node dist/server",
     "start": "node dist/server.js",
-    "deploy": "pm2 delete server && ng build --prod && ng run ng-blog:server:production && pm2 start dist/server.js"
+    "deploy": "ng build --prod && ng run ng-blog:server:production && pm2 start dist/server.js"
   },
   "pre-commit": [],
   "private": true,
