@@ -29,6 +29,7 @@ import { ShareButtonsModule } from '@ngx-share/buttons';
 import { RegisterComponent } from './register/register.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SafeHtmlPipe } from './safe-html.pipe';
+import { ClickOutsideModule } from 'ng4-click-outside';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { SafeHtmlPipe } from './safe-html.pipe';
     LoadingBarModule,
     BrowserModule.withServerTransition({appId: 'blog'}),
     TransferHttpCacheModule,
-    ShareButtonsModule
+    ShareButtonsModule,
+    ClickOutsideModule
   ],
   providers: [Title, AuthService, { provide: StorageBucket, useValue: 'blog-40f93.appspot.com'}],
   bootstrap: [AppComponent]

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
+import * as $ from 'jquery';
+import { NavService } from '../services/nav.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -10,10 +12,19 @@ export class NavbarComponent implements OnInit {
   isNavbarCollapsed = true;
   isLogIn: Boolean = false;
   userEmail = '';
-  constructor(private authService: AuthService, private auth: AngularFireAuth) {
+  navBar: EventEmitter<boolean> = new EventEmitter();
+
+  constructor(private navService: NavService, private authService: AuthService, private auth: AngularFireAuth) {
   }
 
   ngOnInit() {
+    this.navService.navBar.subscribe(value => {
+      if (value) {
+        this.isNavbarCollapsed = true;
+      } else {
+        this.isNavbarCollapsed = false;
+      }
+    });
     this.auth.authState.subscribe(user => {
       if (user) {
         this.userEmail = user.email;
@@ -23,9 +34,26 @@ export class NavbarComponent implements OnInit {
         this.isLogIn = false;
       }
     });
+
+  }
+
+  showNav() {
+    this.navService.checkNav(this.isNavbarCollapsed = !this.isNavbarCollapsed);
   }
 
   signOut() {
     this.authService.SignOut();
+  }
+
+  onClickedOutside(e: Event) {
+    const click = $(e.target).attr('class');
+    if (click !== 'navbar-toggler-icon'
+    && click !== 'navbar-brand'
+    && click !== 'navbar navbar-expand-md') {
+      this.navService.checkNav(true);
+    }
+    if (click === 'navbar-brand') {
+      this.navService.checkNav(true);
+    }
   }
 }

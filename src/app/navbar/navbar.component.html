@@ -1,10 +1,10 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+<nav id="navbar" class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
   <a class="navbar-brand" [routerLink]="['']" >BLOG</a>
-  <button class="navbar-toggler hidden-sm-up" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler hidden-sm-up" type="button" (click)="showNav()" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="navbarsDefault">
-    <ul class="navbar-nav mr-auto">
+  <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto" (clickOutside)="onClickedOutside($event)">
       <li class="nav-item dropdown" ngbDropdown>
         <a class="nav-link dropdown-toggle" id="navClick" href="javascript:void(0)" ngbDropdownToggle>หมวดหมู่บทความ</a>
         <div class="dropdown-menu" aria-labelledby="navClick" ngbDropdownMenu>
