@@ -2094,7 +2094,7 @@ var MarkdownEditorComponent = /** @class */ (function () {
     }
     MarkdownEditorComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.http.get('https://firebasestorage.googleapis.com/v0/b/blog-40f93.appspot.com/o/article%2Ftest.text?alt=media&token=7b38fa44-4307-401e-953b-79b65ba64d9d', {
+        this.http.get('https://00e9e64bacaf3abffffa67122dc8d1aefeba35b6e95ece1a62-apidata.googleusercontent.com/download/storage/v1/b/blog-40f93.appspot.com/o/article%2Ftest.text?qk=AD5uMEvSWGLyZHYIH69TVwksIDthnf4WU_O_7JaDzMrQpFabaIbroAsG8vDg2nCyvPI4OxKwY63Tvn86noD6hGvZ786mVyi47AmmKhZekGDUPkRBgispmXh_GG3En4JN93ktXgDig9MfnRb44WEyHEd7dAyVh5S9PSJbZr5uvpnBcCUWDa4cxJKphysTsZxvV6I-NoU3pWY42GZMNm7RXEy0_OGMUojRv2iJujBaKvi9QC_G_2RT40ZjyZSv0WQmV73Ees-nAtYVJcr8-wQ8XZhviyyhK11B-vuHXDa-_nvoxRj1HZGzU5EpOuF8IrQgk9_jNLCcYch03WaziDm338za3WuRbvbTVTs1NPCVAxWkjtFwcyizvlPujhTXlmjNTOv4xBnK_PJ8AWlnmNmSon8TVCB7qc4Y1ouSyL6K9xQVlUHYnlsKNqmF0_PMhHBVY3h2I2BTvNq_0t01_ClwwZ1mkiLL5Y0Go_Bns6yc_M-gV6KRog9rDv-MBRts4Pb6zNuCh-p52hCpZQi0zpDaXVjeJoyTdjLN-INkQlwLRwyHzQYXZDxNT7UoKHyuEGuLPK01qw_Bex8fuhN8COvuhW8PHPsqrwuNLaUoVL1cxUheHPko3wtyM4A4sQgxc9eJfrg18YELphAJjv_cj1spJl30jW0DYzDtarSXcEvVSBbqXTksg2_Msw2k1C-TVHsQYGugwOakjaOi_s5WcJ8mU3JCiHh0bKxJ-1Pjmg0pPv-0H5u_6nwqw12hMrHG8YqKUZHwPDHuO4HuZ2-GvfZy4LGTQZ1jVpKPOw', {
             headers: new http_1.HttpHeaders().set('Content-Type', 'text/plain')
         }).subscribe(function (value) {
             console.log(value);
