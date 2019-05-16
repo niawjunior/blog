@@ -9,6 +9,7 @@ import { AuthGuard } from './guard/auth.guard';
 import { SecureInnerPagesGuard } from './guard/secure-inner-pages.guard';
 import { RegisterComponent } from './register/register.component';
 import { SettingsComponent } from './settings/settings.component';
+import { MarkdownEditorComponent } from './markdown-editor/markdown-editor.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,9 @@ const routes: Routes = [
   },
   {
     path: 'post', component: WysiwygEditorComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'editor', component: MarkdownEditorComponent
   },
   {
     path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]

@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="input-group mb-3">
+      <button style="border-radius: 5px 0px 0px 5px;" onclick="document.getElementById('file').click()">Select Images</button>
+      <input style="display: none;" name="file" id="file" type="file" class="form-control" aria-describedby="basic-addon2">
+      <div class="input-group-append">
+        <button class="btn btn-primary"><i class="fa fa-upload"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+<form [formGroup]="templateForm" novalidate>
+  <div class="editor">
+    <angular-markdown-editor textareaId="editor1" [options]="editorOptions" rows="12" formControlName="body">
+      </angular-markdown-editor>
+  </div>
+</form>
+<h3 class="text-success bold mt-5">Preview</h3>
+<div class="result-preview outline">
+  <markdown [data]="markdownText"></markdown>
+</div>
