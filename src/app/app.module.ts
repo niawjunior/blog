@@ -30,7 +30,10 @@ import { RegisterComponent } from './register/register.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SafeHtmlPipe } from './safe-html.pipe';
 import { ClickOutsideModule } from 'ng4-click-outside';
+import { AngularMarkdownEditorModule } from 'angular-markdown-editor';
+import { MarkdownModule, MarkedOptions, MarkedRenderer } from 'ngx-markdown';
 
+import { MarkdownEditorComponent } from './markdown-editor/markdown-editor.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,8 @@ import { ClickOutsideModule } from 'ng4-click-outside';
     WysiwygEditorComponent,
     RegisterComponent,
     SettingsComponent,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    MarkdownEditorComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +71,24 @@ import { ClickOutsideModule } from 'ng4-click-outside';
     BrowserModule.withServerTransition({appId: 'blog'}),
     TransferHttpCacheModule,
     ShareButtonsModule,
-    ClickOutsideModule
+    ClickOutsideModule,
+    AngularMarkdownEditorModule.forRoot({
+      iconlibrary: 'glyph'
+    }),
+    MarkdownModule.forRoot({
+      markedOptions: {
+        provide: MarkedOptions,
+        useValue: {
+          gfm: true,
+          tables: true,
+          breaks: false,
+          pedantic: false,
+          sanitize: false,
+          smartLists: true,
+          smartypants: false,
+        },
+      },
+    }),
   ],
   providers: [Title, AuthService, { provide: StorageBucket, useValue: 'blog-40f93.appspot.com'}],
   bootstrap: [AppComponent]
