@@ -17,8 +17,9 @@ textarea.md-input {
 }
 
 .result-preview {
-  padding: 10px;
-  max-height: 350px;
-  overflow: auto;
+  padding: 1rem;
 }
 
+.md-preview {
+  padding: 1rem !important;
+}
