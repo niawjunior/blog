@@ -7,6 +7,7 @@ export interface Content {
   description: string;
   timeStamp: any;
   view: number;
+  status: boolean;
 }
 
 export interface ContentDetail {
@@ -17,4 +18,5 @@ export interface ContentDetail {
   description: string;
   timeStamp: any;
   view: number;
+  status: boolean;
 }

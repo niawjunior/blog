@@ -36,10 +36,10 @@
             </span>
           </div>
         <div class="form-group">
-          <a [routerLink]="['/login']" class="text-primary">เป็นสมาชิกแล้ว?</a>
+          <a [routerLink]="['/login']">เป็นสมาชิกแล้ว?</a>
         </div>
         <div class="form-group">
-          <button type="submit" class="btn btn-outline-primary btn-block" [disabled]="form.invalid || isDisabledSubmitButton">{{ buttonSubmit }} <fa name="sign-in"></fa></button>
+          <button type="submit" class="btn btn-outline-secondary btn-block" [disabled]="form.invalid || isDisabledSubmitButton">{{ buttonSubmit }} <fa name="sign-in"></fa></button>
         </div>
       </form>
     </div>

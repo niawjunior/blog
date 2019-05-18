@@ -4,7 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { ArticleComponent } from './article/article.component';
 import { LoginComponent } from './login/login.component';
-import { WysiwygEditorComponent } from './wysiwyg-editor/wysiwyg-editor.component';
 import { AuthGuard } from './guard/auth.guard';
 import { SecureInnerPagesGuard } from './guard/secure-inner-pages.guard';
 import { RegisterComponent } from './register/register.component';
@@ -31,10 +30,7 @@ const routes: Routes = [
     path: 'register', component: RegisterComponent, canActivate: [SecureInnerPagesGuard], data: { title: 'Register' }
   },
   {
-    path: 'post', component: WysiwygEditorComponent, canActivate: [AuthGuard]
-  },
-  {
-    path: 'editor', component: MarkdownEditorComponent
+    path: 'post', component: MarkdownEditorComponent, canActivate: [AuthGuard]
   },
   {
     path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]

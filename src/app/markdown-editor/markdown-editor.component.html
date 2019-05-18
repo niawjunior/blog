@@ -1,21 +1,80 @@
 <div class="row">
   <div class="col-lg-12">
-    <div class="input-group mb-3">
-      <button style="border-radius: 5px 0px 0px 5px;" onclick="document.getElementById('file').click()">Select Images</button>
-      <input style="display: none;" name="file" id="file" type="file" class="form-control" aria-describedby="basic-addon2">
-      <div class="input-group-append">
-        <button class="btn btn-primary"><i class="fa fa-upload"></i></button>
+    <div style="float: right;">
+        <div class="input-group mb-3">
+        <img (click)="open(imageName)" style="cursor:zoom-in" class="preview" *ngIf="imageName" [src]="imageName" alt="">
+        <button style="border-radius: 5px 0px 0px 5px;margin-left:1rem;" onclick="document.getElementById('file').click()"><i class="fa fa-image"> </i> Select Images</button>
+        <input (change)="change($event)" accept="image/*" style="display: none;" name="file" id="file" type="file" class="form-control" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+            <button (click)="uploadImage()" class="btn btn-secondary" type="button">
+                <span *ngIf="uploading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                <span *ngIf="!uploading" class="fa fa-upload"></span>
+                อัพโหลด
+            </button>
+          <button (click)="copy()" class="btn btn-success" [disabled]="!imageUrl"><i class="fa fa-copy"></i></button>
+        </div>
       </div>
     </div>
   </div>
 </div>
 <form [formGroup]="templateForm" novalidate>
+  <div class="row">
+    <div class="col-lg-6 col-sm-12">
+      <input type="text" class="form-control mb-2" formControlName="articleName" placeholder="ชื่อบทความ">
+    </div>
+    <div class="col-lg-6 col-sm-12">
+        <input type="text" class="form-control mb-2" formControlName="articleDescription" placeholder="คำอธิบายสั้นๆ">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 col-sm-12">
+        <input type="text" class="form-control mb-2" formControlName="imageUrl" placeholder="รูปปกบทความ (url)">
+    </div>
+    <div class="col-lg-6 col-sm-12">
+        <div class="mb-2 mt-2">
+            <div class="form-check form-check-inline">
+                <input id="javascript" class="form-check-input" formControlName="tag" type="radio" name="tag" value="javascript">
+                <label for="javascript" class="form-check-label" >Javascript</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input id="angular" class="form-check-input" formControlName="tag" type="radio" name="tag" value="angular">
+                <label for="angular" class="form-check-label" >Angular</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input id="tip" class="form-check-input" formControlName="tag" type="radio" name="tag" value="trip and trick">
+                <label for="tip" class="form-check-label" >Trip&Trick</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input id="challenge" class="form-check-input" formControlName="tag" type="radio" name="tag" value="challenge">
+                <label for="challenge" class="form-check-label" >Challenge</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input id="general" class="form-check-input" formControlName="tag" type="radio" name="tag" value="ทั่วไป">
+                <label for="general" class="form-check-label" >ทั่วไป</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input (click)="clickCustomTag()" id="etc" class="form-check-input" formControlName="tag" type="radio" name="tag" value="อื่นๆ">
+              <label for="etc" class="form-check-label" >อื่นๆ</label>
+          </div>
+          </div>
+    </div>
+  </div>
   <div class="editor">
     <angular-markdown-editor textareaId="editor1" [options]="editorOptions" rows="12" formControlName="body">
       </angular-markdown-editor>
   </div>
 </form>
-<h3 class="text-success bold mt-5">Preview</h3>
-<div class="result-preview outline">
-  <markdown [data]="markdownText"></markdown>
+<div class="row">
+    <div class="col-lg-12">
+        <div style="float: right;">
+          <button (click)="save()" class="btn btn-success btn-block mt-2" [disabled]="!isAdmin || templateForm.invalid || isDisabled">โพส <i class="fa fa-send"></i></button>
+        </div>
+      </div>
 </div>
+<br><br>
+<!-- <div *ngIf="markdownText">
+  <h4 class="mt-5">ตัวอย่างก่อนโพส</h4>
+  <div class="result-preview outline">
+    <markdown [data]="markdownText"></markdown>
+  </div>
+</div> -->

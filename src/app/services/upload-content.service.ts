@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Content } from './content';
@@ -8,13 +7,15 @@ import { Content } from './content';
   providedIn: 'root'
 })
 export class UploadContentService {
-
-  constructor(private http: HttpClient, private storage: AngularFireStorage, public afs: AngularFirestore) { }
+  constructor(
+    private storage: AngularFireStorage,
+    public afs: AngularFirestore
+    ) { }
 
    async uploadImage(file) {
     const filePath = Date.now() + '.jpg';
     const ref = this.storage.ref('upload').child(filePath);
-    const image = await ref.putString(file, 'data_url', {
+    const image = await ref.put(file, {
       contentType: 'image/jpg'
     });
     const url = await this.getImageUrl(image);
@@ -23,36 +24,39 @@ export class UploadContentService {
   async getImageUrl(snapshot) {
     return await snapshot.ref.getDownloadURL();
   }
-  async uploadContentDetail(title, tag, slugUrl, imageUrl, description) {
-    const contentData = {
-      title,
-      tag,
-      slugUrl,
-      imageUrl,
-      description,
+
+  async uploadContent(data) {
+    const contentData: Content = {
+      title: data.title,
+      tag: data.tag,
+      content: data.content,
+      slugUrl: data.slugUrl,
+      imageUrl: data.uploadImageUrl,
+      description: data.description,
       timeStamp: Date.now(),
-      view: 0
+      view: 1,
+      status: true
     };
 
-    const contentRef: AngularFirestoreDocument<any> = this.afs.doc(`postDetail/${slugUrl}`);
+    await this.uploadContentDetail(contentData);
+    const contentRef: AngularFirestoreDocument<any> = this.afs.doc(`post/${data.slugUrl}`);
     return contentRef.set(contentData, {
       merge: true
     });
   }
-  async uploadContent(title, tag, content, slugUrl, imageUrl, description) {
-    const contentData: Content = {
-      title,
-      tag,
-      content,
-      slugUrl,
-      imageUrl,
-      description,
+  async uploadContentDetail(data) {
+    const contentData = {
+      title: data.title,
+      tag: data.tag,
+      slugUrl: data.slugUrl,
+      imageUrl: data.imageUrl,
+      description: data.description,
       timeStamp: Date.now(),
-      view: 0
+      view: 0,
+      status: data.status
     };
 
-    await this.uploadContentDetail(title, tag, slugUrl, imageUrl, description);
-    const contentRef: AngularFirestoreDocument<any> = this.afs.doc(`post/${slugUrl}`);
+    const contentRef: AngularFirestoreDocument<any> = this.afs.doc(`postDetail/${data.slugUrl}`);
     return contentRef.set(contentData, {
       merge: true
     });

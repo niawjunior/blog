@@ -18,7 +18,7 @@
   position: absolute;
   top: 0px;
   left: 0;
-  background: #e74c3c;;
+  background: #df6546;;
   padding: 6px 15px;
   color: #FFFFFF;
   font-size: 14px;
@@ -29,10 +29,15 @@
   position: absolute;
   top: 0px;
   right: 0;
-  background: #67ca5e;;
+  background: #448cd1;;
   padding: 6px 15px;
   color: #FFFFFF;
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
+}
+.author {
+  width: 28px !important;
+  height: 28px !important;
+  margin-left:.2rem;
 }

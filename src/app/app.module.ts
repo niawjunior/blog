@@ -14,9 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { ArticleCardComponent } from './article-card/article-card.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ItemComponent } from './item/item.component';
-import { WysiwygEditorComponent } from './wysiwyg-editor/wysiwyg-editor.component';
 import { HttpClientModule} from '@angular/common/http';
-import { QuillModule } from 'ngx-quill';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -31,10 +29,9 @@ import { SettingsComponent } from './settings/settings.component';
 import { SafeHtmlPipe } from './safe-html.pipe';
 import { ClickOutsideModule } from 'ng4-click-outside';
 import { AngularMarkdownEditorModule } from 'angular-markdown-editor';
-import { MarkdownModule, MarkedOptions, MarkedRenderer } from 'ngx-markdown';
-
+import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 import { MarkdownEditorComponent } from './markdown-editor/markdown-editor.component';
-
+import { Ng2ImgMaxModule } from 'ng2-img-max';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +42,6 @@ import { MarkdownEditorComponent } from './markdown-editor/markdown-editor.compo
     LoginComponent,
     ArticleCardComponent,
     ItemComponent,
-    WysiwygEditorComponent,
     RegisterComponent,
     SettingsComponent,
     SafeHtmlPipe,
@@ -62,7 +58,6 @@ import { MarkdownEditorComponent } from './markdown-editor/markdown-editor.compo
     ReactiveFormsModule,
     AngularFontAwesomeModule,
     HttpClientModule,
-    QuillModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
@@ -72,6 +67,7 @@ import { MarkdownEditorComponent } from './markdown-editor/markdown-editor.compo
     TransferHttpCacheModule,
     ShareButtonsModule,
     ClickOutsideModule,
+    Ng2ImgMaxModule,
     AngularMarkdownEditorModule.forRoot({
       iconlibrary: 'glyph'
     }),

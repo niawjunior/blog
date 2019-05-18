@@ -39,7 +39,7 @@ export class ArticleComponent implements OnInit {
       this.contentService.setLoad(elem);
       this.contentService.loading(true);
       this.loadingContent = true;
-      this.article = elem.content;
+      this.article = JSON.parse(elem.content);
     } else {
       this.loading = true;
       this.contentService.getPostDetail(this.getUrl).then(result => {
@@ -49,7 +49,7 @@ export class ArticleComponent implements OnInit {
               this.head = elem.title;
               this.shareData = elem;
               this.contentService.setLoad(elem);
-              this.article = elem.content;
+              this.article = JSON.parse(elem.content);
               this.contentService.loading(true);
               this.loadingContent = true;
               this.contentService.setLoadPage(true);

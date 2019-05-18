@@ -27,7 +27,9 @@ export class ArticleCardComponent implements OnInit {
           result.subscribe(e => {
             this.loading = false;
             e.forEach(elem => {
-              this.arrayOfItems.push(elem);
+              if (elem.status) {
+                this.arrayOfItems.push(elem);
+              }
             });
             this.contentService.setTemp(this.arrayOfItems);
             for (let i = 0; i < this.arrayOfItems.length; i += 3) {

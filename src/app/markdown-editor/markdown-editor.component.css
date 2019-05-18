@@ -23,3 +23,15 @@ textarea.md-input {
 .md-preview {
   padding: 1rem !important;
 }
+
+.preview {
+  width: 38px !important;
+  position: relative;
+  border-radius: 50%;
+  height: 38px !important;
+}
+div.md-header.btn-toolbar > div:nth-child(4) > button {
+  background:none;
+  border:none;
+  color: #212529;
+}

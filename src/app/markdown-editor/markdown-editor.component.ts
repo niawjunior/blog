@@ -1,9 +1,14 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MarkdownService } from 'ngx-markdown';
 import { EditorInstance, EditorOption } from 'angular-markdown-editor';
-import { AngularFireStorage } from '@angular/fire/storage';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import * as mark from 'marked';
+import { UploadContentService } from '../services/upload-content.service';
+import swal from 'sweetalert';
+import { GetContentService } from '../services/get-content.service';
+import { Ng2ImgMaxService } from 'ng2-img-max';
+import Swal from 'sweetalert2'
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-markdown-editor',
@@ -17,22 +22,44 @@ export class MarkdownEditorComponent implements OnInit {
   showEditor = true;
   templateForm: FormGroup;
   editorOptions: EditorOption;
-  headers: Headers = new Headers({ 'Content-Type': 'text/plain' });
+  uploading = false;
+  content;
+  title;
+  tag;
+  slugUrl;
+  description;
+  result;
+  imageName;
+  fileImage;
+  imageUrl;
+  uploadImageUrl;
+  compressResult;
+  isDisabled = false;
+  customTag;
+  isAdmin = false;
+
   constructor(
     private fb: FormBuilder,
     private markdownService: MarkdownService,
-    private afStorage: AngularFireStorage,
-    private http: HttpClient
+    public uploadService: UploadContentService,
+    public contentService: GetContentService,
+    private ng2ImgMax: Ng2ImgMaxService,
+    private auth: AuthService
   ) {}
 
   ngOnInit() {
-
-    this.http.get('https://00e9e64bacaf3abffffa67122dc8d1aefeba35b6e95ece1a62-apidata.googleusercontent.com/download/storage/v1/b/blog-40f93.appspot.com/o/article%2Ftest.text?qk=AD5uMEvSWGLyZHYIH69TVwksIDthnf4WU_O_7JaDzMrQpFabaIbroAsG8vDg2nCyvPI4OxKwY63Tvn86noD6hGvZ786mVyi47AmmKhZekGDUPkRBgispmXh_GG3En4JN93ktXgDig9MfnRb44WEyHEd7dAyVh5S9PSJbZr5uvpnBcCUWDa4cxJKphysTsZxvV6I-NoU3pWY42GZMNm7RXEy0_OGMUojRv2iJujBaKvi9QC_G_2RT40ZjyZSv0WQmV73Ees-nAtYVJcr8-wQ8XZhviyyhK11B-vuHXDa-_nvoxRj1HZGzU5EpOuF8IrQgk9_jNLCcYch03WaziDm338za3WuRbvbTVTs1NPCVAxWkjtFwcyizvlPujhTXlmjNTOv4xBnK_PJ8AWlnmNmSon8TVCB7qc4Y1ouSyL6K9xQVlUHYnlsKNqmF0_PMhHBVY3h2I2BTvNq_0t01_ClwwZ1mkiLL5Y0Go_Bns6yc_M-gV6KRog9rDv-MBRts4Pb6zNuCh-p52hCpZQi0zpDaXVjeJoyTdjLN-INkQlwLRwyHzQYXZDxNT7UoKHyuEGuLPK01qw_Bex8fuhN8COvuhW8PHPsqrwuNLaUoVL1cxUheHPko3wtyM4A4sQgxc9eJfrg18YELphAJjv_cj1spJl30jW0DYzDtarSXcEvVSBbqXTksg2_Msw2k1C-TVHsQYGugwOakjaOi_s5WcJ8mU3JCiHh0bKxJ-1Pjmg0pPv-0H5u_6nwqw12hMrHG8YqKUZHwPDHuO4HuZ2-GvfZy4LGTQZ1jVpKPOw', {
-    headers: new HttpHeaders().set('Content-Type', 'text/plain')
-  }).subscribe(value => {
-    console.log(value);
-  })
-    // this.afStorage.ref('article').child('test.text').getDownloadURL()
+    this.auth.isAuthenticated().subscribe(user => {
+      if (user.emailVerified) {
+        this.isAdmin = true;
+      }
+    });
+    this.contentService.getAllPost().then(result => {
+      result.subscribe(e => {
+        // this.result = e[0];
+        // this.markdownText = JSON.parse(this.result.content);
+        // this.templateForm.controls['body'].setValue(this.markdownText);
+      });
+    });
     this.editorOptions = {
       autofocus: false,
       iconlibrary: 'fa',
@@ -42,36 +69,18 @@ export class MarkdownEditorComponent implements OnInit {
       parser: (val) => this.parse(val)
     };
 
+    this.templateForm = this.fb.group({
+      body: [this.markdownText, Validators.required],
+      isPreview: [true],
+      articleName: ['', Validators.required],
+      articleDescription: ['', Validators.required],
+      imageUrl: ['', Validators.required],
+      tag: ['', Validators.required]
+    });
     // put the text completely on the left to avoid extra white spaces
-this.markdownText =
-`### Markdown example
----
-This is an **example** where we bind a variable to the \`markdown\` component that is also bind to the editor.
-#### example.component.ts
-\`\`\`javascript
-function hello() {
-alert('Hello World');
-}
-\`\`\`
-#### example.component.html
-\`\`\`html
-<textarea [(ngModel)]="markdown"></textarea>
-<markdown [data]="markdown"></markdown>
-\`\`\``;
-
-    this.buildForm(this.markdownText);
     this.onFormChanges();
   }
 
-
-  buildForm(markdownText) {
-    this.templateForm = this.fb.group({
-      body: [markdownText],
-      isPreview: [true]
-    });
-  }
-
-  /** highlight all code found, needs to be wrapped in timer to work properly */
   highlight() {
     setTimeout(() => {
       this.markdownService.highlight();
@@ -97,12 +106,134 @@ alert('Hello World');
 
     return markedOutput;
   }
-
+  clickCustomTag() {
+      Swal.fire({
+        title: 'กรุณาใส่ Tag ที่ต้องการ',
+        input: 'text',
+        showConfirmButton: true,
+        showCancelButton: true,
+        reverseButtons: true,
+        onClose: () => {
+          if (!this.customTag) {
+            this.templateForm.controls['tag'].setValue('');
+          } else {
+            this.templateForm.controls['tag'].setValue('อื่นๆ');
+          }
+        }
+      }).then(value => {
+        if (value.value) {
+          this.customTag = value.value;
+          this.templateForm.controls['tag'].setValue('อื่นๆ');
+        } else {
+          this.templateForm.controls['tag'].setValue('');
+        }
+      });
+  }
   onFormChanges(): void {
     this.templateForm.valueChanges.subscribe(formData => {
       if (formData) {
         this.markdownText = formData.body;
       }
+    });
+  }
+
+  change(event) {
+    this.fileImage = event;
+    this.readThis(event.target);
+  }
+  readThis(inputValue: any): void {
+    const file: File = inputValue.files[0];
+    const myReader: FileReader = new FileReader();
+
+    myReader.onloadend = (e) => {
+      this.imageName = myReader.result;
+    }
+    myReader.readAsDataURL(file);
+  }
+
+  uploadImage() {
+    this.uploading = true;
+      this.ng2ImgMax.compressImage(this.fileImage.target.files[0], 0.075).subscribe( result => {
+      this.compressResult = new File([result], result.name);
+      this.uploadService.uploadImage(this.compressResult).then(url => {
+        swal({
+          title: 'อัพโหลดสำเร็จ',
+          icon: 'success'
+        }).then(() => {
+          this.uploading = false;
+          this.imageUrl = url;
+        }).catch(() => {
+          swal({
+            title: 'อัพโหลดไม่สำเร็จ',
+            icon: 'error'
+          }).then(() => {
+            this.uploading = false;
+          });
+        });
+      });
+    },
+    error => {
+      swal({
+        title: 'อัพโหลดไม่สำเร็จ',
+        icon: 'error'
+      }).then(() => {
+        this.uploading = false;
+      });
+   }
+  );
+  }
+  copy() {
+    const selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = this.imageUrl;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+  }
+  open(image): void {
+    swal({
+      icon : image,
+      buttons: [false]
+    });
+  }
+  save() {
+
+    const data = JSON.stringify(this.markdownText);
+    this.content = data;
+    this.title = this.templateForm.value.articleName;
+    this.tag =  this.templateForm.value.tag === 'อื่นๆ'​ ? this.customTag : this.templateForm.value.tag;
+    this.slugUrl = this.title.split(' ').join('-');
+    this.description = this.templateForm.value.articleDescription;
+    this.uploadImageUrl = this.templateForm.value.imageUrl;
+    const saveData = {
+      title: this.title,
+      tag: this.tag,
+      content: this.content,
+      uploadImageUrl: this.uploadImageUrl,
+      slugUrl: this.slugUrl,
+      description: this.description
+    };
+    this.uploadService.uploadContent(saveData).then(() => {
+      swal({
+        title: 'บันทึกสำเร็จ',
+        icon: 'success'
+      }).then(() => {
+        setTimeout(() => {
+          window.location.href = '';
+        }, 500);
+      });
+    }).catch((e) => {
+      console.log(e);
+      swal({
+        title: 'ไม่สามารถอัพโหลดได้',
+        icon: 'error'
+      }).then(() => {
+      });
     });
   }
 }
