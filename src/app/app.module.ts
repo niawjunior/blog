@@ -31,7 +31,6 @@ import { ClickOutsideModule } from 'ng4-click-outside';
 import { AngularMarkdownEditorModule } from 'angular-markdown-editor';
 import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 import { MarkdownEditorComponent } from './markdown-editor/markdown-editor.component';
-import { Ng2ImgMaxModule } from 'ng2-img-max';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +66,6 @@ import { Ng2ImgMaxModule } from 'ng2-img-max';
     TransferHttpCacheModule,
     ShareButtonsModule,
     ClickOutsideModule,
-    Ng2ImgMaxModule,
     AngularMarkdownEditorModule.forRoot({
       iconlibrary: 'glyph'
     }),

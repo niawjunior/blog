@@ -6,7 +6,6 @@ import * as mark from 'marked';
 import { UploadContentService } from '../services/upload-content.service';
 import swal from 'sweetalert';
 import { GetContentService } from '../services/get-content.service';
-import { Ng2ImgMaxService } from 'ng2-img-max';
 import Swal from 'sweetalert2'
 import { AuthService } from '../services/auth.service';
 
@@ -43,7 +42,6 @@ export class MarkdownEditorComponent implements OnInit {
     private markdownService: MarkdownService,
     public uploadService: UploadContentService,
     public contentService: GetContentService,
-    private ng2ImgMax: Ng2ImgMaxService,
     private auth: AuthService
   ) {}
 
@@ -153,9 +151,7 @@ export class MarkdownEditorComponent implements OnInit {
 
   uploadImage() {
     this.uploading = true;
-      this.ng2ImgMax.compressImage(this.fileImage.target.files[0], 0.075).subscribe( result => {
-      this.compressResult = new File([result], result.name);
-      this.uploadService.uploadImage(this.compressResult).then(url => {
+      this.uploadService.uploadImage(this.fileImage.target.files[0]).then(url => {
         swal({
           title: 'อัพโหลดสำเร็จ',
           icon: 'success'
@@ -171,16 +167,6 @@ export class MarkdownEditorComponent implements OnInit {
           });
         });
       });
-    },
-    error => {
-      swal({
-        title: 'อัพโหลดไม่สำเร็จ',
-        icon: 'error'
-      }).then(() => {
-        this.uploading = false;
-      });
-   }
-  );
   }
   copy() {
     const selBox = document.createElement('textarea');
