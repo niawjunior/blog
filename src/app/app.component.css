@@ -1,0 +1,18 @@
+
+.footer {
+  padding: 1rem;
+  position: relative;
+  bottom: 0;
+  text-align: center;
+  left: 0;
+  right: 0;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  z-index: 1030;
+  clear: both;
+}
+
+.love {
+  width: 20px !important;
+  height: 20px !important;
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef} from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { GetContentService } from './services/get-content.service';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
@@ -13,23 +13,33 @@ import { SeoService } from './services/seo.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  navLoading = false;
   constructor(
     private router: Router,
     private titleService: Title,
     private contentService: GetContentService,
     private activatedRoute: ActivatedRoute,
-    private seo: SeoService
+    private seo: SeoService,
+    private cdr: ChangeDetectorRef
     ) {
   }
   ngOnInit() {
+    this.navLoading = false;
     this.contentService.loadContent.subscribe(value => {
       this.seo.generateTags(value);
+     });
+     this.contentService.loadFooter.subscribe((value) => {
+      if (value) {
+        this.navLoading = true;
+      }
      });
 
     this.router.events
     .filter((event) => event instanceof NavigationEnd)
     .map(() => this.activatedRoute)
     .map((route) => {
+      this.navLoading = false;
+      this.cdr.detectChanges();
       while (route.firstChild) { route = route.firstChild; }
       return route;
     })

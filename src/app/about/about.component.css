@@ -47,10 +47,6 @@ a .material-icons {
   content: "";
 }
 
-.header-filter::before {
-  background: rgba(0,0,0,.5);
-}
-
 .main-raised {
   margin: -60px 30px 0;
   border-radius: 6px;

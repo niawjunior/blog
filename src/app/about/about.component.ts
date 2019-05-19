@@ -10,10 +10,15 @@ import { GetContentService } from '../services/get-content.service';
 })
 export class AboutComponent implements OnInit {
   yearOld;
-  constructor(private contentService: GetContentService) { }
+  constructor(private contentService: GetContentService) {
+
+  }
 
   ngOnInit() {
-    this.contentService.setLoadPage(true);
+    this.contentService.loadNav.emit(true);
+    setTimeout(() => {
+      this.contentService.loadFooter.emit(true);
+    });
     this.yearOld = differenceInYears(new Date(), new Date(1994, 6, 23));
-}
+  }
 }

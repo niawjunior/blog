@@ -1,17 +1,19 @@
-<div *ngIf="loading" class="loading">Loading&#8230;</div>
-<div *ngIf="loadingContent" class="row article">
-  <div class="col-sm-12 mb-3">
-    <div class="share-button">
-      <share-button [theme]="'material-dark'"
-        [button]="'facebook'"
-        [showText]="true"
-        [url]="shareUrl"
-        [autoSetMeta]="false"
-        ></share-button>
-    </div>
-  </div>
+<div *ngIf="loadingContent" class="row article" style="box-shadow: 0 0px 10px rgba(0,0,0,.25);">
     <div class="col-sm-12 mx-auto">
         <h1 class="text-center" style="margin-bottom: 20px;">{{ head }}</h1>
+
+      <p class="text-center"><span class="badge badge-pill badge-custom-primary">#{{ tag }}</span></p>
+      <p class="text-center">{{ postDate }}</p>
         <markdown [data]="article"></markdown>
     </div>
+    <div class="col-sm-12 mb-3">
+        <div class="share-button">
+          <share-button [theme]="'circles-dark'"
+            [button]="'facebook'"
+            [showText]="false"
+            [url]="shareUrl"
+            [autoSetMeta]="false"
+            ></share-button>
+        </div>
+      </div>
  </div>

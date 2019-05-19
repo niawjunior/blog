@@ -1,5 +1,6 @@
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 @import '../node_modules/@ngx-share/button/themes/material/material-dark-theme.css';
+@import '../node_modules/@ngx-share/button/themes/circles/circles-dark-theme.css';
 @font-face {
   font-family: 'Kanit';
   font-display: auto;
@@ -13,6 +14,9 @@
   font-family: 'Kanit', sans-serif;
   font-display: auto;
   background: #ffffff;
+  height: 100%;
+  margin: 0;
+  min-height: 100vh;
  }
  .card {
   box-shadow: 0 0px 10px rgba(0,0,0,.25);
@@ -27,23 +31,9 @@
   border-top: 4px solid #0078ff !important;
 }
 
-quill-editor {
-  display: block;
-}
-
 
 /* Set default font-family */
 
-pre {
-  background-color: #fcfcfc;
-  padding: 5px;
-  border: 1px solid #b2b2b2;
-  color: #363030;
-}
-
-quill-editor {
-  background-color: #ffffff;
-}
 
 .ng-invalid.ng-touched {
   border-color:#ffeeba;
@@ -61,20 +51,14 @@ img {
   object-fit: cover;
   max-width: 100% !important;
 }
-.ql-align-center {
-  text-align: center !important;
-}
-
 
 /* Absolute Center Spinner */
-
-
-.ql-syntax {
-  background-color: #eeeeee;
-  border: 1px solid #363d44;
-  color: #000;
+pre {
+  background: #fafafa;
+  padding: 5px;
+  /* border: .5px solid #b2b2b2; */
+  color: #363030;
 }
-
 .loading {
   position: fixed;
   z-index: 9999;

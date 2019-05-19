@@ -8,3 +8,26 @@
   float: right!important;
   margin-left:auto;
 }
+
+.article-date {
+  float: right!important;
+  margin-left:auto;
+}
+.article-tag {
+  float: left!important;
+  margin-right:auto;
+}
+
+.badge-custom-primary {
+  color: #fff;
+  margin-left:.2rem;
+  border-radius: 0% !important;
+  background-color: #4267b2;
+  padding: .5rem;
+}
+.badge-custom-success {
+  color: #fff;
+  margin-left:.2rem;
+  border-radius: 0% !important;
+  background-color: #30b007;
+}

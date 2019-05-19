@@ -46,8 +46,13 @@ export class MarkdownEditorComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.auth.isAuthenticated().subscribe(user => {
-      if (user.emailVerified) {
+    this.contentService.loadNav.emit(true);
+    setTimeout(() => {
+      this.contentService.loading(true);
+      this.contentService.loadFooter.emit(true);
+    });
+    this.auth.isAuthenticated().subscribe(value => {
+      if (value.emailVerified) {
         this.isAdmin = true;
       }
     });

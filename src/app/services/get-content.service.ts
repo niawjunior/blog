@@ -15,12 +15,12 @@ export class GetContentService {
   private itemsCollectionDetail: AngularFirestoreCollection<ContentDetail>;
 
   loadContent: EventEmitter<boolean> = new EventEmitter();
-  loadPage: EventEmitter<boolean> = new EventEmitter();
+  loadNav: EventEmitter<boolean> = new EventEmitter();
+  loadFooter: EventEmitter<boolean> = new EventEmitter();
   load = false;
   tempArticle: any = [];
 
   constructor(private afs: AngularFirestore, private loadingBar: LoadingBarService) {
-
   }
   // get all post for display in homepage
   async getAllPost() {
@@ -45,8 +45,11 @@ export class GetContentService {
   loading(key) {
     if (key) {
       this.loadingBar.stop();
+      this.loadNav.emit(true);
+      this.loadFooter.emit(true);
     } else {
       this.loadingBar.start();
+      this.loadNav.emit(false);
     }
   }
   setLoad(data) {
@@ -75,8 +78,5 @@ export class GetContentService {
   getArticle(slug) {
     this.loadingBar.start();
    return _.find(this.tempArticle, ['slugUrl', slug]);
-  }
-  setLoadPage(key) {
-    this.loadPage.emit(key);
   }
 }

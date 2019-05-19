@@ -3,6 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as $ from 'jquery';
 import { NavService } from '../services/nav.service';
+import { GetContentService } from '../services/get-content.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -12,12 +13,22 @@ export class NavbarComponent implements OnInit {
   isNavbarCollapsed = true;
   isLogIn: Boolean = false;
   userEmail = '';
+  navLoading = false;
   navBar: EventEmitter<boolean> = new EventEmitter();
 
-  constructor(private navService: NavService, private authService: AuthService, private auth: AngularFireAuth) {
+  constructor(
+     private contentService: GetContentService,
+     private navService: NavService,
+     private authService: AuthService,
+     private auth: AngularFireAuth) {
   }
 
   ngOnInit() {
+    this.contentService.loadNav.subscribe(value => {
+      if (value) {
+        this.navLoading = true;
+      }
+    });
     this.navService.navBar.subscribe(value => {
       if (value) {
         this.isNavbarCollapsed = true;

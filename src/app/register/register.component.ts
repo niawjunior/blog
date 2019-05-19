@@ -25,8 +25,10 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    this.contentService.setLoadPage(true);
+    this.contentService.loadNav.emit(true);
+    setTimeout(() => {
+      this.contentService.loadFooter.emit(true);
+    });
     this.buttonSubmit = 'สมัครสมาชิก';
   }
   register() {

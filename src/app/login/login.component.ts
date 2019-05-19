@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import swal from 'sweetalert';
 import { AuthService } from '../services/auth.service';
@@ -16,7 +16,11 @@ export class LoginComponent implements OnInit {
   buttonSubmit: string;
   isDisabledSubmitButton = false;
 
-  constructor(private router: Router, private Form: FormBuilder, private Service: AuthService, private contentService: GetContentService) {
+  constructor(
+    private router: Router,
+    private Form: FormBuilder,
+    private Service: AuthService,
+    private contentService: GetContentService) {
     this.form = this.Form.group({
       email: new FormControl(
         '', [Validators.required, Validators.email]),
@@ -25,21 +29,19 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.contentService.setLoadPage(true);
+    this.contentService.loadNav.emit(true);
+    setTimeout(() => {
+      this.contentService.loadFooter.emit(true);
+    });
     this.buttonSubmit = 'เข้าสู่ระบบ';
   }
   login() {
     this.buttonSubmit = 'รอสักครู่';
     this.isDisabledSubmitButton = true;
     this.Service.SignIn(this.form.value.email, this.form.value.password).then(() => {
-      swal({
-        title: 'ยินดีต้อนรับ',
-        icon: 'success'
-      }).then(() => {
-        setTimeout(() => {
-          this.router.navigate(['/']);
-        }, 500);
-      });
+    setTimeout(() => {
+      this.router.navigate(['/']);
+    }, 500);
     }).catch(e => {
       this.buttonSubmit = 'เข้าสู่ระบบ';
       this.isDisabledSubmitButton = false;

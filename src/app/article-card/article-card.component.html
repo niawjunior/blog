@@ -1,4 +1,3 @@
-<div *ngIf="loading" class="loading">Loading&#8230;</div>
 <div class="row" *ngFor="let row of newArray">
   <ng-container *ngFor="let item of row?.items">
     <app-item class="col-xs-12 col-md-4 card-size" [item]="item" [temp]="temp"></app-item>

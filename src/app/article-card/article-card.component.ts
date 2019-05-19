@@ -10,22 +10,20 @@ export class ArticleCardComponent implements OnInit {
   arrayOfItems: any = [];
   newArray = [];
   result;
-  loading = true;
   temp = false;
   constructor(private contentService: GetContentService) {
 
   }
   ngOnInit() {
       if (this.contentService.getTemp().length !== 0) {
-        this.loading = false;
         this.temp = true;
         for (let i = 0; i < this.contentService.getTemp().length; i += 3) {
           this.newArray.push({ items: this.contentService.getTemp().slice(i, i + 3)});
         }
+        this.contentService.loadFooter.emit(true);
       } else {
         this.contentService.getAllPost().then(result => {
           result.subscribe(e => {
-            this.loading = false;
             e.forEach(elem => {
               if (elem.status) {
                 this.arrayOfItems.push(elem);
@@ -35,8 +33,7 @@ export class ArticleCardComponent implements OnInit {
             for (let i = 0; i < this.arrayOfItems.length; i += 3) {
               this.newArray.push({ items: this.arrayOfItems.slice(i, i + 3) });
             }
-            this.contentService.loading(true);
-            this.contentService.setLoadPage(true);
+              this.contentService.loading(true);
         });
       });
       }
