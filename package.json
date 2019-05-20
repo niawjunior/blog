@@ -10,6 +10,7 @@
     "ng": "ng",
     "test": "ng test",
     "build": "ng build",
+    "report": "ng build --prod --stats-json && webpack-bundle-analyzer dist/browser/stats.json",
     "build:client-and-server-bundles": "ng build --prod && ng run ng-blog:server:production",
     "build:prerender": "npm run build:client-and-server-bundles && npm run compile:server && npm run generate:prerender",
     "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
@@ -58,9 +59,7 @@
     "express": "^4.15.2",
     "firebase": "5.7.0",
     "font-awesome": "4.7.0",
-    "jquery": "3.4.0",
     "katex": "0.10.1",
-    "lodash": "4.17.11",
     "marked": "0.6.2",
     "ng4-click-outside": "1.0.1",
     "ngx-markdown": "7.1.5",
@@ -74,6 +73,7 @@
     "sweetalert": "2.1.2",
     "sweetalert2": "8.11.1",
     "text-encoding-utf-8": "1.0.2",
+    "webpack-bundle-analyzer": "3.3.2",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

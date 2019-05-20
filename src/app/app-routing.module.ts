@@ -40,11 +40,4 @@ const routes: Routes = [
   }
 ];
 
-@NgModule({
-  declarations: [],
-  imports: [
-    RouterModule.forRoot(routes,  { initialNavigation: 'enabled'})
-  ],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
+export const AppRoutingModule = RouterModule.forRoot(routes, { initialNavigation: 'enabled' });

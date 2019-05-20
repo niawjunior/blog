@@ -1,7 +1,6 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
-import * as $ from 'jquery';
 import { NavService } from '../services/nav.service';
 import { GetContentService } from '../services/get-content.service';
 @Component({
@@ -57,14 +56,14 @@ export class NavbarComponent implements OnInit {
   }
 
   onClickedOutside(e: Event) {
-    const click = $(e.target).attr('class');
-    if (click !== 'navbar-toggler-icon'
-    && click !== 'navbar-brand'
-    && click !== 'navbar navbar-expand-md') {
-      this.navService.checkNav(true);
-    }
-    if (click === 'navbar-brand') {
-      this.navService.checkNav(true);
-    }
+    // const click = $(e.target).attr('class');
+    // if (click !== 'navbar-toggler-icon'
+    // && click !== 'navbar-brand'
+    // && click !== 'navbar navbar-expand-md') {
+    //   this.navService.checkNav(true);
+    // }
+    // if (click === 'navbar-brand') {
+    //   this.navService.checkNav(true);
+    // }
   }
 }

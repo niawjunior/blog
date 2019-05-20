@@ -3,9 +3,7 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import './icons';
 import {AppModule} from './app/app.module';
 import {environment} from './environments/environment';
-import * as $ from 'jquery';
 
-window['jQuery'] = $;
 if (environment.production) {
   enableProdMode();
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import {Location} from '@angular/common';
 import { GetContentService } from '../services/get-content.service';
 import { PageViewService } from '../services/page-view.service';
@@ -37,7 +37,11 @@ export class ArticleComponent implements OnInit {
     const getArticle = this.contentService.getArticle(this.getUrl);
     this.shareUrl = `https://www.pasupol.com/article/${this.getUrl}`;
     this.auth.isAuthenticated().subscribe(value => {
-      if (value && !value.emailVerified) {
+      if (value) {
+        if (!value.emailVerified) {
+          this.pageView.setPageView(this.getUrl);
+        }
+      } else {
         this.pageView.setPageView(this.getUrl);
       }
     });

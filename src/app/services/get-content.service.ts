@@ -3,7 +3,6 @@ import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/fire
 import { Content, ContentDetail } from './content';
 import { map } from 'rxjs/operators/map';
 import { take } from 'rxjs/operators/take';
-import * as _ from 'lodash';
 import { LoadingBarService } from '@ngx-loading-bar/core';
 
 @Injectable({
@@ -74,9 +73,11 @@ export class GetContentService {
       this.tempArticle.push(data);
     }
   }
-  // get data of article by slug using loadash
   getArticle(slug) {
     this.loadingBar.start();
-   return _.find(this.tempArticle, ['slugUrl', slug]);
+    const data = this.tempArticle.filter(item => {
+      return item.slugUrl === slug;
+    });
+    return data[0];
   }
 }
