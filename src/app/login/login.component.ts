@@ -30,9 +30,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.contentService.loadNav.emit(true);
-    setTimeout(() => {
-      this.contentService.loadFooter.emit(true);
-    });
     this.buttonSubmit = 'เข้าสู่ระบบ';
   }
   login() {

@@ -17,8 +17,6 @@ export class PageViewService {
                     view: newValue
                 });
             });
-    }).catch(() => {
-      console.log('error');
     });
   }
 

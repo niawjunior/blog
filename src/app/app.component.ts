@@ -14,6 +14,7 @@ import { SeoService } from './services/seo.service';
 })
 export class AppComponent implements OnInit {
   navLoading = false;
+  isHome = false;
   constructor(
     private router: Router,
     private titleService: Title,
@@ -46,6 +47,11 @@ export class AppComponent implements OnInit {
     .filter((route) => route.outlet === 'primary')
     .mergeMap((route) => route.data)
     .subscribe((event) => {
+      if (event.title === 'Blog') {
+        this.isHome = true;
+      } else {
+        this.isHome = false;
+      }
       this.titleService.setTitle(event['title']);
     });
 }

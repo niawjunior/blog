@@ -921,11 +921,7 @@ var AboutComponent = /** @class */ (function () {
         this.contentService = contentService;
     }
     AboutComponent.prototype.ngOnInit = function () {
-        var _this = this;
         this.contentService.loadNav.emit(true);
-        setTimeout(function () {
-            _this.contentService.loadFooter.emit(true);
-        });
         this.yearOld = date_fns_1.differenceInYears(new Date(), new Date(1994, 6, 23));
     };
     return AboutComponent;
@@ -1051,7 +1047,7 @@ var styles_AppComponent = [i0.styles];
 var RenderType_AppComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_AppComponent, data: {} });
 exports.RenderType_AppComponent = RenderType_AppComponent;
 function View_AppComponent_1(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 5, "footer", [["class", "footer d-none d-sm-block"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["Built with Angular "])), (_l()(), i1.ɵeld(2, 0, null, null, 0, "img", [["alt", "love"], ["class", "love"], ["src", "../assets/love.svg"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, [" Markdown "])), (_l()(), i1.ɵeld(4, 0, null, null, 0, "img", [["alt", "love"], ["class", "love"], ["src", "../assets/love.svg"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, [" Firebase By Niaw."]))], null, null); }
-function View_AppComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "ngx-loading-bar", [], [[2, "loading-bar-fixed", null]], null, null, i2.View_LoadingBarComponent_0, i2.RenderType_LoadingBarComponent)), i1.ɵdid(1, 49152, null, 0, i3.LoadingBarComponent, [i3.LoadingBarService], { includeSpinner: [0, "includeSpinner"], color: [1, "color"] }, null), (_l()(), i1.ɵeld(2, 0, null, null, 2, "div", [["class", "app-nav"]], null, null, null, null, null)), (_l()(), i1.ɵeld(3, 0, null, null, 1, "app-navbar", [], null, null, null, i4.View_NavbarComponent_0, i4.RenderType_NavbarComponent)), i1.ɵdid(4, 114688, null, 0, i5.NavbarComponent, [i6.GetContentService, i7.NavService, i8.AuthService, i9.AngularFireAuth], null, null), (_l()(), i1.ɵeld(5, 0, null, null, 2, "div", [["class", "container"], ["style", "margin-top: 5rem;"]], null, null, null, null, null)), (_l()(), i1.ɵeld(6, 16777216, null, null, 1, "router-outlet", [], null, null, null, null, null)), i1.ɵdid(7, 212992, null, 0, i10.RouterOutlet, [i10.ChildrenOutletContexts, i1.ViewContainerRef, i1.ComponentFactoryResolver, [8, null], i1.ChangeDetectorRef], null, null), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_AppComponent_1)), i1.ɵdid(9, 16384, null, 0, i11.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_1 = false; var currVal_2 = "red"; _ck(_v, 1, 0, currVal_1, currVal_2); _ck(_v, 4, 0); _ck(_v, 7, 0); var currVal_3 = _co.navLoading; _ck(_v, 9, 0, currVal_3); }, function (_ck, _v) { var currVal_0 = i1.ɵnov(_v, 1).fixed; _ck(_v, 0, 0, currVal_0); }); }
+function View_AppComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "ngx-loading-bar", [], [[2, "loading-bar-fixed", null]], null, null, i2.View_LoadingBarComponent_0, i2.RenderType_LoadingBarComponent)), i1.ɵdid(1, 49152, null, 0, i3.LoadingBarComponent, [i3.LoadingBarService], { includeSpinner: [0, "includeSpinner"], color: [1, "color"] }, null), (_l()(), i1.ɵeld(2, 0, null, null, 2, "div", [["class", "app-nav"]], null, null, null, null, null)), (_l()(), i1.ɵeld(3, 0, null, null, 1, "app-navbar", [], null, null, null, i4.View_NavbarComponent_0, i4.RenderType_NavbarComponent)), i1.ɵdid(4, 114688, null, 0, i5.NavbarComponent, [i6.GetContentService, i7.NavService, i8.AuthService, i9.AngularFireAuth], null, null), (_l()(), i1.ɵeld(5, 0, null, null, 2, "div", [["class", "container"], ["style", "margin-top: 5rem;"]], null, null, null, null, null)), (_l()(), i1.ɵeld(6, 16777216, null, null, 1, "router-outlet", [], null, null, null, null, null)), i1.ɵdid(7, 212992, null, 0, i10.RouterOutlet, [i10.ChildrenOutletContexts, i1.ViewContainerRef, i1.ComponentFactoryResolver, [8, null], i1.ChangeDetectorRef], null, null), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_AppComponent_1)), i1.ɵdid(9, 16384, null, 0, i11.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_1 = false; var currVal_2 = "red"; _ck(_v, 1, 0, currVal_1, currVal_2); _ck(_v, 4, 0); _ck(_v, 7, 0); var currVal_3 = (_co.navLoading && _co.isHome); _ck(_v, 9, 0, currVal_3); }, function (_ck, _v) { var currVal_0 = i1.ɵnov(_v, 1).fixed; _ck(_v, 0, 0, currVal_0); }); }
 exports.View_AppComponent_0 = View_AppComponent_0;
 function View_AppComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-root", [], null, null, null, View_AppComponent_0, RenderType_AppComponent)), i1.ɵdid(1, 114688, null, 0, i12.AppComponent, [i10.Router, i13.Title, i6.GetContentService, i10.ActivatedRoute, i14.SeoService, i1.ChangeDetectorRef], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_AppComponent_Host_0 = View_AppComponent_Host_0;
@@ -1088,6 +1084,7 @@ var AppComponent = /** @class */ (function () {
         this.seo = seo;
         this.cdr = cdr;
         this.navLoading = false;
+        this.isHome = false;
     }
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1114,6 +1111,12 @@ var AppComponent = /** @class */ (function () {
             .filter(function (route) { return route.outlet === 'primary'; })
             .mergeMap(function (route) { return route.data; })
             .subscribe(function (event) {
+            if (event.title === 'Blog') {
+                _this.isHome = true;
+            }
+            else {
+                _this.isHome = false;
+            }
             _this.titleService.setTitle(event['title']);
         });
     };
@@ -1941,11 +1944,7 @@ var LoginComponent = /** @class */ (function () {
         });
     }
     LoginComponent.prototype.ngOnInit = function () {
-        var _this = this;
         this.contentService.loadNav.emit(true);
-        setTimeout(function () {
-            _this.contentService.loadFooter.emit(true);
-        });
         this.buttonSubmit = 'เข้าสู่ระบบ';
     };
     LoginComponent.prototype.login = function () {
@@ -2248,7 +2247,6 @@ var MarkdownEditorComponent = /** @class */ (function () {
         this.contentService.loadNav.emit(true);
         setTimeout(function () {
             _this.contentService.loading(true);
-            _this.contentService.loadFooter.emit(true);
         });
         this.auth.isAuthenticated().subscribe(function (value) {
             if (value.emailVerified) {
@@ -2415,7 +2413,6 @@ var MarkdownEditorComponent = /** @class */ (function () {
                 }, 500);
             });
         }).catch(function (e) {
-            console.log(e);
             sweetalert_1.default({
                 title: 'ไม่สามารถอัพโหลดได้',
                 icon: 'error'
@@ -2796,11 +2793,7 @@ var RegisterComponent = /** @class */ (function () {
         });
     }
     RegisterComponent.prototype.ngOnInit = function () {
-        var _this = this;
         this.contentService.loadNav.emit(true);
-        setTimeout(function () {
-            _this.contentService.loadFooter.emit(true);
-        });
         this.buttonSubmit = 'สมัครสมาชิก';
     };
     RegisterComponent.prototype.register = function () {
@@ -3131,8 +3124,6 @@ var PageViewService = /** @class */ (function () {
                     view: newValue
                 });
             });
-        }).catch(function () {
-            console.log('error');
         });
     };
     PageViewService.ngInjectableDef = i0.defineInjectable({ factory: function PageViewService_Factory() { return new PageViewService(i0.inject(i1.AngularFirestore)); }, token: PageViewService, providedIn: "root" });

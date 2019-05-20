@@ -49,7 +49,6 @@ export class MarkdownEditorComponent implements OnInit {
     this.contentService.loadNav.emit(true);
     setTimeout(() => {
       this.contentService.loading(true);
-      this.contentService.loadFooter.emit(true);
     });
     this.auth.isAuthenticated().subscribe(value => {
       if (value.emailVerified) {
@@ -219,7 +218,6 @@ export class MarkdownEditorComponent implements OnInit {
         }, 500);
       });
     }).catch((e) => {
-      console.log(e);
       swal({
         title: 'ไม่สามารถอัพโหลดได้',
         icon: 'error'

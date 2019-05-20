@@ -16,9 +16,6 @@ export class AboutComponent implements OnInit {
 
   ngOnInit() {
     this.contentService.loadNav.emit(true);
-    setTimeout(() => {
-      this.contentService.loadFooter.emit(true);
-    });
     this.yearOld = differenceInYears(new Date(), new Date(1994, 6, 23));
   }
 }
