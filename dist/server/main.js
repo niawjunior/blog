@@ -1467,7 +1467,12 @@ var ArticleComponent = /** @class */ (function () {
         var getArticle = this.contentService.getArticle(this.getUrl);
         this.shareUrl = "https://www.pasupol.com/article/" + this.getUrl;
         this.auth.isAuthenticated().subscribe(function (value) {
-            if (value && !value.emailVerified) {
+            if (value) {
+                if (!value.emailVerified) {
+                    _this.pageView.setPageView(_this.getUrl);
+                }
+            }
+            else {
                 _this.pageView.setPageView(_this.getUrl);
             }
         });
@@ -1693,7 +1698,7 @@ exports.HomeComponent = HomeComponent;
  * tslint:disable
  */ 
 Object.defineProperty(exports, "__esModule", { value: true });
-var styles = [".card-block[_ngcontent-%COMP%] {\n  text-align: center;\n}\n\n.full-height[_ngcontent-%COMP%] {\n  height: 100%;\n}\n\n.read-more-button[_ngcontent-%COMP%] {\n  float: right!important;\n  margin-left: auto;\n}\n\n.card[_ngcontent-%COMP%]:hover {\n  -webkit-animation: soften 0.2s;\n          animation: soften 0.2s;\n  opacity: 0.9;\n  cursor: pointer;\n}\n\n.category[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 0px;\n  left: 0;\n  background: #df6546;;\n  padding: 6px 15px;\n  color: #FFFFFF;\n  font-size: 14px;\n  font-weight: 600;\n  text-transform: uppercase;\n}\n\n.post-date[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 0px;\n  right: 0;\n  background: #448cd1;;\n  padding: 6px 15px;\n  color: #FFFFFF;\n  font-size: 14px;\n  font-weight: 600;\n  text-transform: uppercase;\n}\n\n.author[_ngcontent-%COMP%] {\n  width: 28px !important;\n  height: 28px !important;\n  margin-left:.2rem;\n}"];
+var styles = [".card-block[_ngcontent-%COMP%] {\n  text-align: center;\n}\n\n.full-height[_ngcontent-%COMP%] {\n  height: 100%;\n}\n\n.read-more-button[_ngcontent-%COMP%] {\n  float: right!important;\n  margin-left: auto;\n}\n\n.card[_ngcontent-%COMP%]:hover {\n  -webkit-animation: soften 0.2s;\n          animation: soften 0.2s;\n  opacity: 0.9;\n  cursor: pointer;\n}\n\n.category[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 0px;\n  left: 0;\n  background: #df6546;;\n  padding: 6px 15px;\n  color: #FFFFFF;\n  font-size: 14px;\n  font-weight: 600;\n  text-transform: uppercase;\n}\n\n.post-date[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 0px;\n  right: 0;\n  background: #448cd1;;\n  padding: 6px 15px;\n  color: #FFFFFF;\n  font-size: 14px;\n  font-weight: 600;\n  text-transform: uppercase;\n}\n\n.author[_ngcontent-%COMP%] {\n  width: 28px !important;\n  height: 28px !important;\n  margin-left:.2rem;\n}\n\n.webp[_ngcontent-%COMP%]   .author[_ngcontent-%COMP%] {\n  width: 28px !important;\n  height: 28px !important;\n  margin-left:.2rem;\n}"];
 exports.styles = styles;
 
 
@@ -1728,7 +1733,7 @@ exports.RenderType_ItemComponent = RenderType_ItemComponent;
 function View_ItemComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 18, "div", [["class", "card mb-4 box-shadow full-height"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
         var pd_0 = (_co.readArticle(_co.item.slugUrl) !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), (_l()(), i1.ɵeld(1, 0, null, null, 1, "div", [["style", "position:relative; width:100%; height:0; padding-top:50%;"]], null, null, null, null, null)), (_l()(), i1.ɵeld(2, 0, null, null, 0, "img", [["class", "card-img-top img-preview"], ["style", "position:absolute; top:0; left:0; width:100%;"]], [[8, "src", 4], [8, "alt", 0]], null, null, null, null)), (_l()(), i1.ɵeld(3, 0, null, null, 15, "div", [["class", "card-body d-flex flex-column"]], null, null, null, null, null)), (_l()(), i1.ɵeld(4, 0, null, null, 1, "h4", [["class", "card-title"]], null, null, null, null, null)), (_l()(), i1.ɵted(5, null, ["", ""])), (_l()(), i1.ɵeld(6, 0, null, null, 1, "p", [["class", "card-text"]], null, null, null, null, null)), (_l()(), i1.ɵted(7, null, ["", ".."])), (_l()(), i1.ɵeld(8, 0, null, null, 1, "div", [["class", "category"]], null, null, null, null, null)), (_l()(), i1.ɵted(9, null, ["", ""])), (_l()(), i1.ɵeld(10, 0, null, null, 1, "div", [["class", "post-date"]], null, null, null, null, null)), (_l()(), i1.ɵted(11, null, ["", ""])), (_l()(), i1.ɵeld(12, 0, null, null, 2, "span", [["class", "fa fa-eye"], ["style", "position: absolute;\n      bottom: 22px;"]], null, null, null, null, null)), (_l()(), i1.ɵted(13, null, [" ", " "])), (_l()(), i1.ɵeld(14, 0, null, null, 0, "img", [["alt", ""], ["class", "author"], ["src", "https://firebasestorage.googleapis.com/v0/b/blog-40f93.appspot.com/o/59990473_1999427553698525_2988723731032965120_n.png?alt=media&token=3183815b-43ba-4cb9-a85b-4997fcb7c1f8"]], null, null, null, null, null)), (_l()(), i1.ɵeld(15, 0, null, null, 3, "button", [["class", "btn btn-outline-secondary btn-sm read-more-button mt-auto"], ["type", "button"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\u0E2D\u0E48\u0E32\u0E19\u0E1A\u0E17\u0E04\u0E27\u0E32\u0E21\u0E19\u0E35\u0E49 "])), (_l()(), i1.ɵeld(17, 0, null, null, 1, "fa", [["name", "book"]], null, null, null, i2.View_AngularFontAwesomeComponent_0, i2.RenderType_AngularFontAwesomeComponent)), i1.ɵdid(18, 114688, null, 0, i3.AngularFontAwesomeComponent, [], { name: [0, "name"] }, null)], function (_ck, _v) { var currVal_7 = "book"; _ck(_v, 18, 0, currVal_7); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = i1.ɵinlineInterpolate(1, "", _co.imgUrl, ""); var currVal_1 = i1.ɵinlineInterpolate(1, "", _co.item.title, ""); _ck(_v, 2, 0, currVal_0, currVal_1); var currVal_2 = _co.item.title; _ck(_v, 5, 0, currVal_2); var currVal_3 = _co.item.description; _ck(_v, 7, 0, currVal_3); var currVal_4 = _co.item.tag; _ck(_v, 9, 0, currVal_4); var currVal_5 = _co.postDate; _ck(_v, 11, 0, currVal_5); var currVal_6 = _co.item.view; _ck(_v, 13, 0, currVal_6); }); }
+    } return ad; }, null, null)), (_l()(), i1.ɵeld(1, 0, null, null, 1, "div", [["style", "position:relative; width:100%; height:0; padding-top:50%;"]], null, null, null, null, null)), (_l()(), i1.ɵeld(2, 0, null, null, 0, "img", [["class", "card-img-top img-preview"], ["style", "position:absolute; top:0; left:0; width:100%;"]], [[8, "src", 4], [8, "alt", 0]], null, null, null, null)), (_l()(), i1.ɵeld(3, 0, null, null, 15, "div", [["class", "card-body d-flex flex-column"]], null, null, null, null, null)), (_l()(), i1.ɵeld(4, 0, null, null, 1, "h4", [["class", "card-title"]], null, null, null, null, null)), (_l()(), i1.ɵted(5, null, ["", ""])), (_l()(), i1.ɵeld(6, 0, null, null, 1, "p", [["class", "card-text"]], null, null, null, null, null)), (_l()(), i1.ɵted(7, null, ["", ".."])), (_l()(), i1.ɵeld(8, 0, null, null, 1, "div", [["class", "category"]], null, null, null, null, null)), (_l()(), i1.ɵted(9, null, ["", ""])), (_l()(), i1.ɵeld(10, 0, null, null, 1, "div", [["class", "post-date"]], null, null, null, null, null)), (_l()(), i1.ɵted(11, null, ["", ""])), (_l()(), i1.ɵeld(12, 0, null, null, 2, "span", [["class", "fa fa-eye"], ["style", "position: absolute;\n      bottom: 22px;"]], null, null, null, null, null)), (_l()(), i1.ɵted(13, null, [" ", " "])), (_l()(), i1.ɵeld(14, 0, null, null, 0, "img", [["alt", ""], ["class", "author"], ["src", "../../assets/me.webp"]], null, null, null, null, null)), (_l()(), i1.ɵeld(15, 0, null, null, 3, "button", [["class", "btn btn-outline-secondary btn-sm read-more-button mt-auto"], ["type", "button"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\u0E2D\u0E48\u0E32\u0E19\u0E1A\u0E17\u0E04\u0E27\u0E32\u0E21\u0E19\u0E35\u0E49 "])), (_l()(), i1.ɵeld(17, 0, null, null, 1, "fa", [["name", "book"]], null, null, null, i2.View_AngularFontAwesomeComponent_0, i2.RenderType_AngularFontAwesomeComponent)), i1.ɵdid(18, 114688, null, 0, i3.AngularFontAwesomeComponent, [], { name: [0, "name"] }, null)], function (_ck, _v) { var currVal_7 = "book"; _ck(_v, 18, 0, currVal_7); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = i1.ɵinlineInterpolate(1, "", _co.imgUrl, ""); var currVal_1 = i1.ɵinlineInterpolate(1, "", _co.item.title, ""); _ck(_v, 2, 0, currVal_0, currVal_1); var currVal_2 = _co.item.title; _ck(_v, 5, 0, currVal_2); var currVal_3 = _co.item.description; _ck(_v, 7, 0, currVal_3); var currVal_4 = _co.item.tag; _ck(_v, 9, 0, currVal_4); var currVal_5 = _co.postDate; _ck(_v, 11, 0, currVal_5); var currVal_6 = _co.item.view; _ck(_v, 13, 0, currVal_6); }); }
 exports.View_ItemComponent_0 = View_ItemComponent_0;
 function View_ItemComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-item", [], null, null, null, View_ItemComponent_0, RenderType_ItemComponent)), i1.ɵdid(1, 114688, null, 0, i4.ItemComponent, [i5.Router, i6.GetContentService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_ItemComponent_Host_0 = View_ItemComponent_Host_0;
@@ -2584,7 +2589,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(/*! @angular/core */ "@angular/core");
 var auth_service_1 = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
 var auth_1 = __webpack_require__(/*! @angular/fire/auth */ "@angular/fire/auth");
-var $ = __webpack_require__(/*! jquery */ "jquery");
 var nav_service_1 = __webpack_require__(/*! ../services/nav.service */ "./src/app/services/nav.service.ts");
 var get_content_service_1 = __webpack_require__(/*! ../services/get-content.service */ "./src/app/services/get-content.service.ts");
 var NavbarComponent = /** @class */ (function () {
@@ -2632,15 +2636,15 @@ var NavbarComponent = /** @class */ (function () {
         this.authService.SignOut();
     };
     NavbarComponent.prototype.onClickedOutside = function (e) {
-        var click = $(e.target).attr('class');
-        if (click !== 'navbar-toggler-icon'
-            && click !== 'navbar-brand'
-            && click !== 'navbar navbar-expand-md') {
-            this.navService.checkNav(true);
-        }
-        if (click === 'navbar-brand') {
-            this.navService.checkNav(true);
-        }
+        // const click = $(e.target).attr('class');
+        // if (click !== 'navbar-toggler-icon'
+        // && click !== 'navbar-brand'
+        // && click !== 'navbar navbar-expand-md') {
+        //   this.navService.checkNav(true);
+        // }
+        // if (click === 'navbar-brand') {
+        //   this.navService.checkNav(true);
+        // }
     };
     return NavbarComponent;
 }());
@@ -2971,7 +2975,6 @@ var core_1 = __webpack_require__(/*! @angular/core */ "@angular/core");
 var firestore_1 = __webpack_require__(/*! @angular/fire/firestore */ "@angular/fire/firestore");
 var map_1 = __webpack_require__(/*! rxjs/operators/map */ "rxjs/operators/map");
 var take_1 = __webpack_require__(/*! rxjs/operators/take */ "rxjs/operators/take");
-var _ = __webpack_require__(/*! lodash */ "lodash");
 var core_2 = __webpack_require__(/*! @ngx-loading-bar/core */ "@ngx-loading-bar/core");
 var i0 = __webpack_require__(/*! @angular/core */ "@angular/core");
 var i1 = __webpack_require__(/*! @angular/fire/firestore */ "@angular/fire/firestore");
@@ -3054,10 +3057,12 @@ var GetContentService = /** @class */ (function () {
             this.tempArticle.push(data);
         }
     };
-    // get data of article by slug using loadash
     GetContentService.prototype.getArticle = function (slug) {
         this.loadingBar.start();
-        return _.find(this.tempArticle, ['slugUrl', slug]);
+        var data = this.tempArticle.filter(function (item) {
+            return item.slugUrl === slug;
+        });
+        return data[0];
     };
     GetContentService.ngInjectableDef = i0.defineInjectable({ factory: function GetContentService_Factory() { return new GetContentService(i0.inject(i1.AngularFirestore), i0.inject(i2.LoadingBarService)); }, token: GetContentService, providedIn: "root" });
     return GetContentService;
@@ -3110,7 +3115,6 @@ exports.NavService = NavService;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var firestore_1 = __webpack_require__(/*! @angular/fire/firestore */ "@angular/fire/firestore");
-var firebase = __webpack_require__(/*! firebase/app */ "firebase/app");
 var i0 = __webpack_require__(/*! @angular/core */ "@angular/core");
 var i1 = __webpack_require__(/*! @angular/fire/firestore */ "@angular/fire/firestore");
 var PageViewService = /** @class */ (function () {
@@ -3119,7 +3123,7 @@ var PageViewService = /** @class */ (function () {
     }
     PageViewService.prototype.setPageView = function (key) {
         var documentReference = this.afs.collection('postDetail').doc(key);
-        firebase.firestore().runTransaction(function (page) {
+        this.afs.firestore.runTransaction(function (page) {
             return page.get(documentReference.ref)
                 .then(function (doc) {
                 var newValue = doc.data().view + 1;
@@ -3707,39 +3711,6 @@ module.exports = require("date-fns");
 /***/ (function(module, exports) {
 
 module.exports = require("date-fns/locale/th");
-
-/***/ }),
-
-/***/ "firebase/app":
-/*!*******************************!*\
-  !*** external "firebase/app" ***!
-  \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("firebase/app");
-
-/***/ }),
-
-/***/ "jquery":
-/*!*************************!*\
-  !*** external "jquery" ***!
-  \*************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("jquery");
-
-/***/ }),
-
-/***/ "lodash":
-/*!*************************!*\
-  !*** external "lodash" ***!
-  \*************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("lodash");
 
 /***/ }),
 
