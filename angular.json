@@ -42,6 +42,7 @@
               "./node_modules/prismjs/components/prism-yaml.min.js",
               "./node_modules/prismjs/components/prism-javascript.min.js",
               "./node_modules/prismjs/components/prism-bash.min.js",
+              "./node_modules/prismjs/components/prism-go.min.js",
               "./node_modules/prismjs/components/prism-typescript.min.js"
             ]
           },
