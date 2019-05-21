@@ -1,4 +1,4 @@
-import { BrowserModule, Title } from '@angular/platform-browser';
+import { BrowserModule, Title, BrowserTransferStateModule} from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
@@ -62,7 +62,6 @@ import { MarkdownEditorComponent } from './markdown-editor/markdown-editor.compo
     AngularFirestoreModule,
     AngularFireStorageModule,
     LoadingBarModule,
-    BrowserModule.withServerTransition({appId: 'blog'}),
     TransferHttpCacheModule,
     ShareButtonsModule,
     ClickOutsideModule,
@@ -83,6 +82,7 @@ import { MarkdownEditorComponent } from './markdown-editor/markdown-editor.compo
         },
       },
     }),
+    BrowserTransferStateModule,
   ],
   providers: [Title, AuthService, { provide: StorageBucket, useValue: 'blog-40f93.appspot.com'}],
   bootstrap: [AppComponent]

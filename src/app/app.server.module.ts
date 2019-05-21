@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
 import {ServerModule, ServerTransferStateModule} from '@angular/platform-server';
 import {ModuleMapLoaderModule} from '@nguniversal/module-map-ngfactory-loader';
-import { PrebootModule } from 'preboot';
-
 import {AppModule} from './app.module';
 import {AppComponent} from './app.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { PrebootModule } from 'preboot';
 
 @NgModule({
   imports: [
@@ -14,7 +14,8 @@ import {AppComponent} from './app.component';
     ServerModule,
     ModuleMapLoaderModule,
     ServerTransferStateModule,
-    PrebootModule.withConfig({ appRoot: 'app-root' })
+    BrowserModule.withServerTransition({ appId: 'ng-blog' }),
+    PrebootModule.withConfig({ appRoot: 'app-root' }),
   ],
   // Since the bootstrapped component is not inherited from your
   // imported AppModule, it needs to be repeated here.
