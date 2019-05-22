@@ -10,7 +10,8 @@ import { GetContentService } from '../services/get-content.service';
 })
 export class NavbarComponent implements OnInit {
   isNavbarCollapsed = true;
-  isLogIn: Boolean = false;
+  isLogIn = false;
+  isAdmin = false;
   userEmail = '';
   navLoading = false;
   navBar: EventEmitter<boolean> = new EventEmitter();
@@ -39,6 +40,11 @@ export class NavbarComponent implements OnInit {
       if (user) {
         this.userEmail = user.email;
         this.isLogIn = true;
+        if (user.emailVerified) {
+          this.isAdmin = true;
+        } else {
+          this.isAdmin = false;
+        }
       } else {
         this.userEmail = '';
         this.isLogIn = false;

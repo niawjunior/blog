@@ -9,6 +9,7 @@ import { SecureInnerPagesGuard } from './guard/secure-inner-pages.guard';
 import { RegisterComponent } from './register/register.component';
 import { SettingsComponent } from './settings/settings.component';
 import { MarkdownEditorComponent } from './markdown-editor/markdown-editor.component';
+import { AdminGuard } from './guard/admin.guard';
 
 const routes: Routes = [
   {
@@ -30,7 +31,7 @@ const routes: Routes = [
     path: 'register', component: RegisterComponent, canActivate: [SecureInnerPagesGuard], data: { title: 'Register' }
   },
   {
-    path: 'post', component: MarkdownEditorComponent, canActivate: [AuthGuard]
+    path: 'post', component: MarkdownEditorComponent, canActivate: [AdminGuard]
   },
   {
     path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]

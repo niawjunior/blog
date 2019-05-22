@@ -8,7 +8,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AdminGuard implements CanActivate {
   constructor(public router: Router,   private auth: AngularFireAuth) {
   }
   canActivate(): Observable<boolean> {
@@ -17,7 +17,12 @@ export class AuthGuard implements CanActivate {
         if (!authState) {
             this.router.navigate(['/login']);
         } else {
-          return true;
+          if (authState.emailVerified) {
+            return true;
+          } else {
+            this.router.navigate(['']);
+            return false;
+          }
         }
       }),
       take(1)

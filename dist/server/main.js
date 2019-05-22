@@ -951,6 +951,7 @@ var secure_inner_pages_guard_1 = __webpack_require__(/*! ./guard/secure-inner-pa
 var register_component_1 = __webpack_require__(/*! ./register/register.component */ "./src/app/register/register.component.ts");
 var settings_component_1 = __webpack_require__(/*! ./settings/settings.component */ "./src/app/settings/settings.component.ts");
 var markdown_editor_component_1 = __webpack_require__(/*! ./markdown-editor/markdown-editor.component */ "./src/app/markdown-editor/markdown-editor.component.ts");
+var admin_guard_1 = __webpack_require__(/*! ./guard/admin.guard */ "./src/app/guard/admin.guard.ts");
 var ɵ0 = { title: 'Blog' }, ɵ1 = { title: 'About', description: 'Hello world' }, ɵ2 = { title: 'Login' }, ɵ3 = { title: 'Register' };
 exports.ɵ0 = ɵ0;
 exports.ɵ1 = ɵ1;
@@ -976,7 +977,7 @@ var routes = [
         path: 'register', component: register_component_1.RegisterComponent, canActivate: [secure_inner_pages_guard_1.SecureInnerPagesGuard], data: ɵ3
     },
     {
-        path: 'post', component: markdown_editor_component_1.MarkdownEditorComponent, canActivate: [auth_guard_1.AuthGuard]
+        path: 'post', component: markdown_editor_component_1.MarkdownEditorComponent, canActivate: [admin_guard_1.AdminGuard]
     },
     {
         path: 'settings', component: settings_component_1.SettingsComponent, canActivate: [auth_guard_1.AuthGuard]
@@ -1137,6 +1138,7 @@ exports.AppComponent = AppComponent;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+var common_1 = __webpack_require__(/*! @angular/common */ "@angular/common");
 var ɵ0 = {
     gfm: true,
     tables: true,
@@ -1148,7 +1150,12 @@ var ɵ0 = {
 };
 exports.ɵ0 = ɵ0;
 var AppModule = /** @class */ (function () {
-    function AppModule() {
+    function AppModule(platformId, appId) {
+        this.platformId = platformId;
+        this.appId = appId;
+        var platform = common_1.isPlatformBrowser(platformId) ?
+            'on the server' : 'in the browser';
+        // console.log(`Running ${platform} with appId=${appId}`);
     }
     return AppModule;
 }());
@@ -1203,22 +1210,22 @@ var i26 = __webpack_require__(/*! @angular/fire/auth */ "@angular/fire/auth");
 var i27 = __webpack_require__(/*! @angular/fire/firestore */ "@angular/fire/firestore");
 var i28 = __webpack_require__(/*! @angular/fire/storage */ "@angular/fire/storage");
 var i29 = __webpack_require__(/*! @angular/router */ "@angular/router");
-var i30 = __webpack_require__(/*! preboot */ "preboot");
-var i31 = __webpack_require__(/*! ngx-markdown */ "ngx-markdown");
-var i32 = __webpack_require__(/*! ./services/auth.service */ "./src/app/services/auth.service.ts");
-var i33 = __webpack_require__(/*! ./services/get-content.service */ "./src/app/services/get-content.service.ts");
-var i34 = __webpack_require__(/*! @angular/http */ "@angular/http");
-var i35 = __webpack_require__(/*! @nguniversal/module-map-ngfactory-loader */ "@nguniversal/module-map-ngfactory-loader");
-var i36 = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
-var i37 = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-var i38 = __webpack_require__(/*! ./about/about.component */ "./src/app/about/about.component.ts");
-var i39 = __webpack_require__(/*! ./article/article.component */ "./src/app/article/article.component.ts");
-var i40 = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
-var i41 = __webpack_require__(/*! ./guard/secure-inner-pages.guard */ "./src/app/guard/secure-inner-pages.guard.ts");
-var i42 = __webpack_require__(/*! ./register/register.component */ "./src/app/register/register.component.ts");
-var i43 = __webpack_require__(/*! ./markdown-editor/markdown-editor.component */ "./src/app/markdown-editor/markdown-editor.component.ts");
-var i44 = __webpack_require__(/*! ./guard/auth.guard */ "./src/app/guard/auth.guard.ts");
-var i45 = __webpack_require__(/*! ./settings/settings.component */ "./src/app/settings/settings.component.ts");
+var i30 = __webpack_require__(/*! ngx-markdown */ "ngx-markdown");
+var i31 = __webpack_require__(/*! ./services/auth.service */ "./src/app/services/auth.service.ts");
+var i32 = __webpack_require__(/*! ./services/get-content.service */ "./src/app/services/get-content.service.ts");
+var i33 = __webpack_require__(/*! @angular/http */ "@angular/http");
+var i34 = __webpack_require__(/*! @nguniversal/module-map-ngfactory-loader */ "@nguniversal/module-map-ngfactory-loader");
+var i35 = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
+var i36 = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+var i37 = __webpack_require__(/*! ./about/about.component */ "./src/app/about/about.component.ts");
+var i38 = __webpack_require__(/*! ./article/article.component */ "./src/app/article/article.component.ts");
+var i39 = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+var i40 = __webpack_require__(/*! ./guard/secure-inner-pages.guard */ "./src/app/guard/secure-inner-pages.guard.ts");
+var i41 = __webpack_require__(/*! ./register/register.component */ "./src/app/register/register.component.ts");
+var i42 = __webpack_require__(/*! ./markdown-editor/markdown-editor.component */ "./src/app/markdown-editor/markdown-editor.component.ts");
+var i43 = __webpack_require__(/*! ./guard/admin.guard */ "./src/app/guard/admin.guard.ts");
+var i44 = __webpack_require__(/*! ./settings/settings.component */ "./src/app/settings/settings.component.ts");
+var i45 = __webpack_require__(/*! ./guard/auth.guard */ "./src/app/guard/auth.guard.ts");
 var i46 = __webpack_require__(/*! @ngx-loading-bar/core */ "@ngx-loading-bar/core");
 var i47 = __webpack_require__(/*! @angular/cdk/platform */ "@angular/cdk/platform");
 var i48 = __webpack_require__(/*! @ngx-share/core */ "@ngx-share/core");
@@ -1228,7 +1235,7 @@ var i51 = __webpack_require__(/*! @ngx-share/buttons */ "@ngx-share/buttons");
 var i52 = __webpack_require__(/*! ng4-click-outside/lib/click-outside.module */ "ng4-click-outside/lib/click-outside.module");
 var i53 = __webpack_require__(/*! angular-markdown-editor */ "angular-markdown-editor");
 var i54 = __webpack_require__(/*! ./app.module */ "./src/app/app.module.ts");
-var AppServerModuleNgFactory = i0.ɵcmf(i1.AppServerModule, [i2.AppComponent], function (_l) { return i0.ɵmod([i0.ɵmpd(512, i0.ComponentFactoryResolver, i0.ɵCodegenComponentFactoryResolver, [[8, [i3.NgbAlertNgFactory, i3.NgbDatepickerNgFactory, i3.ɵtNgFactory, i3.ɵuNgFactory, i3.ɵmNgFactory, i3.ɵpNgFactory, i3.ɵqNgFactory, i4.ɵEmptyOutletComponentNgFactory, i5.AngularMarkdownEditorComponentNgFactory, i6.HomeComponentNgFactory, i7.AboutComponentNgFactory, i8.ArticleComponentNgFactory, i9.LoginComponentNgFactory, i10.RegisterComponentNgFactory, i11.MarkdownEditorComponentNgFactory, i12.SettingsComponentNgFactory, i13.AppComponentNgFactory]], [3, i0.ComponentFactoryResolver], i0.NgModuleRef]), i0.ɵmpd(5120, i0.LOCALE_ID, i0.ɵangular_packages_core_core_o, [[3, i0.LOCALE_ID]]), i0.ɵmpd(4608, i14.NgLocalization, i14.NgLocaleLocalization, [i0.LOCALE_ID, [2, i14.ɵangular_packages_common_common_a]]), i0.ɵmpd(5120, i0.IterableDiffers, i0.ɵangular_packages_core_core_m, []), i0.ɵmpd(5120, i0.KeyValueDiffers, i0.ɵangular_packages_core_core_n, []), i0.ɵmpd(4608, i15.DomSanitizer, i15.ɵDomSanitizerImpl, [i14.DOCUMENT]), i0.ɵmpd(6144, i0.Sanitizer, null, [i15.DomSanitizer]), i0.ɵmpd(4608, i15.HAMMER_GESTURE_CONFIG, i15.HammerGestureConfig, []), i0.ɵmpd(5120, i15.EVENT_MANAGER_PLUGINS, function (p0_0, p0_1, p0_2, p1_0, p2_0, p2_1, p2_2, p2_3, p3_0) { return [new i15.ɵDomEventsPlugin(p0_0, p0_1, p0_2), new i15.ɵKeyEventsPlugin(p1_0), new i15.ɵHammerGesturesPlugin(p2_0, p2_1, p2_2, p2_3), new i16.ɵangular_packages_platform_server_platform_server_d(p3_0)]; }, [i14.DOCUMENT, i0.NgZone, i0.PLATFORM_ID, i14.DOCUMENT, i14.DOCUMENT, i15.HAMMER_GESTURE_CONFIG, i0.ɵConsole, [2, i15.HAMMER_LOADER], i15.DOCUMENT]), i0.ɵmpd(4608, i15.EventManager, i15.EventManager, [i15.EVENT_MANAGER_PLUGINS, i0.NgZone]), i0.ɵmpd(135680, i15.ɵDomSharedStylesHost, i15.ɵDomSharedStylesHost, [i14.DOCUMENT]), i0.ɵmpd(4608, i15.ɵDomRendererFactory2, i15.ɵDomRendererFactory2, [i15.EventManager, i15.ɵDomSharedStylesHost]), i0.ɵmpd(4608, i16.ɵangular_packages_platform_server_platform_server_c, i16.ɵangular_packages_platform_server_platform_server_c, [i15.DOCUMENT, [2, i15.ɵTRANSITION_ID]]), i0.ɵmpd(6144, i15.ɵSharedStylesHost, null, [i16.ɵangular_packages_platform_server_platform_server_c]), i0.ɵmpd(4608, i16.ɵServerRendererFactory2, i16.ɵServerRendererFactory2, [i15.EventManager, i0.NgZone, i15.DOCUMENT, i15.ɵSharedStylesHost]), i0.ɵmpd(4608, i17.AnimationDriver, i17.ɵNoopAnimationDriver, []), i0.ɵmpd(5120, i17.ɵAnimationStyleNormalizer, i18.ɵangular_packages_platform_browser_animations_animations_c, []), i0.ɵmpd(4608, i17.ɵAnimationEngine, i18.ɵangular_packages_platform_browser_animations_animations_a, [i14.DOCUMENT, i17.AnimationDriver, i17.ɵAnimationStyleNormalizer]), i0.ɵmpd(5120, i0.RendererFactory2, i16.ɵangular_packages_platform_server_platform_server_a, [i16.ɵServerRendererFactory2, i17.ɵAnimationEngine, i0.NgZone]), i0.ɵmpd(4352, i0.Testability, null, []), i0.ɵmpd(4608, i19.AnimationBuilder, i18.ɵBrowserAnimationBuilder, [i0.RendererFactory2, i15.DOCUMENT]), i0.ɵmpd(4608, i20.ɵangular_packages_forms_forms_j, i20.ɵangular_packages_forms_forms_j, []), i0.ɵmpd(4608, i21.NgbModal, i21.NgbModal, [i0.ComponentFactoryResolver, i0.Injector, i21.ɵv, i21.NgbModalConfig]), i0.ɵmpd(4608, i20.FormBuilder, i20.FormBuilder, []), i0.ɵmpd(4608, i22.AngularFontAwesomeService, i22.AngularFontAwesomeService, []), i0.ɵmpd(4608, i23.HttpXsrfTokenExtractor, i23.ɵangular_packages_common_http_http_g, [i14.DOCUMENT, i0.PLATFORM_ID, i23.ɵangular_packages_common_http_http_e]), i0.ɵmpd(4608, i23.ɵangular_packages_common_http_http_h, i23.ɵangular_packages_common_http_http_h, [i23.HttpXsrfTokenExtractor, i23.ɵangular_packages_common_http_http_f]), i0.ɵmpd(4608, i15.TransferState, i15.TransferState, []), i0.ɵmpd(4608, i24.ɵTransferHttpCacheInterceptor, i24.ɵTransferHttpCacheInterceptor, [i0.ApplicationRef, i15.TransferState]), i0.ɵmpd(5120, i23.HTTP_INTERCEPTORS, function (p0_0, p1_0) { return [p0_0, p1_0]; }, [i23.ɵangular_packages_common_http_http_h, i24.ɵTransferHttpCacheInterceptor]), i0.ɵmpd(4608, i23.XhrFactory, i16.ɵangular_packages_platform_server_platform_server_e, []), i0.ɵmpd(4608, i23.HttpXhrBackend, i23.HttpXhrBackend, [i23.XhrFactory]), i0.ɵmpd(6144, i23.HttpBackend, null, [i23.HttpXhrBackend]), i0.ɵmpd(5120, i23.HttpHandler, i16.ɵangular_packages_platform_server_platform_server_h, [i23.HttpBackend, i0.Injector]), i0.ɵmpd(4608, i23.HttpClient, i23.HttpClient, [i23.HttpHandler]), i0.ɵmpd(4608, i23.ɵangular_packages_common_http_http_d, i23.ɵangular_packages_common_http_http_d, []), i0.ɵmpd(5120, i25.FirebaseApp, i25._firebaseAppFactory, [i25.FirebaseOptionsToken, [2, i25.FirebaseNameOrConfigToken]]), i0.ɵmpd(4608, i26.AngularFireAuth, i26.AngularFireAuth, [i25.FirebaseOptionsToken, [2, i25.FirebaseNameOrConfigToken], i0.PLATFORM_ID, i0.NgZone]), i0.ɵmpd(4608, i27.AngularFirestore, i27.AngularFirestore, [i25.FirebaseOptionsToken, [2, i25.FirebaseNameOrConfigToken], [2, i27.EnablePersistenceToken], [2, i27.FirestoreSettingsToken], i0.PLATFORM_ID, i0.NgZone, [2, i27.PersistenceSettingsToken]]), i0.ɵmpd(4608, i28.AngularFireStorage, i28.AngularFireStorage, [i25.FirebaseOptionsToken, [2, i25.FirebaseNameOrConfigToken], [2, i28.StorageBucket], i0.PLATFORM_ID, i0.NgZone]), i0.ɵmpd(5120, i29.ActivatedRoute, i29.ɵangular_packages_router_router_g, [i29.Router]), i0.ɵmpd(4608, i29.NoPreloading, i29.NoPreloading, []), i0.ɵmpd(6144, i29.PreloadingStrategy, null, [i29.NoPreloading]), i0.ɵmpd(135680, i29.RouterPreloader, i29.RouterPreloader, [i29.Router, i0.NgModuleFactoryLoader, i0.Compiler, i0.Injector, i29.PreloadingStrategy]), i0.ɵmpd(4608, i29.PreloadAllModules, i29.PreloadAllModules, []), i0.ɵmpd(4608, i14.ViewportScroller, i14.ɵNullViewportScroller, []), i0.ɵmpd(5120, i29.ɵangular_packages_router_router_n, i29.ɵangular_packages_router_router_c, [i29.Router, i14.ViewportScroller, i29.ROUTER_CONFIGURATION]), i0.ɵmpd(5120, i29.ROUTER_INITIALIZER, i29.ɵangular_packages_router_router_j, [i29.ɵangular_packages_router_router_h]), i0.ɵmpd(4608, i30.EventReplayer, i30.EventReplayer, []), i0.ɵmpd(5120, i0.APP_BOOTSTRAP_LISTENER, function (p0_0, p1_0, p1_1, p1_2, p1_3, p1_4, p1_5) { return [p0_0, i30.ɵb(p1_0, p1_1, p1_2, p1_3, p1_4, p1_5)]; }, [i29.ROUTER_INITIALIZER, i14.DOCUMENT, i30.ɵa, [2, i30.PREBOOT_NONCE], i0.PLATFORM_ID, i0.ApplicationRef, i30.EventReplayer]), i0.ɵmpd(4608, i31.MarkdownService, i31.MarkdownService, [i0.PLATFORM_ID, [2, i23.HttpClient], i15.DomSanitizer, i31.MarkedOptions]), i0.ɵmpd(4608, i15.Title, i15.Title, [i14.DOCUMENT]), i0.ɵmpd(4608, i32.AuthService, i32.AuthService, [i27.AngularFirestore, i26.AngularFireAuth, i29.Router, i33.GetContentService]), i0.ɵmpd(4608, i34.BrowserXhr, i16.ɵangular_packages_platform_server_platform_server_e, []), i0.ɵmpd(4608, i34.ResponseOptions, i34.BaseResponseOptions, []), i0.ɵmpd(4608, i34.XSRFStrategy, i16.ɵangular_packages_platform_server_platform_server_f, []), i0.ɵmpd(4608, i34.XHRBackend, i34.XHRBackend, [i34.BrowserXhr, i34.ResponseOptions, i34.XSRFStrategy]), i0.ɵmpd(4608, i34.RequestOptions, i34.BaseRequestOptions, []), i0.ɵmpd(5120, i34.Http, i16.ɵangular_packages_platform_server_platform_server_g, [i34.XHRBackend, i34.RequestOptions]), i0.ɵmpd(5120, i16.BEFORE_APP_SERIALIZED, function (p0_0, p0_1, p0_2) { return [i16.ɵangular_packages_platform_server_platform_server_b(p0_0, p0_1, p0_2)]; }, [i15.DOCUMENT, i0.APP_ID, i15.TransferState]), i0.ɵmpd(1073742336, i14.CommonModule, i14.CommonModule, []), i0.ɵmpd(1024, i0.ErrorHandler, i15.ɵangular_packages_platform_browser_platform_browser_a, []), i0.ɵmpd(1024, i0.NgProbeToken, function () { return [i29.ɵangular_packages_router_router_b()]; }, []), i0.ɵmpd(512, i29.ɵangular_packages_router_router_h, i29.ɵangular_packages_router_router_h, [i0.Injector]), i0.ɵmpd(256, i0.APP_ID, "ng-blog", []), i0.ɵmpd(2048, i15.ɵTRANSITION_ID, null, [i0.APP_ID]), i0.ɵmpd(1024, i0.APP_INITIALIZER, function (p0_0, p1_0, p2_0, p2_1, p2_2) { return [i15.ɵangular_packages_platform_browser_platform_browser_j(p0_0), i29.ɵangular_packages_router_router_i(p1_0), i15.ɵangular_packages_platform_browser_platform_browser_h(p2_0, p2_1, p2_2)]; }, [[2, i0.NgProbeToken], i29.ɵangular_packages_router_router_h, i15.ɵTRANSITION_ID, i14.DOCUMENT, i0.Injector]), i0.ɵmpd(512, i0.ApplicationInitStatus, i0.ApplicationInitStatus, [[2, i0.APP_INITIALIZER]]), i0.ɵmpd(131584, i0.ApplicationRef, i0.ApplicationRef, [i0.NgZone, i0.ɵConsole, i0.Injector, i0.ErrorHandler, i0.ComponentFactoryResolver, i0.ApplicationInitStatus]), i0.ɵmpd(1073742336, i0.ApplicationModule, i0.ApplicationModule, [i0.ApplicationRef]), i0.ɵmpd(1073742336, i15.BrowserModule, i15.BrowserModule, [[3, i15.BrowserModule]]), i0.ɵmpd(1073742336, i18.BrowserAnimationsModule, i18.BrowserAnimationsModule, []), i0.ɵmpd(1073742336, i21.NgbAccordionModule, i21.NgbAccordionModule, []), i0.ɵmpd(1073742336, i21.NgbAlertModule, i21.NgbAlertModule, []), i0.ɵmpd(1073742336, i21.NgbButtonsModule, i21.NgbButtonsModule, []), i0.ɵmpd(1073742336, i21.NgbCarouselModule, i21.NgbCarouselModule, []), i0.ɵmpd(1073742336, i21.NgbCollapseModule, i21.NgbCollapseModule, []), i0.ɵmpd(1073742336, i20.ɵangular_packages_forms_forms_bc, i20.ɵangular_packages_forms_forms_bc, []), i0.ɵmpd(1073742336, i20.FormsModule, i20.FormsModule, []), i0.ɵmpd(1073742336, i21.NgbDatepickerModule, i21.NgbDatepickerModule, []), i0.ɵmpd(1073742336, i21.NgbDropdownModule, i21.NgbDropdownModule, []), i0.ɵmpd(1073742336, i21.NgbModalModule, i21.NgbModalModule, []), i0.ɵmpd(1073742336, i21.NgbPaginationModule, i21.NgbPaginationModule, []), i0.ɵmpd(1073742336, i21.NgbPopoverModule, i21.NgbPopoverModule, []), i0.ɵmpd(1073742336, i21.NgbProgressbarModule, i21.NgbProgressbarModule, []), i0.ɵmpd(1073742336, i21.NgbRatingModule, i21.NgbRatingModule, []), i0.ɵmpd(1073742336, i21.NgbTabsetModule, i21.NgbTabsetModule, []), i0.ɵmpd(1073742336, i21.NgbTimepickerModule, i21.NgbTimepickerModule, []), i0.ɵmpd(1073742336, i21.NgbTooltipModule, i21.NgbTooltipModule, []), i0.ɵmpd(1073742336, i21.NgbTypeaheadModule, i21.NgbTypeaheadModule, []), i0.ɵmpd(1073742336, i21.NgbModule, i21.NgbModule, []), i0.ɵmpd(1024, i29.ɵangular_packages_router_router_a, i29.ɵangular_packages_router_router_e, [[3, i29.Router]]), i0.ɵmpd(512, i29.UrlSerializer, i29.DefaultUrlSerializer, []), i0.ɵmpd(512, i29.ChildrenOutletContexts, i29.ChildrenOutletContexts, []), i0.ɵmpd(256, i29.ROUTER_CONFIGURATION, { initialNavigation: "enabled" }, []), i0.ɵmpd(1024, i14.LocationStrategy, i29.ɵangular_packages_router_router_d, [i14.PlatformLocation, [2, i14.APP_BASE_HREF], i29.ROUTER_CONFIGURATION]), i0.ɵmpd(512, i14.Location, i14.Location, [i14.LocationStrategy]), i0.ɵmpd(512, i0.Compiler, i0.Compiler, []), i0.ɵmpd(512, i0.NgModuleFactoryLoader, i35.ModuleMapNgFactoryLoader, [i0.Compiler, i35.MODULE_MAP]), i0.ɵmpd(1024, i29.ROUTES, function () { return [[{ path: "", component: i36.HomeComponent, data: i37.ɵ0 }, { path: "about", component: i38.AboutComponent, data: i37.ɵ1 }, { path: "article", component: i39.ArticleComponent, children: [{ path: ":id", component: i39.ArticleComponent }] }, { path: "login", component: i40.LoginComponent, canActivate: [i41.SecureInnerPagesGuard], data: i37.ɵ2 }, { path: "register", component: i42.RegisterComponent, canActivate: [i41.SecureInnerPagesGuard], data: i37.ɵ3 }, { path: "post", component: i43.MarkdownEditorComponent, canActivate: [i44.AuthGuard] }, { path: "settings", component: i45.SettingsComponent, canActivate: [i44.AuthGuard] }, { path: "**", redirectTo: "" }]]; }, []), i0.ɵmpd(1024, i29.Router, i29.ɵangular_packages_router_router_f, [i0.ApplicationRef, i29.UrlSerializer, i29.ChildrenOutletContexts, i14.Location, i0.Injector, i0.NgModuleFactoryLoader, i0.Compiler, i29.ROUTES, i29.ROUTER_CONFIGURATION, [2, i29.UrlHandlingStrategy], [2, i29.RouteReuseStrategy]]), i0.ɵmpd(1073742336, i29.RouterModule, i29.RouterModule, [[2, i29.ɵangular_packages_router_router_a], [2, i29.Router]]), i0.ɵmpd(1073742336, i20.ReactiveFormsModule, i20.ReactiveFormsModule, []), i0.ɵmpd(1073742336, i22.AngularFontAwesomeModule, i22.AngularFontAwesomeModule, []), i0.ɵmpd(1073742336, i23.HttpClientXsrfModule, i23.HttpClientXsrfModule, []), i0.ɵmpd(1073742336, i23.HttpClientModule, i23.HttpClientModule, []), i0.ɵmpd(1073742336, i25.AngularFireModule, i25.AngularFireModule, []), i0.ɵmpd(1073742336, i26.AngularFireAuthModule, i26.AngularFireAuthModule, []), i0.ɵmpd(1073742336, i27.AngularFirestoreModule, i27.AngularFirestoreModule, []), i0.ɵmpd(1073742336, i28.AngularFireStorageModule, i28.AngularFireStorageModule, []), i0.ɵmpd(1073742336, i46.LoadingBarModule, i46.LoadingBarModule, []), i0.ɵmpd(1073742336, i15.BrowserTransferStateModule, i15.BrowserTransferStateModule, []), i0.ɵmpd(1073742336, i24.TransferHttpCacheModule, i24.TransferHttpCacheModule, []), i0.ɵmpd(1073742336, i47.PlatformModule, i47.PlatformModule, []), i0.ɵmpd(1073742336, i48.ShareModule, i48.ShareModule, []), i0.ɵmpd(1073742336, i49.FontAwesomeModule, i49.FontAwesomeModule, []), i0.ɵmpd(1073742336, i50.ShareButtonModule, i50.ShareButtonModule, []), i0.ɵmpd(1073742336, i51.ShareButtonsModule, i51.ShareButtonsModule, []), i0.ɵmpd(1073742336, i52.ClickOutsideModule, i52.ClickOutsideModule, []), i0.ɵmpd(1073742336, i53.AngularMarkdownEditorModule, i53.AngularMarkdownEditorModule, []), i0.ɵmpd(1073742336, i31.MarkdownModule, i31.MarkdownModule, []), i0.ɵmpd(1073742336, i54.AppModule, i54.AppModule, []), i0.ɵmpd(1073742336, i34.HttpModule, i34.HttpModule, []), i0.ɵmpd(1073742336, i18.NoopAnimationsModule, i18.NoopAnimationsModule, []), i0.ɵmpd(1073742336, i16.ServerModule, i16.ServerModule, []), i0.ɵmpd(1073742336, i35.ModuleMapLoaderModule, i35.ModuleMapLoaderModule, []), i0.ɵmpd(1073742336, i16.ServerTransferStateModule, i16.ServerTransferStateModule, []), i0.ɵmpd(1073742336, i30.PrebootModule, i30.PrebootModule, []), i0.ɵmpd(1073742336, i1.AppServerModule, i1.AppServerModule, []), i0.ɵmpd(256, i0.ɵAPP_ROOT, true, []), i0.ɵmpd(256, i18.ANIMATION_MODULE_TYPE, "NoopAnimations", []), i0.ɵmpd(256, i23.ɵangular_packages_common_http_http_e, "XSRF-TOKEN", []), i0.ɵmpd(256, i23.ɵangular_packages_common_http_http_f, "X-XSRF-TOKEN", []), i0.ɵmpd(256, i25.FirebaseOptionsToken, { apiKey: "AIzaSyCB-Wl2UerDGwkeGhNyPhE4wDZXwewQf88", authDomain: "blog-40f93.firebaseapp.com", databaseURL: "https://blog-40f93.firebaseio.com", projectId: "blog-40f93", storageBucket: "blog-40f93.appspot.com", messagingSenderId: "1032909587161" }, []), i0.ɵmpd(256, i25.FirebaseNameOrConfigToken, undefined, []), i0.ɵmpd(256, i28.StorageBucket, "blog-40f93.appspot.com", []), i0.ɵmpd(256, i30.ɵa, { appRoot: "app-root" }, []), i0.ɵmpd(256, "config", { iconlibrary: "glyph" }, []), i0.ɵmpd(256, i31.MarkedOptions, i54.ɵ0, [])]); });
+var AppServerModuleNgFactory = i0.ɵcmf(i1.AppServerModule, [i2.AppComponent], function (_l) { return i0.ɵmod([i0.ɵmpd(512, i0.ComponentFactoryResolver, i0.ɵCodegenComponentFactoryResolver, [[8, [i3.NgbAlertNgFactory, i3.NgbDatepickerNgFactory, i3.ɵtNgFactory, i3.ɵuNgFactory, i3.ɵmNgFactory, i3.ɵpNgFactory, i3.ɵqNgFactory, i4.ɵEmptyOutletComponentNgFactory, i5.AngularMarkdownEditorComponentNgFactory, i6.HomeComponentNgFactory, i7.AboutComponentNgFactory, i8.ArticleComponentNgFactory, i9.LoginComponentNgFactory, i10.RegisterComponentNgFactory, i11.MarkdownEditorComponentNgFactory, i12.SettingsComponentNgFactory, i13.AppComponentNgFactory]], [3, i0.ComponentFactoryResolver], i0.NgModuleRef]), i0.ɵmpd(5120, i0.LOCALE_ID, i0.ɵangular_packages_core_core_o, [[3, i0.LOCALE_ID]]), i0.ɵmpd(4608, i14.NgLocalization, i14.NgLocaleLocalization, [i0.LOCALE_ID, [2, i14.ɵangular_packages_common_common_a]]), i0.ɵmpd(5120, i0.IterableDiffers, i0.ɵangular_packages_core_core_m, []), i0.ɵmpd(5120, i0.KeyValueDiffers, i0.ɵangular_packages_core_core_n, []), i0.ɵmpd(4608, i15.DomSanitizer, i15.ɵDomSanitizerImpl, [i14.DOCUMENT]), i0.ɵmpd(6144, i0.Sanitizer, null, [i15.DomSanitizer]), i0.ɵmpd(4608, i15.HAMMER_GESTURE_CONFIG, i15.HammerGestureConfig, []), i0.ɵmpd(5120, i15.EVENT_MANAGER_PLUGINS, function (p0_0, p0_1, p0_2, p1_0, p2_0, p2_1, p2_2, p2_3, p3_0) { return [new i15.ɵDomEventsPlugin(p0_0, p0_1, p0_2), new i15.ɵKeyEventsPlugin(p1_0), new i15.ɵHammerGesturesPlugin(p2_0, p2_1, p2_2, p2_3), new i16.ɵangular_packages_platform_server_platform_server_d(p3_0)]; }, [i14.DOCUMENT, i0.NgZone, i0.PLATFORM_ID, i14.DOCUMENT, i14.DOCUMENT, i15.HAMMER_GESTURE_CONFIG, i0.ɵConsole, [2, i15.HAMMER_LOADER], i15.DOCUMENT]), i0.ɵmpd(4608, i15.EventManager, i15.EventManager, [i15.EVENT_MANAGER_PLUGINS, i0.NgZone]), i0.ɵmpd(135680, i15.ɵDomSharedStylesHost, i15.ɵDomSharedStylesHost, [i14.DOCUMENT]), i0.ɵmpd(4608, i15.ɵDomRendererFactory2, i15.ɵDomRendererFactory2, [i15.EventManager, i15.ɵDomSharedStylesHost]), i0.ɵmpd(4608, i16.ɵangular_packages_platform_server_platform_server_c, i16.ɵangular_packages_platform_server_platform_server_c, [i15.DOCUMENT, [2, i15.ɵTRANSITION_ID]]), i0.ɵmpd(6144, i15.ɵSharedStylesHost, null, [i16.ɵangular_packages_platform_server_platform_server_c]), i0.ɵmpd(4608, i16.ɵServerRendererFactory2, i16.ɵServerRendererFactory2, [i15.EventManager, i0.NgZone, i15.DOCUMENT, i15.ɵSharedStylesHost]), i0.ɵmpd(4608, i17.AnimationDriver, i17.ɵNoopAnimationDriver, []), i0.ɵmpd(5120, i17.ɵAnimationStyleNormalizer, i18.ɵangular_packages_platform_browser_animations_animations_c, []), i0.ɵmpd(4608, i17.ɵAnimationEngine, i18.ɵangular_packages_platform_browser_animations_animations_a, [i14.DOCUMENT, i17.AnimationDriver, i17.ɵAnimationStyleNormalizer]), i0.ɵmpd(5120, i0.RendererFactory2, i16.ɵangular_packages_platform_server_platform_server_a, [i16.ɵServerRendererFactory2, i17.ɵAnimationEngine, i0.NgZone]), i0.ɵmpd(4352, i0.Testability, null, []), i0.ɵmpd(4608, i19.AnimationBuilder, i18.ɵBrowserAnimationBuilder, [i0.RendererFactory2, i15.DOCUMENT]), i0.ɵmpd(4608, i20.ɵangular_packages_forms_forms_j, i20.ɵangular_packages_forms_forms_j, []), i0.ɵmpd(4608, i21.NgbModal, i21.NgbModal, [i0.ComponentFactoryResolver, i0.Injector, i21.ɵv, i21.NgbModalConfig]), i0.ɵmpd(4608, i20.FormBuilder, i20.FormBuilder, []), i0.ɵmpd(4608, i22.AngularFontAwesomeService, i22.AngularFontAwesomeService, []), i0.ɵmpd(4608, i23.HttpXsrfTokenExtractor, i23.ɵangular_packages_common_http_http_g, [i14.DOCUMENT, i0.PLATFORM_ID, i23.ɵangular_packages_common_http_http_e]), i0.ɵmpd(4608, i23.ɵangular_packages_common_http_http_h, i23.ɵangular_packages_common_http_http_h, [i23.HttpXsrfTokenExtractor, i23.ɵangular_packages_common_http_http_f]), i0.ɵmpd(5120, i15.TransferState, i15.ɵangular_packages_platform_browser_platform_browser_f, [i14.DOCUMENT, i0.APP_ID]), i0.ɵmpd(4608, i24.ɵTransferHttpCacheInterceptor, i24.ɵTransferHttpCacheInterceptor, [i0.ApplicationRef, i15.TransferState]), i0.ɵmpd(5120, i23.HTTP_INTERCEPTORS, function (p0_0, p1_0) { return [p0_0, p1_0]; }, [i23.ɵangular_packages_common_http_http_h, i24.ɵTransferHttpCacheInterceptor]), i0.ɵmpd(4608, i23.XhrFactory, i16.ɵangular_packages_platform_server_platform_server_e, []), i0.ɵmpd(4608, i23.HttpXhrBackend, i23.HttpXhrBackend, [i23.XhrFactory]), i0.ɵmpd(6144, i23.HttpBackend, null, [i23.HttpXhrBackend]), i0.ɵmpd(5120, i23.HttpHandler, i16.ɵangular_packages_platform_server_platform_server_h, [i23.HttpBackend, i0.Injector]), i0.ɵmpd(4608, i23.HttpClient, i23.HttpClient, [i23.HttpHandler]), i0.ɵmpd(4608, i23.ɵangular_packages_common_http_http_d, i23.ɵangular_packages_common_http_http_d, []), i0.ɵmpd(5120, i25.FirebaseApp, i25._firebaseAppFactory, [i25.FirebaseOptionsToken, [2, i25.FirebaseNameOrConfigToken]]), i0.ɵmpd(4608, i26.AngularFireAuth, i26.AngularFireAuth, [i25.FirebaseOptionsToken, [2, i25.FirebaseNameOrConfigToken], i0.PLATFORM_ID, i0.NgZone]), i0.ɵmpd(4608, i27.AngularFirestore, i27.AngularFirestore, [i25.FirebaseOptionsToken, [2, i25.FirebaseNameOrConfigToken], [2, i27.EnablePersistenceToken], [2, i27.FirestoreSettingsToken], i0.PLATFORM_ID, i0.NgZone, [2, i27.PersistenceSettingsToken]]), i0.ɵmpd(4608, i28.AngularFireStorage, i28.AngularFireStorage, [i25.FirebaseOptionsToken, [2, i25.FirebaseNameOrConfigToken], [2, i28.StorageBucket], i0.PLATFORM_ID, i0.NgZone]), i0.ɵmpd(5120, i29.ActivatedRoute, i29.ɵangular_packages_router_router_g, [i29.Router]), i0.ɵmpd(4608, i29.NoPreloading, i29.NoPreloading, []), i0.ɵmpd(6144, i29.PreloadingStrategy, null, [i29.NoPreloading]), i0.ɵmpd(135680, i29.RouterPreloader, i29.RouterPreloader, [i29.Router, i0.NgModuleFactoryLoader, i0.Compiler, i0.Injector, i29.PreloadingStrategy]), i0.ɵmpd(4608, i29.PreloadAllModules, i29.PreloadAllModules, []), i0.ɵmpd(4608, i14.ViewportScroller, i14.ɵNullViewportScroller, []), i0.ɵmpd(5120, i29.ɵangular_packages_router_router_n, i29.ɵangular_packages_router_router_c, [i29.Router, i14.ViewportScroller, i29.ROUTER_CONFIGURATION]), i0.ɵmpd(5120, i29.ROUTER_INITIALIZER, i29.ɵangular_packages_router_router_j, [i29.ɵangular_packages_router_router_h]), i0.ɵmpd(5120, i0.APP_BOOTSTRAP_LISTENER, function (p0_0) { return [p0_0]; }, [i29.ROUTER_INITIALIZER]), i0.ɵmpd(4608, i30.MarkdownService, i30.MarkdownService, [i0.PLATFORM_ID, [2, i23.HttpClient], i15.DomSanitizer, i30.MarkedOptions]), i0.ɵmpd(4608, i15.Title, i15.Title, [i14.DOCUMENT]), i0.ɵmpd(4608, i31.AuthService, i31.AuthService, [i27.AngularFirestore, i26.AngularFireAuth, i29.Router, i32.GetContentService]), i0.ɵmpd(4608, i33.BrowserXhr, i16.ɵangular_packages_platform_server_platform_server_e, []), i0.ɵmpd(4608, i33.ResponseOptions, i33.BaseResponseOptions, []), i0.ɵmpd(4608, i33.XSRFStrategy, i16.ɵangular_packages_platform_server_platform_server_f, []), i0.ɵmpd(4608, i33.XHRBackend, i33.XHRBackend, [i33.BrowserXhr, i33.ResponseOptions, i33.XSRFStrategy]), i0.ɵmpd(4608, i33.RequestOptions, i33.BaseRequestOptions, []), i0.ɵmpd(5120, i33.Http, i16.ɵangular_packages_platform_server_platform_server_g, [i33.XHRBackend, i33.RequestOptions]), i0.ɵmpd(1073742336, i14.CommonModule, i14.CommonModule, []), i0.ɵmpd(1024, i0.ErrorHandler, i15.ɵangular_packages_platform_browser_platform_browser_a, []), i0.ɵmpd(1024, i0.NgProbeToken, function () { return [i29.ɵangular_packages_router_router_b()]; }, []), i0.ɵmpd(256, i0.APP_ID, "ng-blog", []), i0.ɵmpd(2048, i15.ɵTRANSITION_ID, null, [i0.APP_ID]), i0.ɵmpd(512, i29.ɵangular_packages_router_router_h, i29.ɵangular_packages_router_router_h, [i0.Injector]), i0.ɵmpd(1024, i0.APP_INITIALIZER, function (p0_0, p1_0, p1_1, p1_2, p2_0) { return [i15.ɵangular_packages_platform_browser_platform_browser_j(p0_0), i15.ɵangular_packages_platform_browser_platform_browser_h(p1_0, p1_1, p1_2), i29.ɵangular_packages_router_router_i(p2_0)]; }, [[2, i0.NgProbeToken], i15.ɵTRANSITION_ID, i14.DOCUMENT, i0.Injector, i29.ɵangular_packages_router_router_h]), i0.ɵmpd(512, i0.ApplicationInitStatus, i0.ApplicationInitStatus, [[2, i0.APP_INITIALIZER]]), i0.ɵmpd(131584, i0.ApplicationRef, i0.ApplicationRef, [i0.NgZone, i0.ɵConsole, i0.Injector, i0.ErrorHandler, i0.ComponentFactoryResolver, i0.ApplicationInitStatus]), i0.ɵmpd(1073742336, i0.ApplicationModule, i0.ApplicationModule, [i0.ApplicationRef]), i0.ɵmpd(1073742336, i15.BrowserModule, i15.BrowserModule, [[3, i15.BrowserModule]]), i0.ɵmpd(1073742336, i18.BrowserAnimationsModule, i18.BrowserAnimationsModule, []), i0.ɵmpd(1073742336, i21.NgbAccordionModule, i21.NgbAccordionModule, []), i0.ɵmpd(1073742336, i21.NgbAlertModule, i21.NgbAlertModule, []), i0.ɵmpd(1073742336, i21.NgbButtonsModule, i21.NgbButtonsModule, []), i0.ɵmpd(1073742336, i21.NgbCarouselModule, i21.NgbCarouselModule, []), i0.ɵmpd(1073742336, i21.NgbCollapseModule, i21.NgbCollapseModule, []), i0.ɵmpd(1073742336, i20.ɵangular_packages_forms_forms_bc, i20.ɵangular_packages_forms_forms_bc, []), i0.ɵmpd(1073742336, i20.FormsModule, i20.FormsModule, []), i0.ɵmpd(1073742336, i21.NgbDatepickerModule, i21.NgbDatepickerModule, []), i0.ɵmpd(1073742336, i21.NgbDropdownModule, i21.NgbDropdownModule, []), i0.ɵmpd(1073742336, i21.NgbModalModule, i21.NgbModalModule, []), i0.ɵmpd(1073742336, i21.NgbPaginationModule, i21.NgbPaginationModule, []), i0.ɵmpd(1073742336, i21.NgbPopoverModule, i21.NgbPopoverModule, []), i0.ɵmpd(1073742336, i21.NgbProgressbarModule, i21.NgbProgressbarModule, []), i0.ɵmpd(1073742336, i21.NgbRatingModule, i21.NgbRatingModule, []), i0.ɵmpd(1073742336, i21.NgbTabsetModule, i21.NgbTabsetModule, []), i0.ɵmpd(1073742336, i21.NgbTimepickerModule, i21.NgbTimepickerModule, []), i0.ɵmpd(1073742336, i21.NgbTooltipModule, i21.NgbTooltipModule, []), i0.ɵmpd(1073742336, i21.NgbTypeaheadModule, i21.NgbTypeaheadModule, []), i0.ɵmpd(1073742336, i21.NgbModule, i21.NgbModule, []), i0.ɵmpd(1024, i29.ɵangular_packages_router_router_a, i29.ɵangular_packages_router_router_e, [[3, i29.Router]]), i0.ɵmpd(512, i29.UrlSerializer, i29.DefaultUrlSerializer, []), i0.ɵmpd(512, i29.ChildrenOutletContexts, i29.ChildrenOutletContexts, []), i0.ɵmpd(256, i29.ROUTER_CONFIGURATION, { initialNavigation: "enabled" }, []), i0.ɵmpd(1024, i14.LocationStrategy, i29.ɵangular_packages_router_router_d, [i14.PlatformLocation, [2, i14.APP_BASE_HREF], i29.ROUTER_CONFIGURATION]), i0.ɵmpd(512, i14.Location, i14.Location, [i14.LocationStrategy]), i0.ɵmpd(512, i0.Compiler, i0.Compiler, []), i0.ɵmpd(512, i0.NgModuleFactoryLoader, i34.ModuleMapNgFactoryLoader, [i0.Compiler, i34.MODULE_MAP]), i0.ɵmpd(1024, i29.ROUTES, function () { return [[{ path: "", component: i35.HomeComponent, data: i36.ɵ0 }, { path: "about", component: i37.AboutComponent, data: i36.ɵ1 }, { path: "article", component: i38.ArticleComponent, children: [{ path: ":id", component: i38.ArticleComponent }] }, { path: "login", component: i39.LoginComponent, canActivate: [i40.SecureInnerPagesGuard], data: i36.ɵ2 }, { path: "register", component: i41.RegisterComponent, canActivate: [i40.SecureInnerPagesGuard], data: i36.ɵ3 }, { path: "post", component: i42.MarkdownEditorComponent, canActivate: [i43.AdminGuard] }, { path: "settings", component: i44.SettingsComponent, canActivate: [i45.AuthGuard] }, { path: "**", redirectTo: "" }]]; }, []), i0.ɵmpd(1024, i29.Router, i29.ɵangular_packages_router_router_f, [i0.ApplicationRef, i29.UrlSerializer, i29.ChildrenOutletContexts, i14.Location, i0.Injector, i0.NgModuleFactoryLoader, i0.Compiler, i29.ROUTES, i29.ROUTER_CONFIGURATION, [2, i29.UrlHandlingStrategy], [2, i29.RouteReuseStrategy]]), i0.ɵmpd(1073742336, i29.RouterModule, i29.RouterModule, [[2, i29.ɵangular_packages_router_router_a], [2, i29.Router]]), i0.ɵmpd(1073742336, i20.ReactiveFormsModule, i20.ReactiveFormsModule, []), i0.ɵmpd(1073742336, i22.AngularFontAwesomeModule, i22.AngularFontAwesomeModule, []), i0.ɵmpd(1073742336, i23.HttpClientXsrfModule, i23.HttpClientXsrfModule, []), i0.ɵmpd(1073742336, i23.HttpClientModule, i23.HttpClientModule, []), i0.ɵmpd(1073742336, i25.AngularFireModule, i25.AngularFireModule, []), i0.ɵmpd(1073742336, i26.AngularFireAuthModule, i26.AngularFireAuthModule, []), i0.ɵmpd(1073742336, i27.AngularFirestoreModule, i27.AngularFirestoreModule, []), i0.ɵmpd(1073742336, i28.AngularFireStorageModule, i28.AngularFireStorageModule, []), i0.ɵmpd(1073742336, i46.LoadingBarModule, i46.LoadingBarModule, []), i0.ɵmpd(1073742336, i15.BrowserTransferStateModule, i15.BrowserTransferStateModule, []), i0.ɵmpd(1073742336, i24.TransferHttpCacheModule, i24.TransferHttpCacheModule, []), i0.ɵmpd(1073742336, i47.PlatformModule, i47.PlatformModule, []), i0.ɵmpd(1073742336, i48.ShareModule, i48.ShareModule, []), i0.ɵmpd(1073742336, i49.FontAwesomeModule, i49.FontAwesomeModule, []), i0.ɵmpd(1073742336, i50.ShareButtonModule, i50.ShareButtonModule, []), i0.ɵmpd(1073742336, i51.ShareButtonsModule, i51.ShareButtonsModule, []), i0.ɵmpd(1073742336, i52.ClickOutsideModule, i52.ClickOutsideModule, []), i0.ɵmpd(1073742336, i53.AngularMarkdownEditorModule, i53.AngularMarkdownEditorModule, []), i0.ɵmpd(1073742336, i30.MarkdownModule, i30.MarkdownModule, []), i0.ɵmpd(1073742336, i54.AppModule, i54.AppModule, [i0.PLATFORM_ID, i0.APP_ID]), i0.ɵmpd(1073742336, i33.HttpModule, i33.HttpModule, []), i0.ɵmpd(1073742336, i18.NoopAnimationsModule, i18.NoopAnimationsModule, []), i0.ɵmpd(1073742336, i16.ServerModule, i16.ServerModule, []), i0.ɵmpd(1073742336, i34.ModuleMapLoaderModule, i34.ModuleMapLoaderModule, []), i0.ɵmpd(1073742336, i1.AppServerModule, i1.AppServerModule, []), i0.ɵmpd(256, i0.ɵAPP_ROOT, true, []), i0.ɵmpd(256, i18.ANIMATION_MODULE_TYPE, "NoopAnimations", []), i0.ɵmpd(256, i23.ɵangular_packages_common_http_http_e, "XSRF-TOKEN", []), i0.ɵmpd(256, i23.ɵangular_packages_common_http_http_f, "X-XSRF-TOKEN", []), i0.ɵmpd(256, i25.FirebaseOptionsToken, { apiKey: "AIzaSyCB-Wl2UerDGwkeGhNyPhE4wDZXwewQf88", authDomain: "blog-40f93.firebaseapp.com", databaseURL: "https://blog-40f93.firebaseio.com", projectId: "blog-40f93", storageBucket: "blog-40f93.appspot.com", messagingSenderId: "1032909587161" }, []), i0.ɵmpd(256, i25.FirebaseNameOrConfigToken, undefined, []), i0.ɵmpd(256, i28.StorageBucket, "blog-40f93.appspot.com", []), i0.ɵmpd(256, "config", { iconlibrary: "glyph" }, []), i0.ɵmpd(256, i30.MarkedOptions, i54.ɵ0, [])]); });
 exports.AppServerModuleNgFactory = AppServerModuleNgFactory;
 
 
@@ -1383,7 +1390,7 @@ exports.ArticleCardComponent = ArticleCardComponent;
  * tslint:disable
  */ 
 Object.defineProperty(exports, "__esModule", { value: true });
-var styles = [".article[_ngcontent-%COMP%] {\n  background: #fff;\n  margin: .2rem .2rem 2rem .2rem;\n  padding: 1.5rem .5rem .5rem .5rem;\n}\n\n.share-button[_ngcontent-%COMP%] {\n  float: right!important;\n  margin-left:auto;\n}\n\n.article-date[_ngcontent-%COMP%] {\n  float: right!important;\n  margin-left:auto;\n}\n\n.article-tag[_ngcontent-%COMP%] {\n  float: left!important;\n  margin-right:auto;\n}\n\n.badge-custom-primary[_ngcontent-%COMP%] {\n  color: #fff;\n  margin-left:.2rem;\n  border-radius: 0% !important;\n  background-color: #4267b2;\n  padding: .5rem;\n}\n\n.badge-custom-success[_ngcontent-%COMP%] {\n  color: #fff;\n  margin-left:.2rem;\n  border-radius: 0% !important;\n  background-color: #30b007;\n}"];
+var styles = [".fill[_ngcontent-%COMP%] {\n  min-height: 100%;\n}\n.article[_ngcontent-%COMP%] {\n  background: #fff;\n  margin: .2rem .2rem 2rem .2rem;\n  padding: 1.5rem .5rem .5rem .5rem;\n}\n.share-button[_ngcontent-%COMP%] {\n  float: right!important;\n  margin-left:auto;\n}\n.article-date[_ngcontent-%COMP%] {\n  float: right!important;\n  margin-left:auto;\n}\n.article-tag[_ngcontent-%COMP%] {\n  float: left!important;\n  margin-right:auto;\n}\n.badge-custom-primary[_ngcontent-%COMP%] {\n  color: #fff;\n  margin-left:.2rem;\n  border-radius: 0% !important;\n  background-color: #4267b2;\n  padding: .5rem;\n}\n.badge-custom-success[_ngcontent-%COMP%] {\n  color: #fff;\n  margin-left:.2rem;\n  border-radius: 0% !important;\n  background-color: #30b007;\n}"];
 exports.styles = styles;
 
 
@@ -1412,21 +1419,26 @@ var i3 = __webpack_require__(/*! ngx-markdown */ "ngx-markdown");
 var i4 = __webpack_require__(/*! ../../../node_modules/@ngx-share/button/ngx-share-button.ngfactory */ "./node_modules/@ngx-share/button/ngx-share-button.ngfactory.js");
 var i5 = __webpack_require__(/*! @ngx-share/button */ "@ngx-share/button");
 var i6 = __webpack_require__(/*! @ngx-share/core */ "@ngx-share/core");
-var i7 = __webpack_require__(/*! @angular/common */ "@angular/common");
-var i8 = __webpack_require__(/*! ./article.component */ "./src/app/article/article.component.ts");
-var i9 = __webpack_require__(/*! ../services/get-content.service */ "./src/app/services/get-content.service.ts");
+var i7 = __webpack_require__(/*! ../comment-box/comment-box.component.ngfactory */ "./src/app/comment-box/comment-box.component.ngfactory.js");
+var i8 = __webpack_require__(/*! ../comment-box/comment-box.component */ "./src/app/comment-box/comment-box.component.ts");
+var i9 = __webpack_require__(/*! ../services/comment.service */ "./src/app/services/comment.service.ts");
 var i10 = __webpack_require__(/*! @angular/router */ "@angular/router");
-var i11 = __webpack_require__(/*! ../services/page-view.service */ "./src/app/services/page-view.service.ts");
-var i12 = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
+var i11 = __webpack_require__(/*! ../services/helper.service */ "./src/app/services/helper.service.ts");
+var i12 = __webpack_require__(/*! @angular/forms */ "@angular/forms");
+var i13 = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
+var i14 = __webpack_require__(/*! @angular/common */ "@angular/common");
+var i15 = __webpack_require__(/*! ./article.component */ "./src/app/article/article.component.ts");
+var i16 = __webpack_require__(/*! ../services/get-content.service */ "./src/app/services/get-content.service.ts");
+var i17 = __webpack_require__(/*! ../services/page-view.service */ "./src/app/services/page-view.service.ts");
 var styles_ArticleComponent = [i0.styles];
 var RenderType_ArticleComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_ArticleComponent, data: {} });
 exports.RenderType_ArticleComponent = RenderType_ArticleComponent;
-function View_ArticleComponent_1(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 14, "div", [["class", "row article"], ["style", "box-shadow: 0 0px 10px rgba(0,0,0,.25);"]], null, null, null, null, null)), (_l()(), i1.ɵeld(1, 0, null, null, 9, "div", [["class", "col-sm-12 mx-auto"]], null, null, null, null, null)), (_l()(), i1.ɵeld(2, 0, null, null, 1, "h1", [["class", "text-center"], ["style", "margin-bottom: 20px;"]], null, null, null, null, null)), (_l()(), i1.ɵted(3, null, ["", ""])), (_l()(), i1.ɵeld(4, 0, null, null, 2, "p", [["class", "text-center"]], null, null, null, null, null)), (_l()(), i1.ɵeld(5, 0, null, null, 1, "span", [["class", "badge badge-pill badge-custom-primary"]], null, null, null, null, null)), (_l()(), i1.ɵted(6, null, ["#", ""])), (_l()(), i1.ɵeld(7, 0, null, null, 1, "p", [["class", "text-center"]], null, null, null, null, null)), (_l()(), i1.ɵted(8, null, ["", ""])), (_l()(), i1.ɵeld(9, 0, null, null, 1, "markdown", [], null, null, null, i2.View_MarkdownComponent_0, i2.RenderType_MarkdownComponent)), i1.ɵdid(10, 4767744, null, 0, i3.MarkdownComponent, [i1.ElementRef, i3.MarkdownService], { data: [0, "data"] }, null), (_l()(), i1.ɵeld(11, 0, null, null, 3, "div", [["class", "col-sm-12 mb-3"]], null, null, null, null, null)), (_l()(), i1.ɵeld(12, 0, null, null, 2, "div", [["class", "share-button"]], null, null, null, null, null)), (_l()(), i1.ɵeld(13, 0, null, null, 1, "share-button", [], [[8, "className", 0]], null, null, i4.View_ShareButton_0, i4.RenderType_ShareButton)), i1.ɵdid(14, 49152, null, 0, i5.ShareButton, [i6.ShareService], { createButton: [0, "createButton"], setUrl: [1, "setUrl"], autoSetMeta: [2, "autoSetMeta"], showText: [3, "showText"], theme: [4, "theme"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_3 = _co.article; _ck(_v, 10, 0, currVal_3); var currVal_5 = "facebook"; var currVal_6 = _co.shareUrl; var currVal_7 = false; var currVal_8 = false; var currVal_9 = "circles-dark"; _ck(_v, 14, 0, currVal_5, currVal_6, currVal_7, currVal_8, currVal_9); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.head; _ck(_v, 3, 0, currVal_0); var currVal_1 = _co.tag; _ck(_v, 6, 0, currVal_1); var currVal_2 = _co.postDate; _ck(_v, 8, 0, currVal_2); var currVal_4 = i1.ɵnov(_v, 14).buttonClass; _ck(_v, 13, 0, currVal_4); }); }
-function View_ArticleComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵand(16777216, null, null, 1, null, View_ArticleComponent_1)), i1.ɵdid(1, 16384, null, 0, i7.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.loadingContent; _ck(_v, 1, 0, currVal_0); }, null); }
+function View_ArticleComponent_1(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 16, "div", [["class", "row article shadow fill"]], null, null, null, null, null)), (_l()(), i1.ɵeld(1, 0, null, null, 9, "div", [["class", "col-sm-12 mx-auto"]], null, null, null, null, null)), (_l()(), i1.ɵeld(2, 0, null, null, 1, "h1", [["class", "text-center"], ["style", "margin-bottom: 20px;"]], null, null, null, null, null)), (_l()(), i1.ɵted(3, null, ["", ""])), (_l()(), i1.ɵeld(4, 0, null, null, 2, "p", [["class", "text-center"]], null, null, null, null, null)), (_l()(), i1.ɵeld(5, 0, null, null, 1, "span", [["class", "badge badge-pill badge-custom-primary"]], null, null, null, null, null)), (_l()(), i1.ɵted(6, null, ["#", ""])), (_l()(), i1.ɵeld(7, 0, null, null, 1, "p", [["class", "text-center"]], null, null, null, null, null)), (_l()(), i1.ɵted(8, null, ["", ""])), (_l()(), i1.ɵeld(9, 0, null, null, 1, "markdown", [], null, null, null, i2.View_MarkdownComponent_0, i2.RenderType_MarkdownComponent)), i1.ɵdid(10, 4767744, null, 0, i3.MarkdownComponent, [i1.ElementRef, i3.MarkdownService], { data: [0, "data"] }, null), (_l()(), i1.ɵeld(11, 0, null, null, 5, "div", [["class", "col-sm-12"]], null, null, null, null, null)), (_l()(), i1.ɵeld(12, 0, null, null, 2, "div", [["class", "share-button"]], null, null, null, null, null)), (_l()(), i1.ɵeld(13, 0, null, null, 1, "share-button", [], [[8, "className", 0]], null, null, i4.View_ShareButton_0, i4.RenderType_ShareButton)), i1.ɵdid(14, 49152, null, 0, i5.ShareButton, [i6.ShareService], { createButton: [0, "createButton"], setUrl: [1, "setUrl"], autoSetMeta: [2, "autoSetMeta"], showText: [3, "showText"], theme: [4, "theme"] }, null), (_l()(), i1.ɵeld(15, 0, null, null, 1, "app-comment-box", [], null, null, null, i7.View_CommentBoxComponent_0, i7.RenderType_CommentBoxComponent)), i1.ɵdid(16, 114688, null, 0, i8.CommentBoxComponent, [i9.CommentService, i10.Router, i11.HelperService, i12.FormBuilder, i13.AuthService], { url: [0, "url"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_3 = _co.article; _ck(_v, 10, 0, currVal_3); var currVal_5 = "facebook"; var currVal_6 = _co.shareUrl; var currVal_7 = false; var currVal_8 = false; var currVal_9 = "circles-dark"; _ck(_v, 14, 0, currVal_5, currVal_6, currVal_7, currVal_8, currVal_9); var currVal_10 = _co.getUrl; _ck(_v, 16, 0, currVal_10); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.head; _ck(_v, 3, 0, currVal_0); var currVal_1 = _co.tag; _ck(_v, 6, 0, currVal_1); var currVal_2 = _co.postDate; _ck(_v, 8, 0, currVal_2); var currVal_4 = i1.ɵnov(_v, 14).buttonClass; _ck(_v, 13, 0, currVal_4); }); }
+function View_ArticleComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵand(16777216, null, null, 1, null, View_ArticleComponent_1)), i1.ɵdid(1, 16384, null, 0, i14.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.loadingContent; _ck(_v, 1, 0, currVal_0); }, null); }
 exports.View_ArticleComponent_0 = View_ArticleComponent_0;
-function View_ArticleComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-article", [], null, null, null, View_ArticleComponent_0, RenderType_ArticleComponent)), i1.ɵdid(1, 114688, null, 0, i8.ArticleComponent, [i9.GetContentService, i10.ActivatedRoute, i7.Location, i11.PageViewService, i12.AuthService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_ArticleComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-article", [], null, null, null, View_ArticleComponent_0, RenderType_ArticleComponent)), i1.ɵdid(1, 114688, null, 0, i15.ArticleComponent, [i16.GetContentService, i10.ActivatedRoute, i17.PageViewService, i13.AuthService, i11.HelperService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_ArticleComponent_Host_0 = View_ArticleComponent_Host_0;
-var ArticleComponentNgFactory = i1.ɵccf("app-article", i8.ArticleComponent, View_ArticleComponent_Host_0, {}, {}, []);
+var ArticleComponentNgFactory = i1.ɵccf("app-article", i15.ArticleComponent, View_ArticleComponent_Host_0, {}, {}, []);
 exports.ArticleComponentNgFactory = ArticleComponentNgFactory;
 
 
@@ -1444,19 +1456,19 @@ exports.ArticleComponentNgFactory = ArticleComponentNgFactory;
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(/*! @angular/core */ "@angular/core");
 var router_1 = __webpack_require__(/*! @angular/router */ "@angular/router");
-var common_1 = __webpack_require__(/*! @angular/common */ "@angular/common");
 var get_content_service_1 = __webpack_require__(/*! ../services/get-content.service */ "./src/app/services/get-content.service.ts");
 var page_view_service_1 = __webpack_require__(/*! ../services/page-view.service */ "./src/app/services/page-view.service.ts");
 var date_fns_1 = __webpack_require__(/*! date-fns */ "date-fns");
 var th = __webpack_require__(/*! date-fns/locale/th */ "date-fns/locale/th");
 var auth_service_1 = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
+var helper_service_1 = __webpack_require__(/*! ../services/helper.service */ "./src/app/services/helper.service.ts");
 var ArticleComponent = /** @class */ (function () {
-    function ArticleComponent(contentService, activatedRoute, location, pageView, auth) {
+    function ArticleComponent(contentService, activatedRoute, pageView, auth, helper) {
         this.contentService = contentService;
         this.activatedRoute = activatedRoute;
-        this.location = location;
         this.pageView = pageView;
         this.auth = auth;
+        this.helper = helper;
         this.article = '';
         this.loadingContent = false;
         this.head = '';
@@ -1466,8 +1478,7 @@ var ArticleComponent = /** @class */ (function () {
     }
     ArticleComponent.prototype.ngOnInit = function () {
         var _this = this;
-        var currentUrl = decodeURI(this.location.path()).split('/');
-        this.getUrl = currentUrl[currentUrl.length - 1].split('?')[0];
+        this.getUrl = this.helper.getCurrentUrl();
         var getArticle = this.contentService.getArticle(this.getUrl);
         this.shareUrl = "https://www.pasupol.com/article/" + this.getUrl;
         this.auth.isAuthenticated().subscribe(function (value) {
@@ -1517,6 +1528,212 @@ exports.ArticleComponent = ArticleComponent;
 
 /***/ }),
 
+/***/ "./src/app/comment-box/comment-box.component.html.shim.ngstyle.js":
+/*!************************************************************************!*\
+  !*** ./src/app/comment-box/comment-box.component.html.shim.ngstyle.js ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * @fileoverview This file was generated by the Angular template compiler. Do not edit.
+ *
+ * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
+ * tslint:disable
+ */ 
+Object.defineProperty(exports, "__esModule", { value: true });
+var styles = ["<div[_ngcontent-%COMP%]   class=\"container[_ngcontent-%COMP%]   pb-cmnt-container\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   *ngIf=\"!isLogin\"[_ngcontent-%COMP%]   class=\"row\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"col-lg-12\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"col-lg-4[_ngcontent-%COMP%]   mx-auto\"[_ngcontent-%COMP%] > <button[_ngcontent-%COMP%]   (click)=\"loginToComment()\"[_ngcontent-%COMP%]   class=\"btn[_ngcontent-%COMP%]   btn-primary[_ngcontent-%COMP%]   fb-color\"[_ngcontent-%COMP%] > \u0E01\u0E23\u0E38\u0E13\u0E32\u0E25\u0E47\u0E2D\u0E01\u0E2D\u0E34\u0E19[_ngcontent-%COMP%]   \u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E41\u0E2A\u0E14\u0E07\u0E04\u0E27\u0E32\u0E21\u0E04\u0E34\u0E14\u0E40\u0E2B\u0E47\u0E19</button[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   *ngIf=\"isLogin\"[_ngcontent-%COMP%]   class=\"row\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"col-lg-12\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"card-info\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"card-block\"[_ngcontent-%COMP%] > <form[_ngcontent-%COMP%]   [formGroup]=\"commentForm\"[_ngcontent-%COMP%] > <textarea[_ngcontent-%COMP%]   formControlName=\"text\"[_ngcontent-%COMP%]   placeholder=\"\u0E41\u0E2A\u0E14\u0E07\u0E04\u0E27\u0E32\u0E21\u0E04\u0E34\u0E14\u0E40\u0E2B\u0E47\u0E19..\"[_ngcontent-%COMP%]   class=\"pb-cmnt-textarea\"[_ngcontent-%COMP%] > </textarea[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"float-right\"[_ngcontent-%COMP%] > <span[_ngcontent-%COMP%]   style=\"font-size[_ngcontent-%COMP%]:14px;margin-right[_ngcontent-%COMP%]:1rem;color[_ngcontent-%COMP%]:#757581\" > {{textLength}} </span[_ngcontent-%COMP%] > <button[_ngcontent-%COMP%]   (click)=\"postComment()\"[_ngcontent-%COMP%]   class=\"btn[_ngcontent-%COMP%]   btn-primary[_ngcontent-%COMP%]   btn-sm[_ngcontent-%COMP%]   fb-color\"[_ngcontent-%COMP%]   type=\"button\"[_ngcontent-%COMP%]   [disabled]=\"commentForm.invalid\"[_ngcontent-%COMP%] > \u0E42\u0E1E\u0E2A</button[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > </form[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"row\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"col-lg-12[_ngcontent-%COMP%]   mt-5\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"post-content\"[_ngcontent-%COMP%] > <button[_ngcontent-%COMP%]   class=\"btn[_ngcontent-%COMP%]   btn-secondary[_ngcontent-%COMP%]   btn-sm[_ngcontent-%COMP%]   float-right\"[_ngcontent-%COMP%]   style=\"border-radius[_ngcontent-%COMP%]:   0px[_ngcontent-%COMP%];\"[_ngcontent-%COMP%] > reply</button[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"post-container\"[_ngcontent-%COMP%] > <img[_ngcontent-%COMP%]   src=\"https[_ngcontent-%COMP%]://bootdey.com/img/Content/avatar/avatar6.png\"   alt=\"user\"[_ngcontent-%COMP%]   class=\"profile-photo-md[_ngcontent-%COMP%]   pull-left\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"post-detail\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"user-info\"[_ngcontent-%COMP%] > <h5[_ngcontent-%COMP%] > <a[_ngcontent-%COMP%]   href=\"timeline.html\"[_ngcontent-%COMP%]   class=\"profile-link\"[_ngcontent-%COMP%] > Alexis[_ngcontent-%COMP%]   Clark</a[_ngcontent-%COMP%] > </h5[_ngcontent-%COMP%] > <p[_ngcontent-%COMP%]   class=\"text-muted\"[_ngcontent-%COMP%] > 3[_ngcontent-%COMP%]   mins[_ngcontent-%COMP%]   ago</p[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"line-divider\"[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"post-text\"[_ngcontent-%COMP%] > <p[_ngcontent-%COMP%] > Lorem[_ngcontent-%COMP%]   ipsum[_ngcontent-%COMP%]   dolor[_ngcontent-%COMP%]   sit[_ngcontent-%COMP%]   amet[_ngcontent-%COMP%], consectetur[_ngcontent-%COMP%]   adipiscing[_ngcontent-%COMP%]   elit[_ngcontent-%COMP%], sed[_ngcontent-%COMP%]   do[_ngcontent-%COMP%]   eiusmod[_ngcontent-%COMP%]   tempor[_ngcontent-%COMP%]   incididunt[_ngcontent-%COMP%]   ut[_ngcontent-%COMP%]   labore[_ngcontent-%COMP%]   et[_ngcontent-%COMP%]   dolore[_ngcontent-%COMP%]   magna[_ngcontent-%COMP%]   aliqua.[_ngcontent-%COMP%]   Ut[_ngcontent-%COMP%]   enim[_ngcontent-%COMP%]   ad[_ngcontent-%COMP%]   minim[_ngcontent-%COMP%]   veniam[_ngcontent-%COMP%], quis[_ngcontent-%COMP%]   nostrud[_ngcontent-%COMP%]   exercitation[_ngcontent-%COMP%]   ullamco[_ngcontent-%COMP%]   laboris[_ngcontent-%COMP%]   nisi[_ngcontent-%COMP%]   ut[_ngcontent-%COMP%]   aliquip[_ngcontent-%COMP%]   ex[_ngcontent-%COMP%]   ea[_ngcontent-%COMP%]   commodo[_ngcontent-%COMP%]   consequat.[_ngcontent-%COMP%]   Duis[_ngcontent-%COMP%]   aute[_ngcontent-%COMP%]   irure[_ngcontent-%COMP%]   dolor[_ngcontent-%COMP%]   in[_ngcontent-%COMP%]   reprehenderit[_ngcontent-%COMP%]   in[_ngcontent-%COMP%]   voluptate[_ngcontent-%COMP%]   velit[_ngcontent-%COMP%]   esse[_ngcontent-%COMP%]   cillum[_ngcontent-%COMP%]   dolore[_ngcontent-%COMP%]   eu[_ngcontent-%COMP%]   fugiat[_ngcontent-%COMP%]   nulla[_ngcontent-%COMP%]   pariatur.[_ngcontent-%COMP%]   Excepteur[_ngcontent-%COMP%]   sint[_ngcontent-%COMP%]   occaecat[_ngcontent-%COMP%]   cupidatat[_ngcontent-%COMP%]   non[_ngcontent-%COMP%]   proident[_ngcontent-%COMP%], sunt[_ngcontent-%COMP%]   in[_ngcontent-%COMP%]   culpa[_ngcontent-%COMP%]   qui[_ngcontent-%COMP%]   officia[_ngcontent-%COMP%]   deserunt[_ngcontent-%COMP%]   mollit[_ngcontent-%COMP%]   anim[_ngcontent-%COMP%]   id[_ngcontent-%COMP%]   est[_ngcontent-%COMP%]   laborum.[_ngcontent-%COMP%]   <i[_ngcontent-%COMP%]   class=\"em[_ngcontent-%COMP%]   em-anguished\"[_ngcontent-%COMP%] > </i[_ngcontent-%COMP%] > <i[_ngcontent-%COMP%]   class=\"em[_ngcontent-%COMP%]   em-anguished\"[_ngcontent-%COMP%] > </i[_ngcontent-%COMP%] > <i[_ngcontent-%COMP%]   class=\"em[_ngcontent-%COMP%]   em-anguished\"[_ngcontent-%COMP%] > </i[_ngcontent-%COMP%] > </p[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"line-divider\"[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"post-comment\"[_ngcontent-%COMP%] > <img[_ngcontent-%COMP%]   src=\"https[_ngcontent-%COMP%]://bootdey.com/img/Content/avatar/avatar7.png\"   alt=\"\"[_ngcontent-%COMP%]   class=\"profile-photo-sm\"[_ngcontent-%COMP%] > <p[_ngcontent-%COMP%] > <a[_ngcontent-%COMP%]   href=\"timeline.html\"[_ngcontent-%COMP%]   class=\"profile-link\"[_ngcontent-%COMP%] > Diana[_ngcontent-%COMP%]   </a[_ngcontent-%COMP%] > <i[_ngcontent-%COMP%]   class=\"em[_ngcontent-%COMP%]   em-laughing\"[_ngcontent-%COMP%] > </i[_ngcontent-%COMP%] > Lorem[_ngcontent-%COMP%]   ipsum[_ngcontent-%COMP%]   dolor[_ngcontent-%COMP%]   sit[_ngcontent-%COMP%]   amet[_ngcontent-%COMP%], consectetur[_ngcontent-%COMP%]   adipiscing[_ngcontent-%COMP%]   elit[_ngcontent-%COMP%], sed[_ngcontent-%COMP%]   do[_ngcontent-%COMP%]   eiusmod[_ngcontent-%COMP%]   tempor[_ngcontent-%COMP%]   incididunt[_ngcontent-%COMP%]   ut[_ngcontent-%COMP%]   labore[_ngcontent-%COMP%]   et[_ngcontent-%COMP%]   dolore[_ngcontent-%COMP%]   magna[_ngcontent-%COMP%]   aliqua.[_ngcontent-%COMP%]   Ut[_ngcontent-%COMP%]   enim[_ngcontent-%COMP%]   ad[_ngcontent-%COMP%]   minim[_ngcontent-%COMP%]   veniam[_ngcontent-%COMP%], quis[_ngcontent-%COMP%]   nostrud[_ngcontent-%COMP%]   </p[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"post-comment\"[_ngcontent-%COMP%] > <img[_ngcontent-%COMP%]   src=\"https[_ngcontent-%COMP%]://bootdey.com/img/Content/avatar/avatar1.png\"   alt=\"\"[_ngcontent-%COMP%]   class=\"profile-photo-sm\"[_ngcontent-%COMP%] > <p[_ngcontent-%COMP%] > <a[_ngcontent-%COMP%]   href=\"timeline.html\"[_ngcontent-%COMP%]   class=\"profile-link\"[_ngcontent-%COMP%] > John</a[_ngcontent-%COMP%] > Lorem[_ngcontent-%COMP%]   ipsum[_ngcontent-%COMP%]   dolor[_ngcontent-%COMP%]   sit[_ngcontent-%COMP%]   amet[_ngcontent-%COMP%], consectetur[_ngcontent-%COMP%]   adipiscing[_ngcontent-%COMP%]   elit[_ngcontent-%COMP%], sed[_ngcontent-%COMP%]   do[_ngcontent-%COMP%]   eiusmod[_ngcontent-%COMP%]   tempor[_ngcontent-%COMP%]   incididunt[_ngcontent-%COMP%]   ut[_ngcontent-%COMP%]   labore[_ngcontent-%COMP%]   et[_ngcontent-%COMP%]   dolore[_ngcontent-%COMP%]   magna[_ngcontent-%COMP%]   aliqua.[_ngcontent-%COMP%]   Ut[_ngcontent-%COMP%]   enim[_ngcontent-%COMP%]   ad[_ngcontent-%COMP%]   minim[_ngcontent-%COMP%]   veniam[_ngcontent-%COMP%], quis[_ngcontent-%COMP%]   nostrud[_ngcontent-%COMP%]   </p[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > <input[_ngcontent-%COMP%]   *ngIf=\"isLogin\"[_ngcontent-%COMP%]   type=\"text\"[_ngcontent-%COMP%]   class=\"form-control\"[_ngcontent-%COMP%]   style=\"outline[_ngcontent-%COMP%]:none   !important[_ngcontent-%COMP%];border-radius[_ngcontent-%COMP%]:   0px[_ngcontent-%COMP%];\" placeholder=\"\u0E41\u0E2A\u0E14\u0E07\u0E04\u0E27\u0E32\u0E21\u0E04\u0E34\u0E14\u0E40\u0E2B\u0E47\u0E19\">\n                    </div>\n                  </div>\n        </div>\n    </div>\n</div>"];
+exports.styles = styles;
+
+
+/***/ }),
+
+/***/ "./src/app/comment-box/comment-box.component.ngfactory.js":
+/*!****************************************************************!*\
+  !*** ./src/app/comment-box/comment-box.component.ngfactory.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * @fileoverview This file was generated by the Angular template compiler. Do not edit.
+ *
+ * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
+ * tslint:disable
+ */ 
+Object.defineProperty(exports, "__esModule", { value: true });
+var i0 = __webpack_require__(/*! ./comment-box.component.html.shim.ngstyle */ "./src/app/comment-box/comment-box.component.html.shim.ngstyle.js");
+var i1 = __webpack_require__(/*! @angular/core */ "@angular/core");
+var i2 = __webpack_require__(/*! @angular/forms */ "@angular/forms");
+var i3 = __webpack_require__(/*! @angular/common */ "@angular/common");
+var i4 = __webpack_require__(/*! ./comment-box.component */ "./src/app/comment-box/comment-box.component.ts");
+var i5 = __webpack_require__(/*! ../services/comment.service */ "./src/app/services/comment.service.ts");
+var i6 = __webpack_require__(/*! @angular/router */ "@angular/router");
+var i7 = __webpack_require__(/*! ../services/helper.service */ "./src/app/services/helper.service.ts");
+var i8 = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
+var styles_CommentBoxComponent = [i0.styles];
+var RenderType_CommentBoxComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_CommentBoxComponent, data: {} });
+exports.RenderType_CommentBoxComponent = RenderType_CommentBoxComponent;
+function View_CommentBoxComponent_1(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 4, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), i1.ɵeld(1, 0, null, null, 3, "div", [["class", "col-lg-12"]], null, null, null, null, null)), (_l()(), i1.ɵeld(2, 0, null, null, 2, "div", [["class", "col-lg-4 mx-auto"]], null, null, null, null, null)), (_l()(), i1.ɵeld(3, 0, null, null, 1, "button", [["class", "btn btn-primary fb-color"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+        var pd_0 = (_co.loginToComment() !== false);
+        ad = (pd_0 && ad);
+    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\u0E01\u0E23\u0E38\u0E13\u0E32\u0E25\u0E47\u0E2D\u0E01\u0E2D\u0E34\u0E19 \u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E41\u0E2A\u0E14\u0E07\u0E04\u0E27\u0E32\u0E21\u0E04\u0E34\u0E14\u0E40\u0E2B\u0E47\u0E19"]))], null, null); }
+function View_CommentBoxComponent_2(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 19, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), i1.ɵeld(1, 0, null, null, 18, "div", [["class", "col-lg-12"]], null, null, null, null, null)), (_l()(), i1.ɵeld(2, 0, null, null, 17, "div", [["class", "card-info"]], null, null, null, null, null)), (_l()(), i1.ɵeld(3, 0, null, null, 16, "div", [["class", "card-block"]], null, null, null, null, null)), (_l()(), i1.ɵeld(4, 0, null, null, 15, "form", [["novalidate", ""]], [[2, "ng-untouched", null], [2, "ng-touched", null], [2, "ng-pristine", null], [2, "ng-dirty", null], [2, "ng-valid", null], [2, "ng-invalid", null], [2, "ng-pending", null]], [[null, "submit"], [null, "reset"]], function (_v, en, $event) { var ad = true; if (("submit" === en)) {
+        var pd_0 = (i1.ɵnov(_v, 6).onSubmit($event) !== false);
+        ad = (pd_0 && ad);
+    } if (("reset" === en)) {
+        var pd_1 = (i1.ɵnov(_v, 6).onReset() !== false);
+        ad = (pd_1 && ad);
+    } return ad; }, null, null)), i1.ɵdid(5, 16384, null, 0, i2.ɵangular_packages_forms_forms_bh, [], null, null), i1.ɵdid(6, 540672, null, 0, i2.FormGroupDirective, [[8, null], [8, null]], { form: [0, "form"] }, null), i1.ɵprd(2048, null, i2.ControlContainer, null, [i2.FormGroupDirective]), i1.ɵdid(8, 16384, null, 0, i2.NgControlStatusGroup, [[4, i2.ControlContainer]], null, null), (_l()(), i1.ɵeld(9, 0, null, null, 5, "textarea", [["class", "pb-cmnt-textarea"], ["formControlName", "text"], ["placeholder", "\u0E41\u0E2A\u0E14\u0E07\u0E04\u0E27\u0E32\u0E21\u0E04\u0E34\u0E14\u0E40\u0E2B\u0E47\u0E19.."]], [[2, "ng-untouched", null], [2, "ng-touched", null], [2, "ng-pristine", null], [2, "ng-dirty", null], [2, "ng-valid", null], [2, "ng-invalid", null], [2, "ng-pending", null]], [[null, "input"], [null, "blur"], [null, "compositionstart"], [null, "compositionend"]], function (_v, en, $event) { var ad = true; if (("input" === en)) {
+        var pd_0 = (i1.ɵnov(_v, 10)._handleInput($event.target.value) !== false);
+        ad = (pd_0 && ad);
+    } if (("blur" === en)) {
+        var pd_1 = (i1.ɵnov(_v, 10).onTouched() !== false);
+        ad = (pd_1 && ad);
+    } if (("compositionstart" === en)) {
+        var pd_2 = (i1.ɵnov(_v, 10)._compositionStart() !== false);
+        ad = (pd_2 && ad);
+    } if (("compositionend" === en)) {
+        var pd_3 = (i1.ɵnov(_v, 10)._compositionEnd($event.target.value) !== false);
+        ad = (pd_3 && ad);
+    } return ad; }, null, null)), i1.ɵdid(10, 16384, null, 0, i2.DefaultValueAccessor, [i1.Renderer2, i1.ElementRef, [2, i2.COMPOSITION_BUFFER_MODE]], null, null), i1.ɵprd(1024, null, i2.NG_VALUE_ACCESSOR, function (p0_0) { return [p0_0]; }, [i2.DefaultValueAccessor]), i1.ɵdid(12, 671744, null, 0, i2.FormControlName, [[3, i2.ControlContainer], [8, null], [8, null], [6, i2.NG_VALUE_ACCESSOR], [2, i2.ɵangular_packages_forms_forms_k]], { name: [0, "name"] }, null), i1.ɵprd(2048, null, i2.NgControl, null, [i2.FormControlName]), i1.ɵdid(14, 16384, null, 0, i2.NgControlStatus, [[4, i2.NgControl]], null, null), (_l()(), i1.ɵeld(15, 0, null, null, 4, "div", [["class", "float-right"]], null, null, null, null, null)), (_l()(), i1.ɵeld(16, 0, null, null, 1, "span", [["style", "font-size:14px;margin-right:1rem;color:#757581"]], null, null, null, null, null)), (_l()(), i1.ɵted(17, null, ["", " "])), (_l()(), i1.ɵeld(18, 0, null, null, 1, "button", [["class", "btn btn-primary btn-sm fb-color"], ["type", "button"]], [[8, "disabled", 0]], [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+        var pd_0 = (_co.postComment() !== false);
+        ad = (pd_0 && ad);
+    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\u0E42\u0E1E\u0E2A"]))], function (_ck, _v) { var _co = _v.component; var currVal_7 = _co.commentForm; _ck(_v, 6, 0, currVal_7); var currVal_15 = "text"; _ck(_v, 12, 0, currVal_15); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = i1.ɵnov(_v, 8).ngClassUntouched; var currVal_1 = i1.ɵnov(_v, 8).ngClassTouched; var currVal_2 = i1.ɵnov(_v, 8).ngClassPristine; var currVal_3 = i1.ɵnov(_v, 8).ngClassDirty; var currVal_4 = i1.ɵnov(_v, 8).ngClassValid; var currVal_5 = i1.ɵnov(_v, 8).ngClassInvalid; var currVal_6 = i1.ɵnov(_v, 8).ngClassPending; _ck(_v, 4, 0, currVal_0, currVal_1, currVal_2, currVal_3, currVal_4, currVal_5, currVal_6); var currVal_8 = i1.ɵnov(_v, 14).ngClassUntouched; var currVal_9 = i1.ɵnov(_v, 14).ngClassTouched; var currVal_10 = i1.ɵnov(_v, 14).ngClassPristine; var currVal_11 = i1.ɵnov(_v, 14).ngClassDirty; var currVal_12 = i1.ɵnov(_v, 14).ngClassValid; var currVal_13 = i1.ɵnov(_v, 14).ngClassInvalid; var currVal_14 = i1.ɵnov(_v, 14).ngClassPending; _ck(_v, 9, 0, currVal_8, currVal_9, currVal_10, currVal_11, currVal_12, currVal_13, currVal_14); var currVal_16 = _co.textLength; _ck(_v, 17, 0, currVal_16); var currVal_17 = _co.commentForm.invalid; _ck(_v, 18, 0, currVal_17); }); }
+function View_CommentBoxComponent_3(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 0, "input", [["class", "form-control"], ["placeholder", "\u0E41\u0E2A\u0E14\u0E07\u0E04\u0E27\u0E32\u0E21\u0E04\u0E34\u0E14\u0E40\u0E2B\u0E47\u0E19"], ["style", "outline:none !important;border-radius: 0px;"], ["type", "text"]], null, null, null, null, null))], null, null); }
+function View_CommentBoxComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 41, "div", [["class", "container pb-cmnt-container"]], null, null, null, null, null)), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_CommentBoxComponent_1)), i1.ɵdid(2, 16384, null, 0, i3.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_CommentBoxComponent_2)), i1.ɵdid(4, 16384, null, 0, i3.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵeld(5, 0, null, null, 36, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), i1.ɵeld(6, 0, null, null, 35, "div", [["class", "col-lg-12 mt-5"]], null, null, null, null, null)), (_l()(), i1.ɵeld(7, 0, null, null, 34, "div", [["class", "post-content"]], null, null, null, null, null)), (_l()(), i1.ɵeld(8, 0, null, null, 1, "button", [["class", "btn btn-secondary btn-sm float-right"], ["style", "border-radius: 0px;"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["reply"])), (_l()(), i1.ɵeld(10, 0, null, null, 31, "div", [["class", "post-container"]], null, null, null, null, null)), (_l()(), i1.ɵeld(11, 0, null, null, 0, "img", [["alt", "user"], ["class", "profile-photo-md pull-left"], ["src", "https://bootdey.com/img/Content/avatar/avatar6.png"]], null, null, null, null, null)), (_l()(), i1.ɵeld(12, 0, null, null, 29, "div", [["class", "post-detail"]], null, null, null, null, null)), (_l()(), i1.ɵeld(13, 0, null, null, 5, "div", [["class", "user-info"]], null, null, null, null, null)), (_l()(), i1.ɵeld(14, 0, null, null, 2, "h5", [], null, null, null, null, null)), (_l()(), i1.ɵeld(15, 0, null, null, 1, "a", [["class", "profile-link"], ["href", "timeline.html"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["Alexis Clark"])), (_l()(), i1.ɵeld(17, 0, null, null, 1, "p", [["class", "text-muted"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["3 mins ago"])), (_l()(), i1.ɵeld(19, 0, null, null, 0, "div", [["class", "line-divider"]], null, null, null, null, null)), (_l()(), i1.ɵeld(20, 0, null, null, 5, "div", [["class", "post-text"]], null, null, null, null, null)), (_l()(), i1.ɵeld(21, 0, null, null, 4, "p", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. "])), (_l()(), i1.ɵeld(23, 0, null, null, 0, "i", [["class", "em em-anguished"]], null, null, null, null, null)), (_l()(), i1.ɵeld(24, 0, null, null, 0, "i", [["class", "em em-anguished"]], null, null, null, null, null)), (_l()(), i1.ɵeld(25, 0, null, null, 0, "i", [["class", "em em-anguished"]], null, null, null, null, null)), (_l()(), i1.ɵeld(26, 0, null, null, 0, "div", [["class", "line-divider"]], null, null, null, null, null)), (_l()(), i1.ɵeld(27, 0, null, null, 6, "div", [["class", "post-comment"]], null, null, null, null, null)), (_l()(), i1.ɵeld(28, 0, null, null, 0, "img", [["alt", ""], ["class", "profile-photo-sm"], ["src", "https://bootdey.com/img/Content/avatar/avatar7.png"]], null, null, null, null, null)), (_l()(), i1.ɵeld(29, 0, null, null, 4, "p", [], null, null, null, null, null)), (_l()(), i1.ɵeld(30, 0, null, null, 1, "a", [["class", "profile-link"], ["href", "timeline.html"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["Diana "])), (_l()(), i1.ɵeld(32, 0, null, null, 0, "i", [["class", "em em-laughing"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, [" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud "])), (_l()(), i1.ɵeld(34, 0, null, null, 5, "div", [["class", "post-comment"]], null, null, null, null, null)), (_l()(), i1.ɵeld(35, 0, null, null, 0, "img", [["alt", ""], ["class", "profile-photo-sm"], ["src", "https://bootdey.com/img/Content/avatar/avatar1.png"]], null, null, null, null, null)), (_l()(), i1.ɵeld(36, 0, null, null, 3, "p", [], null, null, null, null, null)), (_l()(), i1.ɵeld(37, 0, null, null, 1, "a", [["class", "profile-link"], ["href", "timeline.html"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["John"])), (_l()(), i1.ɵted(-1, null, [" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_CommentBoxComponent_3)), i1.ɵdid(41, 16384, null, 0, i3.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = !_co.isLogin; _ck(_v, 2, 0, currVal_0); var currVal_1 = _co.isLogin; _ck(_v, 4, 0, currVal_1); var currVal_2 = _co.isLogin; _ck(_v, 41, 0, currVal_2); }, null); }
+exports.View_CommentBoxComponent_0 = View_CommentBoxComponent_0;
+function View_CommentBoxComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-comment-box", [], null, null, null, View_CommentBoxComponent_0, RenderType_CommentBoxComponent)), i1.ɵdid(1, 114688, null, 0, i4.CommentBoxComponent, [i5.CommentService, i6.Router, i7.HelperService, i2.FormBuilder, i8.AuthService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+exports.View_CommentBoxComponent_Host_0 = View_CommentBoxComponent_Host_0;
+var CommentBoxComponentNgFactory = i1.ɵccf("app-comment-box", i4.CommentBoxComponent, View_CommentBoxComponent_Host_0, { url: "url" }, {}, []);
+exports.CommentBoxComponentNgFactory = CommentBoxComponentNgFactory;
+
+
+/***/ }),
+
+/***/ "./src/app/comment-box/comment-box.component.ts":
+/*!******************************************************!*\
+  !*** ./src/app/comment-box/comment-box.component.ts ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__(/*! @angular/core */ "@angular/core");
+var forms_1 = __webpack_require__(/*! @angular/forms */ "@angular/forms");
+var auth_service_1 = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
+var helper_service_1 = __webpack_require__(/*! ../services/helper.service */ "./src/app/services/helper.service.ts");
+var router_1 = __webpack_require__(/*! @angular/router */ "@angular/router");
+var comment_service_1 = __webpack_require__(/*! ../services/comment.service */ "./src/app/services/comment.service.ts");
+var CommentBoxComponent = /** @class */ (function () {
+    function CommentBoxComponent(comment, router, helper, form, auth) {
+        this.comment = comment;
+        this.router = router;
+        this.helper = helper;
+        this.form = form;
+        this.auth = auth;
+        this.textLength = 500;
+        this.isLogin = false;
+    }
+    CommentBoxComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.auth.isAuthenticated().subscribe(function (value) {
+            if (value) {
+                _this.userDetail = value;
+                _this.isLogin = true;
+            }
+            else {
+                _this.isLogin = false;
+            }
+        });
+        this.commentForm = this.form.group({
+            'text': new forms_1.FormControl('', forms_1.Validators.compose([forms_1.Validators.required, forms_1.Validators.maxLength(500)]))
+        });
+        this.commentForm.valueChanges.subscribe(function (value) {
+            if (value.text) {
+                _this.textLength = 500 - value.text.length;
+            }
+            else {
+                _this.textLength = 500;
+            }
+        });
+    };
+    CommentBoxComponent.prototype.postComment = function () {
+        var comment = JSON.stringify(this.commentForm.value.text);
+        this.comment.postComment({
+            article: this.url,
+            email: this.userDetail.email,
+            uid: this.userDetail.uid,
+            comment: comment,
+            timeStamp: Date.now()
+        }).then(function (result) {
+            console.log(result);
+        });
+    };
+    CommentBoxComponent.prototype.loginToComment = function () {
+        console.log(this.helper.getCurrentUrl());
+        this.router.navigateByUrl('/login?callback=' + this.helper.getCurrentUrl());
+    };
+    return CommentBoxComponent;
+}());
+exports.CommentBoxComponent = CommentBoxComponent;
+
+
+/***/ }),
+
+/***/ "./src/app/guard/admin.guard.ts":
+/*!**************************************!*\
+  !*** ./src/app/guard/admin.guard.ts ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var router_1 = __webpack_require__(/*! @angular/router */ "@angular/router");
+var map_1 = __webpack_require__(/*! rxjs/operators/map */ "rxjs/operators/map");
+var take_1 = __webpack_require__(/*! rxjs/operators/take */ "rxjs/operators/take");
+var auth_1 = __webpack_require__(/*! @angular/fire/auth */ "@angular/fire/auth");
+var i0 = __webpack_require__(/*! @angular/core */ "@angular/core");
+var i1 = __webpack_require__(/*! @angular/router */ "@angular/router");
+var i2 = __webpack_require__(/*! @angular/fire/auth */ "@angular/fire/auth");
+var AdminGuard = /** @class */ (function () {
+    function AdminGuard(router, auth) {
+        this.router = router;
+        this.auth = auth;
+    }
+    AdminGuard.prototype.canActivate = function () {
+        var _this = this;
+        return this.auth.authState.pipe(map_1.map(function (authState) {
+            if (!authState) {
+                _this.router.navigate(['/login']);
+            }
+            else {
+                if (authState.emailVerified) {
+                    return true;
+                }
+                else {
+                    _this.router.navigate(['']);
+                    return false;
+                }
+            }
+        }), take_1.take(1));
+    };
+    AdminGuard.ngInjectableDef = i0.defineInjectable({ factory: function AdminGuard_Factory() { return new AdminGuard(i0.inject(i1.Router), i0.inject(i2.AngularFireAuth)); }, token: AdminGuard, providedIn: "root" });
+    return AdminGuard;
+}());
+exports.AdminGuard = AdminGuard;
+
+
+/***/ }),
+
 /***/ "./src/app/guard/auth.guard.ts":
 /*!*************************************!*\
   !*** ./src/app/guard/auth.guard.ts ***!
@@ -1528,17 +1745,14 @@ exports.ArticleComponent = ArticleComponent;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var router_1 = __webpack_require__(/*! @angular/router */ "@angular/router");
-var auth_service_1 = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
 var map_1 = __webpack_require__(/*! rxjs/operators/map */ "rxjs/operators/map");
 var take_1 = __webpack_require__(/*! rxjs/operators/take */ "rxjs/operators/take");
 var auth_1 = __webpack_require__(/*! @angular/fire/auth */ "@angular/fire/auth");
 var i0 = __webpack_require__(/*! @angular/core */ "@angular/core");
-var i1 = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
-var i2 = __webpack_require__(/*! @angular/router */ "@angular/router");
-var i3 = __webpack_require__(/*! @angular/fire/auth */ "@angular/fire/auth");
+var i1 = __webpack_require__(/*! @angular/router */ "@angular/router");
+var i2 = __webpack_require__(/*! @angular/fire/auth */ "@angular/fire/auth");
 var AuthGuard = /** @class */ (function () {
-    function AuthGuard(authService, router, auth) {
-        this.authService = authService;
+    function AuthGuard(router, auth) {
         this.router = router;
         this.auth = auth;
     }
@@ -1553,7 +1767,7 @@ var AuthGuard = /** @class */ (function () {
             }
         }), take_1.take(1));
     };
-    AuthGuard.ngInjectableDef = i0.defineInjectable({ factory: function AuthGuard_Factory() { return new AuthGuard(i0.inject(i1.AuthService), i0.inject(i2.Router), i0.inject(i3.AngularFireAuth)); }, token: AuthGuard, providedIn: "root" });
+    AuthGuard.ngInjectableDef = i0.defineInjectable({ factory: function AuthGuard_Factory() { return new AuthGuard(i0.inject(i1.Router), i0.inject(i2.AngularFireAuth)); }, token: AuthGuard, providedIn: "root" });
     return AuthGuard;
 }());
 exports.AuthGuard = AuthGuard;
@@ -1572,17 +1786,14 @@ exports.AuthGuard = AuthGuard;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var router_1 = __webpack_require__(/*! @angular/router */ "@angular/router");
-var auth_service_1 = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
 var auth_1 = __webpack_require__(/*! @angular/fire/auth */ "@angular/fire/auth");
 var map_1 = __webpack_require__(/*! rxjs/operators/map */ "rxjs/operators/map");
 var take_1 = __webpack_require__(/*! rxjs/operators/take */ "rxjs/operators/take");
 var i0 = __webpack_require__(/*! @angular/core */ "@angular/core");
-var i1 = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
-var i2 = __webpack_require__(/*! @angular/router */ "@angular/router");
-var i3 = __webpack_require__(/*! @angular/fire/auth */ "@angular/fire/auth");
+var i1 = __webpack_require__(/*! @angular/router */ "@angular/router");
+var i2 = __webpack_require__(/*! @angular/fire/auth */ "@angular/fire/auth");
 var SecureInnerPagesGuard = /** @class */ (function () {
-    function SecureInnerPagesGuard(authService, router, auth) {
-        this.authService = authService;
+    function SecureInnerPagesGuard(router, auth) {
         this.router = router;
         this.auth = auth;
     }
@@ -1598,7 +1809,7 @@ var SecureInnerPagesGuard = /** @class */ (function () {
             }
         }), take_1.take(1));
     };
-    SecureInnerPagesGuard.ngInjectableDef = i0.defineInjectable({ factory: function SecureInnerPagesGuard_Factory() { return new SecureInnerPagesGuard(i0.inject(i1.AuthService), i0.inject(i2.Router), i0.inject(i3.AngularFireAuth)); }, token: SecureInnerPagesGuard, providedIn: "root" });
+    SecureInnerPagesGuard.ngInjectableDef = i0.defineInjectable({ factory: function SecureInnerPagesGuard_Factory() { return new SecureInnerPagesGuard(i0.inject(i1.Router), i0.inject(i2.AngularFireAuth)); }, token: SecureInnerPagesGuard, providedIn: "root" });
     return SecureInnerPagesGuard;
 }());
 exports.SecureInnerPagesGuard = SecureInnerPagesGuard;
@@ -1954,7 +2165,13 @@ var LoginComponent = /** @class */ (function () {
         this.isDisabledSubmitButton = true;
         this.Service.SignIn(this.form.value.email, this.form.value.password).then(function () {
             setTimeout(function () {
-                _this.router.navigate(['/']);
+                var postUrl = new URL(window.location.href).searchParams.get('callback');
+                if (postUrl) {
+                    _this.router.navigate(['article/' + postUrl]);
+                }
+                else {
+                    _this.router.navigate(['/']);
+                }
             }, 500);
         }).catch(function (e) {
             _this.buttonSubmit = 'เข้าสู่ระบบ';
@@ -2250,7 +2467,7 @@ var MarkdownEditorComponent = /** @class */ (function () {
             _this.contentService.loading(true);
         });
         this.auth.isAuthenticated().subscribe(function (value) {
-            if (value.emailVerified) {
+            if (value && value.emailVerified) {
                 _this.isAdmin = true;
             }
         });
@@ -2468,11 +2685,11 @@ exports.styles = styles;
 Object.defineProperty(exports, "__esModule", { value: true });
 var i0 = __webpack_require__(/*! ./navbar.component.css.shim.ngstyle */ "./src/app/navbar/navbar.component.css.shim.ngstyle.js");
 var i1 = __webpack_require__(/*! @angular/core */ "@angular/core");
-var i2 = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "@ng-bootstrap/ng-bootstrap");
+var i2 = __webpack_require__(/*! @angular/router */ "@angular/router");
 var i3 = __webpack_require__(/*! @angular/common */ "@angular/common");
-var i4 = __webpack_require__(/*! @angular/router */ "@angular/router");
-var i5 = __webpack_require__(/*! ../../../node_modules/angular-font-awesome/dist/angular-font-awesome.ngfactory */ "./node_modules/angular-font-awesome/dist/angular-font-awesome.ngfactory.js");
-var i6 = __webpack_require__(/*! angular-font-awesome */ "angular-font-awesome");
+var i4 = __webpack_require__(/*! ../../../node_modules/angular-font-awesome/dist/angular-font-awesome.ngfactory */ "./node_modules/angular-font-awesome/dist/angular-font-awesome.ngfactory.js");
+var i5 = __webpack_require__(/*! angular-font-awesome */ "angular-font-awesome");
+var i6 = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "@ng-bootstrap/ng-bootstrap");
 var i7 = __webpack_require__(/*! ng4-click-outside/lib/click-outside.directive */ "ng4-click-outside/lib/click-outside.directive");
 var i8 = __webpack_require__(/*! ./navbar.component */ "./src/app/navbar/navbar.component.ts");
 var i9 = __webpack_require__(/*! ../services/get-content.service */ "./src/app/services/get-content.service.ts");
@@ -2482,7 +2699,11 @@ var i12 = __webpack_require__(/*! @angular/fire/auth */ "@angular/fire/auth");
 var styles_NavbarComponent = [i0.styles];
 var RenderType_NavbarComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_NavbarComponent, data: {} });
 exports.RenderType_NavbarComponent = RenderType_NavbarComponent;
-function View_NavbarComponent_2(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 29, "li", [["class", "nav-item dropdown"], ["ngbDropdown", ""]], [[2, "show", null]], null, null, null, null)), i1.ɵdid(1, 737280, null, 3, i2.NgbDropdown, [i1.ChangeDetectorRef, i2.NgbDropdownConfig, i3.DOCUMENT, i1.NgZone, i1.ElementRef, i1.Renderer2], null, null), i1.ɵqud(335544320, 7, { _menu: 0 }), i1.ɵqud(335544320, 8, { _menuElement: 0 }), i1.ɵqud(335544320, 9, { _anchor: 0 }), (_l()(), i1.ɵeld(5, 0, null, null, 3, "a", [["aria-haspopup", "true"], ["class", "nav-link dropdown-toggle dropdown-toggle"], ["href", "javascript:void(0)"], ["id", "navClick"], ["ngbDropdownToggle", ""]], [[1, "aria-expanded", 0]], [[null, "click"], [null, "keydown.ArrowUp"], [null, "keydown.ArrowDown"], [null, "keydown.Home"], [null, "keydown.End"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
+function View_NavbarComponent_3(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 8, "a", [["class", "dropdown-item"], ["routerLinkActive", "active current"]], [[1, "target", 0], [8, "href", 4]], [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
+        var pd_0 = (i1.ɵnov(_v, 1).onClick($event.button, $event.ctrlKey, $event.metaKey, $event.shiftKey) !== false);
+        ad = (pd_0 && ad);
+    } return ad; }, null, null)), i1.ɵdid(1, 671744, [[8, 4]], 0, i2.RouterLinkWithHref, [i2.Router, i2.ActivatedRoute, i3.LocationStrategy], { routerLink: [0, "routerLink"] }, null), i1.ɵpad(2, 1), i1.ɵdid(3, 1720320, null, 2, i2.RouterLinkActive, [i2.Router, i1.ElementRef, i1.Renderer2, i1.ChangeDetectorRef], { routerLinkActive: [0, "routerLinkActive"] }, null), i1.ɵqud(603979776, 7, { links: 1 }), i1.ɵqud(603979776, 8, { linksWithHrefs: 1 }), (_l()(), i1.ɵted(-1, null, ["\u0E40\u0E02\u0E35\u0E22\u0E19\u0E1A\u0E17\u0E04\u0E27\u0E32\u0E21 "])), (_l()(), i1.ɵeld(7, 0, null, null, 1, "fa", [["name", "pencil"]], null, null, null, i4.View_AngularFontAwesomeComponent_0, i4.RenderType_AngularFontAwesomeComponent)), i1.ɵdid(8, 114688, null, 0, i5.AngularFontAwesomeComponent, [], { name: [0, "name"] }, null)], function (_ck, _v) { var currVal_2 = _ck(_v, 2, 0, "/post"); _ck(_v, 1, 0, currVal_2); var currVal_3 = "active current"; _ck(_v, 3, 0, currVal_3); var currVal_4 = "pencil"; _ck(_v, 8, 0, currVal_4); }, function (_ck, _v) { var currVal_0 = i1.ɵnov(_v, 1).target; var currVal_1 = i1.ɵnov(_v, 1).href; _ck(_v, 0, 0, currVal_0, currVal_1); }); }
+function View_NavbarComponent_2(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 22, "li", [["class", "nav-item dropdown"], ["ngbDropdown", ""]], [[2, "show", null]], null, null, null, null)), i1.ɵdid(1, 737280, null, 3, i6.NgbDropdown, [i1.ChangeDetectorRef, i6.NgbDropdownConfig, i3.DOCUMENT, i1.NgZone, i1.ElementRef, i1.Renderer2], null, null), i1.ɵqud(335544320, 3, { _menu: 0 }), i1.ɵqud(335544320, 4, { _menuElement: 0 }), i1.ɵqud(335544320, 5, { _anchor: 0 }), (_l()(), i1.ɵeld(5, 0, null, null, 3, "a", [["aria-haspopup", "true"], ["class", "nav-link dropdown-toggle dropdown-toggle"], ["href", "javascript:void(0)"], ["id", "navClick"], ["ngbDropdownToggle", ""]], [[1, "aria-expanded", 0]], [[null, "click"], [null, "keydown.ArrowUp"], [null, "keydown.ArrowDown"], [null, "keydown.Home"], [null, "keydown.End"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
         var pd_0 = (i1.ɵnov(_v, 6).toggleOpen() !== false);
         ad = (pd_0 && ad);
     } if (("keydown.ArrowUp" === en)) {
@@ -2497,7 +2718,7 @@ function View_NavbarComponent_2(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0
     } if (("keydown.End" === en)) {
         var pd_4 = (i1.ɵnov(_v, 6).dropdown.onKeyDown($event) !== false);
         ad = (pd_4 && ad);
-    } return ad; }, null, null)), i1.ɵdid(6, 16384, null, 0, i2.NgbDropdownToggle, [i2.NgbDropdown, i1.ElementRef], null, null), i1.ɵprd(2048, [[9, 4]], i2.NgbDropdownAnchor, null, [i2.NgbDropdownToggle]), (_l()(), i1.ɵted(8, null, ["", ""])), (_l()(), i1.ɵeld(9, 0, [[8, 0]], null, 20, "div", [["aria-labelledby", "navClick"], ["class", "dropdown-menu"], ["ngbDropdownMenu", ""]], [[2, "dropdown-menu", null], [2, "show", null], [1, "x-placement", 0]], [[null, "keydown.ArrowUp"], [null, "keydown.ArrowDown"], [null, "keydown.Home"], [null, "keydown.End"]], function (_v, en, $event) { var ad = true; if (("keydown.ArrowUp" === en)) {
+    } return ad; }, null, null)), i1.ɵdid(6, 16384, null, 0, i6.NgbDropdownToggle, [i6.NgbDropdown, i1.ElementRef], null, null), i1.ɵprd(2048, [[5, 4]], i6.NgbDropdownAnchor, null, [i6.NgbDropdownToggle]), (_l()(), i1.ɵted(8, null, ["", ""])), (_l()(), i1.ɵeld(9, 0, [[4, 0]], null, 13, "div", [["aria-labelledby", "navClick"], ["class", "dropdown-menu"], ["ngbDropdownMenu", ""]], [[2, "dropdown-menu", null], [2, "show", null], [1, "x-placement", 0]], [[null, "keydown.ArrowUp"], [null, "keydown.ArrowDown"], [null, "keydown.Home"], [null, "keydown.End"]], function (_v, en, $event) { var ad = true; if (("keydown.ArrowUp" === en)) {
         var pd_0 = (i1.ɵnov(_v, 10).dropdown.onKeyDown($event) !== false);
         ad = (pd_0 && ad);
     } if (("keydown.ArrowDown" === en)) {
@@ -2509,61 +2730,31 @@ function View_NavbarComponent_2(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0
     } if (("keydown.End" === en)) {
         var pd_3 = (i1.ɵnov(_v, 10).dropdown.onKeyDown($event) !== false);
         ad = (pd_3 && ad);
-    } return ad; }, null, null)), i1.ɵdid(10, 16384, [[7, 4]], 1, i2.NgbDropdownMenu, [i2.NgbDropdown], null, null), i1.ɵqud(603979776, 10, { menuItems: 1 }), (_l()(), i1.ɵeld(12, 0, null, null, 8, "a", [["class", "dropdown-item"], ["routerLinkActive", "active current"]], [[1, "target", 0], [8, "href", 4]], [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
-        var pd_0 = (i1.ɵnov(_v, 13).onClick($event.button, $event.ctrlKey, $event.metaKey, $event.shiftKey) !== false);
+    } return ad; }, null, null)), i1.ɵdid(10, 16384, [[3, 4]], 1, i6.NgbDropdownMenu, [i6.NgbDropdown], null, null), i1.ɵqud(603979776, 6, { menuItems: 1 }), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_NavbarComponent_3)), i1.ɵdid(13, 16384, null, 0, i3.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵeld(14, 0, null, null, 8, "a", [["class", "dropdown-item"], ["routerLinkActive", "active current"]], [[1, "target", 0], [8, "href", 4]], [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
+        var pd_0 = (i1.ɵnov(_v, 15).onClick($event.button, $event.ctrlKey, $event.metaKey, $event.shiftKey) !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), i1.ɵdid(13, 671744, [[12, 4]], 0, i4.RouterLinkWithHref, [i4.Router, i4.ActivatedRoute, i3.LocationStrategy], { routerLink: [0, "routerLink"] }, null), i1.ɵpad(14, 1), i1.ɵdid(15, 1720320, null, 2, i4.RouterLinkActive, [i4.Router, i1.ElementRef, i1.Renderer2, i1.ChangeDetectorRef], { routerLinkActive: [0, "routerLinkActive"] }, null), i1.ɵqud(603979776, 11, { links: 1 }), i1.ɵqud(603979776, 12, { linksWithHrefs: 1 }), (_l()(), i1.ɵted(-1, null, ["\u0E40\u0E02\u0E35\u0E22\u0E19\u0E1A\u0E17\u0E04\u0E27\u0E32\u0E21 "])), (_l()(), i1.ɵeld(19, 0, null, null, 1, "fa", [["name", "pencil"]], null, null, null, i5.View_AngularFontAwesomeComponent_0, i5.RenderType_AngularFontAwesomeComponent)), i1.ɵdid(20, 114688, null, 0, i6.AngularFontAwesomeComponent, [], { name: [0, "name"] }, null), (_l()(), i1.ɵeld(21, 0, null, null, 8, "a", [["class", "dropdown-item"], ["routerLinkActive", "active current"]], [[1, "target", 0], [8, "href", 4]], [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
-        var pd_0 = (i1.ɵnov(_v, 22).onClick($event.button, $event.ctrlKey, $event.metaKey, $event.shiftKey) !== false);
-        ad = (pd_0 && ad);
-    } return ad; }, null, null)), i1.ɵdid(22, 671744, [[14, 4]], 0, i4.RouterLinkWithHref, [i4.Router, i4.ActivatedRoute, i3.LocationStrategy], { routerLink: [0, "routerLink"] }, null), i1.ɵpad(23, 1), i1.ɵdid(24, 1720320, null, 2, i4.RouterLinkActive, [i4.Router, i1.ElementRef, i1.Renderer2, i1.ChangeDetectorRef], { routerLinkActive: [0, "routerLinkActive"] }, null), i1.ɵqud(603979776, 13, { links: 1 }), i1.ɵqud(603979776, 14, { linksWithHrefs: 1 }), (_l()(), i1.ɵted(-1, null, ["\u0E15\u0E31\u0E49\u0E07\u0E04\u0E48\u0E32\u0E42\u0E1B\u0E23\u0E44\u0E1F\u0E25\u0E4C "])), (_l()(), i1.ɵeld(28, 0, null, null, 1, "fa", [["name", "user"]], null, null, null, i5.View_AngularFontAwesomeComponent_0, i5.RenderType_AngularFontAwesomeComponent)), i1.ɵdid(29, 114688, null, 0, i6.AngularFontAwesomeComponent, [], { name: [0, "name"] }, null)], function (_ck, _v) { _ck(_v, 1, 0); var currVal_8 = _ck(_v, 14, 0, "/post"); _ck(_v, 13, 0, currVal_8); var currVal_9 = "active current"; _ck(_v, 15, 0, currVal_9); var currVal_10 = "pencil"; _ck(_v, 20, 0, currVal_10); var currVal_13 = _ck(_v, 23, 0, "/settings"); _ck(_v, 22, 0, currVal_13); var currVal_14 = "active current"; _ck(_v, 24, 0, currVal_14); var currVal_15 = "user"; _ck(_v, 29, 0, currVal_15); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = i1.ɵnov(_v, 1).isOpen(); _ck(_v, 0, 0, currVal_0); var currVal_1 = i1.ɵnov(_v, 6).dropdown.isOpen(); _ck(_v, 5, 0, currVal_1); var currVal_2 = _co.userEmail; _ck(_v, 8, 0, currVal_2); var currVal_3 = true; var currVal_4 = i1.ɵnov(_v, 10).dropdown.isOpen(); var currVal_5 = i1.ɵnov(_v, 10).placement; _ck(_v, 9, 0, currVal_3, currVal_4, currVal_5); var currVal_6 = i1.ɵnov(_v, 13).target; var currVal_7 = i1.ɵnov(_v, 13).href; _ck(_v, 12, 0, currVal_6, currVal_7); var currVal_11 = i1.ɵnov(_v, 22).target; var currVal_12 = i1.ɵnov(_v, 22).href; _ck(_v, 21, 0, currVal_11, currVal_12); }); }
-function View_NavbarComponent_3(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 9, "li", [["class", "nav-item"]], null, null, null, null, null)), (_l()(), i1.ɵeld(1, 0, null, null, 8, "a", [["class", "nav-link"], ["routerLinkActive", "active current"]], [[1, "target", 0], [8, "href", 4]], [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
+    } return ad; }, null, null)), i1.ɵdid(15, 671744, [[10, 4]], 0, i2.RouterLinkWithHref, [i2.Router, i2.ActivatedRoute, i3.LocationStrategy], { routerLink: [0, "routerLink"] }, null), i1.ɵpad(16, 1), i1.ɵdid(17, 1720320, null, 2, i2.RouterLinkActive, [i2.Router, i1.ElementRef, i1.Renderer2, i1.ChangeDetectorRef], { routerLinkActive: [0, "routerLinkActive"] }, null), i1.ɵqud(603979776, 9, { links: 1 }), i1.ɵqud(603979776, 10, { linksWithHrefs: 1 }), (_l()(), i1.ɵted(-1, null, ["\u0E15\u0E31\u0E49\u0E07\u0E04\u0E48\u0E32\u0E42\u0E1B\u0E23\u0E44\u0E1F\u0E25\u0E4C "])), (_l()(), i1.ɵeld(21, 0, null, null, 1, "fa", [["name", "user"]], null, null, null, i4.View_AngularFontAwesomeComponent_0, i4.RenderType_AngularFontAwesomeComponent)), i1.ɵdid(22, 114688, null, 0, i5.AngularFontAwesomeComponent, [], { name: [0, "name"] }, null)], function (_ck, _v) { var _co = _v.component; _ck(_v, 1, 0); var currVal_6 = _co.isAdmin; _ck(_v, 13, 0, currVal_6); var currVal_9 = _ck(_v, 16, 0, "/settings"); _ck(_v, 15, 0, currVal_9); var currVal_10 = "active current"; _ck(_v, 17, 0, currVal_10); var currVal_11 = "user"; _ck(_v, 22, 0, currVal_11); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = i1.ɵnov(_v, 1).isOpen(); _ck(_v, 0, 0, currVal_0); var currVal_1 = i1.ɵnov(_v, 6).dropdown.isOpen(); _ck(_v, 5, 0, currVal_1); var currVal_2 = _co.userEmail; _ck(_v, 8, 0, currVal_2); var currVal_3 = true; var currVal_4 = i1.ɵnov(_v, 10).dropdown.isOpen(); var currVal_5 = i1.ɵnov(_v, 10).placement; _ck(_v, 9, 0, currVal_3, currVal_4, currVal_5); var currVal_7 = i1.ɵnov(_v, 15).target; var currVal_8 = i1.ɵnov(_v, 15).href; _ck(_v, 14, 0, currVal_7, currVal_8); }); }
+function View_NavbarComponent_4(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 9, "li", [["class", "nav-item"]], null, null, null, null, null)), (_l()(), i1.ɵeld(1, 0, null, null, 8, "a", [["class", "nav-link"], ["routerLinkActive", "active current"]], [[1, "target", 0], [8, "href", 4]], [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
         var pd_0 = (i1.ɵnov(_v, 2).onClick($event.button, $event.ctrlKey, $event.metaKey, $event.shiftKey) !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), i1.ɵdid(2, 671744, [[16, 4]], 0, i4.RouterLinkWithHref, [i4.Router, i4.ActivatedRoute, i3.LocationStrategy], { routerLink: [0, "routerLink"] }, null), i1.ɵpad(3, 1), i1.ɵdid(4, 1720320, null, 2, i4.RouterLinkActive, [i4.Router, i1.ElementRef, i1.Renderer2, i1.ChangeDetectorRef], { routerLinkActive: [0, "routerLinkActive"] }, null), i1.ɵqud(603979776, 15, { links: 1 }), i1.ɵqud(603979776, 16, { linksWithHrefs: 1 }), (_l()(), i1.ɵted(-1, null, ["\u0E40\u0E02\u0E49\u0E32\u0E2A\u0E39\u0E48\u0E23\u0E30\u0E1A\u0E1A "])), (_l()(), i1.ɵeld(8, 0, null, null, 1, "fa", [["name", "sign-in"]], null, null, null, i5.View_AngularFontAwesomeComponent_0, i5.RenderType_AngularFontAwesomeComponent)), i1.ɵdid(9, 114688, null, 0, i6.AngularFontAwesomeComponent, [], { name: [0, "name"] }, null)], function (_ck, _v) { var currVal_2 = _ck(_v, 3, 0, "/login"); _ck(_v, 2, 0, currVal_2); var currVal_3 = "active current"; _ck(_v, 4, 0, currVal_3); var currVal_4 = "sign-in"; _ck(_v, 9, 0, currVal_4); }, function (_ck, _v) { var currVal_0 = i1.ɵnov(_v, 2).target; var currVal_1 = i1.ɵnov(_v, 2).href; _ck(_v, 1, 0, currVal_0, currVal_1); }); }
-function View_NavbarComponent_4(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 4, "li", [["class", "nav-item"]], null, null, null, null, null)), (_l()(), i1.ɵeld(1, 0, null, null, 3, "a", [["class", "nav-link"], ["href", "javascript:void(0)"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+    } return ad; }, null, null)), i1.ɵdid(2, 671744, [[12, 4]], 0, i2.RouterLinkWithHref, [i2.Router, i2.ActivatedRoute, i3.LocationStrategy], { routerLink: [0, "routerLink"] }, null), i1.ɵpad(3, 1), i1.ɵdid(4, 1720320, null, 2, i2.RouterLinkActive, [i2.Router, i1.ElementRef, i1.Renderer2, i1.ChangeDetectorRef], { routerLinkActive: [0, "routerLinkActive"] }, null), i1.ɵqud(603979776, 11, { links: 1 }), i1.ɵqud(603979776, 12, { linksWithHrefs: 1 }), (_l()(), i1.ɵted(-1, null, ["\u0E40\u0E02\u0E49\u0E32\u0E2A\u0E39\u0E48\u0E23\u0E30\u0E1A\u0E1A "])), (_l()(), i1.ɵeld(8, 0, null, null, 1, "fa", [["name", "sign-in"]], null, null, null, i4.View_AngularFontAwesomeComponent_0, i4.RenderType_AngularFontAwesomeComponent)), i1.ɵdid(9, 114688, null, 0, i5.AngularFontAwesomeComponent, [], { name: [0, "name"] }, null)], function (_ck, _v) { var currVal_2 = _ck(_v, 3, 0, "/login"); _ck(_v, 2, 0, currVal_2); var currVal_3 = "active current"; _ck(_v, 4, 0, currVal_3); var currVal_4 = "sign-in"; _ck(_v, 9, 0, currVal_4); }, function (_ck, _v) { var currVal_0 = i1.ɵnov(_v, 2).target; var currVal_1 = i1.ɵnov(_v, 2).href; _ck(_v, 1, 0, currVal_0, currVal_1); }); }
+function View_NavbarComponent_5(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 4, "li", [["class", "nav-item"]], null, null, null, null, null)), (_l()(), i1.ɵeld(1, 0, null, null, 3, "a", [["class", "nav-link"], ["href", "javascript:void(0)"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
         var pd_0 = (_co.signOut() !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\u0E2D\u0E2D\u0E01\u0E08\u0E32\u0E01\u0E23\u0E30\u0E1A\u0E1A "])), (_l()(), i1.ɵeld(3, 0, null, null, 1, "fa", [["name", "sign-out"]], null, null, null, i5.View_AngularFontAwesomeComponent_0, i5.RenderType_AngularFontAwesomeComponent)), i1.ɵdid(4, 114688, null, 0, i6.AngularFontAwesomeComponent, [], { name: [0, "name"] }, null)], function (_ck, _v) { var currVal_0 = "sign-out"; _ck(_v, 4, 0, currVal_0); }, null); }
-function View_NavbarComponent_1(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 45, "nav", [["class", "navbar navbar-expand-md navbar-dark bg-dark fixed-top"], ["id", "navbar"]], null, null, null, null, null)), (_l()(), i1.ɵeld(1, 0, null, null, 3, "a", [["class", "navbar-brand"]], [[1, "target", 0], [8, "href", 4]], [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
+    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\u0E2D\u0E2D\u0E01\u0E08\u0E32\u0E01\u0E23\u0E30\u0E1A\u0E1A "])), (_l()(), i1.ɵeld(3, 0, null, null, 1, "fa", [["name", "sign-out"]], null, null, null, i4.View_AngularFontAwesomeComponent_0, i4.RenderType_AngularFontAwesomeComponent)), i1.ɵdid(4, 114688, null, 0, i5.AngularFontAwesomeComponent, [], { name: [0, "name"] }, null)], function (_ck, _v) { var currVal_0 = "sign-out"; _ck(_v, 4, 0, currVal_0); }, null); }
+function View_NavbarComponent_1(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 25, "nav", [["class", "navbar navbar-expand-md navbar-dark bg-dark fixed-top"], ["id", "navbar"]], null, null, null, null, null)), (_l()(), i1.ɵeld(1, 0, null, null, 3, "a", [["class", "navbar-brand"]], [[1, "target", 0], [8, "href", 4]], [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
         var pd_0 = (i1.ɵnov(_v, 2).onClick($event.button, $event.ctrlKey, $event.metaKey, $event.shiftKey) !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), i1.ɵdid(2, 671744, null, 0, i4.RouterLinkWithHref, [i4.Router, i4.ActivatedRoute, i3.LocationStrategy], { routerLink: [0, "routerLink"] }, null), i1.ɵpad(3, 1), (_l()(), i1.ɵted(-1, null, ["BLOG"])), (_l()(), i1.ɵeld(5, 0, null, null, 1, "button", [["aria-controls", "navbarsDefault"], ["aria-expanded", "false"], ["aria-label", "Toggle navigation"], ["class", "navbar-toggler hidden-sm-up"], ["type", "button"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+    } return ad; }, null, null)), i1.ɵdid(2, 671744, null, 0, i2.RouterLinkWithHref, [i2.Router, i2.ActivatedRoute, i3.LocationStrategy], { routerLink: [0, "routerLink"] }, null), i1.ɵpad(3, 1), (_l()(), i1.ɵted(-1, null, ["BLOG"])), (_l()(), i1.ɵeld(5, 0, null, null, 1, "button", [["aria-controls", "navbarsDefault"], ["aria-expanded", "false"], ["aria-label", "Toggle navigation"], ["class", "navbar-toggler hidden-sm-up"], ["type", "button"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
         var pd_0 = (_co.showNav() !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), (_l()(), i1.ɵeld(6, 0, null, null, 0, "span", [["class", "navbar-toggler-icon"]], null, null, null, null, null)), (_l()(), i1.ɵeld(7, 0, null, null, 38, "div", [["class", "collapse navbar-collapse"]], [[2, "collapse", null], [2, "show", null]], null, null, null, null)), i1.ɵdid(8, 16384, null, 0, i2.NgbCollapse, [], { collapsed: [0, "collapsed"] }, null), (_l()(), i1.ɵeld(9, 0, null, null, 29, "ul", [["class", "navbar-nav mr-auto"]], null, [[null, "clickOutside"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("clickOutside" === en)) {
+    } return ad; }, null, null)), (_l()(), i1.ɵeld(6, 0, null, null, 0, "span", [["class", "navbar-toggler-icon"]], null, null, null, null, null)), (_l()(), i1.ɵeld(7, 0, null, null, 18, "div", [["class", "collapse navbar-collapse"]], [[2, "collapse", null], [2, "show", null]], null, null, null, null)), i1.ɵdid(8, 16384, null, 0, i6.NgbCollapse, [], { collapsed: [0, "collapsed"] }, null), (_l()(), i1.ɵeld(9, 0, null, null, 9, "ul", [["class", "navbar-nav mr-auto"]], null, [[null, "clickOutside"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("clickOutside" === en)) {
         var pd_0 = (_co.onClickedOutside($event) !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), i1.ɵdid(10, 737280, null, 0, i7.ClickOutsideDirective, [i1.ElementRef, i1.PLATFORM_ID], null, { clickOutside: "clickOutside" }), (_l()(), i1.ɵeld(11, 0, null, null, 19, "li", [["class", "nav-item dropdown"], ["ngbDropdown", ""]], [[2, "show", null]], null, null, null, null)), i1.ɵdid(12, 737280, null, 3, i2.NgbDropdown, [i1.ChangeDetectorRef, i2.NgbDropdownConfig, i3.DOCUMENT, i1.NgZone, i1.ElementRef, i1.Renderer2], null, null), i1.ɵqud(335544320, 1, { _menu: 0 }), i1.ɵqud(335544320, 2, { _menuElement: 0 }), i1.ɵqud(335544320, 3, { _anchor: 0 }), (_l()(), i1.ɵeld(16, 0, null, null, 3, "a", [["aria-haspopup", "true"], ["class", "nav-link dropdown-toggle dropdown-toggle"], ["href", "javascript:void(0)"], ["id", "navClick"], ["ngbDropdownToggle", ""]], [[1, "aria-expanded", 0]], [[null, "click"], [null, "keydown.ArrowUp"], [null, "keydown.ArrowDown"], [null, "keydown.Home"], [null, "keydown.End"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
-        var pd_0 = (i1.ɵnov(_v, 17).toggleOpen() !== false);
+    } return ad; }, null, null)), i1.ɵdid(10, 737280, null, 0, i7.ClickOutsideDirective, [i1.ElementRef, i1.PLATFORM_ID], null, { clickOutside: "clickOutside" }), (_l()(), i1.ɵeld(11, 0, null, null, 7, "li", [["class", "nav-item"]], null, null, null, null, null)), (_l()(), i1.ɵeld(12, 0, null, null, 6, "a", [["class", "nav-link"], ["routerLinkActive", "active current"]], [[1, "target", 0], [8, "href", 4]], [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
+        var pd_0 = (i1.ɵnov(_v, 13).onClick($event.button, $event.ctrlKey, $event.metaKey, $event.shiftKey) !== false);
         ad = (pd_0 && ad);
-    } if (("keydown.ArrowUp" === en)) {
-        var pd_1 = (i1.ɵnov(_v, 17).dropdown.onKeyDown($event) !== false);
-        ad = (pd_1 && ad);
-    } if (("keydown.ArrowDown" === en)) {
-        var pd_2 = (i1.ɵnov(_v, 17).dropdown.onKeyDown($event) !== false);
-        ad = (pd_2 && ad);
-    } if (("keydown.Home" === en)) {
-        var pd_3 = (i1.ɵnov(_v, 17).dropdown.onKeyDown($event) !== false);
-        ad = (pd_3 && ad);
-    } if (("keydown.End" === en)) {
-        var pd_4 = (i1.ɵnov(_v, 17).dropdown.onKeyDown($event) !== false);
-        ad = (pd_4 && ad);
-    } return ad; }, null, null)), i1.ɵdid(17, 16384, null, 0, i2.NgbDropdownToggle, [i2.NgbDropdown, i1.ElementRef], null, null), i1.ɵprd(2048, [[3, 4]], i2.NgbDropdownAnchor, null, [i2.NgbDropdownToggle]), (_l()(), i1.ɵted(-1, null, ["\u0E2B\u0E21\u0E27\u0E14\u0E2B\u0E21\u0E39\u0E48\u0E1A\u0E17\u0E04\u0E27\u0E32\u0E21"])), (_l()(), i1.ɵeld(20, 0, [[2, 0]], null, 10, "div", [["aria-labelledby", "navClick"], ["class", "dropdown-menu"], ["ngbDropdownMenu", ""]], [[2, "dropdown-menu", null], [2, "show", null], [1, "x-placement", 0]], [[null, "keydown.ArrowUp"], [null, "keydown.ArrowDown"], [null, "keydown.Home"], [null, "keydown.End"]], function (_v, en, $event) { var ad = true; if (("keydown.ArrowUp" === en)) {
-        var pd_0 = (i1.ɵnov(_v, 21).dropdown.onKeyDown($event) !== false);
-        ad = (pd_0 && ad);
-    } if (("keydown.ArrowDown" === en)) {
-        var pd_1 = (i1.ɵnov(_v, 21).dropdown.onKeyDown($event) !== false);
-        ad = (pd_1 && ad);
-    } if (("keydown.Home" === en)) {
-        var pd_2 = (i1.ɵnov(_v, 21).dropdown.onKeyDown($event) !== false);
-        ad = (pd_2 && ad);
-    } if (("keydown.End" === en)) {
-        var pd_3 = (i1.ɵnov(_v, 21).dropdown.onKeyDown($event) !== false);
-        ad = (pd_3 && ad);
-    } return ad; }, null, null)), i1.ɵdid(21, 16384, [[1, 4]], 1, i2.NgbDropdownMenu, [i2.NgbDropdown], null, null), i1.ɵqud(603979776, 4, { menuItems: 1 }), (_l()(), i1.ɵeld(23, 0, null, null, 1, "a", [["class", "dropdown-item"], ["href", "#"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["JavaScript"])), (_l()(), i1.ɵeld(25, 0, null, null, 1, "a", [["class", "dropdown-item"], ["href", "#"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["Angular"])), (_l()(), i1.ɵeld(27, 0, null, null, 1, "a", [["class", "dropdown-item"], ["href", "#"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["BlockChain"])), (_l()(), i1.ɵeld(29, 0, null, null, 1, "a", [["class", "dropdown-item"], ["href", "#"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\u0E17\u0E31\u0E48\u0E27\u0E44\u0E1B"])), (_l()(), i1.ɵeld(31, 0, null, null, 7, "li", [["class", "nav-item"]], null, null, null, null, null)), (_l()(), i1.ɵeld(32, 0, null, null, 6, "a", [["class", "nav-link"], ["routerLinkActive", "active current"]], [[1, "target", 0], [8, "href", 4]], [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
-        var pd_0 = (i1.ɵnov(_v, 33).onClick($event.button, $event.ctrlKey, $event.metaKey, $event.shiftKey) !== false);
-        ad = (pd_0 && ad);
-    } return ad; }, null, null)), i1.ɵdid(33, 671744, [[6, 4]], 0, i4.RouterLinkWithHref, [i4.Router, i4.ActivatedRoute, i3.LocationStrategy], { routerLink: [0, "routerLink"] }, null), i1.ɵpad(34, 1), i1.ɵdid(35, 1720320, null, 2, i4.RouterLinkActive, [i4.Router, i1.ElementRef, i1.Renderer2, i1.ChangeDetectorRef], { routerLinkActive: [0, "routerLinkActive"] }, null), i1.ɵqud(603979776, 5, { links: 1 }), i1.ɵqud(603979776, 6, { linksWithHrefs: 1 }), (_l()(), i1.ɵted(-1, null, ["\u0E40\u0E01\u0E35\u0E48\u0E22\u0E27\u0E01\u0E31\u0E1A"])), (_l()(), i1.ɵeld(39, 0, null, null, 6, "ul", [["class", "nav navbar-nav navbar-right"]], null, null, null, null, null)), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_NavbarComponent_2)), i1.ɵdid(41, 16384, null, 0, i3.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_NavbarComponent_3)), i1.ɵdid(43, 16384, null, 0, i3.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_NavbarComponent_4)), i1.ɵdid(45, 16384, null, 0, i3.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_2 = _ck(_v, 3, 0, ""); _ck(_v, 2, 0, currVal_2); var currVal_5 = _co.isNavbarCollapsed; _ck(_v, 8, 0, currVal_5); _ck(_v, 10, 0); _ck(_v, 12, 0); var currVal_13 = _ck(_v, 34, 0, "/about"); _ck(_v, 33, 0, currVal_13); var currVal_14 = "active current"; _ck(_v, 35, 0, currVal_14); var currVal_15 = _co.isLogIn; _ck(_v, 41, 0, currVal_15); var currVal_16 = !_co.isLogIn; _ck(_v, 43, 0, currVal_16); var currVal_17 = _co.isLogIn; _ck(_v, 45, 0, currVal_17); }, function (_ck, _v) { var currVal_0 = i1.ɵnov(_v, 2).target; var currVal_1 = i1.ɵnov(_v, 2).href; _ck(_v, 1, 0, currVal_0, currVal_1); var currVal_3 = true; var currVal_4 = !i1.ɵnov(_v, 8).collapsed; _ck(_v, 7, 0, currVal_3, currVal_4); var currVal_6 = i1.ɵnov(_v, 12).isOpen(); _ck(_v, 11, 0, currVal_6); var currVal_7 = i1.ɵnov(_v, 17).dropdown.isOpen(); _ck(_v, 16, 0, currVal_7); var currVal_8 = true; var currVal_9 = i1.ɵnov(_v, 21).dropdown.isOpen(); var currVal_10 = i1.ɵnov(_v, 21).placement; _ck(_v, 20, 0, currVal_8, currVal_9, currVal_10); var currVal_11 = i1.ɵnov(_v, 33).target; var currVal_12 = i1.ɵnov(_v, 33).href; _ck(_v, 32, 0, currVal_11, currVal_12); }); }
+    } return ad; }, null, null)), i1.ɵdid(13, 671744, [[2, 4]], 0, i2.RouterLinkWithHref, [i2.Router, i2.ActivatedRoute, i3.LocationStrategy], { routerLink: [0, "routerLink"] }, null), i1.ɵpad(14, 1), i1.ɵdid(15, 1720320, null, 2, i2.RouterLinkActive, [i2.Router, i1.ElementRef, i1.Renderer2, i1.ChangeDetectorRef], { routerLinkActive: [0, "routerLinkActive"] }, null), i1.ɵqud(603979776, 1, { links: 1 }), i1.ɵqud(603979776, 2, { linksWithHrefs: 1 }), (_l()(), i1.ɵted(-1, null, ["\u0E40\u0E01\u0E35\u0E48\u0E22\u0E27\u0E01\u0E31\u0E1A"])), (_l()(), i1.ɵeld(19, 0, null, null, 6, "ul", [["class", "nav navbar-nav navbar-right"]], null, null, null, null, null)), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_NavbarComponent_2)), i1.ɵdid(21, 16384, null, 0, i3.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_NavbarComponent_4)), i1.ɵdid(23, 16384, null, 0, i3.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_NavbarComponent_5)), i1.ɵdid(25, 16384, null, 0, i3.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_2 = _ck(_v, 3, 0, ""); _ck(_v, 2, 0, currVal_2); var currVal_5 = _co.isNavbarCollapsed; _ck(_v, 8, 0, currVal_5); _ck(_v, 10, 0); var currVal_8 = _ck(_v, 14, 0, "/about"); _ck(_v, 13, 0, currVal_8); var currVal_9 = "active current"; _ck(_v, 15, 0, currVal_9); var currVal_10 = _co.isLogIn; _ck(_v, 21, 0, currVal_10); var currVal_11 = !_co.isLogIn; _ck(_v, 23, 0, currVal_11); var currVal_12 = _co.isLogIn; _ck(_v, 25, 0, currVal_12); }, function (_ck, _v) { var currVal_0 = i1.ɵnov(_v, 2).target; var currVal_1 = i1.ɵnov(_v, 2).href; _ck(_v, 1, 0, currVal_0, currVal_1); var currVal_3 = true; var currVal_4 = !i1.ɵnov(_v, 8).collapsed; _ck(_v, 7, 0, currVal_3, currVal_4); var currVal_6 = i1.ɵnov(_v, 13).target; var currVal_7 = i1.ɵnov(_v, 13).href; _ck(_v, 12, 0, currVal_6, currVal_7); }); }
 function View_NavbarComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵand(16777216, null, null, 1, null, View_NavbarComponent_1)), i1.ɵdid(1, 16384, null, 0, i3.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.navLoading; _ck(_v, 1, 0, currVal_0); }, null); }
 exports.View_NavbarComponent_0 = View_NavbarComponent_0;
 function View_NavbarComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-navbar", [], null, null, null, View_NavbarComponent_0, RenderType_NavbarComponent)), i1.ɵdid(1, 114688, null, 0, i8.NavbarComponent, [i9.GetContentService, i10.NavService, i11.AuthService, i12.AngularFireAuth], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
@@ -2597,6 +2788,7 @@ var NavbarComponent = /** @class */ (function () {
         this.auth = auth;
         this.isNavbarCollapsed = true;
         this.isLogIn = false;
+        this.isAdmin = false;
         this.userEmail = '';
         this.navLoading = false;
         this.navBar = new core_1.EventEmitter();
@@ -2620,6 +2812,12 @@ var NavbarComponent = /** @class */ (function () {
             if (user) {
                 _this.userEmail = user.email;
                 _this.isLogIn = true;
+                if (user.emailVerified) {
+                    _this.isAdmin = true;
+                }
+                else {
+                    _this.isAdmin = false;
+                }
             }
             else {
                 _this.userEmail = '';
@@ -2920,6 +3118,89 @@ exports.AuthService = AuthService;
 
 /***/ }),
 
+/***/ "./src/app/services/comment.service.ts":
+/*!*********************************************!*\
+  !*** ./src/app/services/comment.service.ts ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var firestore_1 = __webpack_require__(/*! @angular/fire/firestore */ "@angular/fire/firestore");
+var i0 = __webpack_require__(/*! @angular/core */ "@angular/core");
+var i1 = __webpack_require__(/*! @angular/fire/firestore */ "@angular/fire/firestore");
+var CommentService = /** @class */ (function () {
+    function CommentService(afs) {
+        this.afs = afs;
+    }
+    CommentService.prototype.postComment = function (data) {
+        return __awaiter(this, void 0, void 0, function () {
+            var commentData, contentRef;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        commentData = {
+                            article: data.article,
+                            email: data.email,
+                            uid: data.uid,
+                            comment: data.comment,
+                            timeStamp: data.timeStamp
+                        };
+                        console.log(commentData);
+                        contentRef = this.afs.collection('post').doc(data.article).collection('comment');
+                        return [4 /*yield*/, contentRef.add(commentData)];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    CommentService.prototype.getComment = function (data) {
+    };
+    CommentService.ngInjectableDef = i0.defineInjectable({ factory: function CommentService_Factory() { return new CommentService(i0.inject(i1.AngularFirestore)); }, token: CommentService, providedIn: "root" });
+    return CommentService;
+}());
+exports.CommentService = CommentService;
+
+
+/***/ }),
+
 /***/ "./src/app/services/get-content.service.ts":
 /*!*************************************************!*\
   !*** ./src/app/services/get-content.service.ts ***!
@@ -3062,6 +3343,35 @@ var GetContentService = /** @class */ (function () {
     return GetContentService;
 }());
 exports.GetContentService = GetContentService;
+
+
+/***/ }),
+
+/***/ "./src/app/services/helper.service.ts":
+/*!********************************************!*\
+  !*** ./src/app/services/helper.service.ts ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var common_1 = __webpack_require__(/*! @angular/common */ "@angular/common");
+var i0 = __webpack_require__(/*! @angular/core */ "@angular/core");
+var i1 = __webpack_require__(/*! @angular/common */ "@angular/common");
+var HelperService = /** @class */ (function () {
+    function HelperService(location) {
+        this.location = location;
+    }
+    HelperService.prototype.getCurrentUrl = function () {
+        var currentUrl = decodeURI(this.location.path()).split('/');
+        return currentUrl[currentUrl.length - 1].split('?')[0];
+    };
+    HelperService.ngInjectableDef = i0.defineInjectable({ factory: function HelperService_Factory() { return new HelperService(i0.inject(i1.Location)); }, token: HelperService, providedIn: "root" });
+    return HelperService;
+}());
+exports.HelperService = HelperService;
 
 
 /***/ }),
@@ -3736,17 +4046,6 @@ module.exports = require("ng4-click-outside/lib/click-outside.module");
 /***/ (function(module, exports) {
 
 module.exports = require("ngx-markdown");
-
-/***/ }),
-
-/***/ "preboot":
-/*!**************************!*\
-  !*** external "preboot" ***!
-  \**************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("preboot");
 
 /***/ }),
 

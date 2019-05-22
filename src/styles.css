@@ -17,6 +17,74 @@
   margin: 0;
   min-height: 100vh;
  }
+
+
+ .post-content{
+  width: 100%;
+  margin-bottom: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.post-content .post-container{
+  padding: 20px;
+}
+
+.post-content .post-container .post-detail{
+  margin-left: 65px;
+  position: relative;
+}
+
+.post-content .post-container .post-detail .post-text{
+  line-height: 24px;
+  margin: 0;
+}
+
+.post-content .post-container .post-detail .post-comment{
+  display: inline-flex;
+  margin: 10px auto;
+  width: 100%;
+}
+.post-container {
+  border: 1px solid #f2f2f2;
+}
+
+.post-content .post-container .post-detail .post-comment img.profile-photo-sm{
+  margin-right: 10px;
+}
+
+img.profile-photo-md {
+    height: 50px !important;
+    width: 50px !important;
+    border-radius: 50%;
+}
+
+img.profile-photo-sm {
+    height: 40px !important;
+    width: 40px !important;
+    border-radius: 50%;
+}
+
+
+ .pb-cmnt-container {
+  margin-top: 100px;
+  position: relative;
+  bottom: 0;
+  margin-bottom: 20px;
+}
+
+.pb-cmnt-textarea {
+  resize: none;
+  padding: 20px;
+  outline: none;
+  height: 130px;
+  width: 100%;
+  border: 1px solid #F2F2F2;
+}
+
+ .shadow {
+  box-shadow: 0 0px 10px rgba(0,0,0,.25);
+ }
  .card {
   box-shadow: 0 0px 10px rgba(0,0,0,.25);
   border: 0px;
@@ -37,6 +105,14 @@
 .ng-invalid.ng-touched {
   border-color:#ffeeba;
 }
+
+
+.fb-color {
+  border-radius: 0 !important;
+  background-color: #4267b2 !important;
+  border-color: #4267b2 !important;
+}
+
 
 img {
   width: 100% !important;

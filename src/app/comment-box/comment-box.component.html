@@ -1,0 +1,54 @@
+<div class="container pb-cmnt-container">
+  <div *ngIf="!isLogin" class="row">
+    <div class="col-lg-12">
+      <div class="col-lg-4 mx-auto">
+        <button (click)="loginToComment()" class="btn btn-primary fb-color">กรุณาล็อกอิน เพื่อแสดงความคิดเห็น</button>
+      </div>
+    </div>
+  </div>
+    <div *ngIf="isLogin" class="row">
+        <div class="col-lg-12">
+            <div class="card-info">
+                <div class="card-block">
+                  <form [formGroup]="commentForm">
+                    <textarea formControlName="text" placeholder="แสดงความคิดเห็น.." class="pb-cmnt-textarea"></textarea>
+                    <div class="float-right">
+                      <span style="font-size:14px;margin-right:1rem;color:#757581">{{textLength}} </span>
+                      <button (click)="postComment()" class="btn btn-primary btn-sm fb-color" type="button" [disabled]="commentForm.invalid">โพส</button>
+                    </div>
+                  </form>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 mt-5">
+                <div class="post-content">
+                  <button class="btn btn-secondary btn-sm float-right" style="border-radius: 0px;">reply</button>
+                  <div class="post-container">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="user" class="profile-photo-md pull-left">
+                    <div class="post-detail">
+                      <div class="user-info">
+                        <h5><a href="timeline.html" class="profile-link">Alexis Clark</a></h5>
+                        <p class="text-muted">3 mins ago</p>
+                      </div>
+                      <div class="line-divider"></div>
+                      <div class="post-text">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i class="em em-anguished"></i></p>
+                      </div>
+                      <div class="line-divider"></div>
+                      <div class="post-comment">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" class="profile-photo-sm">
+                        <p><a href="timeline.html" class="profile-link">Diana </a><i class="em em-laughing"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
+                      </div>
+                      <div class="post-comment">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="profile-photo-sm">
+                        <p><a href="timeline.html" class="profile-link">John</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
+                      </div>
+
+                      <input *ngIf="isLogin"  type="text" class="form-control" style="outline:none !important;border-radius: 0px;" placeholder="แสดงความคิดเห็น">
+                    </div>
+                  </div>
+        </div>
+    </div>
+</div>

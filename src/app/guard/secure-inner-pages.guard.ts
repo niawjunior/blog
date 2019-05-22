@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router} from '@angular/router';
+import { CanActivate, Router} from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from '../services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { map } from 'rxjs/operators/map';
 import { take } from 'rxjs/operators/take';
@@ -10,7 +9,7 @@ import { take } from 'rxjs/operators/take';
   providedIn: 'root'
 })
 export class SecureInnerPagesGuard implements CanActivate {
-  constructor(  public authService: AuthService, public router: Router, private auth: AngularFireAuth) {
+  constructor(public router: Router, private auth: AngularFireAuth) {
   }
   canActivate(): Observable<boolean> {
     return this.auth.authState.pipe(

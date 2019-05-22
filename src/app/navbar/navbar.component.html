@@ -5,7 +5,7 @@
   </button>
   <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto" (clickOutside)="onClickedOutside($event)">
-      <li class="nav-item dropdown" ngbDropdown>
+      <!-- <li class="nav-item dropdown" ngbDropdown>
         <a class="nav-link dropdown-toggle" id="navClick" href="javascript:void(0)" ngbDropdownToggle>หมวดหมู่บทความ</a>
         <div class="dropdown-menu" aria-labelledby="navClick" ngbDropdownMenu>
           <a class="dropdown-item" href="#">JavaScript</a>
@@ -13,7 +13,7 @@
           <a class="dropdown-item" href="#">BlockChain</a>
           <a class="dropdown-item" href="#">ทั่วไป</a>
         </div>
-      </li>
+      </li> -->
       <li class="nav-item">
           <a class="nav-link" [routerLink]="['/about']" routerLinkActive="active current"  >เกี่ยวกับ</a>
       </li>
@@ -22,7 +22,7 @@
         <li *ngIf="isLogIn" class="nav-item dropdown" ngbDropdown>
             <a class="nav-link dropdown-toggle" id="navClick" href="javascript:void(0)" ngbDropdownToggle>{{ userEmail }}</a>
             <div class="dropdown-menu" aria-labelledby="navClick" ngbDropdownMenu>
-              <a class="dropdown-item" [routerLink]="['/post']" routerLinkActive="active current">เขียนบทความ <fa name="pencil"></fa></a>
+              <a *ngIf="isAdmin" class="dropdown-item" [routerLink]="['/post']" routerLinkActive="active current">เขียนบทความ <fa name="pencil"></fa></a>
               <a class="dropdown-item" [routerLink]="['/settings']" routerLinkActive="active current">ตั้งค่าโปรไฟล์ <fa name="user"></fa></a>
             </div>
           </li>

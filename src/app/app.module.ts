@@ -1,5 +1,6 @@
-import { BrowserModule, Title, BrowserTransferStateModule} from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule, Title} from '@angular/platform-browser';
+import { NgModule, PLATFORM_ID, APP_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -31,6 +32,7 @@ import { ClickOutsideModule } from 'ng4-click-outside';
 import { AngularMarkdownEditorModule } from 'angular-markdown-editor';
 import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 import { MarkdownEditorComponent } from './markdown-editor/markdown-editor.component';
+import { CommentBoxComponent } from './comment-box/comment-box.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,10 +46,11 @@ import { MarkdownEditorComponent } from './markdown-editor/markdown-editor.compo
     RegisterComponent,
     SettingsComponent,
     SafeHtmlPipe,
+    CommentBoxComponent,
     MarkdownEditorComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'ng-blog' }),
     BrowserAnimationsModule,
     NgbModule,
     NgbPaginationModule,
@@ -82,11 +85,16 @@ import { MarkdownEditorComponent } from './markdown-editor/markdown-editor.compo
         },
       },
     }),
-    BrowserTransferStateModule,
   ],
   providers: [Title, AuthService, { provide: StorageBucket, useValue: 'blog-40f93.appspot.com'}],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-
+  constructor(
+    @Inject(PLATFORM_ID) public platformId: Object,
+    @Inject(APP_ID) public appId: string) {
+    const platform = isPlatformBrowser(platformId) ?
+    'on the server' : 'in the browser';
+    // console.log(`Running ${platform} with appId=${appId}`);
+    }
 }

@@ -1,4 +1,4 @@
-<div *ngIf="loadingContent" class="row article" style="box-shadow: 0 0px 10px rgba(0,0,0,.25);">
+<div *ngIf="loadingContent" class="row article shadow fill">
     <div class="col-sm-12 mx-auto">
         <h1 class="text-center" style="margin-bottom: 20px;">{{ head }}</h1>
 
@@ -6,7 +6,7 @@
       <p class="text-center">{{ postDate }}</p>
         <markdown [data]="article"></markdown>
     </div>
-    <div class="col-sm-12 mb-3">
+    <div class="col-sm-12">
         <div class="share-button">
           <share-button [theme]="'circles-dark'"
             [button]="'facebook'"
@@ -15,5 +15,7 @@
             [autoSetMeta]="false"
             ></share-button>
         </div>
+        <app-comment-box [url]="getUrl"></app-comment-box>
       </div>
- </div>
+    </div>
+

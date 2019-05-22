@@ -9,7 +9,7 @@ import { Content } from './content';
 export class UploadContentService {
   constructor(
     private storage: AngularFireStorage,
-    public afs: AngularFirestore
+    private afs: AngularFirestore
     ) { }
 
    async uploadImage(file) {

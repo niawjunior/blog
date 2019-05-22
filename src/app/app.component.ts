@@ -6,7 +6,6 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 import { SeoService } from './services/seo.service';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

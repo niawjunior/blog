@@ -37,7 +37,12 @@ export class LoginComponent implements OnInit {
     this.isDisabledSubmitButton = true;
     this.Service.SignIn(this.form.value.email, this.form.value.password).then(() => {
     setTimeout(() => {
-      this.router.navigate(['/']);
+      const postUrl = new URL(window.location.href).searchParams.get('callback');
+      if (postUrl) {
+        this.router.navigate(['article/' + postUrl]);
+      } else {
+        this.router.navigate(['/']);
+      }
     }, 500);
     }).catch(e => {
       this.buttonSubmit = 'เข้าสู่ระบบ';
