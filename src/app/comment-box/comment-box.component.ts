@@ -13,8 +13,11 @@ export class CommentBoxComponent implements OnInit {
   textLength = 500;
   isLogin = false;
   userDetail;
+  userComment;
   @Input() url: any;
   commentForm: FormGroup;
+  isDisabledComment =  false;
+  imageDefault = 'https://firebasestorage.googleapis.com/v0/b/blog-40f93.appspot.com/o/631929649c.png?alt=media&token=aacc8ea5-13e0-4cbb-adb3-1a83a2f2b1c6';
   constructor(
     private comment: CommentService,
     private router: Router,
@@ -23,6 +26,8 @@ export class CommentBoxComponent implements OnInit {
     private auth: AuthService) { }
 
   ngOnInit() {
+    this.getComment();
+
     this.auth.isAuthenticated().subscribe(value => {
       if (value) {
         this.userDetail = value;
@@ -43,15 +48,28 @@ export class CommentBoxComponent implements OnInit {
     });
   }
   postComment() {
-    const comment = JSON.stringify(this.commentForm.value.text);
+    this.isDisabledComment = true;
+    const comment = this.commentForm.value.text;
     this.comment.postComment({
       article: this.url,
       email: this.userDetail.email,
       uid: this.userDetail.uid,
       comment: comment,
       timeStamp: Date.now()
-    }).then(result => {
-      console.log(result);
+    }).then(() => {
+      this.commentForm.controls['text'].setValue('');
+      this.commentForm.controls['text'].markAsUntouched();
+      this.isDisabledComment = false;
+      this.getComment();
+    }).catch(() => {
+      this.isDisabledComment = false;
+    });
+  }
+  getComment() {
+    this.comment.getComment(this.url).then(value => {
+        value.subscribe(result => {
+        this.userComment = result;
+      });
     });
   }
   loginToComment() {

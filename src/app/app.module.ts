@@ -33,6 +33,7 @@ import { AngularMarkdownEditorModule } from 'angular-markdown-editor';
 import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 import { MarkdownEditorComponent } from './markdown-editor/markdown-editor.component';
 import { CommentBoxComponent } from './comment-box/comment-box.component';
+import { TimeAgoPipe } from './time-ago.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +47,7 @@ import { CommentBoxComponent } from './comment-box/comment-box.component';
     RegisterComponent,
     SettingsComponent,
     SafeHtmlPipe,
+    TimeAgoPipe,
     CommentBoxComponent,
     MarkdownEditorComponent
   ],
