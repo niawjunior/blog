@@ -15,7 +15,9 @@
   background: #ffffff;
   margin: 0;
  }
-
+ .token.operator {
+   background: none !important;
+ }
 
  .post-content{
   width: 100%;

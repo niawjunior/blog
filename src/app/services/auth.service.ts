@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from './user';
+import { User } from './model/user';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
@@ -25,9 +25,7 @@ export class AuthService {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.contentService.loading(true);
-        this.SetUserData(result.user).then((user) => {
-          return user;
-        });
+        return result;
       }).catch((error) => {
         this.contentService.loading(true);
         throw error.message;
@@ -52,6 +50,8 @@ export class AuthService {
     const userData: User = {
       uid: user.uid,
       email: user.email,
+      website: '',
+      bio: '',
       displayName: user.displayName,
       photoURL: user.photoURL,
       emailVerified: user.emailVerified
@@ -69,5 +69,5 @@ export class AuthService {
   }
   isAuthenticated(): Observable<any> {
     return this.afAuth.authState;
-}
+  }
 }

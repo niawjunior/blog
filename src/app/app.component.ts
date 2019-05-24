@@ -6,6 +6,7 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 import { SeoService } from './services/seo.service';
+import { NavService } from './services/nav.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit {
     private contentService: GetContentService,
     private activatedRoute: ActivatedRoute,
     private seo: SeoService,
+    private navService: NavService,
     private cdr: ChangeDetectorRef
     ) {
   }
@@ -38,6 +40,8 @@ export class AppComponent implements OnInit {
     .filter((event) => event instanceof NavigationEnd)
     .map(() => this.activatedRoute)
     .map((route) => {
+      this.navService.checkNav(true);
+      this.contentService.loading(false);
       this.navLoading = false;
       this.cdr.detectChanges();
       while (route.firstChild) { route = route.firstChild; }

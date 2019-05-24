@@ -1,0 +1,43 @@
+<div class="container pb-cmnt-container">
+  <div *ngIf="!isLogin" class="row">
+    <div class="col-lg-12">
+      <div class="col-lg-4 mx-auto text-center">
+        <button (click)="loginToComment()" class="btn btn-primary fb-color">กรุณาล็อกอิน เพื่อแสดงความคิดเห็น</button>
+      </div>
+    </div>
+  </div>
+    <div *ngIf="isLogin" class="row">
+        <div class="col-lg-12">
+            <div class="card-info">
+                <div class="card-block">
+                  <form [formGroup]="commentForm">
+                    <textarea formControlName="text" placeholder="แสดงความคิดเห็น.." class="pb-cmnt-textarea"></textarea>
+                    <div class="float-right">
+                      <span style="font-size:14px;margin-right:1rem;color:#757581">{{textLength}} </span>
+                      <button (click)="postComment()" class="btn btn-primary btn-sm fb-color" type="button" [disabled]="commentForm.invalid || isDisabledComment">โพส <span *ngIf="isDisabledComment" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                      </button>
+                    </div>
+                  </form>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 mt-5" style="max-height: 500px;overflow: auto;">
+          <div class="post-content" *ngFor="let comment of userComment">
+              <div class="post-container" style="word-break: break-word;">
+                <img [src]="images || imageDefault" alt="user" class="profile-photo-md pull-left">
+                <div class="post-detail">
+                  <div class="user-info">
+                    <h5>{{ comment.name || 'ไม่ระบุชื่อ' }}</h5>
+                    <p class="text-muted">{{ comment.timeStamp | timeAgo}}</p>
+                  </div>
+                  <div class="line-divider"></div>
+                  <div class="post-text">
+                    <p>{{ comment.comment}}</p>
+                  </div>
+                </div>
+              </div>
+          </div>
+    </div>
+</div>

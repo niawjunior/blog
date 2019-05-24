@@ -1,0 +1,10 @@
+.card {
+  padding: 2rem;
+}
+.imgProfile {
+  width:100px !important;
+  height:100px !important;
+  border-radius: 50% !important;
+  object-fit: cover;
+  max-width: 100% !important;
+}

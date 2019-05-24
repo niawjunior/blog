@@ -1,0 +1,32 @@
+<div class="col-md-6 mx-auto">
+    <div class="card">
+      <form [formGroup]="form">
+        <div class="form-group text-center">
+            <img class="imgProfile" [src]="imageProfile" alt="">
+        </div>
+        <div class="form-group text-center">
+          <button style="border-radius: 5px;" onclick="document.getElementById('file').click()"><i class="fa fa-image"> </i> เลือกรูปภาพ</button>
+        <input (change)="change($event)" accept="image/*" style="display: none;" name="file" id="file" type="file" class="form-control" aria-describedby="basic-addon2">
+        </div>
+        <div class="form-group">
+          <label for="email">อีเมล</label>
+          <input type="email" name="email" formControlName="email" class="form-control" placeholder="email">
+        </div>
+        <div class="form-group">
+            <label for="name">ชื่อ</label>
+            <input type="text" name="name" formControlName="displayName" class="form-control" placeholder="name">
+          </div>
+        <div class="form-group">
+            <label for="website">เว็บไซต์</label>
+            <input type="text" name="website" formControlName="website" class="form-control" placeholder="web site">
+        </div>
+        <div class="form-group">
+            <label for="bio">คำอธิบายเกี่ยวกับตัวคุณ สั้นๆ</label>
+            <input type="text" name="bio" formControlName="bio" class="form-control" placeholder="bio">
+        </div>
+        <div class="form-group">
+          <button (click)="update()" class="btn btn-outline-secondary btn-block" [disabled]="isDisabledSubmitButton">บันทึก <span *ngIf="isDisabledSubmitButton" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> <fa *ngIf="!isDisabledSubmitButton" name="save"></fa></button>
+        </div>
+      </form>
+    </div>
+  </div>
