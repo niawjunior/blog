@@ -51,47 +51,58 @@ export class SettingsComponent implements OnInit {
     });
     this.contentService.loadNav.emit(true);
   }
-
+  setUser(data) {
+    this.isDisabledSubmitButton = true;
+    this.profile.setUser({
+      bio: data.bio,
+      displayName: data.displayName,
+      uid: data.uid,
+      photoURL: data.photoURL,
+      website: data.website
+    }).then(() => {
+      Swal.fire({
+        title: 'อัพเดทสำเร็จ',
+        type: 'success'
+      }).then(() => {
+        this.isDisabledSubmitButton = false;
+      });
+    }).catch(() => {
+      console.log('error');
+      this.isDisabledSubmitButton = false;
+    });
+  }
   update() {
     this.isDisabledSubmitButton = true;
     const uploadImage = this.imageProfile === this.defaultImg ? '' : this.imageProfile;
-
-    if (uploadImage && !/[firebasestorage]/g.test(uploadImage)) {
-      this.profile.uploadImage(this.userDetail.uid, uploadImage).then(url => {
-        this.profile.setUser({
+    if (uploadImage) {
+      if (/\/firebasestorage/g.test(uploadImage)) {
+        this.setUser({
           bio: this.form.value.bio,
           displayName: this.form.value.displayName,
           uid: this.userDetail.uid,
-          photoURL: url,
+          photoURL: this.imageProfile,
           website: this.form.value.website
-        }).then(() => {
-          Swal.fire({
-            title: 'อัพเดทสำเร็จ',
-            type: 'success'
-          }).then(() => {
-            this.isDisabledSubmitButton = false;
+        });
+      } else {
+        this.profile.uploadImage(this.userDetail.uid, uploadImage).then(url => {
+          this.setUser({
+            bio: this.form.value.bio,
+            displayName: this.form.value.displayName,
+            uid: this.userDetail.uid,
+            photoURL: url,
+            website: this.form.value.website
           });
         }).catch(() => {
           this.isDisabledSubmitButton = false;
         });
-      }).catch(() => {
-        this.isDisabledSubmitButton = false;
-      });
+      }
     } else {
-      this.profile.setUser({
+      this.setUser({
         bio: this.form.value.bio,
         displayName: this.form.value.displayName,
-        photoURL: uploadImage,
+        photoURL: uploadImage || '',
         uid: this.userDetail.uid,
         website: this.form.value.website
-      }).then(() => {
-        Swal.fire({
-          title: 'อัพเดทสำเร็จ',
-          type: 'success'
-        }).then(() => {
-          this.isDisabledSubmitButton = false;
-        });      }).catch(() => {
-        this.isDisabledSubmitButton = false;
       });
     }
   }

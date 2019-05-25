@@ -26,15 +26,15 @@
         <div class="col-lg-12 mt-5" style="max-height: 500px;overflow: auto;">
           <div class="post-content" *ngFor="let comment of userComment">
               <div class="post-container" style="word-break: break-word;">
-                <img [src]="images || imageDefault" alt="user" class="profile-photo-md pull-left">
+                <img [src]="comment.user.photoURL || imageDefault" alt="user" class="profile-photo-md pull-left">
                 <div class="post-detail">
                   <div class="user-info">
-                    <h5>{{ comment.name || 'ไม่ระบุชื่อ' }}</h5>
-                    <p class="text-muted">{{ comment.timeStamp | timeAgo}}</p>
+                    <h5>{{ comment.user.displayName || 'ไม่ระบุชื่อ' }}</h5>
+                    <p class="text-muted">{{ comment.comment.timeStamp | timeAgo}}</p>
                   </div>
                   <div class="line-divider"></div>
                   <div class="post-text">
-                    <p>{{ comment.comment}}</p>
+                      <p>{{ comment.comment.comment}}</p>
                   </div>
                 </div>
               </div>

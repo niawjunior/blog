@@ -21,12 +21,10 @@ export class CommentService {
     const contentRef = this.afs.collection('post').doc(data.article).collection('comment');
     return await contentRef.add(commentData);
   }
-  async getComment(url) {
-    const itemsCollection = this.afs.collection<Comment>('post').doc(url).collection('comment', ref => ref.orderBy('timeStamp', 'desc'));
-    return await itemsCollection.valueChanges().pipe(take(1));
-  }
-
-
+    async getComment(url) {
+      const itemsCollection = this.afs.collection<Comment>('post').doc(url).collection('comment', ref => ref.orderBy('timeStamp', 'desc'));
+      return await itemsCollection.valueChanges().pipe(take(1));
+    }
   // async get() {
   //   const data = [];
   //   await this.afs.collection('post').get().toPromise()

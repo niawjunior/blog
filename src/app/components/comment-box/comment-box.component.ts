@@ -4,6 +4,8 @@ import { AuthService } from '../../services/auth.service';
 import { HelperService } from '../../services/helper.service';
 import { Router } from '@angular/router';
 import { CommentService } from '../../services/comment.service';
+import { ProfileService } from '../../services/profile.service';
+import { userInfo } from 'os';
 @Component({
   selector: 'app-comment-box',
   templateUrl: './comment-box.component.html',
@@ -13,7 +15,7 @@ export class CommentBoxComponent implements OnInit {
   textLength = 500;
   isLogin = false;
   userDetail;
-  userComment;
+  userComment = [];
   @Input() url: any;
   commentForm: FormGroup;
   isDisabledComment =  false;
@@ -23,6 +25,7 @@ export class CommentBoxComponent implements OnInit {
     private comment: CommentService,
     private router: Router,
     private helper: HelperService,
+    private profile: ProfileService,
     private form: FormBuilder,
     private auth: AuthService) { }
 
@@ -67,14 +70,21 @@ export class CommentBoxComponent implements OnInit {
     });
   }
   getComment() {
+    this.userComment = [];
     this.comment.getComment(this.url).then(value => {
         value.subscribe(result => {
-        this.userComment = result;
+        result.forEach(item => {
+          this.profile.getUser(item.uid).subscribe(user => {
+            this.userComment.push({
+              comment: item,
+              user: user.data()
+            });
+          });
+        });
       });
     });
   }
   loginToComment() {
-    console.log(this.helper.getCurrentUrl());
     this.router.navigateByUrl('/login?callback=' + this.helper.getCurrentUrl());
   }
 }
