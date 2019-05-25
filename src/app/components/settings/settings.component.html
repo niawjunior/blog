@@ -3,10 +3,11 @@
       <form [formGroup]="form">
         <div class="form-group text-center">
             <img class="imgProfile" [src]="imageProfile" alt="">
-        </div>
-        <div class="form-group text-center">
-          <button style="border-radius: 5px;" onclick="document.getElementById('file').click()"><i class="fa fa-image"> </i> เลือกรูปภาพ</button>
-        <input (change)="change($event)" accept="image/*" style="display: none;" name="file" id="file" type="file" class="form-control" aria-describedby="basic-addon2">
+          </div>
+          <div class="form-group text-center">
+            <button style="border-radius: 5px;" onclick="document.getElementById('file').click()"><i class="fa fa-image"> </i> เลือกรูปภาพ</button>
+            <input (change)="change($event)" accept="image/*" style="display: none;" name="file" id="file" type="file" class="form-control" aria-describedby="basic-addon2">
+            <p class="text-muted mt-2">ขนาดไม่เกิน 200 KB</p>
         </div>
         <div class="form-group">
           <label for="email">อีเมล</label>

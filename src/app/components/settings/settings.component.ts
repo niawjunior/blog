@@ -67,8 +67,12 @@ export class SettingsComponent implements OnInit {
         this.isDisabledSubmitButton = false;
       });
     }).catch(() => {
-      console.log('error');
-      this.isDisabledSubmitButton = false;
+      Swal.fire({
+        title: 'อัพเดทไม่สำเร็จ',
+        type: 'error'
+      }).then(() => {
+        this.isDisabledSubmitButton = false;
+      });
     });
   }
   update() {
@@ -93,7 +97,12 @@ export class SettingsComponent implements OnInit {
             website: this.form.value.website
           });
         }).catch(() => {
-          this.isDisabledSubmitButton = false;
+          Swal.fire({
+            title: 'อัพโหลดรูปภาพไม่สำเร็จ',
+            type: 'error'
+          }).then(() => {
+            this.isDisabledSubmitButton = false;
+          });
         });
       }
     } else {
