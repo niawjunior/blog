@@ -5,6 +5,7 @@ import { HelperService } from '../../services/helper.service';
 import { AuthService } from '../../services/auth.service';
 import { ProfileService } from '../../services/profile.service';
 import { UploadContentService } from '../../services/upload-content.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-settings',
@@ -53,35 +54,46 @@ export class SettingsComponent implements OnInit {
 
   update() {
     this.isDisabledSubmitButton = true;
-    console.log('hello');
-    // const uploadImage = this.imageProfile === this.defaultImg ? '' : this.imageProfile;
-    // if (uploadImage) {
-    //   this.profile.uploadImage(this.userDetail.uid, uploadImage).then(url => {
-    //     this.profile.setUser({
-    //       bio: this.form.value.bio,
-    //       displayName: this.form.value.displayName,
-    //       uid: this.userDetail.uid,
-    //       photoURL: url,
-    //       website: this.form.value.website
-    //     }).then(() => {
-    //       this.isDisabledSubmitButton = false;
-    //     }).catch(() => {
-    //       this.isDisabledSubmitButton = false;
-    //     });
-    //   }).catch(() => {
-    //     this.isDisabledSubmitButton = false;
-    //   });
-    // } else {
-    //   this.profile.setUser({
-    //     bio: this.form.value.bio,
-    //     displayName: this.form.value.displayName,
-    //     photoURL: '',
-    //     uid: this.userDetail.uid,
-    //     website: this.form.value.website
-    //   }).then(() => {
-    //     this.isDisabledSubmitButton = false;
-    //   });
-    // }
+    const uploadImage = this.imageProfile === this.defaultImg ? '' : this.imageProfile;
+
+    if (uploadImage && !/[firebasestorage]/g.test(uploadImage)) {
+      this.profile.uploadImage(this.userDetail.uid, uploadImage).then(url => {
+        this.profile.setUser({
+          bio: this.form.value.bio,
+          displayName: this.form.value.displayName,
+          uid: this.userDetail.uid,
+          photoURL: url,
+          website: this.form.value.website
+        }).then(() => {
+          Swal.fire({
+            title: 'อัพเดทสำเร็จ',
+            type: 'success'
+          }).then(() => {
+            this.isDisabledSubmitButton = false;
+          });
+        }).catch(() => {
+          this.isDisabledSubmitButton = false;
+        });
+      }).catch(() => {
+        this.isDisabledSubmitButton = false;
+      });
+    } else {
+      this.profile.setUser({
+        bio: this.form.value.bio,
+        displayName: this.form.value.displayName,
+        photoURL: uploadImage,
+        uid: this.userDetail.uid,
+        website: this.form.value.website
+      }).then(() => {
+        Swal.fire({
+          title: 'อัพเดทสำเร็จ',
+          type: 'success'
+        }).then(() => {
+          this.isDisabledSubmitButton = false;
+        });      }).catch(() => {
+        this.isDisabledSubmitButton = false;
+      });
+    }
   }
   change(event) {
     this.helper.readImage(event.target).then(value => {
