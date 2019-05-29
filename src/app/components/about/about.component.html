@@ -34,8 +34,8 @@
                   </div>
                   <div class="col-lg-12">
                     <p *ngIf="result" class="title text-center" style="font-size: 20px;">Project on Github</p>
-                    <div *ngFor="let item of result">
-                      <div (click)="gotoLink(item.clone_url)" style="cursor: pointer;" class="item"><span class="title repo-text"><i class="fa fa-circle"></i></span> {{ item.name }} <span class="title repo-text"><i class="fa fa-star"></i></span> {{item.stargazers_count}} <span class="title repo-text"><i class="fa fa-code-fork"></i></span> {{item.forks_count}} <span class="title repo-text"><i class="fa fa-tag"></i></span> {{item.language}} <span class="title repo-text"><i class="fa fa-clock-o"></i></span> {{item.created_at | dateTime}}</div>
+                    <div *ngFor="let item of resultArr">
+                      <div (click)="gotoLink(item.clone_url)" style="cursor: pointer;" class="item"><span class="title repo-text"><i class="fa fa-circle"></i></span> {{ item.name }} <span class="title repo-text"><i class="fa fa-star"></i></span> {{item.star}} <span class="title repo-text"><i class="fa fa-code-fork"></i></span> {{item.fork}} <span class="title repo-text"><i class="fa fa-tag"></i></span> {{item.language}} <span class="title repo-text"><i class="fa fa-clock-o"></i></span> {{item.created_at | dateTime}}</div>
                       <hr/>
                     </div>
                     <br>

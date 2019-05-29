@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { differenceInYears } from 'date-fns';
+import { differenceInYears, getTime } from 'date-fns';
 import { GetContentService } from '../../services/get-content.service';
 import { AboutService } from '../../services/about.service';
-
 
 @Component({
   selector: 'app-about',
@@ -27,6 +26,7 @@ export class AboutComponent implements OnInit {
    'image-processing'
   ];
   result;
+  resultArr = [];
   constructor(private contentService: GetContentService, private about: AboutService) {
 
   }
@@ -36,10 +36,23 @@ export class AboutComponent implements OnInit {
     this.yearOld = differenceInYears(new Date(), new Date(1994, 6, 23));
     this.about.getRepo().subscribe(value => {
       this.result = value;
-      this.result = this.result.filter(item => {
-        return this.repo.includes(item.name);
+      this.resultArr = [];
+      this.result.filter(item => {
+        if (this.repo.includes(item.name)) {
+          this.resultArr.push({
+            'name': item.name,
+            'star': item.stargazers_count,
+            'fork': item.forks_count,
+            'language': item.language,
+            'created_at': item.created_at,
+            'timeStamp': getTime(item.created_at),
+            'clone_url': item.clone_url
+          });
+        }
       });
-      console.log(this.result);
+      this.resultArr = this.resultArr.sort((x, y) => {
+        return y.timeStamp - x.timeStamp;
+      });
     });
   }
   gotoLink(link) {
