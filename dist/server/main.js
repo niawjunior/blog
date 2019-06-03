@@ -929,9 +929,7 @@ var core_1 = __webpack_require__(/*! @angular/core */ "@angular/core");
 var platform_browser_1 = __webpack_require__(/*! @angular/platform-browser */ "@angular/platform-browser");
 var get_content_service_1 = __webpack_require__(/*! ./services/get-content.service */ "./src/app/services/get-content.service.ts");
 var router_1 = __webpack_require__(/*! @angular/router */ "@angular/router");
-__webpack_require__(/*! rxjs/add/operator/filter */ "rxjs/add/operator/filter");
-__webpack_require__(/*! rxjs/add/operator/map */ "rxjs/add/operator/map");
-__webpack_require__(/*! rxjs/add/operator/mergeMap */ "rxjs/add/operator/mergeMap");
+var operators_1 = __webpack_require__(/*! rxjs/operators */ "rxjs/operators");
 var seo_service_1 = __webpack_require__(/*! ./services/seo.service */ "./src/app/services/seo.service.ts");
 var nav_service_1 = __webpack_require__(/*! ./services/nav.service */ "./src/app/services/nav.service.ts");
 var AppComponent = /** @class */ (function () {
@@ -957,10 +955,7 @@ var AppComponent = /** @class */ (function () {
                 _this.navLoading = true;
             }
         });
-        this.router.events
-            .filter(function (event) { return event instanceof router_1.NavigationEnd; })
-            .map(function () { return _this.activatedRoute; })
-            .map(function (route) {
+        this.router.events.pipe(operators_1.filter(function (event) { return event instanceof router_1.NavigationEnd; }), operators_1.map(function () { return _this.activatedRoute; }), operators_1.map(function (route) {
             _this.navService.checkNav(true);
             _this.contentService.loading(false);
             _this.navLoading = false;
@@ -969,17 +964,19 @@ var AppComponent = /** @class */ (function () {
                 route = route.firstChild;
             }
             return route;
-        })
-            .filter(function (route) { return route.outlet === 'primary'; })
-            .mergeMap(function (route) { return route.data; })
-            .subscribe(function (event) {
-            if (event.title === 'Blog') {
-                _this.isHome = true;
+        }), operators_1.filter(function (route) { return route.outlet === 'primary'; }), operators_1.mergeMap(function (route) { return route.data; })).subscribe(function (event) {
+            if (event.title) {
+                _this.titleService.setTitle(event['title']);
+                if (event.title === 'Blog') {
+                    _this.isHome = true;
+                }
+                else {
+                    _this.isHome = false;
+                }
             }
             else {
                 _this.isHome = false;
             }
-            _this.titleService.setTitle(event['title']);
         });
     };
     return AppComponent;
@@ -3199,8 +3196,7 @@ exports.SettingsComponent = SettingsComponent;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var router_1 = __webpack_require__(/*! @angular/router */ "@angular/router");
-var map_1 = __webpack_require__(/*! rxjs/operators/map */ "rxjs/operators/map");
-var take_1 = __webpack_require__(/*! rxjs/operators/take */ "rxjs/operators/take");
+var operators_1 = __webpack_require__(/*! rxjs/operators */ "rxjs/operators");
 var auth_1 = __webpack_require__(/*! @angular/fire/auth */ "@angular/fire/auth");
 var i0 = __webpack_require__(/*! @angular/core */ "@angular/core");
 var i1 = __webpack_require__(/*! @angular/router */ "@angular/router");
@@ -3212,7 +3208,7 @@ var AdminGuard = /** @class */ (function () {
     }
     AdminGuard.prototype.canActivate = function () {
         var _this = this;
-        return this.auth.authState.pipe(map_1.map(function (authState) {
+        return this.auth.authState.pipe(operators_1.map(function (authState) {
             if (!authState) {
                 _this.router.navigate(['/login']);
             }
@@ -3225,7 +3221,7 @@ var AdminGuard = /** @class */ (function () {
                     return false;
                 }
             }
-        }), take_1.take(1));
+        }), operators_1.take(1));
     };
     AdminGuard.ngInjectableDef = i0.defineInjectable({ factory: function AdminGuard_Factory() { return new AdminGuard(i0.inject(i1.Router), i0.inject(i2.AngularFireAuth)); }, token: AdminGuard, providedIn: "root" });
     return AdminGuard;
@@ -3246,8 +3242,7 @@ exports.AdminGuard = AdminGuard;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var router_1 = __webpack_require__(/*! @angular/router */ "@angular/router");
-var map_1 = __webpack_require__(/*! rxjs/operators/map */ "rxjs/operators/map");
-var take_1 = __webpack_require__(/*! rxjs/operators/take */ "rxjs/operators/take");
+var operators_1 = __webpack_require__(/*! rxjs/operators */ "rxjs/operators");
 var auth_1 = __webpack_require__(/*! @angular/fire/auth */ "@angular/fire/auth");
 var i0 = __webpack_require__(/*! @angular/core */ "@angular/core");
 var i1 = __webpack_require__(/*! @angular/router */ "@angular/router");
@@ -3259,14 +3254,14 @@ var AuthGuard = /** @class */ (function () {
     }
     AuthGuard.prototype.canActivate = function () {
         var _this = this;
-        return this.auth.authState.pipe(map_1.map(function (authState) {
+        return this.auth.authState.pipe(operators_1.map(function (authState) {
             if (!authState) {
                 _this.router.navigate(['/login']);
             }
             else {
                 return true;
             }
-        }), take_1.take(1));
+        }), operators_1.take(1));
     };
     AuthGuard.ngInjectableDef = i0.defineInjectable({ factory: function AuthGuard_Factory() { return new AuthGuard(i0.inject(i1.Router), i0.inject(i2.AngularFireAuth)); }, token: AuthGuard, providedIn: "root" });
     return AuthGuard;
@@ -3288,8 +3283,7 @@ exports.AuthGuard = AuthGuard;
 Object.defineProperty(exports, "__esModule", { value: true });
 var router_1 = __webpack_require__(/*! @angular/router */ "@angular/router");
 var auth_1 = __webpack_require__(/*! @angular/fire/auth */ "@angular/fire/auth");
-var map_1 = __webpack_require__(/*! rxjs/operators/map */ "rxjs/operators/map");
-var take_1 = __webpack_require__(/*! rxjs/operators/take */ "rxjs/operators/take");
+var operators_1 = __webpack_require__(/*! rxjs/operators */ "rxjs/operators");
 var i0 = __webpack_require__(/*! @angular/core */ "@angular/core");
 var i1 = __webpack_require__(/*! @angular/router */ "@angular/router");
 var i2 = __webpack_require__(/*! @angular/fire/auth */ "@angular/fire/auth");
@@ -3300,7 +3294,7 @@ var SecureInnerPagesGuard = /** @class */ (function () {
     }
     SecureInnerPagesGuard.prototype.canActivate = function () {
         var _this = this;
-        return this.auth.authState.pipe(map_1.map(function (authState) {
+        return this.auth.authState.pipe(operators_1.map(function (authState) {
             if (authState) {
                 _this.router.navigate(['']);
                 return false;
@@ -3308,7 +3302,7 @@ var SecureInnerPagesGuard = /** @class */ (function () {
             else {
                 return true;
             }
-        }), take_1.take(1));
+        }), operators_1.take(1));
     };
     SecureInnerPagesGuard.ngInjectableDef = i0.defineInjectable({ factory: function SecureInnerPagesGuard_Factory() { return new SecureInnerPagesGuard(i0.inject(i1.Router), i0.inject(i2.AngularFireAuth)); }, token: SecureInnerPagesGuard, providedIn: "root" });
     return SecureInnerPagesGuard;
@@ -3686,8 +3680,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(/*! @angular/core */ "@angular/core");
 var firestore_1 = __webpack_require__(/*! @angular/fire/firestore */ "@angular/fire/firestore");
-var map_1 = __webpack_require__(/*! rxjs/operators/map */ "rxjs/operators/map");
-var take_1 = __webpack_require__(/*! rxjs/operators/take */ "rxjs/operators/take");
+var operators_1 = __webpack_require__(/*! rxjs/operators */ "rxjs/operators");
 var core_2 = __webpack_require__(/*! @ngx-loading-bar/core */ "@ngx-loading-bar/core");
 var i0 = __webpack_require__(/*! @angular/core */ "@angular/core");
 var i1 = __webpack_require__(/*! @angular/fire/firestore */ "@angular/fire/firestore");
@@ -3712,7 +3705,7 @@ var GetContentService = /** @class */ (function () {
                         this.loading(false);
                         this.loadingBar.start();
                         this.itemsCollectionDetail = this.afs.collection('postDetail', function (ref) { return ref.orderBy('timeStamp', 'desc'); });
-                        return [4 /*yield*/, this.itemsCollectionDetail.valueChanges().pipe(take_1.take(1))];
+                        return [4 /*yield*/, this.itemsCollectionDetail.valueChanges().pipe(operators_1.take(1))];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -3726,7 +3719,7 @@ var GetContentService = /** @class */ (function () {
                     case 0:
                         this.loadingBar.start();
                         this.itemsCollection = this.afs.collection('post', function (ref) { return ref.where('slugUrl', '==', slug); });
-                        return [4 /*yield*/, this.itemsCollection.valueChanges().pipe(take_1.take(1), map_1.map(function (actions) { return actions.map(function (r) {
+                        return [4 /*yield*/, this.itemsCollection.valueChanges().pipe(operators_1.take(1), operators_1.map(function (actions) { return actions.map(function (r) {
                                 var data = r;
                                 return data;
                             }); }))];
@@ -4582,39 +4575,6 @@ module.exports = require("ngx-markdown");
 
 /***/ }),
 
-/***/ "rxjs/add/operator/filter":
-/*!*******************************************!*\
-  !*** external "rxjs/add/operator/filter" ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("rxjs/add/operator/filter");
-
-/***/ }),
-
-/***/ "rxjs/add/operator/map":
-/*!****************************************!*\
-  !*** external "rxjs/add/operator/map" ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("rxjs/add/operator/map");
-
-/***/ }),
-
-/***/ "rxjs/add/operator/mergeMap":
-/*!*********************************************!*\
-  !*** external "rxjs/add/operator/mergeMap" ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("rxjs/add/operator/mergeMap");
-
-/***/ }),
-
 /***/ "rxjs/operators":
 /*!*********************************!*\
   !*** external "rxjs/operators" ***!
@@ -4623,28 +4583,6 @@ module.exports = require("rxjs/add/operator/mergeMap");
 /***/ (function(module, exports) {
 
 module.exports = require("rxjs/operators");
-
-/***/ }),
-
-/***/ "rxjs/operators/map":
-/*!*************************************!*\
-  !*** external "rxjs/operators/map" ***!
-  \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("rxjs/operators/map");
-
-/***/ }),
-
-/***/ "rxjs/operators/take":
-/*!**************************************!*\
-  !*** external "rxjs/operators/take" ***!
-  \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("rxjs/operators/take");
 
 /***/ }),
 
