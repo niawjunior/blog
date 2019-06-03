@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators/map';
-import { take } from 'rxjs/operators/take';
+import { map, take } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable({

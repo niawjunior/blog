@@ -1,8 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
 import { Content, ContentDetail } from './model/content';
-import { map } from 'rxjs/operators/map';
-import { take } from 'rxjs/operators/take';
+import { map, take } from 'rxjs/operators';
 import { LoadingBarService } from '@ngx-loading-bar/core';
 
 @Injectable({

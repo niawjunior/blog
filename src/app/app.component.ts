@@ -2,9 +2,7 @@ import { Component, OnInit, ChangeDetectorRef} from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { GetContentService } from './services/get-content.service';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/mergeMap';
+import { map, filter, mergeMap} from 'rxjs/operators';
 import { SeoService } from './services/seo.service';
 import { NavService } from './services/nav.service';
 @Component({
@@ -35,27 +33,30 @@ export class AppComponent implements OnInit {
         this.navLoading = true;
       }
      });
-
-    this.router.events
-    .filter((event) => event instanceof NavigationEnd)
-    .map(() => this.activatedRoute)
-    .map((route) => {
-      this.navService.checkNav(true);
-      this.contentService.loading(false);
-      this.navLoading = false;
-      this.cdr.detectChanges();
-      while (route.firstChild) { route = route.firstChild; }
-      return route;
-    })
-    .filter((route) => route.outlet === 'primary')
-    .mergeMap((route) => route.data)
-    .subscribe((event) => {
-      if (event.title === 'Blog') {
-        this.isHome = true;
+    this.router.events.pipe(
+      filter((event) => event instanceof NavigationEnd),
+      map(() => this.activatedRoute),
+      map((route) => {
+        this.navService.checkNav(true);
+        this.contentService.loading(false);
+        this.navLoading = false;
+        this.cdr.detectChanges();
+        while (route.firstChild) { route = route.firstChild; }
+        return route;
+      }),
+      filter((route) => route.outlet === 'primary'),
+      mergeMap((route) => route.data)
+    ).subscribe((event) => {
+      if (event.title) {
+        this.titleService.setTitle(event['title']);
+        if (event.title === 'Blog') {
+          this.isHome = true;
+        } else {
+          this.isHome = false;
+        }
       } else {
         this.isHome = false;
       }
-      this.titleService.setTitle(event['title']);
     });
 }
 }
