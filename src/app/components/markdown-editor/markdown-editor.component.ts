@@ -37,7 +37,8 @@ export class MarkdownEditorComponent implements OnInit {
   isDisabled = false;
   customTag;
   isAdmin = false;
-
+  getUrl;
+  tagList = ['javascript', 'angular', 'trip and trick', 'challenge', 'ทั่วไป'];
   constructor(
     private fb: FormBuilder,
     private markdownService: MarkdownService,
@@ -48,6 +49,27 @@ export class MarkdownEditorComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.getUrl = this.helper.getCurrentUrl();
+    this.contentService.getPostDetail(this.getUrl).then(result => {
+      result.subscribe(e => {
+        e.forEach(elem => {
+          if (elem) {
+            console.log(elem);
+            if (!this.tagList.includes(elem.tag)) {
+              this.customTag = elem.tag;
+              this.templateForm.controls['tag'].setValue('อื่นๆ');
+            } else {
+              this.templateForm.controls['tag'].setValue(elem.tag);
+            }
+            this.templateForm.controls['articleName'].setValue(elem.title);
+            this.templateForm.controls['articleDescription'].setValue(elem.description);
+            this.templateForm.controls['imageUrl'].setValue(elem.imageUrl);
+            this.templateForm.controls['body'].setValue(JSON.parse(elem.content));
+          }
+        });
+      });
+    });
+
     this.auth.isAuthenticated().subscribe(value => {
     this.contentService.loading(true);
       if (value && value.emailVerified) {

@@ -16,7 +16,11 @@ export class PageViewService {
                 page.update(documentReference.ref, {
                     view: newValue
                 });
+            }).catch(e => {
+              console.log(e);
             });
+    }).catch(e => {
+      console.log(e);
     });
   }
 

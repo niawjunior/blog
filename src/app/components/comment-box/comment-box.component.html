@@ -2,7 +2,7 @@
   <div *ngIf="!isLogin" class="row">
     <div class="col-lg-12">
       <div class="col-lg-4 mx-auto text-center">
-        <button (click)="loginToComment()" class="btn btn-primary fb-color">กรุณาล็อกอิน เพื่อแสดงความคิดเห็น</button>
+        <button (click)="loginToComment()" class="btn btn-primary fb-color">เข้าสู่ระบบ เพื่อแสดงความคิดเห็น</button>
       </div>
     </div>
   </div>
@@ -29,7 +29,7 @@
                 <img [src]="comment.user.photoURL || imageDefault" alt="user" class="profile-photo-md pull-left">
                 <div class="post-detail">
                   <div class="user-info">
-                    <h5>{{ comment.user.displayName || 'ไม่ระบุชื่อ' }}</h5>
+                    <h5 (click)="gotoProfile(comment.user.displayName)"  [ngClass]="{'profile': comment.user.displayName}">{{ comment.user.displayName || 'ไม่ระบุชื่อ' }} {{ isAdmin }}</h5>
                     <p class="text-muted">{{ comment.comment.timeStamp | timeAgo}}</p>
                   </div>
                   <div class="line-divider"></div>

@@ -10,6 +10,7 @@ import { RegisterComponent } from '../components/register/register.component';
 import { SettingsComponent } from '../components/settings/settings.component';
 import { MarkdownEditorComponent } from '../components/markdown-editor/markdown-editor.component';
 import { AdminGuard } from '../guard/admin.guard';
+import { ProfileComponent } from '../components/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -31,7 +32,15 @@ const routes: Routes = [
     path: 'register', component: RegisterComponent, canActivate: [SecureInnerPagesGuard], data: { title: 'Register' }
   },
   {
-    path: 'post', component: MarkdownEditorComponent, canActivate: [AdminGuard]
+    path: 'post', component: MarkdownEditorComponent, canActivate: [AdminGuard],
+    children: [
+      {
+        path: ':id', component: MarkdownEditorComponent
+      }
+    ]
+  },
+  {
+    path: 'user/:id', component: ProfileComponent
   },
   {
     path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]

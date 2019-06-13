@@ -19,7 +19,8 @@
     "serve:prerender": "cd dist/browser && http-server",
     "serve:ssr": "node dist/server",
     "start": "node dist/server.js",
-    "deploy": "ng build --prod && ng run ng-blog:server:production"
+    "deploy": "ng build --prod && ng run ng-blog:server:production",
+    "ssr:serve": "nodemon --watch src/ -e ts,html,css --exec 'npm run deploy && npm run serve:ssr'"
   },
   "pre-commit": [],
   "private": true,

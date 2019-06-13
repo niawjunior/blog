@@ -1,8 +1,9 @@
 <div *ngIf="loadingContent" class="row article shadow fill">
     <div class="col-sm-12 mx-auto">
-        <h1 class="text-center" style="margin-bottom: 20px;">{{ head }}</h1>
-
-      <p class="text-center"><span class="badge badge-pill badge-custom-danger">#{{ tag }}</span></p>
+      <button (click)="editPost()"  class="float-right btn btn-sm btn-warning">แก้ไข <i class="fa fa-edit"></i></button>
+      <br><br>
+      <h1 class="text-center" style="margin-bottom: 20px;">{{ head }}</h1>
+      <p class="text-center"><span class="badge badge-pill badge-custom-danger" style="text-transform: uppercase;">#{{ tag }}</span></p>
       <p class="text-center">{{ postDate }}</p>
         <markdown [data]="article"></markdown>
     </div>

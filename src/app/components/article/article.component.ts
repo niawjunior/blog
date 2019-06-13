@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GetContentService } from '../../services/get-content.service';
 import { PageViewService } from '../../services/page-view.service';
 import {format} from 'date-fns';
@@ -26,7 +26,8 @@ export class ArticleComponent implements OnInit {
     public activatedRoute: ActivatedRoute,
     private pageView: PageViewService,
     private auth: AuthService,
-    private helper: HelperService
+    private helper: HelperService,
+    private router: Router
     ) {
 
   }
@@ -71,5 +72,9 @@ export class ArticleComponent implements OnInit {
           });
       });
     }
+  }
+
+  editPost() {
+    this.router.navigateByUrl('post/' + this.getUrl);
   }
 }

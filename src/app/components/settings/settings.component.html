@@ -14,7 +14,7 @@
           <input type="email" name="email" formControlName="email" class="form-control" placeholder="email">
         </div>
         <div class="form-group">
-            <label for="name">ชื่อ</label>
+            <label for="name">ชื่อ (ไม่ต่ำกว่า 4 และไม่เกิน 15 ตัวอักษร)</label>
             <input type="text" name="name" formControlName="displayName" class="form-control" placeholder="name">
           </div>
         <div class="form-group">
@@ -26,7 +26,7 @@
             <input type="text" name="bio" formControlName="bio" class="form-control" placeholder="bio">
         </div>
         <div class="form-group">
-          <button (click)="update()" class="btn btn-outline-secondary btn-block" [disabled]="isDisabledSubmitButton">บันทึก <span *ngIf="isDisabledSubmitButton" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> <fa *ngIf="!isDisabledSubmitButton" name="save"></fa></button>
+          <button (click)="update()" class="btn btn-outline-secondary btn-block" [disabled]="form.invalid || isDisabledSubmitButton">บันทึก <span *ngIf="isDisabledSubmitButton" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> <fa *ngIf="!isDisabledSubmitButton" name="save"></fa></button>
         </div>
       </form>
     </div>

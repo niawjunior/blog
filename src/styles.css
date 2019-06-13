@@ -113,7 +113,26 @@ img.profile-photo-sm {
   border-color: #4267b2 !important;
 }
 
-
+.login-provider {
+  width: 35px !important;
+  margin: .5rem;
+  height: 35px !important;
+  cursor: pointer;
+}
+.login-provider:hover {
+  transform: scale(1.2);
+  transition: cubic-bezier(0.075, 0.82, 0.165, .5);
+}
+.profile {
+  cursor: pointer;
+  color: #0078ff !important;
+}
+.profile:hover {
+  text-decoration: underline;
+}
+.btn-no-border {
+  border-radius: 0px;
+}
 img {
   width: 100% !important;
   height: auto !important;

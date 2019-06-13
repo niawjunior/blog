@@ -19,11 +19,11 @@ import { HttpClientModule} from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import {AngularFireStorageModule, StorageBucket} from '@angular/fire/storage';
+import { AngularFireStorageModule, StorageBucket} from '@angular/fire/storage';
 import { AuthService } from './services/auth.service';
 import { environment } from '../environments/environment';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
-import {TransferHttpCacheModule} from '@nguniversal/common';
+import { TransferHttpCacheModule} from '@nguniversal/common';
 import { ShareButtonsModule } from '@ngx-share/buttons';
 import { RegisterComponent } from './components/register/register.component';
 import { SettingsComponent } from './components/settings/settings.component';
@@ -35,6 +35,8 @@ import { MarkdownEditorComponent } from './components/markdown-editor/markdown-e
 import { CommentBoxComponent } from './components/comment-box/comment-box.component';
 import { TimeAgoPipe } from './pipe/time-ago.pipe';
 import { DateTimePipe } from './pipe/date-time.pipe';
+import { ProfileComponent } from './components/profile/profile.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +53,8 @@ import { DateTimePipe } from './pipe/date-time.pipe';
     TimeAgoPipe,
     DateTimePipe,
     CommentBoxComponent,
-    MarkdownEditorComponent
+    MarkdownEditorComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-blog' }),

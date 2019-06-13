@@ -1545,7 +1545,7 @@ exports.ArticleComponent = ArticleComponent;
  * tslint:disable
  */ 
 Object.defineProperty(exports, "__esModule", { value: true });
-var styles = ["<div[_ngcontent-%COMP%]   class=\"container[_ngcontent-%COMP%]   pb-cmnt-container\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   *ngIf=\"!isLogin\"[_ngcontent-%COMP%]   class=\"row\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"col-lg-12\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"col-lg-4[_ngcontent-%COMP%]   mx-auto[_ngcontent-%COMP%]   text-center\"[_ngcontent-%COMP%] > <button[_ngcontent-%COMP%]   (click)=\"loginToComment()\"[_ngcontent-%COMP%]   class=\"btn[_ngcontent-%COMP%]   btn-primary[_ngcontent-%COMP%]   fb-color\"[_ngcontent-%COMP%] > \u0E01\u0E23\u0E38\u0E13\u0E32\u0E25\u0E47\u0E2D\u0E01\u0E2D\u0E34\u0E19[_ngcontent-%COMP%]   \u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E41\u0E2A\u0E14\u0E07\u0E04\u0E27\u0E32\u0E21\u0E04\u0E34\u0E14\u0E40\u0E2B\u0E47\u0E19</button[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   *ngIf=\"isLogin\"[_ngcontent-%COMP%]   class=\"row\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"col-lg-12\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"card-info\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"card-block\"[_ngcontent-%COMP%] > <form[_ngcontent-%COMP%]   [formGroup]=\"commentForm\"[_ngcontent-%COMP%] > <textarea[_ngcontent-%COMP%]   formControlName=\"text\"[_ngcontent-%COMP%]   placeholder=\"\u0E41\u0E2A\u0E14\u0E07\u0E04\u0E27\u0E32\u0E21\u0E04\u0E34\u0E14\u0E40\u0E2B\u0E47\u0E19..\"[_ngcontent-%COMP%]   class=\"pb-cmnt-textarea\"[_ngcontent-%COMP%] > </textarea[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"float-right\"[_ngcontent-%COMP%] > <span[_ngcontent-%COMP%]   style=\"font-size[_ngcontent-%COMP%]:14px;margin-right[_ngcontent-%COMP%]:1rem;color[_ngcontent-%COMP%]:#757581\" > {{textLength}} </span[_ngcontent-%COMP%] > <button[_ngcontent-%COMP%]   (click)=\"postComment()\"[_ngcontent-%COMP%]   class=\"btn[_ngcontent-%COMP%]   btn-primary[_ngcontent-%COMP%]   btn-sm[_ngcontent-%COMP%]   fb-color\"[_ngcontent-%COMP%]   type=\"button\"[_ngcontent-%COMP%]   [disabled]=\"commentForm.invalid[_ngcontent-%COMP%]   ||[_ngcontent-%COMP%]   isDisabledComment\"[_ngcontent-%COMP%] > \u0E42\u0E1E\u0E2A[_ngcontent-%COMP%]   <span[_ngcontent-%COMP%]   *ngIf=\"isDisabledComment\"[_ngcontent-%COMP%]   class=\"spinner-border[_ngcontent-%COMP%]   spinner-border-sm\"[_ngcontent-%COMP%]   role=\"status\"[_ngcontent-%COMP%]   aria-hidden=\"true\"[_ngcontent-%COMP%] > </span[_ngcontent-%COMP%] > </button[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > </form[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"row\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"col-lg-12[_ngcontent-%COMP%]   mt-5\"[_ngcontent-%COMP%]   style=\"max-height[_ngcontent-%COMP%]:   500px[_ngcontent-%COMP%];overflow[_ngcontent-%COMP%]:   auto[_ngcontent-%COMP%];\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"post-content\"[_ngcontent-%COMP%]   *ngFor=\"let[_ngcontent-%COMP%]   comment[_ngcontent-%COMP%]   of[_ngcontent-%COMP%]   userComment\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"post-container\"[_ngcontent-%COMP%]   style=\"word-break[_ngcontent-%COMP%]:   break-word[_ngcontent-%COMP%];\"[_ngcontent-%COMP%] > <img[_ngcontent-%COMP%]   [src]=\"comment.user.photoURL[_ngcontent-%COMP%]   ||[_ngcontent-%COMP%]   imageDefault\"[_ngcontent-%COMP%]   alt=\"user\"[_ngcontent-%COMP%]   class=\"profile-photo-md[_ngcontent-%COMP%]   pull-left\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"post-detail\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"user-info\"[_ngcontent-%COMP%] > <h5[_ngcontent-%COMP%]   (click)=\"gotoProfile(comment.user.displayName)\"[_ngcontent-%COMP%]   [ngClass]=\"[_ngcontent-%COMP%]{'profile': comment.user.displayName}\"[_ngcontent-%COMP%] > {{ comment.user.displayName || '\u0E44\u0E21\u0E48\u0E23\u0E30\u0E1A\u0E38\u0E0A\u0E37\u0E48\u0E2D' }} {%BLOCK%}</h5[_ngcontent-%COMP%] > <p[_ngcontent-%COMP%]   class=\"text-muted\"[_ngcontent-%COMP%] > {{ isAdmin }}</p[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"line-divider\"[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"post-text\"[_ngcontent-%COMP%] > <p[_ngcontent-%COMP%] > {{ comment.comment.timeStamp | timeAgo}}</p>\n                  </div>\n                </div>\n              </div>\n          </div>\n    </div>\n</div>"];
+var styles = ["<div[_ngcontent-%COMP%]   class=\"container[_ngcontent-%COMP%]   pb-cmnt-container\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   *ngIf=\"!isLogin\"[_ngcontent-%COMP%]   class=\"row\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"col-lg-12\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"col-lg-4[_ngcontent-%COMP%]   mx-auto[_ngcontent-%COMP%]   text-center\"[_ngcontent-%COMP%] > <button[_ngcontent-%COMP%]   (click)=\"loginToComment()\"[_ngcontent-%COMP%]   class=\"btn[_ngcontent-%COMP%]   btn-primary[_ngcontent-%COMP%]   fb-color\"[_ngcontent-%COMP%] > \u0E40\u0E02\u0E49\u0E32\u0E2A\u0E39\u0E48\u0E23\u0E30\u0E1A\u0E1A[_ngcontent-%COMP%]   \u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E41\u0E2A\u0E14\u0E07\u0E04\u0E27\u0E32\u0E21\u0E04\u0E34\u0E14\u0E40\u0E2B\u0E47\u0E19</button[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   *ngIf=\"isLogin\"[_ngcontent-%COMP%]   class=\"row\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"col-lg-12\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"card-info\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"card-block\"[_ngcontent-%COMP%] > <form[_ngcontent-%COMP%]   [formGroup]=\"commentForm\"[_ngcontent-%COMP%] > <textarea[_ngcontent-%COMP%]   formControlName=\"text\"[_ngcontent-%COMP%]   placeholder=\"\u0E41\u0E2A\u0E14\u0E07\u0E04\u0E27\u0E32\u0E21\u0E04\u0E34\u0E14\u0E40\u0E2B\u0E47\u0E19..\"[_ngcontent-%COMP%]   class=\"pb-cmnt-textarea\"[_ngcontent-%COMP%] > </textarea[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"float-right\"[_ngcontent-%COMP%] > <span[_ngcontent-%COMP%]   style=\"font-size[_ngcontent-%COMP%]:14px;margin-right[_ngcontent-%COMP%]:1rem;color[_ngcontent-%COMP%]:#757581\" > {{textLength}} </span[_ngcontent-%COMP%] > <button[_ngcontent-%COMP%]   (click)=\"postComment()\"[_ngcontent-%COMP%]   class=\"btn[_ngcontent-%COMP%]   btn-primary[_ngcontent-%COMP%]   btn-sm[_ngcontent-%COMP%]   fb-color\"[_ngcontent-%COMP%]   type=\"button\"[_ngcontent-%COMP%]   [disabled]=\"commentForm.invalid[_ngcontent-%COMP%]   ||[_ngcontent-%COMP%]   isDisabledComment\"[_ngcontent-%COMP%] > \u0E42\u0E1E\u0E2A[_ngcontent-%COMP%]   <span[_ngcontent-%COMP%]   *ngIf=\"isDisabledComment\"[_ngcontent-%COMP%]   class=\"spinner-border[_ngcontent-%COMP%]   spinner-border-sm\"[_ngcontent-%COMP%]   role=\"status\"[_ngcontent-%COMP%]   aria-hidden=\"true\"[_ngcontent-%COMP%] > </span[_ngcontent-%COMP%] > </button[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > </form[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"row\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"col-lg-12[_ngcontent-%COMP%]   mt-5\"[_ngcontent-%COMP%]   style=\"max-height[_ngcontent-%COMP%]:   500px[_ngcontent-%COMP%];overflow[_ngcontent-%COMP%]:   auto[_ngcontent-%COMP%];\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"post-content\"[_ngcontent-%COMP%]   *ngFor=\"let[_ngcontent-%COMP%]   comment[_ngcontent-%COMP%]   of[_ngcontent-%COMP%]   userComment\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"post-container\"[_ngcontent-%COMP%]   style=\"word-break[_ngcontent-%COMP%]:   break-word[_ngcontent-%COMP%];\"[_ngcontent-%COMP%] > <img[_ngcontent-%COMP%]   [src]=\"comment.user.photoURL[_ngcontent-%COMP%]   ||[_ngcontent-%COMP%]   imageDefault\"[_ngcontent-%COMP%]   alt=\"user\"[_ngcontent-%COMP%]   class=\"profile-photo-md[_ngcontent-%COMP%]   pull-left\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"post-detail\"[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"user-info\"[_ngcontent-%COMP%] > <h5[_ngcontent-%COMP%]   (click)=\"gotoProfile(comment.user.displayName)\"[_ngcontent-%COMP%]   [ngClass]=\"[_ngcontent-%COMP%]{'profile': comment.user.displayName}\"[_ngcontent-%COMP%] > {{ comment.user.displayName || '\u0E44\u0E21\u0E48\u0E23\u0E30\u0E1A\u0E38\u0E0A\u0E37\u0E48\u0E2D' }} {%BLOCK%}</h5[_ngcontent-%COMP%] > <p[_ngcontent-%COMP%]   class=\"text-muted\"[_ngcontent-%COMP%] > {{ isAdmin }}</p[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"line-divider\"[_ngcontent-%COMP%] > </div[_ngcontent-%COMP%] > <div[_ngcontent-%COMP%]   class=\"post-text\"[_ngcontent-%COMP%] > <p[_ngcontent-%COMP%] > {{ comment.comment.timeStamp | timeAgo}}</p>\n                  </div>\n                </div>\n              </div>\n          </div>\n    </div>\n</div>"];
 exports.styles = styles;
 
 
@@ -1584,7 +1584,7 @@ exports.RenderType_CommentBoxComponent = RenderType_CommentBoxComponent;
 function View_CommentBoxComponent_1(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 4, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), i1.ɵeld(1, 0, null, null, 3, "div", [["class", "col-lg-12"]], null, null, null, null, null)), (_l()(), i1.ɵeld(2, 0, null, null, 2, "div", [["class", "col-lg-4 mx-auto text-center"]], null, null, null, null, null)), (_l()(), i1.ɵeld(3, 0, null, null, 1, "button", [["class", "btn btn-primary fb-color"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
         var pd_0 = (_co.loginToComment() !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\u0E01\u0E23\u0E38\u0E13\u0E32\u0E25\u0E47\u0E2D\u0E01\u0E2D\u0E34\u0E19 \u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E41\u0E2A\u0E14\u0E07\u0E04\u0E27\u0E32\u0E21\u0E04\u0E34\u0E14\u0E40\u0E2B\u0E47\u0E19"]))], null, null); }
+    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\u0E40\u0E02\u0E49\u0E32\u0E2A\u0E39\u0E48\u0E23\u0E30\u0E1A\u0E1A \u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E41\u0E2A\u0E14\u0E07\u0E04\u0E27\u0E32\u0E21\u0E04\u0E34\u0E14\u0E40\u0E2B\u0E47\u0E19"]))], null, null); }
 function View_CommentBoxComponent_3(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 0, "span", [["aria-hidden", "true"], ["class", "spinner-border spinner-border-sm"], ["role", "status"]], null, null, null, null, null))], null, null); }
 function View_CommentBoxComponent_2(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 21, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), i1.ɵeld(1, 0, null, null, 20, "div", [["class", "col-lg-12"]], null, null, null, null, null)), (_l()(), i1.ɵeld(2, 0, null, null, 19, "div", [["class", "card-info"]], null, null, null, null, null)), (_l()(), i1.ɵeld(3, 0, null, null, 18, "div", [["class", "card-block"]], null, null, null, null, null)), (_l()(), i1.ɵeld(4, 0, null, null, 17, "form", [["novalidate", ""]], [[2, "ng-untouched", null], [2, "ng-touched", null], [2, "ng-pristine", null], [2, "ng-dirty", null], [2, "ng-valid", null], [2, "ng-invalid", null], [2, "ng-pending", null]], [[null, "submit"], [null, "reset"]], function (_v, en, $event) { var ad = true; if (("submit" === en)) {
         var pd_0 = (i1.ɵnov(_v, 6).onSubmit($event) !== false);
@@ -1987,7 +1987,8 @@ var i7 = __webpack_require__(/*! @angular/common */ "@angular/common");
 var i8 = __webpack_require__(/*! @angular/router */ "@angular/router");
 var i9 = __webpack_require__(/*! ./login.component */ "./src/app/components/login/login.component.ts");
 var i10 = __webpack_require__(/*! ../../services/auth.service */ "./src/app/services/auth.service.ts");
-var i11 = __webpack_require__(/*! ../../services/get-content.service */ "./src/app/services/get-content.service.ts");
+var i11 = __webpack_require__(/*! ../../services/auth-provider.service */ "./src/app/services/auth-provider.service.ts");
+var i12 = __webpack_require__(/*! ../../services/get-content.service */ "./src/app/services/get-content.service.ts");
 var styles_LoginComponent = [i0.styles];
 var RenderType_LoginComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_LoginComponent, data: {} });
 exports.RenderType_LoginComponent = RenderType_LoginComponent;
@@ -1995,7 +1996,7 @@ function View_LoginComponent_1(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0,
 function View_LoginComponent_2(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 3, "span", [], null, null, null, null, null)), (_l()(), i1.ɵeld(1, 0, null, null, 2, "ngb-alert", [["class", "alert-custom alert"], ["role", "alert"], ["type", "warning"]], [[2, "alert-dismissible", null]], null, null, i2.View_NgbAlert_0, i2.RenderType_NgbAlert)), i1.ɵdid(2, 638976, null, 0, i3.NgbAlert, [i3.NgbAlertConfig, i1.Renderer2, i1.ElementRef], { dismissible: [0, "dismissible"], type: [1, "type"] }, null), (_l()(), i1.ɵted(-1, 0, [" \u0E01\u0E23\u0E38\u0E13\u0E32\u0E23\u0E30\u0E1A\u0E38\u0E2D\u0E35\u0E40\u0E21\u0E25 "]))], function (_ck, _v) { var currVal_1 = false; var currVal_2 = "warning"; _ck(_v, 2, 0, currVal_1, currVal_2); }, function (_ck, _v) { var currVal_0 = i1.ɵnov(_v, 2).dismissible; _ck(_v, 1, 0, currVal_0); }); }
 function View_LoginComponent_3(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 0, "span", [["aria-hidden", "true"], ["class", "spinner-border spinner-border-sm"], ["role", "status"]], null, null, null, null, null))], null, null); }
 function View_LoginComponent_4(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "fa", [["name", "sign-in"]], null, null, null, i4.View_AngularFontAwesomeComponent_0, i4.RenderType_AngularFontAwesomeComponent)), i1.ɵdid(1, 114688, null, 0, i5.AngularFontAwesomeComponent, [], { name: [0, "name"] }, null)], function (_ck, _v) { var currVal_0 = "sign-in"; _ck(_v, 1, 0, currVal_0); }, null); }
-function View_LoginComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 42, "div", [["class", "col-md-6 mx-auto"]], null, null, null, null, null)), (_l()(), i1.ɵeld(1, 0, null, null, 41, "div", [["class", "card"]], null, null, null, null, null)), (_l()(), i1.ɵeld(2, 0, null, null, 40, "form", [["novalidate", ""]], [[2, "ng-untouched", null], [2, "ng-touched", null], [2, "ng-pristine", null], [2, "ng-dirty", null], [2, "ng-valid", null], [2, "ng-invalid", null], [2, "ng-pending", null]], [[null, "ngSubmit"], [null, "submit"], [null, "reset"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("submit" === en)) {
+function View_LoginComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 48, "div", [["class", "col-md-6 mx-auto"]], null, null, null, null, null)), (_l()(), i1.ɵeld(1, 0, null, null, 47, "div", [["class", "card"]], null, null, null, null, null)), (_l()(), i1.ɵeld(2, 0, null, null, 46, "form", [["novalidate", ""]], [[2, "ng-untouched", null], [2, "ng-touched", null], [2, "ng-pristine", null], [2, "ng-dirty", null], [2, "ng-valid", null], [2, "ng-invalid", null], [2, "ng-pending", null]], [[null, "ngSubmit"], [null, "submit"], [null, "reset"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("submit" === en)) {
         var pd_0 = (i1.ɵnov(_v, 4).onSubmit($event) !== false);
         ad = (pd_0 && ad);
     } if (("reset" === en)) {
@@ -2028,12 +2029,18 @@ function View_LoginComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0,
     } if (("compositionend" === en)) {
         var pd_3 = (i1.ɵnov(_v, 26)._compositionEnd($event.target.value) !== false);
         ad = (pd_3 && ad);
-    } return ad; }, null, null)), i1.ɵdid(26, 16384, null, 0, i6.DefaultValueAccessor, [i1.Renderer2, i1.ElementRef, [2, i6.COMPOSITION_BUFFER_MODE]], null, null), i1.ɵprd(1024, null, i6.NG_VALUE_ACCESSOR, function (p0_0) { return [p0_0]; }, [i6.DefaultValueAccessor]), i1.ɵdid(28, 671744, null, 0, i6.FormControlName, [[3, i6.ControlContainer], [8, null], [8, null], [6, i6.NG_VALUE_ACCESSOR], [2, i6.ɵangular_packages_forms_forms_k]], { name: [0, "name"] }, null), i1.ɵprd(2048, null, i6.NgControl, null, [i6.FormControlName]), i1.ɵdid(30, 16384, null, 0, i6.NgControlStatus, [[4, i6.NgControl]], null, null), (_l()(), i1.ɵeld(31, 0, null, null, 4, "div", [["class", "form-group"]], null, null, null, null, null)), (_l()(), i1.ɵeld(32, 0, null, null, 3, "a", [["class", "text-primary"]], [[1, "target", 0], [8, "href", 4]], [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
-        var pd_0 = (i1.ɵnov(_v, 33).onClick($event.button, $event.ctrlKey, $event.metaKey, $event.shiftKey) !== false);
+    } return ad; }, null, null)), i1.ɵdid(26, 16384, null, 0, i6.DefaultValueAccessor, [i1.Renderer2, i1.ElementRef, [2, i6.COMPOSITION_BUFFER_MODE]], null, null), i1.ɵprd(1024, null, i6.NG_VALUE_ACCESSOR, function (p0_0) { return [p0_0]; }, [i6.DefaultValueAccessor]), i1.ɵdid(28, 671744, null, 0, i6.FormControlName, [[3, i6.ControlContainer], [8, null], [8, null], [6, i6.NG_VALUE_ACCESSOR], [2, i6.ɵangular_packages_forms_forms_k]], { name: [0, "name"] }, null), i1.ɵprd(2048, null, i6.NgControl, null, [i6.FormControlName]), i1.ɵdid(30, 16384, null, 0, i6.NgControlStatus, [[4, i6.NgControl]], null, null), (_l()(), i1.ɵeld(31, 0, null, null, 5, "div", [["class", "form-group text-center"]], null, null, null, null, null)), (_l()(), i1.ɵeld(32, 0, null, null, 1, "span", [["class", "text-muted mb-2 mt-2"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\u0E2B\u0E23\u0E37\u0E2D\u0E40\u0E02\u0E49\u0E32\u0E2A\u0E39\u0E48\u0E23\u0E30\u0E1A\u0E1A\u0E14\u0E49\u0E27\u0E22"])), (_l()(), i1.ɵeld(34, 0, null, null, 2, "div", [], null, null, null, null, null)), (_l()(), i1.ɵeld(35, 0, null, null, 0, "img", [["alt", ""], ["class", "login-provider"], ["src", "../../../assets/facebook.png"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+        var pd_0 = (_co.facebookLogin() !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), i1.ɵdid(33, 671744, null, 0, i8.RouterLinkWithHref, [i8.Router, i8.ActivatedRoute, i7.LocationStrategy], { routerLink: [0, "routerLink"] }, null), i1.ɵpad(34, 1), (_l()(), i1.ɵted(-1, null, ["\u0E22\u0E31\u0E07\u0E44\u0E21\u0E48\u0E44\u0E14\u0E49\u0E40\u0E1B\u0E47\u0E19\u0E2A\u0E21\u0E32\u0E0A\u0E34\u0E01?"])), (_l()(), i1.ɵeld(36, 0, null, null, 6, "div", [["class", "form-group"]], null, null, null, null, null)), (_l()(), i1.ɵeld(37, 0, null, null, 5, "button", [["class", "btn btn-outline-secondary btn-block"], ["type", "submit"]], [[8, "disabled", 0]], null, null, null, null)), (_l()(), i1.ɵted(38, null, ["", " "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_LoginComponent_3)), i1.ɵdid(40, 16384, null, 0, i7.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_LoginComponent_4)), i1.ɵdid(42, 16384, null, 0, i7.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_7 = _co.form; _ck(_v, 4, 0, currVal_7); var currVal_15 = "email"; _ck(_v, 15, 0, currVal_15); var currVal_16 = (_co.form.value.email && (_co.form.controls["email"].invalid && _co.form.controls["email"].touched)); _ck(_v, 19, 0, currVal_16); var currVal_17 = (!_co.form.value.email && _co.form.controls["email"].touched); _ck(_v, 21, 0, currVal_17); var currVal_25 = "password"; _ck(_v, 28, 0, currVal_25); var currVal_28 = _ck(_v, 34, 0, "/register"); _ck(_v, 33, 0, currVal_28); var currVal_31 = _co.isDisabledSubmitButton; _ck(_v, 40, 0, currVal_31); var currVal_32 = !_co.isDisabledSubmitButton; _ck(_v, 42, 0, currVal_32); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = i1.ɵnov(_v, 6).ngClassUntouched; var currVal_1 = i1.ɵnov(_v, 6).ngClassTouched; var currVal_2 = i1.ɵnov(_v, 6).ngClassPristine; var currVal_3 = i1.ɵnov(_v, 6).ngClassDirty; var currVal_4 = i1.ɵnov(_v, 6).ngClassValid; var currVal_5 = i1.ɵnov(_v, 6).ngClassInvalid; var currVal_6 = i1.ɵnov(_v, 6).ngClassPending; _ck(_v, 2, 0, currVal_0, currVal_1, currVal_2, currVal_3, currVal_4, currVal_5, currVal_6); var currVal_8 = i1.ɵnov(_v, 17).ngClassUntouched; var currVal_9 = i1.ɵnov(_v, 17).ngClassTouched; var currVal_10 = i1.ɵnov(_v, 17).ngClassPristine; var currVal_11 = i1.ɵnov(_v, 17).ngClassDirty; var currVal_12 = i1.ɵnov(_v, 17).ngClassValid; var currVal_13 = i1.ɵnov(_v, 17).ngClassInvalid; var currVal_14 = i1.ɵnov(_v, 17).ngClassPending; _ck(_v, 12, 0, currVal_8, currVal_9, currVal_10, currVal_11, currVal_12, currVal_13, currVal_14); var currVal_18 = i1.ɵnov(_v, 30).ngClassUntouched; var currVal_19 = i1.ɵnov(_v, 30).ngClassTouched; var currVal_20 = i1.ɵnov(_v, 30).ngClassPristine; var currVal_21 = i1.ɵnov(_v, 30).ngClassDirty; var currVal_22 = i1.ɵnov(_v, 30).ngClassValid; var currVal_23 = i1.ɵnov(_v, 30).ngClassInvalid; var currVal_24 = i1.ɵnov(_v, 30).ngClassPending; _ck(_v, 25, 0, currVal_18, currVal_19, currVal_20, currVal_21, currVal_22, currVal_23, currVal_24); var currVal_26 = i1.ɵnov(_v, 33).target; var currVal_27 = i1.ɵnov(_v, 33).href; _ck(_v, 32, 0, currVal_26, currVal_27); var currVal_29 = (_co.form.invalid || _co.isDisabledSubmitButton); _ck(_v, 37, 0, currVal_29); var currVal_30 = _co.buttonSubmit; _ck(_v, 38, 0, currVal_30); }); }
+    } return ad; }, null, null)), (_l()(), i1.ɵeld(36, 0, null, null, 0, "img", [["alt", ""], ["class", "login-provider"], ["src", "../../../assets/search.png"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+        var pd_0 = (_co.googleLogin() !== false);
+        ad = (pd_0 && ad);
+    } return ad; }, null, null)), (_l()(), i1.ɵeld(37, 0, null, null, 4, "div", [["class", "form-group"]], null, null, null, null, null)), (_l()(), i1.ɵeld(38, 0, null, null, 3, "a", [["class", "text-primary"]], [[1, "target", 0], [8, "href", 4]], [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
+        var pd_0 = (i1.ɵnov(_v, 39).onClick($event.button, $event.ctrlKey, $event.metaKey, $event.shiftKey) !== false);
+        ad = (pd_0 && ad);
+    } return ad; }, null, null)), i1.ɵdid(39, 671744, null, 0, i8.RouterLinkWithHref, [i8.Router, i8.ActivatedRoute, i7.LocationStrategy], { routerLink: [0, "routerLink"] }, null), i1.ɵpad(40, 1), (_l()(), i1.ɵted(-1, null, ["\u0E22\u0E31\u0E07\u0E44\u0E21\u0E48\u0E44\u0E14\u0E49\u0E40\u0E1B\u0E47\u0E19\u0E2A\u0E21\u0E32\u0E0A\u0E34\u0E01?"])), (_l()(), i1.ɵeld(42, 0, null, null, 6, "div", [["class", "form-group"]], null, null, null, null, null)), (_l()(), i1.ɵeld(43, 0, null, null, 5, "button", [["class", "btn btn-outline-secondary btn-block"], ["type", "submit"]], [[8, "disabled", 0]], null, null, null, null)), (_l()(), i1.ɵted(44, null, ["", " "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_LoginComponent_3)), i1.ɵdid(46, 16384, null, 0, i7.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_LoginComponent_4)), i1.ɵdid(48, 16384, null, 0, i7.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_7 = _co.form; _ck(_v, 4, 0, currVal_7); var currVal_15 = "email"; _ck(_v, 15, 0, currVal_15); var currVal_16 = (_co.form.value.email && (_co.form.controls["email"].invalid && _co.form.controls["email"].touched)); _ck(_v, 19, 0, currVal_16); var currVal_17 = (!_co.form.value.email && _co.form.controls["email"].touched); _ck(_v, 21, 0, currVal_17); var currVal_25 = "password"; _ck(_v, 28, 0, currVal_25); var currVal_28 = _ck(_v, 40, 0, "/register"); _ck(_v, 39, 0, currVal_28); var currVal_31 = _co.isDisabledSubmitButton; _ck(_v, 46, 0, currVal_31); var currVal_32 = !_co.isDisabledSubmitButton; _ck(_v, 48, 0, currVal_32); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = i1.ɵnov(_v, 6).ngClassUntouched; var currVal_1 = i1.ɵnov(_v, 6).ngClassTouched; var currVal_2 = i1.ɵnov(_v, 6).ngClassPristine; var currVal_3 = i1.ɵnov(_v, 6).ngClassDirty; var currVal_4 = i1.ɵnov(_v, 6).ngClassValid; var currVal_5 = i1.ɵnov(_v, 6).ngClassInvalid; var currVal_6 = i1.ɵnov(_v, 6).ngClassPending; _ck(_v, 2, 0, currVal_0, currVal_1, currVal_2, currVal_3, currVal_4, currVal_5, currVal_6); var currVal_8 = i1.ɵnov(_v, 17).ngClassUntouched; var currVal_9 = i1.ɵnov(_v, 17).ngClassTouched; var currVal_10 = i1.ɵnov(_v, 17).ngClassPristine; var currVal_11 = i1.ɵnov(_v, 17).ngClassDirty; var currVal_12 = i1.ɵnov(_v, 17).ngClassValid; var currVal_13 = i1.ɵnov(_v, 17).ngClassInvalid; var currVal_14 = i1.ɵnov(_v, 17).ngClassPending; _ck(_v, 12, 0, currVal_8, currVal_9, currVal_10, currVal_11, currVal_12, currVal_13, currVal_14); var currVal_18 = i1.ɵnov(_v, 30).ngClassUntouched; var currVal_19 = i1.ɵnov(_v, 30).ngClassTouched; var currVal_20 = i1.ɵnov(_v, 30).ngClassPristine; var currVal_21 = i1.ɵnov(_v, 30).ngClassDirty; var currVal_22 = i1.ɵnov(_v, 30).ngClassValid; var currVal_23 = i1.ɵnov(_v, 30).ngClassInvalid; var currVal_24 = i1.ɵnov(_v, 30).ngClassPending; _ck(_v, 25, 0, currVal_18, currVal_19, currVal_20, currVal_21, currVal_22, currVal_23, currVal_24); var currVal_26 = i1.ɵnov(_v, 39).target; var currVal_27 = i1.ɵnov(_v, 39).href; _ck(_v, 38, 0, currVal_26, currVal_27); var currVal_29 = (_co.form.invalid || _co.isDisabledSubmitButton); _ck(_v, 43, 0, currVal_29); var currVal_30 = _co.buttonSubmit; _ck(_v, 44, 0, currVal_30); }); }
 exports.View_LoginComponent_0 = View_LoginComponent_0;
-function View_LoginComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-login", [], null, null, null, View_LoginComponent_0, RenderType_LoginComponent)), i1.ɵdid(1, 114688, null, 0, i9.LoginComponent, [i8.Router, i6.FormBuilder, i10.AuthService, i11.GetContentService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_LoginComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-login", [], null, null, null, View_LoginComponent_0, RenderType_LoginComponent)), i1.ɵdid(1, 114688, null, 0, i9.LoginComponent, [i8.Router, i6.FormBuilder, i10.AuthService, i11.AuthProviderService, i12.GetContentService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_LoginComponent_Host_0 = View_LoginComponent_Host_0;
 var LoginComponentNgFactory = i1.ɵccf("app-login", i9.LoginComponent, View_LoginComponent_Host_0, {}, {}, []);
 exports.LoginComponentNgFactory = LoginComponentNgFactory;
@@ -2057,11 +2064,13 @@ var sweetalert_1 = __webpack_require__(/*! sweetalert */ "sweetalert");
 var auth_service_1 = __webpack_require__(/*! ../../services/auth.service */ "./src/app/services/auth.service.ts");
 var get_content_service_1 = __webpack_require__(/*! ../../services/get-content.service */ "./src/app/services/get-content.service.ts");
 var router_1 = __webpack_require__(/*! @angular/router */ "@angular/router");
+var auth_provider_service_1 = __webpack_require__(/*! ../../services/auth-provider.service */ "./src/app/services/auth-provider.service.ts");
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent(router, Form, Service, contentService) {
+    function LoginComponent(router, Form, Service, provider, contentService) {
         this.router = router;
         this.Form = Form;
         this.Service = Service;
+        this.provider = provider;
         this.contentService = contentService;
         this.isDisabledSubmitButton = false;
         this.form = this.Form.group({
@@ -2101,6 +2110,36 @@ var LoginComponent = /** @class */ (function () {
                     title: 'มีบางอย่างผิดพลาด',
                     icon: 'error'
                 });
+            }
+        });
+    };
+    LoginComponent.prototype.facebookLogin = function () {
+        var _this = this;
+        this.provider.facebookSign().then(function (user) {
+            _this.userDetail = user;
+            if (_this.userDetail.user.email) {
+                var postUrl = new URL(window.location.href).searchParams.get('callback');
+                if (postUrl) {
+                    _this.router.navigate(['article/' + postUrl]);
+                }
+                else {
+                    _this.router.navigate(['/']);
+                }
+            }
+        });
+    };
+    LoginComponent.prototype.googleLogin = function () {
+        var _this = this;
+        this.provider.googleSign().then(function (user) {
+            _this.userDetail = user;
+            if (_this.userDetail.user.email) {
+                var postUrl = new URL(window.location.href).searchParams.get('callback');
+                if (postUrl) {
+                    _this.router.navigate(['article/' + postUrl]);
+                }
+                else {
+                    _this.router.navigate(['/']);
+                }
             }
         });
     };
@@ -2877,7 +2916,7 @@ exports.ProfileComponent = ProfileComponent;
  * tslint:disable
  */ 
 Object.defineProperty(exports, "__esModule", { value: true });
-var styles = [".card[_ngcontent-%COMP%] {\n  padding: 2rem;\n}\n.alert-custom[_ngcontent-%COMP%] {\n  margin-top: 10px;\n}\n.login-provider[_ngcontent-%COMP%] {\n  width: 35px !important;\n  margin: .5rem;\n  height: 35px !important;\n  cursor: pointer;\n}\n.login-provider[_ngcontent-%COMP%]:hover {\n  -webkit-transform: scale(1.2);\n          transform: scale(1.2);\n  transition: cubic-bezier(0.075, 0.82, 0.165, .5);\n}"];
+var styles = [".card[_ngcontent-%COMP%] {\n  padding: 2rem;\n}\n.alert-custom[_ngcontent-%COMP%] {\n  margin-top: 10px;\n}"];
 exports.styles = styles;
 
 
@@ -2921,7 +2960,7 @@ function View_RegisterComponent_3(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0,
 function View_RegisterComponent_4(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 3, "span", [], null, null, null, null, null)), (_l()(), i1.ɵeld(1, 0, null, null, 2, "ngb-alert", [["class", "alert-custom alert"], ["role", "alert"], ["type", "warning"]], [[2, "alert-dismissible", null]], null, null, i2.View_NgbAlert_0, i2.RenderType_NgbAlert)), i1.ɵdid(2, 638976, null, 0, i3.NgbAlert, [i3.NgbAlertConfig, i1.Renderer2, i1.ElementRef], { dismissible: [0, "dismissible"], type: [1, "type"] }, null), (_l()(), i1.ɵted(-1, 0, [" \u0E23\u0E2B\u0E31\u0E2A\u0E1C\u0E48\u0E32\u0E19\u0E44\u0E21\u0E48\u0E15\u0E23\u0E07\u0E01\u0E31\u0E19 "]))], function (_ck, _v) { var currVal_1 = false; var currVal_2 = "warning"; _ck(_v, 2, 0, currVal_1, currVal_2); }, function (_ck, _v) { var currVal_0 = i1.ɵnov(_v, 2).dismissible; _ck(_v, 1, 0, currVal_0); }); }
 function View_RegisterComponent_5(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 0, "span", [["aria-hidden", "true"], ["class", "spinner-border spinner-border-sm"], ["role", "status"]], null, null, null, null, null))], null, null); }
 function View_RegisterComponent_6(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "fa", [["name", "sign-in"]], null, null, null, i4.View_AngularFontAwesomeComponent_0, i4.RenderType_AngularFontAwesomeComponent)), i1.ɵdid(1, 114688, null, 0, i5.AngularFontAwesomeComponent, [], { name: [0, "name"] }, null)], function (_ck, _v) { var currVal_0 = "sign-in"; _ck(_v, 1, 0, currVal_0); }, null); }
-function View_RegisterComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 59, "div", [["class", "col-md-6 mx-auto"]], null, null, null, null, null)), (_l()(), i1.ɵeld(1, 0, null, null, 58, "div", [["class", "card"]], null, null, null, null, null)), (_l()(), i1.ɵeld(2, 0, null, null, 57, "form", [["novalidate", ""]], [[2, "ng-untouched", null], [2, "ng-touched", null], [2, "ng-pristine", null], [2, "ng-dirty", null], [2, "ng-valid", null], [2, "ng-invalid", null], [2, "ng-pending", null]], [[null, "ngSubmit"], [null, "submit"], [null, "reset"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("submit" === en)) {
+function View_RegisterComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 61, "div", [["class", "col-md-6 mx-auto"]], null, null, null, null, null)), (_l()(), i1.ɵeld(1, 0, null, null, 60, "div", [["class", "card"]], null, null, null, null, null)), (_l()(), i1.ɵeld(2, 0, null, null, 59, "form", [["novalidate", ""]], [[2, "ng-untouched", null], [2, "ng-touched", null], [2, "ng-pristine", null], [2, "ng-dirty", null], [2, "ng-valid", null], [2, "ng-invalid", null], [2, "ng-pending", null]], [[null, "ngSubmit"], [null, "submit"], [null, "reset"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("submit" === en)) {
         var pd_0 = (i1.ɵnov(_v, 4).onSubmit($event) !== false);
         ad = (pd_0 && ad);
     } if (("reset" === en)) {
@@ -2966,16 +3005,16 @@ function View_RegisterComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0,
     } if (("compositionend" === en)) {
         var pd_3 = (i1.ɵnov(_v, 37)._compositionEnd($event.target.value) !== false);
         ad = (pd_3 && ad);
-    } return ad; }, null, null)), i1.ɵdid(37, 16384, null, 0, i6.DefaultValueAccessor, [i1.Renderer2, i1.ElementRef, [2, i6.COMPOSITION_BUFFER_MODE]], null, null), i1.ɵprd(1024, null, i6.NG_VALUE_ACCESSOR, function (p0_0) { return [p0_0]; }, [i6.DefaultValueAccessor]), i1.ɵdid(39, 671744, null, 0, i6.FormControlName, [[3, i6.ControlContainer], [8, null], [8, null], [6, i6.NG_VALUE_ACCESSOR], [2, i6.ɵangular_packages_forms_forms_k]], { name: [0, "name"] }, null), i1.ɵprd(2048, null, i6.NgControl, null, [i6.FormControlName]), i1.ɵdid(41, 16384, null, 0, i6.NgControlStatus, [[4, i6.NgControl]], null, null), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_RegisterComponent_4)), i1.ɵdid(43, 16384, null, 0, i7.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵeld(44, 0, null, null, 3, "div", [["class", "form-group"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, [" \u0E2A\u0E21\u0E31\u0E04\u0E23\u0E2A\u0E21\u0E32\u0E0A\u0E34\u0E01 \u0E1C\u0E48\u0E32\u0E19 "])), (_l()(), i1.ɵeld(46, 0, null, null, 0, "img", [["alt", ""], ["class", "login-provider"], ["src", "../../../assets/facebook.png"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+    } return ad; }, null, null)), i1.ɵdid(37, 16384, null, 0, i6.DefaultValueAccessor, [i1.Renderer2, i1.ElementRef, [2, i6.COMPOSITION_BUFFER_MODE]], null, null), i1.ɵprd(1024, null, i6.NG_VALUE_ACCESSOR, function (p0_0) { return [p0_0]; }, [i6.DefaultValueAccessor]), i1.ɵdid(39, 671744, null, 0, i6.FormControlName, [[3, i6.ControlContainer], [8, null], [8, null], [6, i6.NG_VALUE_ACCESSOR], [2, i6.ɵangular_packages_forms_forms_k]], { name: [0, "name"] }, null), i1.ɵprd(2048, null, i6.NgControl, null, [i6.FormControlName]), i1.ɵdid(41, 16384, null, 0, i6.NgControlStatus, [[4, i6.NgControl]], null, null), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_RegisterComponent_4)), i1.ɵdid(43, 16384, null, 0, i7.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵeld(44, 0, null, null, 5, "div", [["class", "form-group text-center"]], null, null, null, null, null)), (_l()(), i1.ɵeld(45, 0, null, null, 1, "span", [["class", "text-muted mb-2 mt-2"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\u0E2B\u0E23\u0E37\u0E2D\u0E2A\u0E21\u0E31\u0E04\u0E23\u0E2A\u0E21\u0E32\u0E0A\u0E34\u0E01\u0E14\u0E49\u0E27\u0E22"])), (_l()(), i1.ɵeld(47, 0, null, null, 2, "div", [], null, null, null, null, null)), (_l()(), i1.ɵeld(48, 0, null, null, 0, "img", [["alt", ""], ["class", "login-provider"], ["src", "../../../assets/facebook.png"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
         var pd_0 = (_co.facebookRegister() !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), (_l()(), i1.ɵeld(47, 0, null, null, 0, "img", [["alt", ""], ["class", "login-provider"], ["src", "../../../assets/search.png"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+    } return ad; }, null, null)), (_l()(), i1.ɵeld(49, 0, null, null, 0, "img", [["alt", ""], ["class", "login-provider"], ["src", "../../../assets/search.png"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
         var pd_0 = (_co.googleRegister() !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), (_l()(), i1.ɵeld(48, 0, null, null, 4, "div", [["class", "form-group"]], null, null, null, null, null)), (_l()(), i1.ɵeld(49, 0, null, null, 3, "a", [], [[1, "target", 0], [8, "href", 4]], [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
-        var pd_0 = (i1.ɵnov(_v, 50).onClick($event.button, $event.ctrlKey, $event.metaKey, $event.shiftKey) !== false);
+    } return ad; }, null, null)), (_l()(), i1.ɵeld(50, 0, null, null, 4, "div", [["class", "form-group"]], null, null, null, null, null)), (_l()(), i1.ɵeld(51, 0, null, null, 3, "a", [], [[1, "target", 0], [8, "href", 4]], [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
+        var pd_0 = (i1.ɵnov(_v, 52).onClick($event.button, $event.ctrlKey, $event.metaKey, $event.shiftKey) !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), i1.ɵdid(50, 671744, null, 0, i8.RouterLinkWithHref, [i8.Router, i8.ActivatedRoute, i7.LocationStrategy], { routerLink: [0, "routerLink"] }, null), i1.ɵpad(51, 1), (_l()(), i1.ɵted(-1, null, ["\u0E40\u0E1B\u0E47\u0E19\u0E2A\u0E21\u0E32\u0E0A\u0E34\u0E01\u0E41\u0E25\u0E49\u0E27?"])), (_l()(), i1.ɵeld(53, 0, null, null, 6, "div", [["class", "form-group"]], null, null, null, null, null)), (_l()(), i1.ɵeld(54, 0, null, null, 5, "button", [["class", "btn btn-outline-secondary btn-block"], ["type", "submit"]], [[8, "disabled", 0]], null, null, null, null)), (_l()(), i1.ɵted(55, null, ["", " "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_RegisterComponent_5)), i1.ɵdid(57, 16384, null, 0, i7.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_RegisterComponent_6)), i1.ɵdid(59, 16384, null, 0, i7.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_7 = _co.form; _ck(_v, 4, 0, currVal_7); var currVal_15 = "email"; _ck(_v, 15, 0, currVal_15); var currVal_16 = (_co.form.value.email && (_co.form.controls["email"].invalid && _co.form.controls["email"].touched)); _ck(_v, 19, 0, currVal_16); var currVal_17 = (!_co.form.value.email && _co.form.controls["email"].touched); _ck(_v, 21, 0, currVal_17); var currVal_25 = "password"; _ck(_v, 28, 0, currVal_25); var currVal_26 = (_co.form.value.password && ((_co.form.value.password.length < 6) && _co.form.controls["password"].touched)); _ck(_v, 32, 0, currVal_26); var currVal_34 = "passwordConfirm"; _ck(_v, 39, 0, currVal_34); var currVal_35 = (((_co.form.value.password.length >= 6) && _co.form.controls["password"].touched) && (_co.form.controls["passwordConfirm"].touched && (_co.form.value.passwordConfirm !== _co.form.value.password))); _ck(_v, 43, 0, currVal_35); var currVal_38 = _ck(_v, 51, 0, "/login"); _ck(_v, 50, 0, currVal_38); var currVal_41 = _co.isDisabledSubmitButton; _ck(_v, 57, 0, currVal_41); var currVal_42 = !_co.isDisabledSubmitButton; _ck(_v, 59, 0, currVal_42); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = i1.ɵnov(_v, 6).ngClassUntouched; var currVal_1 = i1.ɵnov(_v, 6).ngClassTouched; var currVal_2 = i1.ɵnov(_v, 6).ngClassPristine; var currVal_3 = i1.ɵnov(_v, 6).ngClassDirty; var currVal_4 = i1.ɵnov(_v, 6).ngClassValid; var currVal_5 = i1.ɵnov(_v, 6).ngClassInvalid; var currVal_6 = i1.ɵnov(_v, 6).ngClassPending; _ck(_v, 2, 0, currVal_0, currVal_1, currVal_2, currVal_3, currVal_4, currVal_5, currVal_6); var currVal_8 = i1.ɵnov(_v, 17).ngClassUntouched; var currVal_9 = i1.ɵnov(_v, 17).ngClassTouched; var currVal_10 = i1.ɵnov(_v, 17).ngClassPristine; var currVal_11 = i1.ɵnov(_v, 17).ngClassDirty; var currVal_12 = i1.ɵnov(_v, 17).ngClassValid; var currVal_13 = i1.ɵnov(_v, 17).ngClassInvalid; var currVal_14 = i1.ɵnov(_v, 17).ngClassPending; _ck(_v, 12, 0, currVal_8, currVal_9, currVal_10, currVal_11, currVal_12, currVal_13, currVal_14); var currVal_18 = i1.ɵnov(_v, 30).ngClassUntouched; var currVal_19 = i1.ɵnov(_v, 30).ngClassTouched; var currVal_20 = i1.ɵnov(_v, 30).ngClassPristine; var currVal_21 = i1.ɵnov(_v, 30).ngClassDirty; var currVal_22 = i1.ɵnov(_v, 30).ngClassValid; var currVal_23 = i1.ɵnov(_v, 30).ngClassInvalid; var currVal_24 = i1.ɵnov(_v, 30).ngClassPending; _ck(_v, 25, 0, currVal_18, currVal_19, currVal_20, currVal_21, currVal_22, currVal_23, currVal_24); var currVal_27 = i1.ɵnov(_v, 41).ngClassUntouched; var currVal_28 = i1.ɵnov(_v, 41).ngClassTouched; var currVal_29 = i1.ɵnov(_v, 41).ngClassPristine; var currVal_30 = i1.ɵnov(_v, 41).ngClassDirty; var currVal_31 = i1.ɵnov(_v, 41).ngClassValid; var currVal_32 = i1.ɵnov(_v, 41).ngClassInvalid; var currVal_33 = i1.ɵnov(_v, 41).ngClassPending; _ck(_v, 36, 0, currVal_27, currVal_28, currVal_29, currVal_30, currVal_31, currVal_32, currVal_33); var currVal_36 = i1.ɵnov(_v, 50).target; var currVal_37 = i1.ɵnov(_v, 50).href; _ck(_v, 49, 0, currVal_36, currVal_37); var currVal_39 = (_co.form.invalid || _co.isDisabledSubmitButton); _ck(_v, 54, 0, currVal_39); var currVal_40 = _co.buttonSubmit; _ck(_v, 55, 0, currVal_40); }); }
+    } return ad; }, null, null)), i1.ɵdid(52, 671744, null, 0, i8.RouterLinkWithHref, [i8.Router, i8.ActivatedRoute, i7.LocationStrategy], { routerLink: [0, "routerLink"] }, null), i1.ɵpad(53, 1), (_l()(), i1.ɵted(-1, null, ["\u0E40\u0E1B\u0E47\u0E19\u0E2A\u0E21\u0E32\u0E0A\u0E34\u0E01\u0E41\u0E25\u0E49\u0E27?"])), (_l()(), i1.ɵeld(55, 0, null, null, 6, "div", [["class", "form-group"]], null, null, null, null, null)), (_l()(), i1.ɵeld(56, 0, null, null, 5, "button", [["class", "btn btn-outline-secondary btn-block"], ["type", "submit"]], [[8, "disabled", 0]], null, null, null, null)), (_l()(), i1.ɵted(57, null, ["", " "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_RegisterComponent_5)), i1.ɵdid(59, 16384, null, 0, i7.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_RegisterComponent_6)), i1.ɵdid(61, 16384, null, 0, i7.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_7 = _co.form; _ck(_v, 4, 0, currVal_7); var currVal_15 = "email"; _ck(_v, 15, 0, currVal_15); var currVal_16 = (_co.form.value.email && (_co.form.controls["email"].invalid && _co.form.controls["email"].touched)); _ck(_v, 19, 0, currVal_16); var currVal_17 = (!_co.form.value.email && _co.form.controls["email"].touched); _ck(_v, 21, 0, currVal_17); var currVal_25 = "password"; _ck(_v, 28, 0, currVal_25); var currVal_26 = (_co.form.value.password && ((_co.form.value.password.length < 6) && _co.form.controls["password"].touched)); _ck(_v, 32, 0, currVal_26); var currVal_34 = "passwordConfirm"; _ck(_v, 39, 0, currVal_34); var currVal_35 = (((_co.form.value.password.length >= 6) && _co.form.controls["password"].touched) && (_co.form.controls["passwordConfirm"].touched && (_co.form.value.passwordConfirm !== _co.form.value.password))); _ck(_v, 43, 0, currVal_35); var currVal_38 = _ck(_v, 53, 0, "/login"); _ck(_v, 52, 0, currVal_38); var currVal_41 = _co.isDisabledSubmitButton; _ck(_v, 59, 0, currVal_41); var currVal_42 = !_co.isDisabledSubmitButton; _ck(_v, 61, 0, currVal_42); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = i1.ɵnov(_v, 6).ngClassUntouched; var currVal_1 = i1.ɵnov(_v, 6).ngClassTouched; var currVal_2 = i1.ɵnov(_v, 6).ngClassPristine; var currVal_3 = i1.ɵnov(_v, 6).ngClassDirty; var currVal_4 = i1.ɵnov(_v, 6).ngClassValid; var currVal_5 = i1.ɵnov(_v, 6).ngClassInvalid; var currVal_6 = i1.ɵnov(_v, 6).ngClassPending; _ck(_v, 2, 0, currVal_0, currVal_1, currVal_2, currVal_3, currVal_4, currVal_5, currVal_6); var currVal_8 = i1.ɵnov(_v, 17).ngClassUntouched; var currVal_9 = i1.ɵnov(_v, 17).ngClassTouched; var currVal_10 = i1.ɵnov(_v, 17).ngClassPristine; var currVal_11 = i1.ɵnov(_v, 17).ngClassDirty; var currVal_12 = i1.ɵnov(_v, 17).ngClassValid; var currVal_13 = i1.ɵnov(_v, 17).ngClassInvalid; var currVal_14 = i1.ɵnov(_v, 17).ngClassPending; _ck(_v, 12, 0, currVal_8, currVal_9, currVal_10, currVal_11, currVal_12, currVal_13, currVal_14); var currVal_18 = i1.ɵnov(_v, 30).ngClassUntouched; var currVal_19 = i1.ɵnov(_v, 30).ngClassTouched; var currVal_20 = i1.ɵnov(_v, 30).ngClassPristine; var currVal_21 = i1.ɵnov(_v, 30).ngClassDirty; var currVal_22 = i1.ɵnov(_v, 30).ngClassValid; var currVal_23 = i1.ɵnov(_v, 30).ngClassInvalid; var currVal_24 = i1.ɵnov(_v, 30).ngClassPending; _ck(_v, 25, 0, currVal_18, currVal_19, currVal_20, currVal_21, currVal_22, currVal_23, currVal_24); var currVal_27 = i1.ɵnov(_v, 41).ngClassUntouched; var currVal_28 = i1.ɵnov(_v, 41).ngClassTouched; var currVal_29 = i1.ɵnov(_v, 41).ngClassPristine; var currVal_30 = i1.ɵnov(_v, 41).ngClassDirty; var currVal_31 = i1.ɵnov(_v, 41).ngClassValid; var currVal_32 = i1.ɵnov(_v, 41).ngClassInvalid; var currVal_33 = i1.ɵnov(_v, 41).ngClassPending; _ck(_v, 36, 0, currVal_27, currVal_28, currVal_29, currVal_30, currVal_31, currVal_32, currVal_33); var currVal_36 = i1.ɵnov(_v, 52).target; var currVal_37 = i1.ɵnov(_v, 52).href; _ck(_v, 51, 0, currVal_36, currVal_37); var currVal_39 = (_co.form.invalid || _co.isDisabledSubmitButton); _ck(_v, 56, 0, currVal_39); var currVal_40 = _co.buttonSubmit; _ck(_v, 57, 0, currVal_40); }); }
 exports.View_RegisterComponent_0 = View_RegisterComponent_0;
 function View_RegisterComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-register", [], null, null, null, View_RegisterComponent_0, RenderType_RegisterComponent)), i1.ɵdid(1, 114688, null, 0, i9.RegisterComponent, [i6.FormBuilder, i10.AuthService, i11.GetContentService, i12.AuthProviderService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_RegisterComponent_Host_0 = View_RegisterComponent_Host_0;
@@ -3049,13 +3088,66 @@ var RegisterComponent = /** @class */ (function () {
         });
     };
     RegisterComponent.prototype.googleRegister = function () {
-        this.provider.googleRegister().then(function (user) {
-            console.log(user);
+        var _this = this;
+        this.provider.googleSign().then(function (user) {
+            _this.userDetail = user;
+            if (!_this.userDetail.additionalUserInfo.isNewUser) {
+                sweetalert_1.default({
+                    title: 'อีเมลนี้ เป็นสมัครสมาชิกอยู่แล้ว กรุณาเข้าสู่ระบบ',
+                    icon: 'success'
+                }).then(function () {
+                    setTimeout(function () {
+                        _this.Service.SignOut();
+                    }, 500);
+                });
+            }
+            else {
+                sweetalert_1.default({
+                    title: 'สมัครสมาชิกสำเร็จ กรุณาเข้าสู่ระบบ',
+                    icon: 'success'
+                }).then(function () {
+                    setTimeout(function () {
+                        _this.Service.SignOut();
+                    }, 500);
+                });
+            }
+        }).catch(function (e) {
+            sweetalert_1.default({
+                title: 'มีบางอย่างผิดพลาด',
+                icon: 'error'
+            });
         });
     };
     RegisterComponent.prototype.facebookRegister = function () {
-        this.provider.facebookRegister().then(function (user) {
-            console.log(user);
+        var _this = this;
+        this.provider.facebookSign().then(function (user) {
+            _this.userDetail = user;
+            if (!_this.userDetail.additionalUserInfo.isNewUser) {
+                sweetalert_1.default({
+                    title: 'อีเมลนี้ เป็นสมัครสมาชิกอยู่แล้ว กรุณาเข้าสู่ระบบ',
+                    icon: 'success'
+                }).then(function () {
+                    setTimeout(function () {
+                        _this.Service.SignOut();
+                    }, 500);
+                });
+            }
+            else {
+                sweetalert_1.default({
+                    title: 'สมัครสมาชิกสำเร็จ กรุณาเข้าสู่ระบบ',
+                    icon: 'success'
+                }).then(function () {
+                    setTimeout(function () {
+                        _this.Service.SignOut();
+                    }, 500);
+                });
+            }
+        }).catch(function (e) {
+            console.log(e);
+            sweetalert_1.default({
+                title: 'มีบางอย่างผิดพลาด',
+                icon: 'error'
+            });
         });
     };
     return RegisterComponent;
@@ -3616,6 +3708,41 @@ exports.AboutService = AboutService;
 
 "use strict";
 
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var app_1 = __webpack_require__(/*! firebase/app */ "firebase/app");
 var firestore_1 = __webpack_require__(/*! @angular/fire/firestore */ "@angular/fire/firestore");
@@ -3628,20 +3755,71 @@ var AuthProviderService = /** @class */ (function () {
         this.afs = afs;
         this.afAuth = afAuth;
     }
-    AuthProviderService.prototype.googleRegister = function () {
-        var provider = new app_1.auth.GoogleAuthProvider();
-        return this.socialSignIn(provider);
+    AuthProviderService.prototype.googleSign = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var provider;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        provider = new app_1.auth.GoogleAuthProvider();
+                        return [4 /*yield*/, this.socialSign(provider)];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
     };
-    AuthProviderService.prototype.facebookRegister = function () {
-        var provider = new app_1.auth.FacebookAuthProvider();
-        return this.socialSignIn(provider);
+    AuthProviderService.prototype.facebookSign = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var provider;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        provider = new app_1.auth.FacebookAuthProvider();
+                        return [4 /*yield*/, this.socialSign(provider)];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
     };
-    AuthProviderService.prototype.socialSignIn = function (provider) {
-        return this.afAuth.auth.signInWithPopup(provider)
-            .then(function (credential) {
-            console.log(credential);
-        })
-            .catch(function (error) { return console.log(error); });
+    AuthProviderService.prototype.socialSign = function (provider) {
+        return __awaiter(this, void 0, void 0, function () {
+            var signUp;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.afAuth.auth.signInWithPopup(provider)];
+                    case 1:
+                        signUp = _a.sent();
+                        return [4 /*yield*/, this.SetUserData(signUp)];
+                    case 2: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    AuthProviderService.prototype.SetUserData = function (userDetail) {
+        return __awaiter(this, void 0, void 0, function () {
+            var userRef, userData;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        userRef = this.afs.doc("users/" + userDetail.user.uid);
+                        userData = {
+                            uid: userDetail.user.uid,
+                            email: userDetail.user.email,
+                            website: '',
+                            bio: '',
+                            displayName: userDetail.user.displayName || '',
+                            photoURL: userDetail.user.photoURL || '',
+                            emailVerified: userDetail.user.emailVerified
+                        };
+                        return [4 /*yield*/, userRef.set(userData, {
+                                merge: true
+                            })];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/, userDetail];
+                }
+            });
+        });
     };
     AuthProviderService.ngInjectableDef = i0.defineInjectable({ factory: function AuthProviderService_Factory() { return new AuthProviderService(i0.inject(i1.AngularFirestore), i0.inject(i2.AngularFireAuth)); }, token: AuthProviderService, providedIn: "root" });
     return AuthProviderService;
@@ -4078,7 +4256,11 @@ var PageViewService = /** @class */ (function () {
                 page.update(documentReference.ref, {
                     view: newValue
                 });
+            }).catch(function (e) {
+                console.log(e);
             });
+        }).catch(function (e) {
+            console.log(e);
         });
     };
     PageViewService.ngInjectableDef = i0.defineInjectable({ factory: function PageViewService_Factory() { return new PageViewService(i0.inject(i1.AngularFirestore)); }, token: PageViewService, providedIn: "root" });

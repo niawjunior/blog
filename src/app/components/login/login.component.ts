@@ -4,6 +4,7 @@ import swal from 'sweetalert';
 import { AuthService } from '../../services/auth.service';
 import { GetContentService } from '../../services/get-content.service';
 import { Router } from '@angular/router';
+import { AuthProviderService } from '../../services/auth-provider.service';
 
 @Component({
   selector: 'app-login',
@@ -15,11 +16,12 @@ export class LoginComponent implements OnInit {
   emailError: string;
   buttonSubmit: string;
   isDisabledSubmitButton = false;
-
+  userDetail;
   constructor(
     private router: Router,
     private Form: FormBuilder,
     private Service: AuthService,
+    private provider: AuthProviderService,
     private contentService: GetContentService) {
     this.form = this.Form.group({
       email: new FormControl(
@@ -57,6 +59,32 @@ export class LoginComponent implements OnInit {
           title: 'มีบางอย่างผิดพลาด',
           icon: 'error'
         });
+      }
+    });
+  }
+  facebookLogin() {
+    this.provider.facebookSign().then(user => {
+      this.userDetail = user;
+      if (this.userDetail.user.email) {
+          const postUrl = new URL(window.location.href).searchParams.get('callback');
+          if (postUrl) {
+            this.router.navigate(['article/' + postUrl]);
+          } else {
+            this.router.navigate(['/']);
+          }
+      }
+    });
+  }
+  googleLogin() {
+    this.provider.googleSign().then(user => {
+      this.userDetail = user;
+      if (this.userDetail.user.email) {
+          const postUrl = new URL(window.location.href).searchParams.get('callback');
+          if (postUrl) {
+            this.router.navigate(['article/' + postUrl]);
+          } else {
+            this.router.navigate(['/']);
+          }
       }
     });
   }

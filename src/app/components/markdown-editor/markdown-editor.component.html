@@ -52,9 +52,9 @@
                 <input id="general" class="form-check-input" formControlName="tag" type="radio" name="tag" value="ทั่วไป">
                 <label for="general" class="form-check-label" >ทั่วไป</label>
             </div>
-            <div class="form-check form-check-inline">
+            <div class="form-check">
               <input (click)="clickCustomTag()" id="etc" class="form-check-input" formControlName="tag" type="radio" name="tag" value="อื่นๆ">
-              <label for="etc" class="form-check-label" >อื่นๆ</label>
+              <label for="etc" class="form-check-label" >อื่นๆ <span *ngIf="customTag">({{customTag}})</span></label>
           </div>
           </div>
     </div>

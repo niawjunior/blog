@@ -5,7 +5,7 @@ import { HelperService } from '../../services/helper.service';
 import { Router } from '@angular/router';
 import { CommentService } from '../../services/comment.service';
 import { ProfileService } from '../../services/profile.service';
-import { userInfo } from 'os';
+
 @Component({
   selector: 'app-comment-box',
   templateUrl: './comment-box.component.html',
@@ -15,6 +15,7 @@ export class CommentBoxComponent implements OnInit {
   textLength = 500;
   isLogin = false;
   userDetail;
+  isAdmin;
   userComment = [];
   @Input() url: any;
   commentForm: FormGroup;
@@ -75,6 +76,10 @@ export class CommentBoxComponent implements OnInit {
         value.subscribe(result => {
         result.forEach(item => {
           this.profile.getUser(item.uid).subscribe(user => {
+            console.log(user.data())
+            if (user.data().emailVerified) {
+              this.isAdmin = '(Admin)';
+            }
             this.userComment.push({
               comment: item,
               user: user.data()
@@ -83,6 +88,9 @@ export class CommentBoxComponent implements OnInit {
         });
       });
     });
+  }
+  gotoProfile(profile) {
+    console.log(profile);
   }
   loginToComment() {
     this.router.navigateByUrl('/login?callback=' + this.helper.getCurrentUrl());

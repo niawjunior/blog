@@ -3,6 +3,7 @@ import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms'
 import swal from 'sweetalert';
 import { AuthService } from '../../services/auth.service';
 import { GetContentService } from '../../services/get-content.service';
+import { AuthProviderService } from '../../services/auth-provider.service';
 
 @Component({
   selector: 'app-register',
@@ -14,8 +15,13 @@ export class RegisterComponent implements OnInit {
   emailError: string;
   buttonSubmit: string;
   isDisabledSubmitButton = false;
-
-  constructor(private Form: FormBuilder, private Service: AuthService, private contentService: GetContentService) {
+  userDetail;
+  constructor(
+    private Form: FormBuilder,
+    private Service: AuthService,
+    private contentService: GetContentService,
+    private provider: AuthProviderService
+    ) {
     this.form = this.Form.group({
       email: new FormControl(
         '', [Validators.required, Validators.email]),
@@ -55,6 +61,66 @@ export class RegisterComponent implements OnInit {
           icon: 'error'
         });
       }
+    });
+  }
+
+  googleRegister() {
+    this.provider.googleSign().then(user => {
+      this.userDetail = user;
+      if (!this.userDetail.additionalUserInfo.isNewUser) {
+        swal({
+          title: 'อีเมลนี้ เป็นสมัครสมาชิกอยู่แล้ว กรุณาเข้าสู่ระบบ',
+          icon: 'success'
+        }).then(() => {
+          setTimeout(() => {
+            this.Service.SignOut();
+          }, 500);
+        });
+      } else {
+        swal({
+          title: 'สมัครสมาชิกสำเร็จ กรุณาเข้าสู่ระบบ',
+          icon: 'success'
+        }).then(() => {
+          setTimeout(() => {
+            this.Service.SignOut();
+          }, 500);
+        });
+      }
+    }).catch(e => {
+      swal({
+        title: 'มีบางอย่างผิดพลาด',
+        icon: 'error'
+      });
+    });
+  }
+  facebookRegister() {
+    this.provider.facebookSign().then(user => {
+      this.userDetail = user;
+      if (!this.userDetail.additionalUserInfo.isNewUser) {
+        swal({
+          title: 'อีเมลนี้ เป็นสมัครสมาชิกอยู่แล้ว กรุณาเข้าสู่ระบบ',
+          icon: 'success'
+        }).then(() => {
+          setTimeout(() => {
+            this.Service.SignOut();
+          }, 500);
+        });
+      } else {
+        swal({
+          title: 'สมัครสมาชิกสำเร็จ กรุณาเข้าสู่ระบบ',
+          icon: 'success'
+        }).then(() => {
+          setTimeout(() => {
+            this.Service.SignOut();
+          }, 500);
+        });
+      }
+    }).catch(e => {
+      console.log(e);
+      swal({
+        title: 'มีบางอย่างผิดพลาด',
+        icon: 'error'
+      });
     });
   }
 }
