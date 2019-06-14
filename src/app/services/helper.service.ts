@@ -26,4 +26,11 @@ export class HelperService {
       }
     });
   }
+  getProfileUrl(text, email) {
+    if (text && email) {
+      return String(text.replace(/[^A-Z0-9]+/ig, '')).split(' ').join('').toLowerCase().slice(0, 2) + '@' + email.slice(0, 2);
+    } else {
+      return '';
+    }
+  }
 }

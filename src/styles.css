@@ -123,12 +123,12 @@ img.profile-photo-sm {
   transform: scale(1.2);
   transition: cubic-bezier(0.075, 0.82, 0.165, .5);
 }
-.profile {
+.profileImg {
   cursor: pointer;
   color: #0078ff !important;
 }
-.profile:hover {
-  text-decoration: underline;
+.profileImg:hover {
+  text-decoration: underline !important;
 }
 .btn-no-border {
   border-radius: 0px;

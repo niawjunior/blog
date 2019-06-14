@@ -45,11 +45,7 @@ export class SettingsComponent implements OnInit {
     this.contentService.loading(true);
     this.form = this.formBuilder.group({
       email: new FormControl({value: '', disabled: true}),
-      displayName: new FormControl('', Validators.compose(
-        [
-         Validators.required,
-         Validators.pattern('[a-zA-Z]{4,15}')
-    ])),
+      displayName: new FormControl('', Validators.required),
       website: new FormControl(''),
       bio: new FormControl('')
     });

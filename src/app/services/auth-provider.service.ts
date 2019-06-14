@@ -3,14 +3,16 @@ import { auth } from 'firebase/app';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from './model/user';
+import { HelperService } from './helper.service';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthProviderService {
 
   constructor(
-    public afs: AngularFirestore,
-    public afAuth: AngularFireAuth,
+    private afs: AngularFirestore,
+    private afAuth: AngularFireAuth,
+    private helper: HelperService
   ) { }
 
   async googleSign() {
@@ -34,8 +36,9 @@ export class AuthProviderService {
       email: userDetail.user.email,
       website: '',
       bio: '',
-      displayName: userDetail.user.displayName || '',
+      displayName:  userDetail.user.displayName || '',
       photoURL: userDetail.user.photoURL || '',
+      profileURL: this.helper.getProfileUrl(userDetail.user.displayName, String(userDetail.user.email).split('@')[0]),
       emailVerified: userDetail.user.emailVerified
     };
      await userRef.set(userData, {
@@ -43,5 +46,6 @@ export class AuthProviderService {
     });
     return userDetail;
   }
+
 }
 

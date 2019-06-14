@@ -35,4 +35,8 @@ export class ProfileService {
  async getImageUrl(snapshot) {
    return await snapshot.ref.getDownloadURL();
  }
+ async getProfile(data) {
+  const profile = this.afs.collection('users', ref => ref.where('profileURL', '==', data));
+  return profile.get();
+ }
 }

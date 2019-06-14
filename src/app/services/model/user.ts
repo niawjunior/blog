@@ -5,5 +5,6 @@ export interface User {
   bio: string;
   displayName: string;
   photoURL: string;
+  profileURL: string;
   emailVerified: boolean;
 }

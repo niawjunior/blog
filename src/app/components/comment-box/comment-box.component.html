@@ -29,7 +29,7 @@
                 <img [src]="comment.user.photoURL || imageDefault" alt="user" class="profile-photo-md pull-left">
                 <div class="post-detail">
                   <div class="user-info">
-                    <h5 (click)="gotoProfile(comment.user.displayName)"  [ngClass]="{'profile': comment.user.displayName}">{{ comment.user.displayName || 'ไม่ระบุชื่อ' }} {{ isAdmin }}</h5>
+                    <h5 (click)="gotoProfile(comment.user.profileURL)"  [ngClass]="{'profileImg': comment.user.profileURL}">{{ comment.user.displayName || 'ไม่ระบุชื่อ' }} {{ comment.isAdmin }}</h5>
                     <p class="text-muted">{{ comment.comment.timeStamp | timeAgo}}</p>
                   </div>
                   <div class="line-divider"></div>

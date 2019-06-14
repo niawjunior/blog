@@ -54,6 +54,7 @@ export class AuthService {
       bio: '',
       displayName: user.displayName,
       photoURL: user.photoURL,
+      profileURL: '',
       emailVerified: user.emailVerified
     };
     return userRef.set(userData, {
