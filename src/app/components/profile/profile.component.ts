@@ -26,7 +26,12 @@ export class ProfileComponent implements OnInit {
       result.subscribe(value => {
         value.forEach(item => {
           this.profileDetail = item.data();
-          this.imageProfile = this.profileDetail.photoURL;
+          console.log(this.profileDetail);
+          if (this.profileDetail.photoURL) {
+            this.imageProfile = this.profileDetail.photoURL;
+          } else {
+            this.imageProfile = this.defaultImg;
+          }
         });
       });
     });

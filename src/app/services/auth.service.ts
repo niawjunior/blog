@@ -5,6 +5,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { Router } from '@angular/router';
 import { GetContentService } from './get-content.service';
 import { Observable } from 'rxjs';
+import { HelperService } from './helper.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,8 @@ export class AuthService {
     public afs: AngularFirestore,
     public afAuth: AngularFireAuth,
     public router: Router,
-    private contentService: GetContentService
+    private contentService: GetContentService,
+    private helper: HelperService
     ) {
 
   }
@@ -52,9 +54,9 @@ export class AuthService {
       email: user.email,
       website: '',
       bio: '',
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-      profileURL: '',
+      displayName: user.displayName || '',
+      photoURL: user.photoURL || '',
+      profileURL: String(user.email).split('@')[0] + '@' + this.helper.randomId(2),
       emailVerified: user.emailVerified
     };
     return userRef.set(userData, {
