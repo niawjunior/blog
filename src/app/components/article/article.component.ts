@@ -6,6 +6,8 @@ import {format} from 'date-fns';
 import * as th from 'date-fns/locale/th';
 import { AuthService } from '../../services/auth.service';
 import { HelperService } from '../../services/helper.service';
+import { UploadContentService } from '../../services/upload-content.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-article',
@@ -21,24 +23,29 @@ export class ArticleComponent implements OnInit {
   shareUrl = '';
   postDate = '';
   tag = '';
+  isAdmin = false;
   constructor(
     private contentService: GetContentService,
+    private uploadService: UploadContentService,
     public activatedRoute: ActivatedRoute,
     private pageView: PageViewService,
     private auth: AuthService,
     private helper: HelperService,
-    private router: Router
+    private router: Router,
     ) {
 
   }
   ngOnInit() {
     this.getUrl = this.helper.getCurrentUrl();
     const getArticle = this.contentService.getArticle(this.getUrl);
-    this.shareUrl = `https://www.pasupol.com/article/${this.getUrl}`;
+    this.shareUrl = this.helper.getFullUrl();
     this.auth.isAuthenticated().subscribe(value => {
       if (value) {
         if (!value.emailVerified) {
           this.pageView.setPageView(this.getUrl);
+          this.isAdmin = false;
+        } else {
+          this.isAdmin = true;
         }
       } else {
         this.pageView.setPageView(this.getUrl);
@@ -58,7 +65,7 @@ export class ArticleComponent implements OnInit {
       this.contentService.getPostDetail(this.getUrl).then(result => {
         result.subscribe(e => {
           e.forEach(elem => {
-            if (elem) {
+            if (elem && elem.status) {
               this.postDate = format(elem.timeStamp, 'DD MMMM YYYY : HH:mm', {locale: th});
               this.head = elem.title;
               this.tag = elem.tag;
@@ -67,14 +74,41 @@ export class ArticleComponent implements OnInit {
               this.article = JSON.parse(elem.content);
               this.contentService.loading(true);
               this.loadingContent = true;
+            } else {
+              this.router.navigateByUrl('/');
             }
            });
           });
       });
     }
   }
-
   editPost() {
     this.router.navigateByUrl('post/' + this.getUrl);
+  }
+  openDeletePost() {
+    Swal.fire({
+      title: 'ยืนยันการลบ!',
+      text: 'คุณต้องการลบโพสนี้?',
+      type: 'warning',
+      reverseButtons: true,
+      showCancelButton: true,
+      confirmButtonText: 'ยืนยันการลบ'
+    }).then((result) => {
+      if (result.value) {
+        this.deletePost();
+      }
+    });
+  }
+  deletePost() {
+    this.uploadService.deleteContent(this.getUrl).then(() => {
+      Swal.fire({
+        title: 'ลบข้อมูลเรียบร้อยแล้ว',
+        type: 'success',
+      }).then(() => {
+        setTimeout(() => {
+          this.router.navigateByUrl('/');
+        }, 500);
+      });
+    });
   }
 }

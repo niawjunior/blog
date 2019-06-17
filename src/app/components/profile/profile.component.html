@@ -4,7 +4,7 @@
             <img class="imgProfile" [src]="imageProfile" alt="">
           </div>
           <div class="text-center">
-            <h5>{{ profileDetail?.displayName || 'ยังไม่ได้ระบุชื่อ'}}</h5>
+            <h5>{{ profileName }}</h5>
             <h6>{{ profileDetail?.bio}}</h6>
             <p *ngIf="profileDetail?.website" style="cursor: pointer" (click)="gotoWebsite(profileDetail?.website)"><fa  name="globe"></fa></p>
           </div>

@@ -9,6 +9,7 @@ import { GetContentService } from '../../services/get-content.service';
 import Swal from 'sweetalert2'
 import { AuthService } from '../../services/auth.service';
 import { HelperService } from '../../services/helper.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-markdown-editor',
@@ -45,30 +46,32 @@ export class MarkdownEditorComponent implements OnInit {
     public uploadService: UploadContentService,
     public contentService: GetContentService,
     private helper: HelperService,
-    private auth: AuthService
+    private auth: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.getUrl = this.helper.getCurrentUrl();
-    this.contentService.getPostDetail(this.getUrl).then(result => {
-      result.subscribe(e => {
-        e.forEach(elem => {
-          if (elem) {
-            console.log(elem);
-            if (!this.tagList.includes(elem.tag)) {
-              this.customTag = elem.tag;
-              this.templateForm.controls['tag'].setValue('อื่นๆ');
-            } else {
-              this.templateForm.controls['tag'].setValue(elem.tag);
+    if (this.getUrl !== 'post') {
+      this.contentService.getPostDetail(this.getUrl).then(result => {
+        result.subscribe(e => {
+          e.forEach(elem => {
+            if (elem) {
+              if (!this.tagList.includes(elem.tag)) {
+                this.customTag = elem.tag;
+                this.templateForm.controls['tag'].setValue('อื่นๆ');
+              } else {
+                this.templateForm.controls['tag'].setValue(elem.tag);
+              }
+              this.templateForm.controls['articleName'].setValue(elem.title);
+              this.templateForm.controls['articleDescription'].setValue(elem.description);
+              this.templateForm.controls['imageUrl'].setValue(elem.imageUrl);
+              this.templateForm.controls['body'].setValue(JSON.parse(elem.content));
             }
-            this.templateForm.controls['articleName'].setValue(elem.title);
-            this.templateForm.controls['articleDescription'].setValue(elem.description);
-            this.templateForm.controls['imageUrl'].setValue(elem.imageUrl);
-            this.templateForm.controls['body'].setValue(JSON.parse(elem.content));
-          }
+          });
         });
       });
-    });
+    }
 
     this.auth.isAuthenticated().subscribe(value => {
     this.contentService.loading(true);
@@ -206,7 +209,6 @@ export class MarkdownEditorComponent implements OnInit {
     });
   }
   save() {
-
     const data = JSON.stringify(this.markdownText);
     this.content = data;
     this.title = this.templateForm.value.articleName;
@@ -228,7 +230,7 @@ export class MarkdownEditorComponent implements OnInit {
         icon: 'success'
       }).then(() => {
         setTimeout(() => {
-          window.location.href = '';
+          this.router.navigateByUrl('/');
         }, 500);
       });
     }).catch((e) => {

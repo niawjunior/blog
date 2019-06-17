@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GetContentService } from '../../services/get-content.service';
 import { ProfileService } from '../../services/profile.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -13,10 +13,13 @@ export class ProfileComponent implements OnInit {
   defaultImg = 'https://firebasestorage.googleapis.com/v0/b/blog-40f93.appspot.com/o/631929649c.png?alt=media';
   imageProfile;
   profileDetail;
+  profileName;
+  defaultName = 'ยังไม่ได้ระบบุชื่อ';
   constructor(
     private contentService: GetContentService,
     private profile: ProfileService,
-    private router: ActivatedRoute
+    private router: ActivatedRoute,
+    private route: Router
   ) { }
 
   ngOnInit() {
@@ -24,15 +27,19 @@ export class ProfileComponent implements OnInit {
     this.imageProfile = this.loadingImg;
     this.profile.getProfile(this.router.snapshot.paramMap.get('id')).then(result => {
       result.subscribe(value => {
-        value.forEach(item => {
-          this.profileDetail = item.data();
-          console.log(this.profileDetail);
-          if (this.profileDetail.photoURL) {
-            this.imageProfile = this.profileDetail.photoURL;
-          } else {
-            this.imageProfile = this.defaultImg;
-          }
-        });
+        if (value.docs.length !== 0) {
+          value.forEach(item => {
+            this.profileDetail = item.data();
+            this.profileName = this.profileDetail.displayName ? this.profileDetail.displayName : this.defaultName;
+            if (this.profileDetail.photoURL) {
+              this.imageProfile = this.profileDetail.photoURL;
+            } else {
+              this.imageProfile = this.defaultImg;
+            }
+          });
+        } else {
+          this.route.navigateByUrl('/');
+        }
       });
     });
   }

@@ -1408,33 +1408,39 @@ exports.styles = styles;
 Object.defineProperty(exports, "__esModule", { value: true });
 var i0 = __webpack_require__(/*! ./article.component.css.shim.ngstyle */ "./src/app/components/article/article.component.css.shim.ngstyle.js");
 var i1 = __webpack_require__(/*! @angular/core */ "@angular/core");
-var i2 = __webpack_require__(/*! ../../../../node_modules/ngx-markdown/ngx-markdown.ngfactory */ "./node_modules/ngx-markdown/ngx-markdown.ngfactory.js");
-var i3 = __webpack_require__(/*! ngx-markdown */ "ngx-markdown");
-var i4 = __webpack_require__(/*! ../../../../node_modules/@ngx-share/button/ngx-share-button.ngfactory */ "./node_modules/@ngx-share/button/ngx-share-button.ngfactory.js");
-var i5 = __webpack_require__(/*! @ngx-share/button */ "@ngx-share/button");
-var i6 = __webpack_require__(/*! @ngx-share/core */ "@ngx-share/core");
-var i7 = __webpack_require__(/*! ../comment-box/comment-box.component.ngfactory */ "./src/app/components/comment-box/comment-box.component.ngfactory.js");
-var i8 = __webpack_require__(/*! ../comment-box/comment-box.component */ "./src/app/components/comment-box/comment-box.component.ts");
-var i9 = __webpack_require__(/*! ../../services/comment.service */ "./src/app/services/comment.service.ts");
-var i10 = __webpack_require__(/*! @angular/router */ "@angular/router");
-var i11 = __webpack_require__(/*! ../../services/helper.service */ "./src/app/services/helper.service.ts");
-var i12 = __webpack_require__(/*! ../../services/profile.service */ "./src/app/services/profile.service.ts");
-var i13 = __webpack_require__(/*! @angular/forms */ "@angular/forms");
-var i14 = __webpack_require__(/*! ../../services/auth.service */ "./src/app/services/auth.service.ts");
-var i15 = __webpack_require__(/*! @angular/common */ "@angular/common");
+var i2 = __webpack_require__(/*! @angular/common */ "@angular/common");
+var i3 = __webpack_require__(/*! ../../../../node_modules/ngx-markdown/ngx-markdown.ngfactory */ "./node_modules/ngx-markdown/ngx-markdown.ngfactory.js");
+var i4 = __webpack_require__(/*! ngx-markdown */ "ngx-markdown");
+var i5 = __webpack_require__(/*! ../../../../node_modules/@ngx-share/button/ngx-share-button.ngfactory */ "./node_modules/@ngx-share/button/ngx-share-button.ngfactory.js");
+var i6 = __webpack_require__(/*! @ngx-share/button */ "@ngx-share/button");
+var i7 = __webpack_require__(/*! @ngx-share/core */ "@ngx-share/core");
+var i8 = __webpack_require__(/*! ../comment-box/comment-box.component.ngfactory */ "./src/app/components/comment-box/comment-box.component.ngfactory.js");
+var i9 = __webpack_require__(/*! ../comment-box/comment-box.component */ "./src/app/components/comment-box/comment-box.component.ts");
+var i10 = __webpack_require__(/*! ../../services/comment.service */ "./src/app/services/comment.service.ts");
+var i11 = __webpack_require__(/*! @angular/router */ "@angular/router");
+var i12 = __webpack_require__(/*! ../../services/helper.service */ "./src/app/services/helper.service.ts");
+var i13 = __webpack_require__(/*! ../../services/profile.service */ "./src/app/services/profile.service.ts");
+var i14 = __webpack_require__(/*! @angular/forms */ "@angular/forms");
+var i15 = __webpack_require__(/*! ../../services/auth.service */ "./src/app/services/auth.service.ts");
 var i16 = __webpack_require__(/*! ./article.component */ "./src/app/components/article/article.component.ts");
 var i17 = __webpack_require__(/*! ../../services/get-content.service */ "./src/app/services/get-content.service.ts");
-var i18 = __webpack_require__(/*! ../../services/page-view.service */ "./src/app/services/page-view.service.ts");
+var i18 = __webpack_require__(/*! ../../services/upload-content.service */ "./src/app/services/upload-content.service.ts");
+var i19 = __webpack_require__(/*! ../../services/page-view.service */ "./src/app/services/page-view.service.ts");
 var styles_ArticleComponent = [i0.styles];
 var RenderType_ArticleComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_ArticleComponent, data: {} });
 exports.RenderType_ArticleComponent = RenderType_ArticleComponent;
-function View_ArticleComponent_1(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 23, "div", [["class", "row article shadow fill"]], null, null, null, null, null)), (_l()(), i1.ɵeld(1, 0, null, null, 14, "div", [["class", "col-sm-12 mx-auto"]], null, null, null, null, null)), (_l()(), i1.ɵeld(2, 0, null, null, 2, "button", [["class", "float-right btn btn-sm btn-warning"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+function View_ArticleComponent_2(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 2, "button", [["class", "float-right btn btn-sm btn-danger ml-2 btn-no-border"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+        var pd_0 = (_co.openDeletePost() !== false);
+        ad = (pd_0 && ad);
+    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\u0E25\u0E1A "])), (_l()(), i1.ɵeld(2, 0, null, null, 0, "i", [["class", "fa fa-trash"]], null, null, null, null, null))], null, null); }
+function View_ArticleComponent_3(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 2, "button", [["class", "float-right btn btn-sm btn-warning btn-no-border"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
         var pd_0 = (_co.editPost() !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\u0E41\u0E01\u0E49\u0E44\u0E02 "])), (_l()(), i1.ɵeld(4, 0, null, null, 0, "i", [["class", "fa fa-edit"]], null, null, null, null, null)), (_l()(), i1.ɵeld(5, 0, null, null, 0, "br", [], null, null, null, null, null)), (_l()(), i1.ɵeld(6, 0, null, null, 0, "br", [], null, null, null, null, null)), (_l()(), i1.ɵeld(7, 0, null, null, 1, "h1", [["class", "text-center"], ["style", "margin-bottom: 20px;"]], null, null, null, null, null)), (_l()(), i1.ɵted(8, null, ["", ""])), (_l()(), i1.ɵeld(9, 0, null, null, 2, "p", [["class", "text-center"]], null, null, null, null, null)), (_l()(), i1.ɵeld(10, 0, null, null, 1, "span", [["class", "badge badge-pill badge-custom-danger"], ["style", "text-transform: uppercase;"]], null, null, null, null, null)), (_l()(), i1.ɵted(11, null, ["#", ""])), (_l()(), i1.ɵeld(12, 0, null, null, 1, "p", [["class", "text-center"]], null, null, null, null, null)), (_l()(), i1.ɵted(13, null, ["", ""])), (_l()(), i1.ɵeld(14, 0, null, null, 1, "markdown", [], null, null, null, i2.View_MarkdownComponent_0, i2.RenderType_MarkdownComponent)), i1.ɵdid(15, 4767744, null, 0, i3.MarkdownComponent, [i1.ElementRef, i3.MarkdownService], { data: [0, "data"] }, null), (_l()(), i1.ɵeld(16, 0, null, null, 7, "div", [["class", "col-sm-12 mt-5"]], null, null, null, null, null)), (_l()(), i1.ɵeld(17, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\u0E41\u0E0A\u0E23\u0E4C\u0E1A\u0E17\u0E04\u0E27\u0E32\u0E21\u0E19\u0E35\u0E49"])), (_l()(), i1.ɵeld(19, 0, null, null, 2, "div", [["class", "share-button"]], null, null, null, null, null)), (_l()(), i1.ɵeld(20, 0, null, null, 1, "share-button", [], [[8, "className", 0]], null, null, i4.View_ShareButton_0, i4.RenderType_ShareButton)), i1.ɵdid(21, 49152, null, 0, i5.ShareButton, [i6.ShareService], { createButton: [0, "createButton"], setUrl: [1, "setUrl"], autoSetMeta: [2, "autoSetMeta"], showText: [3, "showText"], theme: [4, "theme"] }, null), (_l()(), i1.ɵeld(22, 0, null, null, 1, "app-comment-box", [], null, null, null, i7.View_CommentBoxComponent_0, i7.RenderType_CommentBoxComponent)), i1.ɵdid(23, 114688, null, 0, i8.CommentBoxComponent, [i9.CommentService, i10.Router, i11.HelperService, i12.ProfileService, i13.FormBuilder, i14.AuthService], { url: [0, "url"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_3 = _co.article; _ck(_v, 15, 0, currVal_3); var currVal_5 = "facebook"; var currVal_6 = _co.shareUrl; var currVal_7 = false; var currVal_8 = false; var currVal_9 = "circles-dark"; _ck(_v, 21, 0, currVal_5, currVal_6, currVal_7, currVal_8, currVal_9); var currVal_10 = _co.getUrl; _ck(_v, 23, 0, currVal_10); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.head; _ck(_v, 8, 0, currVal_0); var currVal_1 = _co.tag; _ck(_v, 11, 0, currVal_1); var currVal_2 = _co.postDate; _ck(_v, 13, 0, currVal_2); var currVal_4 = i1.ɵnov(_v, 21).buttonClass; _ck(_v, 20, 0, currVal_4); }); }
-function View_ArticleComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵand(16777216, null, null, 1, null, View_ArticleComponent_1)), i1.ɵdid(1, 16384, null, 0, i15.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.loadingContent; _ck(_v, 1, 0, currVal_0); }, null); }
+    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\u0E41\u0E01\u0E49\u0E44\u0E02 "])), (_l()(), i1.ɵeld(2, 0, null, null, 0, "i", [["class", "fa fa-edit"]], null, null, null, null, null))], null, null); }
+function View_ArticleComponent_1(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 24, "div", [["class", "row article shadow fill"]], null, null, null, null, null)), (_l()(), i1.ɵeld(1, 0, null, null, 15, "div", [["class", "col-sm-12 mx-auto"]], null, null, null, null, null)), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_ArticleComponent_2)), i1.ɵdid(3, 16384, null, 0, i2.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_ArticleComponent_3)), i1.ɵdid(5, 16384, null, 0, i2.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵeld(6, 0, null, null, 0, "br", [], null, null, null, null, null)), (_l()(), i1.ɵeld(7, 0, null, null, 0, "br", [], null, null, null, null, null)), (_l()(), i1.ɵeld(8, 0, null, null, 1, "h1", [["class", "text-center"], ["style", "margin-bottom: 20px;"]], null, null, null, null, null)), (_l()(), i1.ɵted(9, null, ["", ""])), (_l()(), i1.ɵeld(10, 0, null, null, 2, "p", [["class", "text-center"]], null, null, null, null, null)), (_l()(), i1.ɵeld(11, 0, null, null, 1, "span", [["class", "badge badge-pill badge-custom-danger"], ["style", "text-transform: uppercase;"]], null, null, null, null, null)), (_l()(), i1.ɵted(12, null, ["#", ""])), (_l()(), i1.ɵeld(13, 0, null, null, 1, "p", [["class", "text-center"]], null, null, null, null, null)), (_l()(), i1.ɵted(14, null, ["", ""])), (_l()(), i1.ɵeld(15, 0, null, null, 1, "markdown", [], null, null, null, i3.View_MarkdownComponent_0, i3.RenderType_MarkdownComponent)), i1.ɵdid(16, 4767744, null, 0, i4.MarkdownComponent, [i1.ElementRef, i4.MarkdownService], { data: [0, "data"] }, null), (_l()(), i1.ɵeld(17, 0, null, null, 7, "div", [["class", "col-sm-12 mt-5"]], null, null, null, null, null)), (_l()(), i1.ɵeld(18, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\u0E41\u0E0A\u0E23\u0E4C\u0E1A\u0E17\u0E04\u0E27\u0E32\u0E21\u0E19\u0E35\u0E49"])), (_l()(), i1.ɵeld(20, 0, null, null, 2, "div", [["class", "share-button"]], null, null, null, null, null)), (_l()(), i1.ɵeld(21, 0, null, null, 1, "share-button", [], [[8, "className", 0]], null, null, i5.View_ShareButton_0, i5.RenderType_ShareButton)), i1.ɵdid(22, 49152, null, 0, i6.ShareButton, [i7.ShareService], { createButton: [0, "createButton"], setUrl: [1, "setUrl"], autoSetMeta: [2, "autoSetMeta"], showText: [3, "showText"], theme: [4, "theme"] }, null), (_l()(), i1.ɵeld(23, 0, null, null, 1, "app-comment-box", [], null, null, null, i8.View_CommentBoxComponent_0, i8.RenderType_CommentBoxComponent)), i1.ɵdid(24, 114688, null, 0, i9.CommentBoxComponent, [i10.CommentService, i11.Router, i12.HelperService, i13.ProfileService, i14.FormBuilder, i15.AuthService], { url: [0, "url"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.isAdmin; _ck(_v, 3, 0, currVal_0); var currVal_1 = _co.isAdmin; _ck(_v, 5, 0, currVal_1); var currVal_5 = _co.article; _ck(_v, 16, 0, currVal_5); var currVal_7 = "facebook"; var currVal_8 = _co.shareUrl; var currVal_9 = false; var currVal_10 = false; var currVal_11 = "circles-dark"; _ck(_v, 22, 0, currVal_7, currVal_8, currVal_9, currVal_10, currVal_11); var currVal_12 = _co.getUrl; _ck(_v, 24, 0, currVal_12); }, function (_ck, _v) { var _co = _v.component; var currVal_2 = _co.head; _ck(_v, 9, 0, currVal_2); var currVal_3 = _co.tag; _ck(_v, 12, 0, currVal_3); var currVal_4 = _co.postDate; _ck(_v, 14, 0, currVal_4); var currVal_6 = i1.ɵnov(_v, 22).buttonClass; _ck(_v, 21, 0, currVal_6); }); }
+function View_ArticleComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵand(16777216, null, null, 1, null, View_ArticleComponent_1)), i1.ɵdid(1, 16384, null, 0, i2.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.loadingContent; _ck(_v, 1, 0, currVal_0); }, null); }
 exports.View_ArticleComponent_0 = View_ArticleComponent_0;
-function View_ArticleComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-article", [], null, null, null, View_ArticleComponent_0, RenderType_ArticleComponent)), i1.ɵdid(1, 114688, null, 0, i16.ArticleComponent, [i17.GetContentService, i10.ActivatedRoute, i18.PageViewService, i14.AuthService, i11.HelperService, i10.Router], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_ArticleComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-article", [], null, null, null, View_ArticleComponent_0, RenderType_ArticleComponent)), i1.ɵdid(1, 114688, null, 0, i16.ArticleComponent, [i17.GetContentService, i18.UploadContentService, i11.ActivatedRoute, i19.PageViewService, i15.AuthService, i12.HelperService, i11.Router], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_ArticleComponent_Host_0 = View_ArticleComponent_Host_0;
 var ArticleComponentNgFactory = i1.ɵccf("app-article", i16.ArticleComponent, View_ArticleComponent_Host_0, {}, {}, []);
 exports.ArticleComponentNgFactory = ArticleComponentNgFactory;
@@ -1460,9 +1466,12 @@ var date_fns_1 = __webpack_require__(/*! date-fns */ "date-fns");
 var th = __webpack_require__(/*! date-fns/locale/th */ "date-fns/locale/th");
 var auth_service_1 = __webpack_require__(/*! ../../services/auth.service */ "./src/app/services/auth.service.ts");
 var helper_service_1 = __webpack_require__(/*! ../../services/helper.service */ "./src/app/services/helper.service.ts");
+var upload_content_service_1 = __webpack_require__(/*! ../../services/upload-content.service */ "./src/app/services/upload-content.service.ts");
+var sweetalert2_1 = __webpack_require__(/*! sweetalert2 */ "sweetalert2");
 var ArticleComponent = /** @class */ (function () {
-    function ArticleComponent(contentService, activatedRoute, pageView, auth, helper, router) {
+    function ArticleComponent(contentService, uploadService, activatedRoute, pageView, auth, helper, router) {
         this.contentService = contentService;
+        this.uploadService = uploadService;
         this.activatedRoute = activatedRoute;
         this.pageView = pageView;
         this.auth = auth;
@@ -1474,16 +1483,21 @@ var ArticleComponent = /** @class */ (function () {
         this.shareUrl = '';
         this.postDate = '';
         this.tag = '';
+        this.isAdmin = false;
     }
     ArticleComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.getUrl = this.helper.getCurrentUrl();
         var getArticle = this.contentService.getArticle(this.getUrl);
-        this.shareUrl = "https://www.pasupol.com/article/" + this.getUrl;
+        this.shareUrl = this.helper.getFullUrl();
         this.auth.isAuthenticated().subscribe(function (value) {
             if (value) {
                 if (!value.emailVerified) {
                     _this.pageView.setPageView(_this.getUrl);
+                    _this.isAdmin = false;
+                }
+                else {
+                    _this.isAdmin = true;
                 }
             }
             else {
@@ -1505,7 +1519,7 @@ var ArticleComponent = /** @class */ (function () {
             this.contentService.getPostDetail(this.getUrl).then(function (result) {
                 result.subscribe(function (e) {
                     e.forEach(function (elem) {
-                        if (elem) {
+                        if (elem && elem.status) {
                             _this.postDate = date_fns_1.format(elem.timeStamp, 'DD MMMM YYYY : HH:mm', { locale: th });
                             _this.head = elem.title;
                             _this.tag = elem.tag;
@@ -1515,6 +1529,9 @@ var ArticleComponent = /** @class */ (function () {
                             _this.contentService.loading(true);
                             _this.loadingContent = true;
                         }
+                        else {
+                            _this.router.navigateByUrl('/');
+                        }
                     });
                 });
             });
@@ -1522,6 +1539,34 @@ var ArticleComponent = /** @class */ (function () {
     };
     ArticleComponent.prototype.editPost = function () {
         this.router.navigateByUrl('post/' + this.getUrl);
+    };
+    ArticleComponent.prototype.openDeletePost = function () {
+        var _this = this;
+        sweetalert2_1.default.fire({
+            title: 'ยืนยันการลบ!',
+            text: 'คุณต้องการลบโพสนี้?',
+            type: 'warning',
+            reverseButtons: true,
+            showCancelButton: true,
+            confirmButtonText: 'ยืนยันการลบ'
+        }).then(function (result) {
+            if (result.value) {
+                _this.deletePost();
+            }
+        });
+    };
+    ArticleComponent.prototype.deletePost = function () {
+        var _this = this;
+        this.uploadService.deleteContent(this.getUrl).then(function () {
+            sweetalert2_1.default.fire({
+                title: 'ลบข้อมูลเรียบร้อยแล้ว',
+                type: 'success',
+            }).then(function () {
+                setTimeout(function () {
+                    _this.router.navigateByUrl('/');
+                }, 500);
+            });
+        });
     };
     return ArticleComponent;
 }());
@@ -1859,7 +1904,7 @@ exports.RenderType_ItemComponent = RenderType_ItemComponent;
 function View_ItemComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 18, "div", [["class", "card mb-4 box-shadow full-height"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
         var pd_0 = (_co.readArticle(_co.item.slugUrl) !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), (_l()(), i1.ɵeld(1, 0, null, null, 1, "div", [["style", "position:relative; width:100%; height:0; padding-top:50%;"]], null, null, null, null, null)), (_l()(), i1.ɵeld(2, 0, null, null, 0, "img", [["class", "card-img-top img-preview"], ["style", "position:absolute; top:0; left:0; width:100%;"]], [[8, "src", 4], [8, "alt", 0]], null, null, null, null)), (_l()(), i1.ɵeld(3, 0, null, null, 15, "div", [["class", "card-body d-flex flex-column"]], null, null, null, null, null)), (_l()(), i1.ɵeld(4, 0, null, null, 1, "h4", [["class", "card-title"]], null, null, null, null, null)), (_l()(), i1.ɵted(5, null, ["", ""])), (_l()(), i1.ɵeld(6, 0, null, null, 1, "p", [["class", "card-text"]], null, null, null, null, null)), (_l()(), i1.ɵted(7, null, ["", ".."])), (_l()(), i1.ɵeld(8, 0, null, null, 1, "div", [["class", "category"]], null, null, null, null, null)), (_l()(), i1.ɵted(9, null, ["", ""])), (_l()(), i1.ɵeld(10, 0, null, null, 1, "div", [["class", "post-date"]], null, null, null, null, null)), (_l()(), i1.ɵted(11, null, ["", ""])), (_l()(), i1.ɵeld(12, 0, null, null, 2, "span", [["class", "stat-and-profile fa fa-eye"], ["style", "position: absolute;\n      bottom: 22px;"]], null, null, null, null, null)), (_l()(), i1.ɵted(13, null, [" ", " "])), (_l()(), i1.ɵeld(14, 0, null, null, 0, "img", [["alt", ""], ["class", "author"], ["src", "../../assets/me.png"]], null, null, null, null, null)), (_l()(), i1.ɵeld(15, 0, null, null, 3, "button", [["class", "btn btn-outline-secondary btn-sm read-more-button mt-auto"], ["type", "button"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\u0E2D\u0E48\u0E32\u0E19\u0E1A\u0E17\u0E04\u0E27\u0E32\u0E21\u0E19\u0E35\u0E49 "])), (_l()(), i1.ɵeld(17, 0, null, null, 1, "fa", [["name", "book"]], null, null, null, i2.View_AngularFontAwesomeComponent_0, i2.RenderType_AngularFontAwesomeComponent)), i1.ɵdid(18, 114688, null, 0, i3.AngularFontAwesomeComponent, [], { name: [0, "name"] }, null)], function (_ck, _v) { var currVal_7 = "book"; _ck(_v, 18, 0, currVal_7); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = i1.ɵinlineInterpolate(1, "", _co.imgUrl, ""); var currVal_1 = i1.ɵinlineInterpolate(1, "", _co.item.title, ""); _ck(_v, 2, 0, currVal_0, currVal_1); var currVal_2 = _co.item.title; _ck(_v, 5, 0, currVal_2); var currVal_3 = _co.item.description; _ck(_v, 7, 0, currVal_3); var currVal_4 = _co.item.tag; _ck(_v, 9, 0, currVal_4); var currVal_5 = _co.postDate; _ck(_v, 11, 0, currVal_5); var currVal_6 = _co.item.view; _ck(_v, 13, 0, currVal_6); }); }
+    } return ad; }, null, null)), (_l()(), i1.ɵeld(1, 0, null, null, 1, "div", [["style", "position:relative; width:100%; height:0; padding-top:50%;margin-bottom: 1rem;"]], null, null, null, null, null)), (_l()(), i1.ɵeld(2, 0, null, null, 0, "img", [["class", "card-img-top img-preview"], ["style", "position:absolute; top:0; left:0; width:100%;"]], [[8, "src", 4], [8, "alt", 0]], null, null, null, null)), (_l()(), i1.ɵeld(3, 0, null, null, 15, "div", [["class", "card-body d-flex flex-column"]], null, null, null, null, null)), (_l()(), i1.ɵeld(4, 0, null, null, 1, "h4", [["class", "card-title"]], null, null, null, null, null)), (_l()(), i1.ɵted(5, null, ["", ""])), (_l()(), i1.ɵeld(6, 0, null, null, 1, "p", [["class", "card-text"]], null, null, null, null, null)), (_l()(), i1.ɵted(7, null, ["", ".."])), (_l()(), i1.ɵeld(8, 0, null, null, 1, "div", [["class", "category"]], null, null, null, null, null)), (_l()(), i1.ɵted(9, null, ["", ""])), (_l()(), i1.ɵeld(10, 0, null, null, 1, "div", [["class", "post-date"]], null, null, null, null, null)), (_l()(), i1.ɵted(11, null, ["", ""])), (_l()(), i1.ɵeld(12, 0, null, null, 2, "span", [["class", "stat-and-profile fa fa-eye"], ["style", "position: absolute;\n      bottom: 22px;"]], null, null, null, null, null)), (_l()(), i1.ɵted(13, null, [" ", " "])), (_l()(), i1.ɵeld(14, 0, null, null, 0, "img", [["alt", ""], ["class", "author"], ["src", "../../assets/me.png"]], null, null, null, null, null)), (_l()(), i1.ɵeld(15, 0, null, null, 3, "button", [["class", "btn btn-outline-secondary btn-sm read-more-button mt-auto"], ["type", "button"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\u0E2D\u0E48\u0E32\u0E19\u0E1A\u0E17\u0E04\u0E27\u0E32\u0E21\u0E19\u0E35\u0E49 "])), (_l()(), i1.ɵeld(17, 0, null, null, 1, "fa", [["name", "book"]], null, null, null, i2.View_AngularFontAwesomeComponent_0, i2.RenderType_AngularFontAwesomeComponent)), i1.ɵdid(18, 114688, null, 0, i3.AngularFontAwesomeComponent, [], { name: [0, "name"] }, null)], function (_ck, _v) { var currVal_7 = "book"; _ck(_v, 18, 0, currVal_7); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = i1.ɵinlineInterpolate(1, "", _co.imgUrl, ""); var currVal_1 = i1.ɵinlineInterpolate(1, "", _co.item.title, ""); _ck(_v, 2, 0, currVal_0, currVal_1); var currVal_2 = _co.item.title; _ck(_v, 5, 0, currVal_2); var currVal_3 = _co.item.description; _ck(_v, 7, 0, currVal_3); var currVal_4 = _co.item.tag; _ck(_v, 9, 0, currVal_4); var currVal_5 = _co.postDate; _ck(_v, 11, 0, currVal_5); var currVal_6 = _co.item.view; _ck(_v, 13, 0, currVal_6); }); }
 exports.View_ItemComponent_0 = View_ItemComponent_0;
 function View_ItemComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-item", [], null, null, null, View_ItemComponent_0, RenderType_ItemComponent)), i1.ɵdid(1, 114688, null, 0, i4.ItemComponent, [i5.Router, i6.GetContentService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_ItemComponent_Host_0 = View_ItemComponent_Host_0;
@@ -2039,7 +2084,7 @@ function View_LoginComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0,
         ad = (pd_0 && ad);
     } return ad; }, null, null)), i1.ɵdid(39, 671744, null, 0, i8.RouterLinkWithHref, [i8.Router, i8.ActivatedRoute, i7.LocationStrategy], { routerLink: [0, "routerLink"] }, null), i1.ɵpad(40, 1), (_l()(), i1.ɵted(-1, null, ["\u0E22\u0E31\u0E07\u0E44\u0E21\u0E48\u0E44\u0E14\u0E49\u0E40\u0E1B\u0E47\u0E19\u0E2A\u0E21\u0E32\u0E0A\u0E34\u0E01?"])), (_l()(), i1.ɵeld(42, 0, null, null, 6, "div", [["class", "form-group"]], null, null, null, null, null)), (_l()(), i1.ɵeld(43, 0, null, null, 5, "button", [["class", "btn btn-outline-secondary btn-block"], ["type", "submit"]], [[8, "disabled", 0]], null, null, null, null)), (_l()(), i1.ɵted(44, null, ["", " "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_LoginComponent_3)), i1.ɵdid(46, 16384, null, 0, i7.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_LoginComponent_4)), i1.ɵdid(48, 16384, null, 0, i7.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_7 = _co.form; _ck(_v, 4, 0, currVal_7); var currVal_15 = "email"; _ck(_v, 15, 0, currVal_15); var currVal_16 = (_co.form.value.email && (_co.form.controls["email"].invalid && _co.form.controls["email"].touched)); _ck(_v, 19, 0, currVal_16); var currVal_17 = (!_co.form.value.email && _co.form.controls["email"].touched); _ck(_v, 21, 0, currVal_17); var currVal_25 = "password"; _ck(_v, 28, 0, currVal_25); var currVal_28 = _ck(_v, 40, 0, "/register"); _ck(_v, 39, 0, currVal_28); var currVal_31 = _co.isDisabledSubmitButton; _ck(_v, 46, 0, currVal_31); var currVal_32 = !_co.isDisabledSubmitButton; _ck(_v, 48, 0, currVal_32); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = i1.ɵnov(_v, 6).ngClassUntouched; var currVal_1 = i1.ɵnov(_v, 6).ngClassTouched; var currVal_2 = i1.ɵnov(_v, 6).ngClassPristine; var currVal_3 = i1.ɵnov(_v, 6).ngClassDirty; var currVal_4 = i1.ɵnov(_v, 6).ngClassValid; var currVal_5 = i1.ɵnov(_v, 6).ngClassInvalid; var currVal_6 = i1.ɵnov(_v, 6).ngClassPending; _ck(_v, 2, 0, currVal_0, currVal_1, currVal_2, currVal_3, currVal_4, currVal_5, currVal_6); var currVal_8 = i1.ɵnov(_v, 17).ngClassUntouched; var currVal_9 = i1.ɵnov(_v, 17).ngClassTouched; var currVal_10 = i1.ɵnov(_v, 17).ngClassPristine; var currVal_11 = i1.ɵnov(_v, 17).ngClassDirty; var currVal_12 = i1.ɵnov(_v, 17).ngClassValid; var currVal_13 = i1.ɵnov(_v, 17).ngClassInvalid; var currVal_14 = i1.ɵnov(_v, 17).ngClassPending; _ck(_v, 12, 0, currVal_8, currVal_9, currVal_10, currVal_11, currVal_12, currVal_13, currVal_14); var currVal_18 = i1.ɵnov(_v, 30).ngClassUntouched; var currVal_19 = i1.ɵnov(_v, 30).ngClassTouched; var currVal_20 = i1.ɵnov(_v, 30).ngClassPristine; var currVal_21 = i1.ɵnov(_v, 30).ngClassDirty; var currVal_22 = i1.ɵnov(_v, 30).ngClassValid; var currVal_23 = i1.ɵnov(_v, 30).ngClassInvalid; var currVal_24 = i1.ɵnov(_v, 30).ngClassPending; _ck(_v, 25, 0, currVal_18, currVal_19, currVal_20, currVal_21, currVal_22, currVal_23, currVal_24); var currVal_26 = i1.ɵnov(_v, 39).target; var currVal_27 = i1.ɵnov(_v, 39).href; _ck(_v, 38, 0, currVal_26, currVal_27); var currVal_29 = (_co.form.invalid || _co.isDisabledSubmitButton); _ck(_v, 43, 0, currVal_29); var currVal_30 = _co.buttonSubmit; _ck(_v, 44, 0, currVal_30); }); }
 exports.View_LoginComponent_0 = View_LoginComponent_0;
-function View_LoginComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-login", [], null, null, null, View_LoginComponent_0, RenderType_LoginComponent)), i1.ɵdid(1, 114688, null, 0, i9.LoginComponent, [i8.Router, i6.FormBuilder, i10.AuthService, i11.AuthProviderService, i12.GetContentService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_LoginComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-login", [], null, null, null, View_LoginComponent_0, RenderType_LoginComponent)), i1.ɵdid(1, 114688, null, 0, i9.LoginComponent, [i8.Router, i8.ActivatedRoute, i6.FormBuilder, i10.AuthService, i11.AuthProviderService, i12.GetContentService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_LoginComponent_Host_0 = View_LoginComponent_Host_0;
 var LoginComponentNgFactory = i1.ɵccf("app-login", i9.LoginComponent, View_LoginComponent_Host_0, {}, {}, []);
 exports.LoginComponentNgFactory = LoginComponentNgFactory;
@@ -2065,8 +2110,9 @@ var get_content_service_1 = __webpack_require__(/*! ../../services/get-content.s
 var router_1 = __webpack_require__(/*! @angular/router */ "@angular/router");
 var auth_provider_service_1 = __webpack_require__(/*! ../../services/auth-provider.service */ "./src/app/services/auth-provider.service.ts");
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent(router, Form, Service, provider, contentService) {
+    function LoginComponent(router, route, Form, Service, provider, contentService) {
         this.router = router;
+        this.route = route;
         this.Form = Form;
         this.Service = Service;
         this.provider = provider;
@@ -2078,6 +2124,7 @@ var LoginComponent = /** @class */ (function () {
         });
     }
     LoginComponent.prototype.ngOnInit = function () {
+        this.callBackUrl = this.route.snapshot.queryParamMap.get('callback');
         this.contentService.loading(true);
         this.buttonSubmit = 'เข้าสู่ระบบ';
     };
@@ -2087,9 +2134,8 @@ var LoginComponent = /** @class */ (function () {
         this.isDisabledSubmitButton = true;
         this.Service.SignIn(this.form.value.email, this.form.value.password).then(function () {
             setTimeout(function () {
-                var postUrl = new URL(window.location.href).searchParams.get('callback');
-                if (postUrl) {
-                    _this.router.navigate(['article/' + postUrl]);
+                if (_this.callBackUrl) {
+                    _this.router.navigate(['article/' + _this.callBackUrl]);
                 }
                 else {
                     _this.router.navigate(['/']);
@@ -2117,9 +2163,8 @@ var LoginComponent = /** @class */ (function () {
         this.provider.facebookSign().then(function (user) {
             _this.userDetail = user;
             if (_this.userDetail.user.email) {
-                var postUrl = new URL(window.location.href).searchParams.get('callback');
-                if (postUrl) {
-                    _this.router.navigate(['article/' + postUrl]);
+                if (_this.callBackUrl) {
+                    _this.router.navigate(['article/' + _this.callBackUrl]);
                 }
                 else {
                     _this.router.navigate(['/']);
@@ -2132,9 +2177,8 @@ var LoginComponent = /** @class */ (function () {
         this.provider.googleSign().then(function (user) {
             _this.userDetail = user;
             if (_this.userDetail.user.email) {
-                var postUrl = new URL(window.location.href).searchParams.get('callback');
-                if (postUrl) {
-                    _this.router.navigate(['article/' + postUrl]);
+                if (_this.callBackUrl) {
+                    _this.router.navigate(['article/' + _this.callBackUrl]);
                 }
                 else {
                     _this.router.navigate(['/']);
@@ -2199,6 +2243,7 @@ var i8 = __webpack_require__(/*! ../../services/upload-content.service */ "./src
 var i9 = __webpack_require__(/*! ../../services/get-content.service */ "./src/app/services/get-content.service.ts");
 var i10 = __webpack_require__(/*! ../../services/helper.service */ "./src/app/services/helper.service.ts");
 var i11 = __webpack_require__(/*! ../../services/auth.service */ "./src/app/services/auth.service.ts");
+var i12 = __webpack_require__(/*! @angular/router */ "@angular/router");
 var styles_MarkdownEditorComponent = [i0.styles];
 var RenderType_MarkdownEditorComponent = i1.ɵcrt({ encapsulation: 2, styles: styles_MarkdownEditorComponent, data: {} });
 exports.RenderType_MarkdownEditorComponent = RenderType_MarkdownEditorComponent;
@@ -2376,7 +2421,7 @@ function View_MarkdownEditorComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵ
         ad = (pd_0 && ad);
     } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\u0E42\u0E1E\u0E2A "])), (_l()(), i1.ɵeld(123, 0, null, null, 0, "i", [["class", "fa fa-send"]], null, null, null, null, null)), (_l()(), i1.ɵeld(124, 0, null, null, 0, "br", [], null, null, null, null, null)), (_l()(), i1.ɵeld(125, 0, null, null, 0, "br", [], null, null, null, null, null))], function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.imageName; _ck(_v, 5, 0, currVal_0); var currVal_1 = _co.uploading; _ck(_v, 13, 0, currVal_1); var currVal_2 = !_co.uploading; _ck(_v, 15, 0, currVal_2); var currVal_11 = _co.templateForm; _ck(_v, 21, 0, currVal_11); var currVal_19 = "articleName"; _ck(_v, 29, 0, currVal_19); var currVal_27 = "articleDescription"; _ck(_v, 36, 0, currVal_27); var currVal_35 = "imageUrl"; _ck(_v, 44, 0, currVal_35); var currVal_43 = "tag"; var currVal_44 = "tag"; var currVal_45 = "javascript"; _ck(_v, 52, 0, currVal_43, currVal_44, currVal_45); var currVal_46 = "tag"; _ck(_v, 54, 0, currVal_46); var currVal_54 = "tag"; var currVal_55 = "tag"; var currVal_56 = "angular"; _ck(_v, 62, 0, currVal_54, currVal_55, currVal_56); var currVal_57 = "tag"; _ck(_v, 64, 0, currVal_57); var currVal_65 = "tag"; var currVal_66 = "tag"; var currVal_67 = "trip and trick"; _ck(_v, 72, 0, currVal_65, currVal_66, currVal_67); var currVal_68 = "tag"; _ck(_v, 74, 0, currVal_68); var currVal_76 = "tag"; var currVal_77 = "tag"; var currVal_78 = "challenge"; _ck(_v, 82, 0, currVal_76, currVal_77, currVal_78); var currVal_79 = "tag"; _ck(_v, 84, 0, currVal_79); var currVal_87 = "tag"; var currVal_88 = "tag"; var currVal_89 = "\u0E17\u0E31\u0E48\u0E27\u0E44\u0E1B"; _ck(_v, 92, 0, currVal_87, currVal_88, currVal_89); var currVal_90 = "tag"; _ck(_v, 94, 0, currVal_90); var currVal_98 = "tag"; var currVal_99 = "tag"; var currVal_100 = "\u0E2D\u0E37\u0E48\u0E19\u0E46"; _ck(_v, 102, 0, currVal_98, currVal_99, currVal_100); var currVal_101 = "tag"; _ck(_v, 104, 0, currVal_101); var currVal_102 = _co.customTag; _ck(_v, 110, 0, currVal_102); var currVal_110 = "editor1"; var currVal_111 = _co.editorOptions; var currVal_112 = "12"; _ck(_v, 113, 0, currVal_110, currVal_111, currVal_112); var currVal_113 = "body"; _ck(_v, 115, 0, currVal_113); }, function (_ck, _v) { var _co = _v.component; var currVal_3 = !_co.imageUrl; _ck(_v, 17, 0, currVal_3); var currVal_4 = i1.ɵnov(_v, 23).ngClassUntouched; var currVal_5 = i1.ɵnov(_v, 23).ngClassTouched; var currVal_6 = i1.ɵnov(_v, 23).ngClassPristine; var currVal_7 = i1.ɵnov(_v, 23).ngClassDirty; var currVal_8 = i1.ɵnov(_v, 23).ngClassValid; var currVal_9 = i1.ɵnov(_v, 23).ngClassInvalid; var currVal_10 = i1.ɵnov(_v, 23).ngClassPending; _ck(_v, 19, 0, currVal_4, currVal_5, currVal_6, currVal_7, currVal_8, currVal_9, currVal_10); var currVal_12 = i1.ɵnov(_v, 31).ngClassUntouched; var currVal_13 = i1.ɵnov(_v, 31).ngClassTouched; var currVal_14 = i1.ɵnov(_v, 31).ngClassPristine; var currVal_15 = i1.ɵnov(_v, 31).ngClassDirty; var currVal_16 = i1.ɵnov(_v, 31).ngClassValid; var currVal_17 = i1.ɵnov(_v, 31).ngClassInvalid; var currVal_18 = i1.ɵnov(_v, 31).ngClassPending; _ck(_v, 26, 0, currVal_12, currVal_13, currVal_14, currVal_15, currVal_16, currVal_17, currVal_18); var currVal_20 = i1.ɵnov(_v, 38).ngClassUntouched; var currVal_21 = i1.ɵnov(_v, 38).ngClassTouched; var currVal_22 = i1.ɵnov(_v, 38).ngClassPristine; var currVal_23 = i1.ɵnov(_v, 38).ngClassDirty; var currVal_24 = i1.ɵnov(_v, 38).ngClassValid; var currVal_25 = i1.ɵnov(_v, 38).ngClassInvalid; var currVal_26 = i1.ɵnov(_v, 38).ngClassPending; _ck(_v, 33, 0, currVal_20, currVal_21, currVal_22, currVal_23, currVal_24, currVal_25, currVal_26); var currVal_28 = i1.ɵnov(_v, 46).ngClassUntouched; var currVal_29 = i1.ɵnov(_v, 46).ngClassTouched; var currVal_30 = i1.ɵnov(_v, 46).ngClassPristine; var currVal_31 = i1.ɵnov(_v, 46).ngClassDirty; var currVal_32 = i1.ɵnov(_v, 46).ngClassValid; var currVal_33 = i1.ɵnov(_v, 46).ngClassInvalid; var currVal_34 = i1.ɵnov(_v, 46).ngClassPending; _ck(_v, 41, 0, currVal_28, currVal_29, currVal_30, currVal_31, currVal_32, currVal_33, currVal_34); var currVal_36 = i1.ɵnov(_v, 56).ngClassUntouched; var currVal_37 = i1.ɵnov(_v, 56).ngClassTouched; var currVal_38 = i1.ɵnov(_v, 56).ngClassPristine; var currVal_39 = i1.ɵnov(_v, 56).ngClassDirty; var currVal_40 = i1.ɵnov(_v, 56).ngClassValid; var currVal_41 = i1.ɵnov(_v, 56).ngClassInvalid; var currVal_42 = i1.ɵnov(_v, 56).ngClassPending; _ck(_v, 50, 0, currVal_36, currVal_37, currVal_38, currVal_39, currVal_40, currVal_41, currVal_42); var currVal_47 = i1.ɵnov(_v, 66).ngClassUntouched; var currVal_48 = i1.ɵnov(_v, 66).ngClassTouched; var currVal_49 = i1.ɵnov(_v, 66).ngClassPristine; var currVal_50 = i1.ɵnov(_v, 66).ngClassDirty; var currVal_51 = i1.ɵnov(_v, 66).ngClassValid; var currVal_52 = i1.ɵnov(_v, 66).ngClassInvalid; var currVal_53 = i1.ɵnov(_v, 66).ngClassPending; _ck(_v, 60, 0, currVal_47, currVal_48, currVal_49, currVal_50, currVal_51, currVal_52, currVal_53); var currVal_58 = i1.ɵnov(_v, 76).ngClassUntouched; var currVal_59 = i1.ɵnov(_v, 76).ngClassTouched; var currVal_60 = i1.ɵnov(_v, 76).ngClassPristine; var currVal_61 = i1.ɵnov(_v, 76).ngClassDirty; var currVal_62 = i1.ɵnov(_v, 76).ngClassValid; var currVal_63 = i1.ɵnov(_v, 76).ngClassInvalid; var currVal_64 = i1.ɵnov(_v, 76).ngClassPending; _ck(_v, 70, 0, currVal_58, currVal_59, currVal_60, currVal_61, currVal_62, currVal_63, currVal_64); var currVal_69 = i1.ɵnov(_v, 86).ngClassUntouched; var currVal_70 = i1.ɵnov(_v, 86).ngClassTouched; var currVal_71 = i1.ɵnov(_v, 86).ngClassPristine; var currVal_72 = i1.ɵnov(_v, 86).ngClassDirty; var currVal_73 = i1.ɵnov(_v, 86).ngClassValid; var currVal_74 = i1.ɵnov(_v, 86).ngClassInvalid; var currVal_75 = i1.ɵnov(_v, 86).ngClassPending; _ck(_v, 80, 0, currVal_69, currVal_70, currVal_71, currVal_72, currVal_73, currVal_74, currVal_75); var currVal_80 = i1.ɵnov(_v, 96).ngClassUntouched; var currVal_81 = i1.ɵnov(_v, 96).ngClassTouched; var currVal_82 = i1.ɵnov(_v, 96).ngClassPristine; var currVal_83 = i1.ɵnov(_v, 96).ngClassDirty; var currVal_84 = i1.ɵnov(_v, 96).ngClassValid; var currVal_85 = i1.ɵnov(_v, 96).ngClassInvalid; var currVal_86 = i1.ɵnov(_v, 96).ngClassPending; _ck(_v, 90, 0, currVal_80, currVal_81, currVal_82, currVal_83, currVal_84, currVal_85, currVal_86); var currVal_91 = i1.ɵnov(_v, 106).ngClassUntouched; var currVal_92 = i1.ɵnov(_v, 106).ngClassTouched; var currVal_93 = i1.ɵnov(_v, 106).ngClassPristine; var currVal_94 = i1.ɵnov(_v, 106).ngClassDirty; var currVal_95 = i1.ɵnov(_v, 106).ngClassValid; var currVal_96 = i1.ɵnov(_v, 106).ngClassInvalid; var currVal_97 = i1.ɵnov(_v, 106).ngClassPending; _ck(_v, 100, 0, currVal_91, currVal_92, currVal_93, currVal_94, currVal_95, currVal_96, currVal_97); var currVal_103 = i1.ɵnov(_v, 117).ngClassUntouched; var currVal_104 = i1.ɵnov(_v, 117).ngClassTouched; var currVal_105 = i1.ɵnov(_v, 117).ngClassPristine; var currVal_106 = i1.ɵnov(_v, 117).ngClassDirty; var currVal_107 = i1.ɵnov(_v, 117).ngClassValid; var currVal_108 = i1.ɵnov(_v, 117).ngClassInvalid; var currVal_109 = i1.ɵnov(_v, 117).ngClassPending; _ck(_v, 112, 0, currVal_103, currVal_104, currVal_105, currVal_106, currVal_107, currVal_108, currVal_109); var currVal_114 = ((!_co.isAdmin || _co.templateForm.invalid) || _co.isDisabled); _ck(_v, 121, 0, currVal_114); }); }
 exports.View_MarkdownEditorComponent_0 = View_MarkdownEditorComponent_0;
-function View_MarkdownEditorComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-markdown-editor", [], null, null, null, View_MarkdownEditorComponent_0, RenderType_MarkdownEditorComponent)), i1.ɵdid(1, 114688, null, 0, i6.MarkdownEditorComponent, [i3.FormBuilder, i7.MarkdownService, i8.UploadContentService, i9.GetContentService, i10.HelperService, i11.AuthService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_MarkdownEditorComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-markdown-editor", [], null, null, null, View_MarkdownEditorComponent_0, RenderType_MarkdownEditorComponent)), i1.ɵdid(1, 114688, null, 0, i6.MarkdownEditorComponent, [i3.FormBuilder, i7.MarkdownService, i8.UploadContentService, i9.GetContentService, i10.HelperService, i11.AuthService, i12.Router], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_MarkdownEditorComponent_Host_0 = View_MarkdownEditorComponent_Host_0;
 var MarkdownEditorComponentNgFactory = i1.ɵccf("app-markdown-editor", i6.MarkdownEditorComponent, View_MarkdownEditorComponent_Host_0, {}, {}, []);
 exports.MarkdownEditorComponentNgFactory = MarkdownEditorComponentNgFactory;
@@ -2403,14 +2448,16 @@ var get_content_service_1 = __webpack_require__(/*! ../../services/get-content.s
 var sweetalert2_1 = __webpack_require__(/*! sweetalert2 */ "sweetalert2");
 var auth_service_1 = __webpack_require__(/*! ../../services/auth.service */ "./src/app/services/auth.service.ts");
 var helper_service_1 = __webpack_require__(/*! ../../services/helper.service */ "./src/app/services/helper.service.ts");
+var router_1 = __webpack_require__(/*! @angular/router */ "@angular/router");
 var MarkdownEditorComponent = /** @class */ (function () {
-    function MarkdownEditorComponent(fb, markdownService, uploadService, contentService, helper, auth) {
+    function MarkdownEditorComponent(fb, markdownService, uploadService, contentService, helper, auth, router) {
         this.fb = fb;
         this.markdownService = markdownService;
         this.uploadService = uploadService;
         this.contentService = contentService;
         this.helper = helper;
         this.auth = auth;
+        this.router = router;
         this.showEditor = true;
         this.uploading = false;
         this.isDisabled = false;
@@ -2420,26 +2467,27 @@ var MarkdownEditorComponent = /** @class */ (function () {
     MarkdownEditorComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.getUrl = this.helper.getCurrentUrl();
-        this.contentService.getPostDetail(this.getUrl).then(function (result) {
-            result.subscribe(function (e) {
-                e.forEach(function (elem) {
-                    if (elem) {
-                        console.log(elem);
-                        if (!_this.tagList.includes(elem.tag)) {
-                            _this.customTag = elem.tag;
-                            _this.templateForm.controls['tag'].setValue('อื่นๆ');
+        if (this.getUrl !== 'post') {
+            this.contentService.getPostDetail(this.getUrl).then(function (result) {
+                result.subscribe(function (e) {
+                    e.forEach(function (elem) {
+                        if (elem) {
+                            if (!_this.tagList.includes(elem.tag)) {
+                                _this.customTag = elem.tag;
+                                _this.templateForm.controls['tag'].setValue('อื่นๆ');
+                            }
+                            else {
+                                _this.templateForm.controls['tag'].setValue(elem.tag);
+                            }
+                            _this.templateForm.controls['articleName'].setValue(elem.title);
+                            _this.templateForm.controls['articleDescription'].setValue(elem.description);
+                            _this.templateForm.controls['imageUrl'].setValue(elem.imageUrl);
+                            _this.templateForm.controls['body'].setValue(JSON.parse(elem.content));
                         }
-                        else {
-                            _this.templateForm.controls['tag'].setValue(elem.tag);
-                        }
-                        _this.templateForm.controls['articleName'].setValue(elem.title);
-                        _this.templateForm.controls['articleDescription'].setValue(elem.description);
-                        _this.templateForm.controls['imageUrl'].setValue(elem.imageUrl);
-                        _this.templateForm.controls['body'].setValue(JSON.parse(elem.content));
-                    }
+                    });
                 });
             });
-        });
+        }
         this.auth.isAuthenticated().subscribe(function (value) {
             _this.contentService.loading(true);
             if (value && value.emailVerified) {
@@ -2575,6 +2623,7 @@ var MarkdownEditorComponent = /** @class */ (function () {
         });
     };
     MarkdownEditorComponent.prototype.save = function () {
+        var _this = this;
         var data = JSON.stringify(this.markdownText);
         this.content = data;
         this.title = this.templateForm.value.articleName;
@@ -2596,7 +2645,7 @@ var MarkdownEditorComponent = /** @class */ (function () {
                 icon: 'success'
             }).then(function () {
                 setTimeout(function () {
-                    window.location.href = '';
+                    _this.router.navigateByUrl('/');
                 }, 500);
             });
         }).catch(function (e) {
@@ -2872,9 +2921,9 @@ function View_ProfileComponent_1(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 
         var pd_0 = (_co.gotoWebsite(((_co.profileDetail == null) ? null : _co.profileDetail.website)) !== false);
         ad = (pd_0 && ad);
     } return ad; }, null, null)), (_l()(), i1.ɵeld(1, 0, null, null, 1, "fa", [["name", "globe"]], null, null, null, i2.View_AngularFontAwesomeComponent_0, i2.RenderType_AngularFontAwesomeComponent)), i1.ɵdid(2, 114688, null, 0, i3.AngularFontAwesomeComponent, [], { name: [0, "name"] }, null)], function (_ck, _v) { var currVal_0 = "globe"; _ck(_v, 2, 0, currVal_0); }, null); }
-function View_ProfileComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 10, "div", [["class", "col-md-6 mx-auto"]], null, null, null, null, null)), (_l()(), i1.ɵeld(1, 0, null, null, 9, "div", [["class", "card"]], null, null, null, null, null)), (_l()(), i1.ɵeld(2, 0, null, null, 1, "div", [["class", "form-group text-center"]], null, null, null, null, null)), (_l()(), i1.ɵeld(3, 0, null, null, 0, "img", [["alt", ""], ["class", "imgProfile"]], [[8, "src", 4]], null, null, null, null)), (_l()(), i1.ɵeld(4, 0, null, null, 6, "div", [["class", "text-center"]], null, null, null, null, null)), (_l()(), i1.ɵeld(5, 0, null, null, 1, "h5", [], null, null, null, null, null)), (_l()(), i1.ɵted(6, null, ["", ""])), (_l()(), i1.ɵeld(7, 0, null, null, 1, "h6", [], null, null, null, null, null)), (_l()(), i1.ɵted(8, null, ["", ""])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_ProfileComponent_1)), i1.ɵdid(10, 16384, null, 0, i4.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_3 = ((_co.profileDetail == null) ? null : _co.profileDetail.website); _ck(_v, 10, 0, currVal_3); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.imageProfile; _ck(_v, 3, 0, currVal_0); var currVal_1 = (((_co.profileDetail == null) ? null : _co.profileDetail.displayName) || "\u0E22\u0E31\u0E07\u0E44\u0E21\u0E48\u0E44\u0E14\u0E49\u0E23\u0E30\u0E1A\u0E38\u0E0A\u0E37\u0E48\u0E2D"); _ck(_v, 6, 0, currVal_1); var currVal_2 = ((_co.profileDetail == null) ? null : _co.profileDetail.bio); _ck(_v, 8, 0, currVal_2); }); }
+function View_ProfileComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 10, "div", [["class", "col-md-6 mx-auto"]], null, null, null, null, null)), (_l()(), i1.ɵeld(1, 0, null, null, 9, "div", [["class", "card"]], null, null, null, null, null)), (_l()(), i1.ɵeld(2, 0, null, null, 1, "div", [["class", "form-group text-center"]], null, null, null, null, null)), (_l()(), i1.ɵeld(3, 0, null, null, 0, "img", [["alt", ""], ["class", "imgProfile"]], [[8, "src", 4]], null, null, null, null)), (_l()(), i1.ɵeld(4, 0, null, null, 6, "div", [["class", "text-center"]], null, null, null, null, null)), (_l()(), i1.ɵeld(5, 0, null, null, 1, "h5", [], null, null, null, null, null)), (_l()(), i1.ɵted(6, null, ["", ""])), (_l()(), i1.ɵeld(7, 0, null, null, 1, "h6", [], null, null, null, null, null)), (_l()(), i1.ɵted(8, null, ["", ""])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_ProfileComponent_1)), i1.ɵdid(10, 16384, null, 0, i4.NgIf, [i1.ViewContainerRef, i1.TemplateRef], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_3 = ((_co.profileDetail == null) ? null : _co.profileDetail.website); _ck(_v, 10, 0, currVal_3); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.imageProfile; _ck(_v, 3, 0, currVal_0); var currVal_1 = _co.profileName; _ck(_v, 6, 0, currVal_1); var currVal_2 = ((_co.profileDetail == null) ? null : _co.profileDetail.bio); _ck(_v, 8, 0, currVal_2); }); }
 exports.View_ProfileComponent_0 = View_ProfileComponent_0;
-function View_ProfileComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-profile", [], null, null, null, View_ProfileComponent_0, RenderType_ProfileComponent)), i1.ɵdid(1, 114688, null, 0, i5.ProfileComponent, [i6.GetContentService, i7.ProfileService, i8.ActivatedRoute], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_ProfileComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-profile", [], null, null, null, View_ProfileComponent_0, RenderType_ProfileComponent)), i1.ɵdid(1, 114688, null, 0, i5.ProfileComponent, [i6.GetContentService, i7.ProfileService, i8.ActivatedRoute, i8.Router], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_ProfileComponent_Host_0 = View_ProfileComponent_Host_0;
 var ProfileComponentNgFactory = i1.ɵccf("app-profile", i5.ProfileComponent, View_ProfileComponent_Host_0, {}, {}, []);
 exports.ProfileComponentNgFactory = ProfileComponentNgFactory;
@@ -2897,12 +2946,14 @@ var get_content_service_1 = __webpack_require__(/*! ../../services/get-content.s
 var profile_service_1 = __webpack_require__(/*! ../../services/profile.service */ "./src/app/services/profile.service.ts");
 var router_1 = __webpack_require__(/*! @angular/router */ "@angular/router");
 var ProfileComponent = /** @class */ (function () {
-    function ProfileComponent(contentService, profile, router) {
+    function ProfileComponent(contentService, profile, router, route) {
         this.contentService = contentService;
         this.profile = profile;
         this.router = router;
+        this.route = route;
         this.loadingImg = 'https://firebasestorage.googleapis.com/v0/b/blog-40f93.appspot.com/o/Spinner-1s-137px.gif?alt=media';
         this.defaultImg = 'https://firebasestorage.googleapis.com/v0/b/blog-40f93.appspot.com/o/631929649c.png?alt=media';
+        this.defaultName = 'ยังไม่ได้ระบบุชื่อ';
     }
     ProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -2910,16 +2961,21 @@ var ProfileComponent = /** @class */ (function () {
         this.imageProfile = this.loadingImg;
         this.profile.getProfile(this.router.snapshot.paramMap.get('id')).then(function (result) {
             result.subscribe(function (value) {
-                value.forEach(function (item) {
-                    _this.profileDetail = item.data();
-                    console.log(_this.profileDetail);
-                    if (_this.profileDetail.photoURL) {
-                        _this.imageProfile = _this.profileDetail.photoURL;
-                    }
-                    else {
-                        _this.imageProfile = _this.defaultImg;
-                    }
-                });
+                if (value.docs.length !== 0) {
+                    value.forEach(function (item) {
+                        _this.profileDetail = item.data();
+                        _this.profileName = _this.profileDetail.displayName ? _this.profileDetail.displayName : _this.defaultName;
+                        if (_this.profileDetail.photoURL) {
+                            _this.imageProfile = _this.profileDetail.photoURL;
+                        }
+                        else {
+                            _this.imageProfile = _this.defaultImg;
+                        }
+                    });
+                }
+                else {
+                    _this.route.navigateByUrl('/');
+                }
             });
         });
     };
@@ -4205,9 +4261,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var common_1 = __webpack_require__(/*! @angular/common */ "@angular/common");
 var i0 = __webpack_require__(/*! @angular/core */ "@angular/core");
 var i1 = __webpack_require__(/*! @angular/common */ "@angular/common");
+var i2 = __webpack_require__(/*! @angular/platform-browser */ "@angular/platform-browser");
 var HelperService = /** @class */ (function () {
-    function HelperService(location) {
+    function HelperService(location, document) {
         this.location = location;
+        this.document = document;
     }
     HelperService.prototype.getCurrentUrl = function () {
         var currentUrl = decodeURI(this.location.path()).split('/');
@@ -4245,7 +4303,10 @@ var HelperService = /** @class */ (function () {
         }
         return result + String(Date.now()).slice(0, 2);
     };
-    HelperService.ngInjectableDef = i0.defineInjectable({ factory: function HelperService_Factory() { return new HelperService(i0.inject(i1.Location)); }, token: HelperService, providedIn: "root" });
+    HelperService.prototype.getFullUrl = function () {
+        return decodeURI(this.document.location.href);
+    };
+    HelperService.ngInjectableDef = i0.defineInjectable({ factory: function HelperService_Factory() { return new HelperService(i0.inject(i1.Location), i0.inject(i2.DOCUMENT)); }, token: HelperService, providedIn: "root" });
     return HelperService;
 }());
 exports.HelperService = HelperService;
@@ -4614,6 +4675,26 @@ var UploadContentService = /** @class */ (function () {
                 return [2 /*return*/, contentRef.set(contentData, {
                         merge: true
                     })];
+            });
+        });
+    };
+    UploadContentService.prototype.deleteContent = function (url) {
+        return __awaiter(this, void 0, void 0, function () {
+            var contentRef, contentDetailRef;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        contentRef = this.afs.doc("post/" + url);
+                        contentDetailRef = this.afs.doc("postDetail/" + url);
+                        return [4 /*yield*/, contentRef.update({
+                                status: false
+                            })];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/, contentDetailRef.update({
+                                status: false
+                            })];
+                }
             });
         });
     };

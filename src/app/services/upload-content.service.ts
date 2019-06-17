@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Content } from './model/content';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -59,6 +58,16 @@ export class UploadContentService {
     const contentRef: AngularFirestoreDocument<any> = this.afs.doc(`postDetail/${data.slugUrl}`);
     return contentRef.set(contentData, {
       merge: true
+    });
+  }
+  async deleteContent(url) {
+    const contentRef: AngularFirestoreDocument<any> = this.afs.doc(`post/${url}`);
+    const contentDetailRef: AngularFirestoreDocument<any> = this.afs.doc(`postDetail/${url}`);
+    await contentRef.update({
+      status: false
+    });
+    return contentDetailRef.update({
+      status: false
     });
   }
 }

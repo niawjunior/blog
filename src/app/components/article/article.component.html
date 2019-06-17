@@ -1,6 +1,7 @@
 <div *ngIf="loadingContent" class="row article shadow fill">
     <div class="col-sm-12 mx-auto">
-      <button (click)="editPost()"  class="float-right btn btn-sm btn-warning">แก้ไข <i class="fa fa-edit"></i></button>
+      <button *ngIf="isAdmin" (click)="openDeletePost()"  class="float-right btn btn-sm btn-danger ml-2 btn-no-border">ลบ <i class="fa fa-trash"></i></button>
+      <button *ngIf="isAdmin" (click)="editPost()"  class="float-right btn btn-sm btn-warning btn-no-border">แก้ไข <i class="fa fa-edit"></i></button>
       <br><br>
       <h1 class="text-center" style="margin-bottom: 20px;">{{ head }}</h1>
       <p class="text-center"><span class="badge badge-pill badge-custom-danger" style="text-transform: uppercase;">#{{ tag }}</span></p>

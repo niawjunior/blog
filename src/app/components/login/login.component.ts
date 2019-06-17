@@ -3,7 +3,7 @@ import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms'
 import swal from 'sweetalert';
 import { AuthService } from '../../services/auth.service';
 import { GetContentService } from '../../services/get-content.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthProviderService } from '../../services/auth-provider.service';
 
 @Component({
@@ -17,8 +17,10 @@ export class LoginComponent implements OnInit {
   buttonSubmit: string;
   isDisabledSubmitButton = false;
   userDetail;
+  callBackUrl;
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private Form: FormBuilder,
     private Service: AuthService,
     private provider: AuthProviderService,
@@ -31,6 +33,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.callBackUrl = this.route.snapshot.queryParamMap.get('callback');
     this.contentService.loading(true);
     this.buttonSubmit = 'เข้าสู่ระบบ';
   }
@@ -39,9 +42,8 @@ export class LoginComponent implements OnInit {
     this.isDisabledSubmitButton = true;
     this.Service.SignIn(this.form.value.email, this.form.value.password).then(() => {
     setTimeout(() => {
-      const postUrl = new URL(window.location.href).searchParams.get('callback');
-      if (postUrl) {
-        this.router.navigate(['article/' + postUrl]);
+      if (this.callBackUrl) {
+        this.router.navigate(['article/' + this.callBackUrl]);
       } else {
         this.router.navigate(['/']);
       }
@@ -66,9 +68,8 @@ export class LoginComponent implements OnInit {
     this.provider.facebookSign().then(user => {
       this.userDetail = user;
       if (this.userDetail.user.email) {
-          const postUrl = new URL(window.location.href).searchParams.get('callback');
-          if (postUrl) {
-            this.router.navigate(['article/' + postUrl]);
+          if (this.callBackUrl) {
+            this.router.navigate(['article/' + this.callBackUrl]);
           } else {
             this.router.navigate(['/']);
           }
@@ -79,9 +80,8 @@ export class LoginComponent implements OnInit {
     this.provider.googleSign().then(user => {
       this.userDetail = user;
       if (this.userDetail.user.email) {
-          const postUrl = new URL(window.location.href).searchParams.get('callback');
-          if (postUrl) {
-            this.router.navigate(['article/' + postUrl]);
+          if (this.callBackUrl) {
+            this.router.navigate(['article/' + this.callBackUrl]);
           } else {
             this.router.navigate(['/']);
           }
