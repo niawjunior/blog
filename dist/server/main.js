@@ -4088,7 +4088,7 @@ var CommentService = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        itemsCollection = this.afs.collection('post').doc(url).collection('comment', function (ref) { return ref.orderBy('timeStamp', 'desc'); });
+                        itemsCollection = this.afs.collection('post').doc(url).collection('comment', function (ref) { return ref.orderBy('timeStamp', 'asc'); });
                         return [4 /*yield*/, itemsCollection.valueChanges().pipe(operators_1.take(1))];
                     case 1: return [2 /*return*/, _a.sent()];
                 }

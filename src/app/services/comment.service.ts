@@ -22,7 +22,7 @@ export class CommentService {
     return await contentRef.add(commentData);
   }
     async getComment(url) {
-      const itemsCollection = this.afs.collection<Comment>('post').doc(url).collection('comment', ref => ref.orderBy('timeStamp', 'desc'));
+      const itemsCollection = this.afs.collection<Comment>('post').doc(url).collection('comment', ref => ref.orderBy('timeStamp', 'asc'));
       return await itemsCollection.valueChanges().pipe(take(1));
     }
   // async get() {
