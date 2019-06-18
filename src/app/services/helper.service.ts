@@ -48,4 +48,7 @@ export class HelperService {
   getFullUrl() {
     return decodeURI(this.document.location.href);
   }
+  getDomain() {
+    return decodeURI(this.document.location);
+  }
 }

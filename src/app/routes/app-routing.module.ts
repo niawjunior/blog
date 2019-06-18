@@ -50,4 +50,4 @@ const routes: Routes = [
   }
 ];
 
-export const AppRoutingModule = RouterModule.forRoot(routes, { initialNavigation: 'enabled' });
+export const AppRoutingModule = RouterModule.forRoot(routes, { initialNavigation: true });

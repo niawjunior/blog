@@ -75,7 +75,7 @@ export class MarkdownEditorComponent implements OnInit {
 
     this.auth.isAuthenticated().subscribe(value => {
     this.contentService.loading(true);
-      if (value && value.emailVerified) {
+      if (value && value.email === 'niawkung@gmail.com') {
         this.isAdmin = true;
       }
     });

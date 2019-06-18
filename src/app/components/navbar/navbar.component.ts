@@ -40,7 +40,7 @@ export class NavbarComponent implements OnInit {
       if (user) {
         this.userEmail = user.email;
         this.isLogIn = true;
-        if (user.emailVerified) {
+        if (user.email === 'niawkung@gmail.com') {
           this.isAdmin = true;
         } else {
           this.isAdmin = false;
