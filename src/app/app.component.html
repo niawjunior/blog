@@ -4,5 +4,13 @@
 </div>
 <div class="container" style="margin-top: 5rem;">
   <router-outlet></router-outlet>
+  <!-- <div *ngIf="navLoading && isHome" class="row mb-5">
+    <div class="col-lg-12 mx-auto text-center">
+      <button class="btn btn-outline-secondary mr-2"><i class="fa fa-chevron-left"></i> โพสที่ใหม่กว่า</button>
+      <button class="btn btn-outline-secondary">โพสที่เก่ากว่า <i class="fa fa-chevron-right"></i></button>
+    </div>
+
+  </div> -->
+
 </div>
-<footer class="footer" *ngIf="navLoading && isHome" class="footer d-none d-sm-block">Built with Angular(SSR) <img class="love" src="../assets/love.svg" alt="love"> Markdown <img class="love" src="../assets/love.svg" alt="love"> Firebase By Niaw.</footer>
+<footer class="footer" *ngIf="navLoading && isHome" class="footer">Built with Angular <img class="love" src="assets/love.svg" alt="love"> Markdown <img class="love" src="assets/love.svg" alt="love"> Firebase By Niaw.</footer>

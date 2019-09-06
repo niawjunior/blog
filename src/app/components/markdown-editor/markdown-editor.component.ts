@@ -2,7 +2,6 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MarkdownService } from 'ngx-markdown';
 import { EditorInstance, EditorOption } from 'angular-markdown-editor';
-import * as mark from 'marked';
 import { UploadContentService } from '../../services/upload-content.service';
 import swal from 'sweetalert';
 import { GetContentService } from '../../services/get-content.service';
@@ -10,6 +9,7 @@ import Swal from 'sweetalert2'
 import { AuthService } from '../../services/auth.service';
 import { HelperService } from '../../services/helper.service';
 import { Router } from '@angular/router';
+const slug = require('slugify');
 
 @Component({
   selector: 'app-markdown-editor',
@@ -78,13 +78,6 @@ export class MarkdownEditorComponent implements OnInit {
       if (value && value.email === 'niawkung@gmail.com') {
         this.isAdmin = true;
       }
-    });
-    this.contentService.getAllPost().then(result => {
-      result.subscribe(e => {
-        // this.result = e[0];
-        // this.markdownText = JSON.parse(this.result.content);
-        // this.templateForm.controls['body'].setValue(this.markdownText);
-      });
     });
     this.editorOptions = {
       autofocus: false,
@@ -213,7 +206,7 @@ export class MarkdownEditorComponent implements OnInit {
     this.content = data;
     this.title = this.templateForm.value.articleName;
     this.tag =  this.templateForm.value.tag === 'อื่นๆ'​ ? this.customTag : this.templateForm.value.tag;
-    this.slugUrl = this.title.split(' ').join('-');
+    this.slugUrl = slug(this.title);
     this.description = this.templateForm.value.articleDescription;
     this.uploadImageUrl = this.templateForm.value.imageUrl;
     const saveData = {

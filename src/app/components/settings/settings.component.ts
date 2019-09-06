@@ -39,6 +39,7 @@ export class SettingsComponent implements OnInit {
           this.form.controls['displayName'].setValue(this.userDetail.displayName);
           this.form.controls['website'].setValue(this.userDetail.website);
           this.form.controls['bio'].setValue(this.userDetail.bio);
+          console.log(value.data());
         });
       }
     });
@@ -46,7 +47,7 @@ export class SettingsComponent implements OnInit {
     this.form = this.formBuilder.group({
       email: new FormControl({value: '', disabled: true}),
       displayName: new FormControl('', Validators.required),
-      website: new FormControl(''),
+      website: new FormControl('', Validators.pattern(/^https/)),
       bio: new FormControl('')
     });
     this.contentService.loadNav.emit(true);
@@ -78,17 +79,8 @@ export class SettingsComponent implements OnInit {
   update() {
     this.isDisabledSubmitButton = true;
     const uploadImage = this.imageProfile === this.defaultImg ? '' : this.imageProfile;
-    if (uploadImage) {
-      if (/\/firebasestorage/g.test(uploadImage)) {
-        this.setUser({
-          bio: this.form.value.bio,
-          displayName: this.form.value.displayName,
-          uid: this.userDetail.uid,
-          photoURL: this.imageProfile,
-          website: this.form.value.website
-        });
-      } else {
-        this.profile.uploadImage(this.userDetail.uid, uploadImage).then(url => {
+    if (/^data:image/.test(uploadImage)) {
+      this.profile.uploadImage(this.userDetail.uid, uploadImage).then(url => {
           this.setUser({
             bio: this.form.value.bio,
             displayName: this.form.value.displayName,
@@ -104,15 +96,14 @@ export class SettingsComponent implements OnInit {
             this.isDisabledSubmitButton = false;
           });
         });
-      }
-    } else {
-      this.setUser({
-        bio: this.form.value.bio,
-        displayName: this.form.value.displayName,
-        photoURL: uploadImage || '',
-        uid: this.userDetail.uid,
-        website: this.form.value.website
-      });
+      } else {
+        this.setUser({
+          bio: this.form.value.bio,
+          displayName: this.form.value.displayName,
+          uid: this.userDetail.uid,
+          photoURL: this.imageProfile,
+          website: this.form.value.website
+        });
     }
   }
   change(event) {

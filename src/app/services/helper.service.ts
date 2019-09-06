@@ -27,9 +27,11 @@ export class HelperService {
       }
     });
   }
-  getProfileUrl(text, email) {
-    if (text && email) {
-      return String(text.replace(/[^A-Z0-9]+/ig, '')).split(' ').join('').toLowerCase().slice(0, 2) + '@' + email.slice(0, 2);
+  getProfileUrl(email) {
+    if (email) {
+      const r = email.split('').reverse().join('').split('.').reverse()[0].split('@').join('').substr(0, 3) + email.substr(0, 2);
+      const t = r.split('').map(i => i.charCodeAt()).join('');
+      return t;
     } else {
       return '';
     }

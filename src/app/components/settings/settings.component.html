@@ -1,4 +1,4 @@
-<div class="col-md-6 mx-auto">
+<div class="col-md-6 mx-auto mb-5">
     <div class="card">
       <form [formGroup]="form">
         <div class="form-group text-center">
@@ -20,6 +20,7 @@
         <div class="form-group">
             <label for="website">เว็บไซต์</label>
             <input type="text" name="website" formControlName="website" class="form-control" placeholder="web site">
+            <small>*ต้องขึ้นต้นด้วย https</small>
         </div>
         <div class="form-group">
             <label for="bio">คำอธิบายเกี่ยวกับตัวคุณ สั้นๆ</label>

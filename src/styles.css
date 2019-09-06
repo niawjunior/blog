@@ -24,6 +24,11 @@
   margin-bottom: 20px;
   overflow: hidden;
   position: relative;
+  font-size: 14px;
+}
+
+.sb-circles-dark .sb-wrapper .sb-icon {
+  box-shadow: none;
 }
 
 .post-content .post-container{
@@ -57,6 +62,7 @@ img.profile-photo-md {
     height: 50px !important;
     width: 50px !important;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 img.profile-photo-sm {
@@ -126,6 +132,7 @@ img.profile-photo-sm {
 .profileImg {
   cursor: pointer;
   color: #0078ff !important;
+  font-size: 16px;
 }
 .profileImg:hover {
   text-decoration: underline !important;
