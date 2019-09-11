@@ -1,15 +1,16 @@
 import { Injectable, Inject } from '@angular/core';
-import {Location} from '@angular/common';
 import { DOCUMENT } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+
 @Injectable({
   providedIn: 'root'
 })
 export class HelperService {
 
-  constructor(private location: Location, @Inject(DOCUMENT) private document: any) { }
+  constructor(private router: Router, @Inject(DOCUMENT) private document: any) { }
 
   getCurrentUrl() {
-    const currentUrl = decodeURI(this.location.path()).split('/');
+    const currentUrl = decodeURI(this.router.url).split('/');
     return currentUrl[currentUrl.length - 1].split('?')[0];
   }
 
@@ -36,17 +37,6 @@ export class HelperService {
       return '';
     }
   }
-
-   randomId(length) {
-    let result = '';
-    const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
-    const charactersLength = characters.length;
-    for ( let i = 0; i < length; i++ ) {
-       result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result + String(Date.now()).slice(0, 2);
-  }
-
   getFullUrl() {
     return decodeURI(this.document.location.href);
   }

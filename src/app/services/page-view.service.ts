@@ -8,7 +8,7 @@ import { ContentDetail } from './model/content';
 export class PageViewService {
   constructor(private afs: AngularFirestore) { }
   public setPageView(key): void {
-    const documentReference = this.afs.collection<ContentDetail>('postDetail').doc(key);
+    const documentReference = this.afs.collection<ContentDetail>('post').doc(key);
     this.afs.firestore.runTransaction(page => {
         return page.get(documentReference.ref)
             .then(doc => {
@@ -23,5 +23,4 @@ export class PageViewService {
       console.log(e);
     });
   }
-
 }

@@ -33,40 +33,17 @@ export class UploadContentService {
       imageUrl: data.uploadImageUrl,
       description: data.description,
       timeStamp: Date.now(),
-      view: 1,
+      view: data.view,
       status: true
     };
-
-    await this.uploadContentDetail(contentData);
     const contentRef: AngularFirestoreDocument<any> = this.afs.doc(`post/${data.slugUrl}`);
-    return contentRef.set(contentData, {
-      merge: true
-    });
-  }
-  async uploadContentDetail(data) {
-    const contentData = {
-      title: data.title,
-      tag: data.tag,
-      slugUrl: data.slugUrl,
-      imageUrl: data.imageUrl,
-      description: data.description,
-      timeStamp: Date.now(),
-      view: 0,
-      status: data.status
-    };
-
-    const contentRef: AngularFirestoreDocument<any> = this.afs.doc(`postDetail/${data.slugUrl}`);
     return contentRef.set(contentData, {
       merge: true
     });
   }
   async deleteContent(url) {
     const contentRef: AngularFirestoreDocument<any> = this.afs.doc(`post/${url}`);
-    const contentDetailRef: AngularFirestoreDocument<any> = this.afs.doc(`postDetail/${url}`);
-    await contentRef.update({
-      status: false
-    });
-    return contentDetailRef.update({
+    return await contentRef.update({
       status: false
     });
   }

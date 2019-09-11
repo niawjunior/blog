@@ -5,7 +5,7 @@ import { EditorInstance, EditorOption } from 'angular-markdown-editor';
 import { UploadContentService } from '../../services/upload-content.service';
 import swal from 'sweetalert';
 import { GetContentService } from '../../services/get-content.service';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import { AuthService } from '../../services/auth.service';
 import { HelperService } from '../../services/helper.service';
 import { Router } from '@angular/router';
@@ -39,6 +39,7 @@ export class MarkdownEditorComponent implements OnInit {
   customTag;
   isAdmin = false;
   getUrl;
+  view;
   tagList = ['javascript', 'angular', 'trip and trick', 'challenge', 'ทั่วไป'];
   constructor(
     private fb: FormBuilder,
@@ -57,6 +58,7 @@ export class MarkdownEditorComponent implements OnInit {
         result.subscribe(e => {
           e.forEach(elem => {
             if (elem) {
+              this.view = elem.view || 0;
               if (!this.tagList.includes(elem.tag)) {
                 this.customTag = elem.tag;
                 this.templateForm.controls['tag'].setValue('อื่นๆ');
@@ -73,11 +75,8 @@ export class MarkdownEditorComponent implements OnInit {
       });
     }
 
-    this.auth.isAuthenticated().subscribe(value => {
-    this.contentService.loading(true);
-      if (value && value.email === 'niawkung@gmail.com') {
-        this.isAdmin = true;
-      }
+    this.auth.isAuthenticated().subscribe(() => {
+      this.contentService.loading(true);
     });
     this.editorOptions = {
       autofocus: false,
@@ -215,7 +214,8 @@ export class MarkdownEditorComponent implements OnInit {
       content: this.content,
       uploadImageUrl: this.uploadImageUrl,
       slugUrl: this.slugUrl,
-      description: this.description
+      description: this.description,
+      view: this.view
     };
     this.uploadService.uploadContent(saveData).then(() => {
       swal({

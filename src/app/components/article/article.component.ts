@@ -23,6 +23,7 @@ export class ArticleComponent implements OnInit {
   shareUrl = '';
   postDate = '';
   tag = '';
+  view;
   isAdmin = false;
   constructor(
     private contentService: GetContentService,
@@ -41,9 +42,9 @@ export class ArticleComponent implements OnInit {
     this.shareUrl = this.helper.getFullUrl();
     this.auth.isAuthenticated().subscribe(value => {
       if (value) {
-        if (value.email !== 'niawkung@gmail.com') {
-          this.pageView.setPageView(this.getUrl);
+        if (value.uid !== 'R1kuI33VUzRpE1nI9hQE2JjUI703') {
           this.isAdmin = false;
+          this.pageView.setPageView(this.getUrl);
         } else {
           this.isAdmin = true;
         }
@@ -56,6 +57,7 @@ export class ArticleComponent implements OnInit {
       this.shareData = elem;
       this.head = elem.title;
       this.tag = elem.tag;
+      this.view = elem.view;
       this.postDate = format(elem.timeStamp, 'DD MMMM YYYY : HH:mm', {locale: th});
       this.contentService.setLoad(elem);
       this.contentService.loading(true);
@@ -68,6 +70,7 @@ export class ArticleComponent implements OnInit {
             if (elem && elem.status) {
               this.postDate = format(elem.timeStamp, 'DD MMMM YYYY : HH:mm', {locale: th});
               this.head = elem.title;
+              this.view = elem.view;
               this.tag = elem.tag;
               this.shareData = elem;
               this.contentService.setLoad(elem);
@@ -79,7 +82,7 @@ export class ArticleComponent implements OnInit {
             }
            });
           });
-      });
+      })
     }
   }
   editPost() {

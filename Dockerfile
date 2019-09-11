@@ -1,0 +1,3 @@
+FROM node:10-alpine
+
+ENV NODE_VERSION 10.16.3

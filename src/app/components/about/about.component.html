@@ -4,7 +4,7 @@
 </head>
 
 <div class="profile-page">
-    <div class="page-header header-filter" data-parallax="true" style="background-image:url('https://instagram.fbkk2-7.fna.fbcdn.net/vp/048afd7d304a6919f58c0e5ed87e8e9e/5D77E178/t51.2885-15/e35/51348297_246698369580876_4623636140741037836_n.jpg?_nc_ht=instagram.fbkk2-7.fna.fbcdn.net');"></div>
+    <div class="page-header header-filter" data-parallax="true" style="background-image:url('https://firebasestorage.googleapis.com/v0/b/blog-40f93.appspot.com/o/51803971_774270126287221_3933540407743286220_n.jpg?alt=media&token=8797b025-3c48-46d7-a366-319357e1e5e1');"></div>
     <div class="main main-raised">
 		<div class="profile-content">
             <div class="container">
@@ -32,10 +32,23 @@
                     <p>Skill (BlockChain, JavaScript, Angular, NodeJs, MongoDB, Firebase, PHP, SQL) </p>
                     <br>
                   </div>
-                  <div class="col-lg-12">
-                    <p *ngIf="result" class="title text-center" style="font-size: 20px;">Project on Github</p>
+                  <p *ngIf="result" class="title text-center" style="font-size: 20px;">Project on Github</p>
+                  <app-skill></app-skill>
+                  <div class="col-lg-12" style="max-height:600px;overflow:auto;margin-bottom: 1rem;">
                     <div *ngFor="let item of resultArr">
-                      <div (click)="gotoLink(item.clone_url)" style="cursor: pointer;" class="item"><span class="title repo-text"><i class="fa fa-circle"></i></span> {{ item.name }} <span class="title repo-text"><i class="fa fa-star"></i></span> {{item.star}} <span class="title repo-text"><i class="fa fa-code-fork"></i></span> {{item.fork}} <span class="title repo-text"><i class="fa fa-tag"></i></span> {{item.language}} <span class="title repo-text"><i class="fa fa-clock-o"></i></span> {{item.created_at | dateTime}}</div>
+                      <div (click)="gotoLink(item.clone_url)" style="cursor: pointer;" class="item">
+                        <span class="title repo-text"><i class="fa fa-circle"></i></span>
+                         {{ item.name }}
+                        <span class="title repo-text"><i class="fa fa-star"></i></span>
+                         {{item.star}}
+                        <span class="title repo-text"><i class="fa fa-code-fork"></i></span>
+                        {{item.fork}}
+                        <span class="title repo-text"><i class="fa fa-tag"></i></span>
+                        {{item.language}}
+                        <span class="title repo-text"><i class="fa fa-clock-o"></i>
+                        </span>
+                        {{item.created_at | dateTime}}
+                      </div>
                       <hr/>
                     </div>
                     <br>

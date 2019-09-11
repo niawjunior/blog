@@ -1,7 +1,8 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
 import { Content, ContentDetail } from './model/content';
-import { map, take } from 'rxjs/operators';
+import { map } from 'rxjs/operators/map';
+import { take } from 'rxjs/operators/take';
 import { LoadingBarService } from '@ngx-loading-bar/core';
 
 @Injectable({
@@ -24,22 +25,26 @@ export class GetContentService {
   async getAllPost() {
     this.loading(false);
     this.loadingBar.start();
-    this.itemsCollectionDetail = this.afs.collection<ContentDetail>('postDetail', ref => ref
+    this.itemsCollectionDetail = this.afs.collection<ContentDetail>('post', ref => ref
     .orderBy('timeStamp', 'desc')
     );
     return await this.itemsCollectionDetail.valueChanges().pipe(take(1));
   }
   // get post detail by slug
   async getPostDetail(slug) {
-    this.loadingBar.start();
-    this.itemsCollection = this.afs.collection<Content>('post', ref => ref.where('slugUrl', '==', slug));
-    return await this.itemsCollection.valueChanges().pipe(
-      take(1)
-      , map(actions => actions.map(r => {
-        const data = r as Content;
-        return data;
-      }))
-    );
+    try {
+      this.loadingBar.start();
+      this.itemsCollection = this.afs.collection<Content>('post', ref => ref.where('slugUrl', '==', slug));
+      return await this.itemsCollection.valueChanges().pipe(
+        take(1)
+        , map(actions => actions.map(r => {
+          const data = r as Content;
+          return data;
+        }))
+      );
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   loading(key) {

@@ -10,23 +10,10 @@ import { AboutService } from '../../services/about.service';
 })
 export class AboutComponent implements OnInit {
   yearOld;
-  repo = [
-   'blog',
-   'project_final',
-   'telegram-bot-airdrop.io',
-   'telegram-crypto-alert',
-   'one-piece-fb-auto-alert',
-   'Ethereum-faucet-firebase-function',
-   'ethereum-wallet-generator-api',
-   'bookworm',
-   'django-ecommerce',
-   'new-friends-fb-app',
-   'mock-up-psd',
-   'decisiontree-php',
-   'image-processing'
-  ];
   result;
   resultArr = [];
+  language = [];
+  skill = [];
   constructor(private contentService: GetContentService, private about: AboutService) {
 
   }
@@ -38,7 +25,6 @@ export class AboutComponent implements OnInit {
       this.result = value;
       this.resultArr = [];
       this.result.filter(item => {
-        if (this.repo.includes(item.name)) {
           this.resultArr.push({
             'name': item.name,
             'star': item.stargazers_count,
@@ -48,11 +34,24 @@ export class AboutComponent implements OnInit {
             'timeStamp': getTime(item.created_at),
             'clone_url': item.clone_url
           });
-        }
+          this.language.push(item.language);
       });
       this.resultArr = this.resultArr.sort((x, y) => {
         return y.timeStamp - x.timeStamp;
       });
+      const item = this.language.reduce((prev, cur) => {
+        if (prev) {
+          prev[cur] = (prev[cur] || 0) + 1;
+        }
+        return prev;
+      }, {});
+
+      Object.keys(item).map(key => {
+        if (key !== 'null') {
+          this.skill.push({skill: key, count: item[key]});
+        }
+      });
+      console.log(this.skill);
     });
   }
   gotoLink(link) {

@@ -10,6 +10,7 @@ import { AppRoutingModule } from './routes/app-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AboutComponent } from './components/about/about.component';
+import { SkillComponent } from './components/skill/skill.component';
 import { ArticleComponent } from './components/article/article.component';
 import { LoginComponent } from './components/login/login.component';
 import { ArticleCardComponent } from './components/article-card/article-card.component';
@@ -43,6 +44,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     HomeComponent,
     NavbarComponent,
     AboutComponent,
+    SkillComponent,
     ArticleComponent,
     LoginComponent,
     ArticleCardComponent,
