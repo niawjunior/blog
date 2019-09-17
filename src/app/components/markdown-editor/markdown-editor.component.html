@@ -6,7 +6,7 @@
         <button style="border-radius: 5px 0px 0px 5px;margin-left:1rem;" onclick="document.getElementById('file').click()"><i class="fa fa-image"> </i> Select Images</button>
         <input (change)="change($event)" accept="image/*" style="display: none;" name="file" id="file" type="file" class="form-control" aria-describedby="basic-addon2">
         <div class="input-group-append">
-            <button (click)="uploadImage()" class="btn btn-secondary" type="button">
+            <button (click)="uploadImage()" class="btn btn-secondary" type="button" [disabled]="!fileImage">
                 <span *ngIf="uploading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                 <span *ngIf="!uploading" class="fa fa-upload"></span>
                 อัพโหลด

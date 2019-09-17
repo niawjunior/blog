@@ -39,7 +39,7 @@ export class MarkdownEditorComponent implements OnInit {
   customTag;
   isAdmin = false;
   getUrl;
-  view;
+  view = 0;
   tagList = ['javascript', 'angular', 'trip and trick', 'challenge', 'ทั่วไป'];
   constructor(
     private fb: FormBuilder,
@@ -58,7 +58,7 @@ export class MarkdownEditorComponent implements OnInit {
         result.subscribe(e => {
           e.forEach(elem => {
             if (elem) {
-              this.view = elem.view || 0;
+              this.view = elem.view;
               if (!this.tagList.includes(elem.tag)) {
                 this.customTag = elem.tag;
                 this.templateForm.controls['tag'].setValue('อื่นๆ');
@@ -156,10 +156,15 @@ export class MarkdownEditorComponent implements OnInit {
   }
 
   change(event) {
-    this.fileImage = event;
-    this.helper.readImage(event.target).then(value => {
-      this.imageName = value;
-    });
+    if (event.target.files[0]) {
+      this.fileImage = event;
+      this.helper.readImage(event.target).then(value => {
+        this.imageName = value;
+      });
+    } else {
+      this.fileImage = undefined;
+      this.imageName = undefined;
+    }
   }
 
   uploadImage() {
@@ -227,6 +232,7 @@ export class MarkdownEditorComponent implements OnInit {
         }, 500);
       });
     }).catch((e) => {
+      console.log(e)
       swal({
         title: 'ไม่สามารถอัพโหลดได้',
         icon: 'error'

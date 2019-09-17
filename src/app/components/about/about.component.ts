@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { differenceInYears, getTime } from 'date-fns';
 import { GetContentService } from '../../services/get-content.service';
 import { AboutService } from '../../services/about.service';
+import { SkillService } from '../../services/skill.service';
 
 @Component({
   selector: 'app-about',
@@ -14,7 +15,7 @@ export class AboutComponent implements OnInit {
   resultArr = [];
   language = [];
   skill = [];
-  constructor(private contentService: GetContentService, private about: AboutService) {
+  constructor(private skillService: SkillService, private contentService: GetContentService, private about: AboutService) {
 
   }
 
@@ -51,7 +52,7 @@ export class AboutComponent implements OnInit {
           this.skill.push({skill: key, count: item[key]});
         }
       });
-      console.log(this.skill);
+      this.skillService.setSkill(this.skill);
     });
   }
   gotoLink(link) {

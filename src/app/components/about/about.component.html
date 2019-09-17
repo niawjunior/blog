@@ -4,7 +4,7 @@
 </head>
 
 <div class="profile-page">
-    <div class="page-header header-filter" data-parallax="true" style="background-image:url('https://firebasestorage.googleapis.com/v0/b/blog-40f93.appspot.com/o/51803971_774270126287221_3933540407743286220_n.jpg?alt=media&token=8797b025-3c48-46d7-a366-319357e1e5e1');"></div>
+    <div class="page-header header-filter" data-parallax="true" style="background-image:url('https://firebasestorage.googleapis.com/v0/b/blog-40f93.appspot.com/o/51803971_774270126287221_3933540407743286220_n.jpg?alt=media&token=8797b025-3c48-46d7-a366-319357e1e5e1');border-radius:25px;"></div>
     <div class="main main-raised">
 		<div class="profile-content">
             <div class="container">
@@ -29,11 +29,13 @@
                     <p>สวัสดีครับ ผม เนีี้ยว อายุ ({{yearOld}}) ปี ปัจจุบัน เป็นโปรแกรมเมอร์ ณ บริษัทแห่งหนึ่งใน กรุงเทพฯ</p>
                     <p>งานอดิเรก ฟิตเนส ดูหนัง ดูกีฬา (มวยสากล, mma) เล่นเกมส์ เขียนโค้ด และชอบเข้าร้านกาแฟ ครับ</p>
                     <hr>
-                    <p>Skill (BlockChain, JavaScript, Angular, NodeJs, MongoDB, Firebase, PHP, SQL) </p>
+                    <p>Skill (BlockChain, JavaScript, Angular, Vue.js, NodeJs, MongoDB, Firebase, PHP, SQL) </p>
                     <br>
                   </div>
                   <p *ngIf="result" class="title text-center" style="font-size: 20px;">Project on Github</p>
-                  <app-skill></app-skill>
+                  <div class="text-center">
+                    <app-skill></app-skill>
+                  </div>
                   <div class="col-lg-12" style="max-height:600px;overflow:auto;margin-bottom: 1rem;">
                     <div *ngFor="let item of resultArr">
                       <div (click)="gotoLink(item.clone_url)" style="cursor: pointer;" class="item">

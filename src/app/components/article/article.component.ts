@@ -82,7 +82,7 @@ export class ArticleComponent implements OnInit {
             }
            });
           });
-      })
+      });
     }
   }
   editPost() {

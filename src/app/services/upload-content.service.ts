@@ -36,6 +36,7 @@ export class UploadContentService {
       view: data.view,
       status: true
     };
+    console.log(contentData);
     const contentRef: AngularFirestoreDocument<any> = this.afs.doc(`post/${data.slugUrl}`);
     return contentRef.set(contentData, {
       merge: true
