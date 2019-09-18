@@ -210,7 +210,7 @@ export class MarkdownEditorComponent implements OnInit {
     this.content = data;
     this.title = this.templateForm.value.articleName;
     this.tag =  this.templateForm.value.tag === 'อื่นๆ'​ ? this.customTag : this.templateForm.value.tag;
-    this.slugUrl = slug(this.title);
+    this.slugUrl = /[ก-ฮ]/.test(this.title) ? this.title.replace(/[^a-zA-Z0-9ก-๙]/g, '-').replace(/-+/g, '-') : slug(this.title);
     this.description = this.templateForm.value.articleDescription;
     this.uploadImageUrl = this.templateForm.value.imageUrl;
     const saveData = {
@@ -232,7 +232,6 @@ export class MarkdownEditorComponent implements OnInit {
         }, 500);
       });
     }).catch((e) => {
-      console.log(e)
       swal({
         title: 'ไม่สามารถอัพโหลดได้',
         icon: 'error'
