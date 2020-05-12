@@ -31,7 +31,7 @@ export class SkillComponent implements OnInit {
         },
         series: [
           {
-            name: 'Counters',
+            name: 'ภาษา',
             type: 'pie',
             center: ['50%', '50%'],
             data: this.skill,
