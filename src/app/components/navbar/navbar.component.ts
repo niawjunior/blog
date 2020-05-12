@@ -36,11 +36,11 @@ export class NavbarComponent implements OnInit {
         this.isNavbarCollapsed = false;
       }
     });
-    this.auth.authState.subscribe(user => {
+    this.auth.authState.subscribe((user: any) => {
       if (user) {
         this.userEmail = user.email;
         this.isLogIn = true;
-        if (user.email === 'niawkung@gmail.com') {
+        if (user.isAdmin) {
           this.isAdmin = true;
         } else {
           this.isAdmin = false;

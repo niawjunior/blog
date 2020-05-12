@@ -42,7 +42,7 @@ export class ArticleComponent implements OnInit {
     this.shareUrl = this.helper.getFullUrl();
     this.auth.isAuthenticated().subscribe(value => {
       if (value) {
-        if (value.uid !== 'R1kuI33VUzRpE1nI9hQE2JjUI703') {
+        if (!value.isAdmin) {
           this.isAdmin = false;
           this.pageView.setPageView(this.getUrl);
         } else {

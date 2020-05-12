@@ -165,7 +165,8 @@
       }
     }
   },
-  "cli": {},
+  "cli": {
+  },
   "schematics": {
     "@schematics/angular:class": {
       "spec": false

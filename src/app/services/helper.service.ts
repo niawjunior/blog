@@ -28,15 +28,6 @@ export class HelperService {
       }
     });
   }
-  getProfileUrl(email) {
-    if (email) {
-      const r = email.split('').reverse().join('').split('.').reverse()[0].split('@').join('').substr(0, 3) + email.substr(0, 2);
-      const t = r.split('').map(i => i.charCodeAt()).join('');
-      return t;
-    } else {
-      return '';
-    }
-  }
   getFullUrl() {
     return decodeURI(this.document.location.href);
   }

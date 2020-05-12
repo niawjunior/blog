@@ -7,4 +7,5 @@ export interface User {
   photoURL: string;
   profileURL: string;
   emailVerified: boolean;
+  isAdmin?: boolean;
 }

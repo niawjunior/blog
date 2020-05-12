@@ -38,7 +38,7 @@ export class AuthProviderService {
       bio: '',
       displayName:  userDetail.user.displayName || '',
       photoURL: userDetail.user.photoURL || '',
-      profileURL: this.helper.getProfileUrl(String(userDetail.user.email).split('@')[0]),
+      profileURL: userDetail.user.uid,
       emailVerified: userDetail.user.emailVerified
     };
      await userRef.set(userData, {

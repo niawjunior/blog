@@ -56,7 +56,7 @@ export class AuthService {
       bio: '',
       displayName: user.displayName || '',
       photoURL: user.photoURL || '',
-      profileURL: this.helper.getProfileUrl(String(user.email).split('@')[0]),
+      profileURL: user.uid,
       emailVerified: user.emailVerified
     };
     return userRef.set(userData, {

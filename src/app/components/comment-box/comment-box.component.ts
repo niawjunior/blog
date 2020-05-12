@@ -76,7 +76,7 @@ export class CommentBoxComponent implements OnInit {
         value.subscribe(result => {
         result.forEach(item => {
           this.profile.getUser(item.uid).subscribe(user => {
-            this.isAdmin = user.data().email === 'niawkung@gmail.com' ? '(Admin)' : '';
+            this.isAdmin = user.data().isAdmin ? '(Admin)' : '';
             this.userComment.push({
               isAdmin: this.isAdmin,
               comment: item,
