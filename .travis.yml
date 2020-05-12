@@ -19,7 +19,7 @@ install:
   - npm install
 
 script:
-  - ng build --prod --base-href https://niawjunior.github.io/blog/ && npx ngh --dir dist/blog"
+  - ng build --prod --base-href https://niawjunior.github.io/blog/
   - mv dist/browser/index.html dist/browser/404.html
 
 deploy:
