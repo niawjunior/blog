@@ -5,6 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgxEchartsModule } from 'ngx-echarts';
+
 import { NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './routes/app-routing.module';
 import { HomeComponent } from './components/home/home.component';
@@ -69,6 +71,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     ReactiveFormsModule,
     AngularFontAwesomeModule,
     HttpClientModule,
+    NgxEchartsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
